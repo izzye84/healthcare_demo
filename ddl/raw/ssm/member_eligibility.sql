@@ -1,4 +1,4 @@
-create table member_eligibility (
+create table ssm.member_eligibility (
     first_name varchar(255),
     middle_name varchar(255),
     last_name varchar(255),
