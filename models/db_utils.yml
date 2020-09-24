@@ -1,0 +1,42 @@
+version: 2
+
+macros:
+  - name: surrogate_key
+    description: >
+      Implements a cross-database way to generate a hashed surrogate key using the fields specified.
+      This macro was developed by fishtown analytics and further documentation can be found [here](https://github.com/fishtown-analytics/dbt-utils#surrogate_key-source)
+    arguments:
+      - name: field_list
+        type: list
+        description: >
+          A list of fileds to be used to combine into a surrogate key
+
+  - name: unpivot
+    description: >
+      This macro "un-pivots" a table from wide format to long format. 
+      Functionality is similar to pandas [melt](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html) function.
+      This macro was developed by fishtown analytics and further documentation can be found [here](https://github.com/fishtown-analytics/dbt-utils#unpivot-source)
+    arguments:
+      - name: relation
+        type: relation
+        description: The relation to unpivot
+
+      - name: cast_to
+        type: string
+        description: The data type to cast the unpivoted values to, default is varchar
+
+      - name: exclude
+        type: list
+        description: A list of columns to exclude from the unpivot operation but keep in the resulting table
+
+      - name: remove
+        type: list
+        description: A list of columns to remove from the resulting table. Default is none
+
+      - name: field_name
+        type: string
+        description: Destination table column name for the source table column names
+
+      - name: value_name
+        type: string
+        description: Destination table column name for the pivoted values
