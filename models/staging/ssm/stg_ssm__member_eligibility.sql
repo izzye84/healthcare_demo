@@ -1,5 +1,5 @@
 /* 
-Use this model to:
+Use this model for:
   - Fields have been renamed and recast in a consistent way.¹
   - Data types, such as timezones, are consistent.
   - Light cleansing, such as replacing empty string with NULL values, has occurred.
