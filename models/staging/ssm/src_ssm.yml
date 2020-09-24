@@ -3,11 +3,11 @@ version: 2
 sources:
   - name: ssm_claims
     description: Source definition for SSM claims files
-    schema: dev
+    schema: ssm
     tables:
       - name: member_eligibility
         description: SSM member eligibility data. 
-        identifier: ssm_missouri_mssp_member_elig_strive_20200830
+        identifier: member_eligibility
         columns:
           - name: first_name
             description: Patient first name
@@ -111,7 +111,7 @@ sources:
 
       - name: member_crosswalk
         description: SSM member crosswalk. Used to link member ids to their enterprise mrn id
-        identifier: member_patient_id_crosswalk_20200830
+        identifier: member_crosswalk
         columns:
           - name: insurance_name
             description: Patient insurance name
