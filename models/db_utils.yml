@@ -16,6 +16,7 @@ macros:
       This macro "un-pivots" a table from wide format to long format. 
       Functionality is similar to pandas [melt](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html) function.
       This macro was developed by fishtown analytics and further documentation can be found [here](https://github.com/fishtown-analytics/dbt-utils#unpivot-source)
+
     arguments:
       - name: relation
         type: relation
