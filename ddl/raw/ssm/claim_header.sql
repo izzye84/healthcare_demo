@@ -2,7 +2,7 @@ create table ssm.claim_header (
     claim_number varchar(255),
     claim_sequence_number varchar(255),
     patient_external_id varchar(255),
-    subscriberid varchar(255),
+    subscriber_id varchar(255),
     dependent_number varchar(255),
     place_of_service varchar(15),
     type_of_bill varchar(255),
