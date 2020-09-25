@@ -1,4 +1,4 @@
-create table ssm.patient (
+create table raw_ssm.patient (
     patient_id varchar(255),
     patient_account_number varchar(255),
     social_security_number varchar(255),

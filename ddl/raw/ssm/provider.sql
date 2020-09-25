@@ -1,4 +1,4 @@
-create table ssm.provider (
+create table raw_ssm.provider (
     provider_id varchar(255),
     npi varchar(255),
     first_name varchar(255),
