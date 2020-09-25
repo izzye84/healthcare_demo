@@ -1,4 +1,4 @@
-create table ssm.pharmacy_claim (
+create table raw_ssm.pharmacy_claim (
     claim_number varchar(255),
     claim_sequence_number varchar(255),
     patient_external_id varchar(255),

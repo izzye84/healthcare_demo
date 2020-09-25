@@ -1,4 +1,4 @@
-create table ssm.encounter (
+create table raw_ssm.encounter (
     patient_id varchar(255),
     patient_account_number varchar(255),
     clinical_encounter_date timestamp,

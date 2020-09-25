@@ -1,4 +1,4 @@
-create table ssm.member_crosswalk(
+create table raw_ssm.member_crosswalk(
     insurance_name varchar(255),
     lob varchar(255),
     payer_contract varchar(255),

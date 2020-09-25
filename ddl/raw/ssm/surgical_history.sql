@@ -1,4 +1,4 @@
-create table ssm.surgical_history (
+create table raw_ssm.surgical_history (
     patient_id varchar(255),
     patient_account_number varchar(255),
     clinical_encounter_id varchar(255),
