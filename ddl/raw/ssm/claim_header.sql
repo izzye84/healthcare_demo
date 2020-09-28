@@ -1,4 +1,4 @@
-create table raw_ssm.claim_header (
+create external table raw_ssm.claim_header (
     claim_number varchar(255),
     claim_sequence_number varchar(255),
     patient_external_id varchar(255),
@@ -92,4 +92,40 @@ create table raw_ssm.claim_header (
     referring_provider_npi varchar(255),
     pcp_provider_npi varchar(255),
     facility_npi varchar(255)
-);
+)
+partitioned by (client_id varchar(50), ingest_date char(10))
+row format delimited
+fields terminated by '|'
+stored as textfile
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/'
+table properties ('skip.header.line.count' = '1');
+
+/* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
+
+alter table raw_ssm.claim_header add
+partition(client_id='ssm', ingest_id='2020-03-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-03-01/';
+
+alter table raw_ssm.claim_header add
+partition(client_id='ssm', ingest_id='2020-03-16') 
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-03-16/';
+
+alter table raw_ssm.claim_header add
+partition(client_id='ssm', ingest_id='2020-04-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-04-01/';
+
+alter table raw_ssm.claim_header add
+partition(client_id='ssm', ingest_id='2020-05-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-05-01/';
+
+alter table raw_ssm.claim_header add
+partition(client_id='ssm', ingest_id='2020-06-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-06-01/';
+
+alter table raw_ssm.claim_header add
+partition(client_id='ssm', ingest_id='2020-07-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-07-01/';
+
+alter table raw_ssm.claim_header add
+partition(client_id='ssm', ingest_id='2020-08-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-08-01/';
