@@ -1,4 +1,4 @@
-create table raw_ssm.member_eligibility (
+create external table raw_ssm.member_eligibility (
     first_name varchar(255),
     middle_name varchar(255),
     last_name varchar(255),
@@ -22,4 +22,14 @@ create table raw_ssm.member_eligibility (
     contract varchar(255),
     insurance_name varchar(255),
     primary_care_prov_id varchar(255)
-);
+)
+partitioned by (client_id varchar(50), ingest_date char(10))
+row format delimited
+fields terminated by '|'
+stored as textfile
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/member-eligibility/'
+table properties ('skip.header.line.count' = '1');
+
+alter table raw_ssm.member_eligibility add
+partition(client_id='ssm', ingest_id='2020-03-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/member-eligibility/ingest_date=2020-03-01/';

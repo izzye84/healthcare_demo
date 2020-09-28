@@ -34,4 +34,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   strive_health:
     staging:
-      +materialized: view
+      +schema: stage
+      +materialized: table
+
+    analytics:
+      +schema: analytics
+      +materialized: table
+
+snapshots:
+  strive_health:
+    ssm:
+      +target_schema: ssm_snapshots

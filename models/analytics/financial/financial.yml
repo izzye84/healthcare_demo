@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: coverage
+    description: Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.
+    columns:
+      - name: stg_ssm__eligibility
+    description: Staged SSM eligibility
+    columns:
+      - name: identifier
+        description: Unique identifier for the member/eligibility combination
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_strive_id
+        description: Strive unique ID for the person
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ssm__member')
+              field: identifier_strive_id
+
+      - name: period_coverage_start
+        description: The effective date for when the coverage is valid
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: period_coverage_end
+        description: >
+          The date when coverage is no longer valid. The current active 
+          coverage has a default date of '2999-01-01'
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: subscriber_id
+        description: The SSM member id
+        test:
+          - not_null
+
+      - name: relationship
+        description: Beneficiary relationship to the subscriber
+
+      - name: network
+        description: Insurer network
+
+      - name: payor
+        description: Issuer of the policy
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

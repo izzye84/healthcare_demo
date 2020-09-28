@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: patient
+    description: Demographics and other administrative information about an individual receiving care or other health-related services.
+    columns:
+      - name: identifier_strive_id
+        description: Strive Unique Identifier
+        tests:
+          - not_null
+          - unique
+
+      - name: given_first_name
+        description: Member first name
+
+      - name: given_middle_name
+        description: Member middle name
+        
+      - name: family_name
+        description: Member last name
+
+      - name: identifier_social_security_number
+        description: Member social security number
+
+      - name: birth_date
+        description: Member birth date
+
+      - name: identifier_external_subscriber_id
+        description: Member SSM assigned patient ID
+
+      - name: gender
+        description: Member gender
+      
+      - name: race
+        description: Member race
+
+      - name: ethnic_group
+        description: Member ethnic group
+      
+      - name: telecom_home_phone_number
+        description: Member home phone number
+
+      - name: telecom_email_address
+        description: Member email address
+
+      - name: address_line1
+        description: Member address line 1
+
+      - name: address_line2
+        description: Member address line 2
+
+      - name: address_city
+        description: Member address city
+
+      - name: address_state
+        description: Member address state
+
+      - name: address_postal_code
+        description: Member address postal code
+
+      - name: general_practitioner
+        description: Member primary care physician
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
