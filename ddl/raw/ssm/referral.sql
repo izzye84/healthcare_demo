@@ -3,7 +3,7 @@ create external table raw_ssm.referral (
     patient_account_number varchar(255),
     clinical_encounter_id varchar(255),
     referral_id varchar(255),
-    referral_date timestamp,
+    referral_date date,
     sender_network varchar(255),
     sending_practice varchar(255),
     sending_practitioner_npi varchar(255),
@@ -20,7 +20,7 @@ create external table raw_ssm.referral (
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

@@ -1,20 +1,20 @@
-create table raw_humana.medical_claims (
+create external table raw_humana.medical_claims (
     admit_diag_cd varchar(255), 
     admit_src_cd varchar(255),  
-    allow_icob_admit_cnt varchar(255),  -- should this be numeric?
-    allow_icob_amt varchar(255),   -- should this be numeric?
-    allow_icob_days_cnt varchar(255),  -- should this be numeric?
-    allow_icob_visits_cnt varchar(255),  -- should this be numeric?
+    allow_icob_admit_cnt varchar(255),
+    allow_icob_amt varchar(255),
+    allow_icob_days_cnt varchar(255),
+    allow_icob_visits_cnt varchar(255),
     bill_type_cd varchar(255),
-    chrg_amt varchar(255),  -- should this be numeric?
-    chrg_days_cnt varchar(255), -- should this be numeric?
+    chrg_amt varchar(255), 
+    chrg_days_cnt varchar(255),
     clm_aso_ind varchar(255),
-    cob_paid_amt varchar(255),  -- should this be numeric?
-    copay_amt varchar(255),  -- should this be numeric?
+    cob_paid_amt varchar(255),
+    copay_amt varchar(255),
     cpt_mod_cd varchar(255),
     cpt_mod_cd2 varchar(255),
     ctrct_cat_cd varchar(255),
-    deduct_amt varchar(255),  -- should this be numeric?
+    deduct_amt varchar(255),
     primary_diag_cd varchar(255),
     diag_cd2 varchar(255),
     diag_cd3 varchar(255),
@@ -50,19 +50,19 @@ create table raw_humana.medical_claims (
     icd_proc_04_cd varchar(255),
     icd_proc_05_cd varchar(255),
     in_plan_ntwk_ind varchar(255),
-    cov_month timestamp,  -- should this be string or date type?
-    mbr_cost_shr_amt varchar(255), -- should this be numeric?
+    cov_month date,
+    mbr_cost_shr_amt varchar(255), 
     mbr_pers_gen_key varchar(255),
     mco_contract_nbr varchar(255),
     medclm_key varchar(255),
-    medclm_lclm_from_date timestamp, -- should this be string or date type?
+    medclm_lclm_from_date date,
     medclm_lclm_key varchar(255),
-    medclm_lclm_to_date timestamp, -- should this be string or date type?
+    medclm_lclm_to_date date,
     ndc_id varchar(255),
-    net_paid_amt varchar(255), -- should this be numeric?
-    net_paid_days_cnt varchar(255), -- should this be numeric?
+    net_paid_amt varchar(255), 
+    net_paid_days_cnt varchar(255),
     npi_id varchar(255),
-    paid_date datetime, -- should this be a string or date type?
+    paid_date date, 
     pbp_segment_id varchar(255),
     plan_benefit_package_id varchar(255),
     pot_cd varchar(255),
@@ -72,12 +72,51 @@ create table raw_humana.medical_claims (
     raw_clm_refr1_prov_key varchar(255),
     raw_clm_rendr_prov_key varchar(255),
     revenue_cd varchar(255),
-    serv_from_date timestamp, -- should this be a string or date type?
-    serv_to_date timestamp,  -- should this be a string or date type?
-    serv_unit_cnt, --
-    src_admit_date timestamp,  -- should this be a string or date type?
-    src_dischrg_date timestamp, -- should this be a string or date type?
+    serv_from_date date, 
+    serv_to_date date,  
+    serv_unit_cnt varchar(255), 
+    src_admit_date date,  
+    src_dischrg_date date, 
     src_mbr_id varchar(255),
     src_platform_cd varchar(255),
     src_prov_specialty_cd varchar(255)
-);
+)
+partitioned by (client_id varchar(50), ingest_date timestamp)
+row format delimited
+fields terminated by '|'
+stored as textfile
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/medical_claims/'
+table properties ('skip.header.line.count' = '1');
+
+/* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
+
+alter table raw_humana.medical_claims add
+partition(client_id='humana', ingest_date='2020-03-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/medical_claims/ingest_date=2020-03-01/';
+
+alter table raw_humana.medical_claims add
+partition(client_id='humana', ingest_date='2020-03-16') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/medical_claims/ingest_date=2020-03-16/';
+
+alter table raw_humana.medical_claims add
+partition(client_id='humana', ingest_date='2020-04-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/medical_claims/ingest_date=2020-04-01/';
+
+alter table raw_humana.medical_claims add
+partition(client_id='humana', ingest_date='2020-05-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/medical_claims/ingest_date=2020-05-01/';
+
+alter table raw_humana.medical_claims add
+partition(client_id='humana', ingest_date='2020-06-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/medical_claims/ingest_date=2020-06-01/';
+
+alter table raw_humana.medical_claims add
+partition(client_id='humana', ingest_date='2020-07-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/medical_claims/ingest_date=2020-07-01/';
+
+alter table raw_humana.medical_claims add
+partition(client_id='humana', ingest_date='2020-08-01') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/medical_claims/ingest_date=2020-08-01/';
+
+
+

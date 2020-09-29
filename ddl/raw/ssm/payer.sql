@@ -9,8 +9,8 @@ create external table raw_ssm.payer (
     medicare_id varchar(255),
     insurance_type_flag varchar(255),
     insurance_product_type varchar(255),
-    coverage_begin_date timestamp,
-    coverage_end_date timestamp,
+    coverage_begin_date date,
+    coverage_end_date date,
     insurance_address_line_1 varchar(255),
     insurance_address_line_2 varchar(255),
     insurance_city varchar(255),
@@ -23,7 +23,7 @@ create external table raw_ssm.payer (
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

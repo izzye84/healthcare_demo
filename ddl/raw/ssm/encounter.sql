@@ -1,7 +1,7 @@
 create external table raw_ssm.encounter (
     patient_id varchar(255),
     patient_account_number varchar(255),
-    clinical_encounter_date timestamp,
+    clinical_encounter_date date,
     clinical_encounter_facility_name varchar(255),
     clinical_encounter_id varchar(255),
     clinical_encounter_reason varchar(255),
@@ -17,7 +17,7 @@ create external table raw_ssm.encounter (
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

@@ -15,7 +15,7 @@ create external table raw_ssm.claim_detail(
     first_name varchar(255),
     last_name varchar(255),
     gender varchar(255),
-    date_of_birth timestamp,
+    date_of_birth date,
     cpt_hcpcs varchar(255),
     loinc varchar(255),
     snomed varchar(255),
@@ -30,7 +30,7 @@ create external table raw_ssm.claim_detail(
     plan_payment_amount numeric(18,2),
     member_payment_amount numeric(18,2)
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

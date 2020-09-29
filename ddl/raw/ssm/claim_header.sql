@@ -17,7 +17,7 @@ create external table raw_ssm.claim_header (
     first_name varchar(255),
     last_name varchar(255),
     gender varchar(255),
-    date_of_birth timestamp,
+    date_of_birth date,
     procedure_code1 varchar(255),
     procedure_code2 varchar(255),
     procedure_code3 varchar(255),
@@ -93,7 +93,7 @@ create external table raw_ssm.claim_header (
     pcp_provider_npi varchar(255),
     facility_npi varchar(255)
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

@@ -6,8 +6,8 @@ create external table raw_ssm.medication (
     medication_code_set varchar(255),
     medication_code varchar(255),
     medication_description varchar(255),
-    medication_begin_date timestamp,
-    medication_end_date timestamp,
+    medication_begin_date date,
+    medication_end_date date,
     days_supply varchar(255),
     quantity varchar(255),
     refills int,
@@ -22,7 +22,7 @@ create external table raw_ssm.medication (
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

@@ -6,7 +6,7 @@ create external table raw_ssm.provider (
     suffix varchar(255),
     provider_type varchar(255),
     title varchar(255),
-    date_of_birth timestamp,
+    date_of_birth date,
     gender varchar(255),
     address_line_1 varchar(255),
     address_line_2 varchar(255),
@@ -41,7 +41,7 @@ create external table raw_ssm.provider (
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

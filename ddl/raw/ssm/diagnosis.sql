@@ -2,17 +2,17 @@ create external table raw_ssm.diagnosis (
     patient_id varchar(255),
     patient_account_number varchar(255),
     clinical_encounter_id varchar(255),
-    diagnosis_date timestamp,
+    diagnosis_date date,
     diagnosis_code varchar(255),
-    onset_date timestamp,
+    onset_date date,
     resolved_date timestamp,
     code_set varchar(255),
     diagnosis_name varchar(255),
-    service_date timestamp,
+    service_date date,
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

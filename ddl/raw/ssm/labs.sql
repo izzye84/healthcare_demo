@@ -5,15 +5,15 @@ create external table raw_ssm.labs(
     lab_id varchar(255),
     lab_code_set varchar(255),
     lab_code varchar(255),
-    lab_order_date timestamp,
+    lab_order_date date,
     lab_order_description varchar(255),
     service_code varchar(255),
     service_code_modifier varchar(255),
     service_code_type varchar(255),
     service_code_desc varchar(255),
     result_description varchar(255),
-    collection_date timestamp,
-    result_date timestamp,
+    collection_date date,
+    result_date date,
     result_text varchar(255),
     result_numeric numeric(18,4),
     result_pos_neg varchar(255),
@@ -24,7 +24,7 @@ create external table raw_ssm.labs(
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

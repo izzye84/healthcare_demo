@@ -6,7 +6,7 @@ create external table raw_ssm.member_crosswalk(
     enterprise_mrn varchar(255),
     person_id varchar(255)
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile
