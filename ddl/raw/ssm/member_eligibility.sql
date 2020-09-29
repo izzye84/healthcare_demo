@@ -3,7 +3,7 @@ create external table raw_ssm.member_eligibility (
     middle_name varchar(255),
     last_name varchar(255),
     social_security varchar(15),
-    dob timestamp,
+    dob date,
     patient_id varchar(255),
     relation varchar(255),
     gender varchar(255),
@@ -16,14 +16,14 @@ create external table raw_ssm.member_eligibility (
     city varchar(255),
     state varchar(255),
     zip varchar(255),
-    eff_date timestamp,
-    term_date timestamp,
+    eff_date date,
+    term_date date,
     lob varchar(255),
     contract varchar(255),
     insurance_name varchar(255),
     primary_care_prov_id varchar(255)
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

@@ -2,23 +2,23 @@ create external table raw_ssm.immunization (
     patient_id varchar(255),
     patient_account_number varchar(255),
     clinical_encounter_id varchar(255),
-    given_date timestamp,
+    given_date date,
     immunization_description varchar(255),
     lot_number varchar(255),
     vaccine_manufacturer varchar(255),
     immunization_dose numeric(18,2),
     site varchar(255),
     route varchar(255),
-    expiration_date timestamp,
+    expiration_date date,
     cvx_code varchar(255),
     cpt_code varchar(255),
     immunization_given_by_id varchar(255),
-    immunization_date timestamp,
+    immunization_date date,
     vfc_status varchar(255),
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

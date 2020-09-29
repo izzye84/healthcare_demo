@@ -6,12 +6,12 @@ create external table raw_ssm.patient (
     last_name varchar(255),
     preferred_name varchar(255),
     salutation varchar(255),
-    date_of_birth timestamp,
+    date_of_birth date,
     gender varchar(255),
     race varchar(255),
     language_spoken varchar(255),
     secondary_language_spoken varchar(255),
-    death_date timestamp,
+    death_date date,
     country_of_birth varchar(255),
     address_line_1 varchar(255),
     address_line_2 varchar(255),
@@ -29,7 +29,7 @@ create external table raw_ssm.patient (
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

@@ -14,7 +14,7 @@ create external table raw_ssm.form (
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

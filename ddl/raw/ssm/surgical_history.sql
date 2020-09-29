@@ -3,11 +3,11 @@ create external table raw_ssm.surgical_history (
     patient_account_number varchar(255),
     clinical_encounter_id varchar(255),
     reason varchar(255),
-    surgical_date timestamp,
+    surgical_date date,
     created_timestamp timestamp,
     modified_timestamp timestamp
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile

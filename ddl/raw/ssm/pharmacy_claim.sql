@@ -7,7 +7,7 @@ create external table raw_ssm.pharmacy_claim (
     first_name varchar(255),
     last_name varchar(255),
     gender varchar(255),
-    date_of_birth timestamp,
+    date_of_birth date,
     ndc_code varchar(255),
     days_supply int,
     fill_date_time timestamp,
@@ -30,7 +30,7 @@ create external table raw_ssm.pharmacy_claim (
     generic varchar(255),
     retail varchar(255)
 )
-partitioned by (client_id varchar(50), ingest_date char(10))
+partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile
