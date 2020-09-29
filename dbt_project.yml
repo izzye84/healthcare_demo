@@ -40,8 +40,3 @@ models:
     analytics:
       +schema: analytics
       +materialized: table
-
-snapshots:
-  strive_health:
-    ssm:
-      +target_schema: ssm_snapshots
