@@ -2,9 +2,13 @@
 
 ### Resources:
 
+- [What exactly is DBT?](https://blog.getdbt.com/what--exactly--is-dbt-/)
+- [Introduction to DBT](https://docs.getdbt.com/docs/introduction/)
 - This structure was based on how dbt structures their projects: [dbt project structure guide](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355)
 - Best practices: [dbt suggested best practices](https://docs.getdbt.com/docs/guides/best-practices/)
 - Suggested coding conventions: [dbt coding conventions](https://github.com/fishtown-analytics/corp/blob/master/dbt_coding_conventions.md)
+- [DBT Viewpoint](https://docs.getdbt.com/docs/about/viewpoint/)
+- [DBT Commands](https://docs.getdbt.com/reference/dbt-commands/)
 
 ### Sample profiles.yml file to get the project to work locally:
 
