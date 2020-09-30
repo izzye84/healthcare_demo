@@ -5,7 +5,7 @@ create external table raw_ssm.diagnosis (
     diagnosis_date date,
     diagnosis_code varchar(255),
     onset_date date,
-    resolved_date timestamp,
+    resolved_date date,
     code_set varchar(255),
     diagnosis_name varchar(255),
     service_date date,

@@ -8,7 +8,7 @@ create external table raw_ssm.encounter (
     clinical_encounter_begin_time timestamp,
     clinical_encounter_status varchar(255),
     clinical_encounter_visit_type varchar(255),
-    clinica_encounter_end_time timestamp,
+    clinical_encounter_end_time timestamp,
     provider_id varchar(255),
     provider_npi varchar(255),
     user_id varchar(255),

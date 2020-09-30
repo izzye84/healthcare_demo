@@ -1,0 +1,902 @@
+version: 2
+
+sources:
+  - name: ssm_clinical
+    description: Source definition for SSM clinical files
+    schema: raw_ssm
+    tables:
+      - name: allergies
+        description: Patient allergies
+        identifier: allergies
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: allergy_verified
+            description: Allergy verified
+
+          - name: allergen_type
+            description: Type of allergen patient is allergic to
+
+          - name: allergy_description
+            description: Description of the allergy
+
+          - name: allergy_reaction_text
+            description: A description of how the patient reacts to the allergen
+
+          - name: allergy_status
+            description: Current status of the patient's allergy. (e.g. Active, Inactive)
+
+          - name: allergy_code
+            description: Allergy code
+          
+          - name: code_set
+            description: The code system that defines the allergy code
+
+          - name: onset_date
+            description: Onset date of the allergy
+
+          - name: created_timestamp
+            description: Timestamp of when the allergy record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the allergy record was last modified
+
+      - name: diagnosis
+        description: Patient diagnoses
+        identifier: diagnosis
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: diagnosis_date
+            description: Date of diagnosis
+
+          - name: diagnosis_code
+            description: Diagnosis code
+
+          - name: onset_date
+            description: Onset date of the diagnosis
+          
+          - name: resolved_date
+            description: Date the diagnosis was resolved
+
+          - name: code_set
+            description: The code system that defines the diagnosis code
+
+          - name: diagnosis_name
+            description: Description of the diagnosis
+
+          - name: service_date
+            description: Service date
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: encounter
+        description: Patient clinical encounters
+        identifier: encounter
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_date
+            description: Clinical encounter date
+
+          - name: clinical_encounter_facility_name
+            description: The facility name of the encounter
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: clinical_encounter_reason
+            description: Reason for the clinical encounter
+
+          - name: clinical_encounter_begin_time
+            description: Begin time of the clinical encounter
+
+          - name: clinical_encounter_status
+            description: Status of the clinical encounter
+
+          - name: clinical_encounter_visit_type
+            description: Type of clinical encounter
+
+          - name: clinical_encounter_end_time
+            description: End time of the clinical encounter
+
+          - name: provider_id
+            description: Provider ID
+
+          - name: provider_npi
+            description: The National Provider Identifier (NPI) for the provier that provided care
+
+          - name: user_id
+            description: User ID
+
+          - name: place_of_service_code
+            description: Place of service code for the clinical encounter
+
+          - name: place_of_service_description
+            description: Description of the place of service
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: form
+        description: SSM clinical form
+        identifier: form
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: form_category_id
+            description: Form category ID
+
+          - name: form_category_name
+            description: Form category name
+
+          - name: form_id
+            description: Form ID
+            tests:
+              - not_null
+          
+          - name: form_name
+            description: Form name
+
+          - name: section_id
+            description: Section ID
+            tests:
+              - not_null
+
+          - name: section_name
+            description: Section name
+
+          - name: question_id
+            description: Question ID
+            tests:
+              - not_null
+
+          - name: answer
+            description: Answer
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: immunization
+        description: Patient immunizations
+        identifier: immunization
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: given_date
+            description: Date the immunization was given
+
+          - name: immunization_description
+            description: Description of the immunization given
+
+          - name: lot_number
+            description: Lot number of the immunization given
+
+          - name: vaccine_manufacturer
+            description: Manufacturer of the immunization given
+
+          - name: immunization_dose
+            description: Dose of the immunization given
+
+          - name: site
+            description: Body location of where the immunization was given
+
+          - name: route
+            description: Route of how the immunization was given
+
+          - name: expiration_date
+            description: Expiration date of the immunization given
+
+          - name: cvx_code
+            description: CVX code
+
+          - name: cpt_code
+            description: CPT code
+
+          - name: immunization_given_by_id
+            description: ID of the person that gave the immunization
+
+          - name: immunization_date
+            description: Immunization date
+
+          - name: vfc_status
+            description: VFC status
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: labs
+        description: Patient lab results
+        identifier: labs
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: lab_id
+            description: Lab id
+            tests:
+              - not_null
+
+          - name: lab_code_set
+            description: Code system used to define the lab code
+
+          - name: lab_code
+            description: Lab code
+
+          - name: lab_order_date
+            description: Date the lab was ordered
+
+          - name: lab_order_description
+            description: Description of the lab order
+
+          - name: service_code
+            description: Service code
+
+          - name: service_code_modifier
+            description: Service code modifier
+
+          - name: service_code_type
+            description: Service code type
+
+          - name: service_code_desc
+            description: Description of the service code
+
+          - name: result_description
+            description: Description of the lab result
+
+          - name: collection_date
+            description: Collection date
+
+          - name: result_date
+            description: Date results were received
+
+          - name: result_text
+            description: Text representation of the lab result
+
+          - name: result_numeric
+            description: Numeric representation of the lab result
+
+          - name: result_pos_neg
+            description: Indicates whether the result was positive or negative
+
+          - name: unit
+            description: Unit of measurement for the result
+
+          - name: reference_range
+            description: The normal range of the result
+
+          - name: abnormal_flag
+            description: Indicates whether the result is abnormal or not
+
+          - name: result_status
+            description: Status of the result (e.g. pending, final, etc.)
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: medication
+        description: Patient medications
+        identifier: medication
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: medication_origin_id
+            description: Medication origin ID
+
+          - name: medication_code_set
+            description: Code system used to define medication code
+
+          - name: medication_code
+            description: Medication code
+
+          - name: medication_description
+            description: Description of the medication
+
+          - name: medication_begin_date
+            description: Date patient began taking the medication
+
+          - name: medication_end_date
+            description: Date patient should stop taking medication
+
+          - name: days_supply
+            description: Amount of medication the patient has in number of days
+
+          - name: quantity
+            description: Quantity of medication
+
+          - name: refills
+            description: The number of refills a patient has for the medication
+
+          - name: strength
+            description: Strength of the medication
+
+          - name: strength_unit
+            description: Unit of measurement for the strength of the medication
+
+          - name: formulation
+            description: Formulation for the medication
+
+          - name: route
+            description: Route
+
+          - name: frequency
+            description: The frequency the patient should take the medication
+
+          - name: dosage
+            description: Dosage of the medication
+
+          - name: med_status
+            description: Status of the medication
+
+          - name: sample
+            description: Sample
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: patient
+        description: Patient demographics
+        identifier: patient
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: social_security_number
+            description: Patient's social security number
+
+          - name: first_name
+            description: Patient's first name
+
+          - name: last_name
+            description: Patient's last name
+
+          - name: preferred_name
+            description: Patient's preferred name
+
+          - name: salutation
+            description: Patient's salutation (e.g. Mr., Mrs., etc.)
+
+          - name: date_of_birth
+            description: Patient's date of birth
+
+          - name: gender
+            description: Patient's gender
+
+          - name: race
+            description: Patient's race
+
+          - name: language_spoken
+            description: Patient's primary spoken language
+
+          - name: secondary_language_spoken
+            description: Patient's secondary language spoken
+
+          - name: death_date
+            description: Patient's date of death
+
+          - name: country_of_birth
+            description: Patient's country of birth
+
+          - name: address_line_1
+            description: Patient's address line 1
+
+          - name: address_line_2
+            description: Patient's address line 2
+
+          - name: city
+            description: Patient's city
+
+          - name: state
+            description: Patient's state
+
+          - name: zip_code
+            description: Patient's zip code
+
+          - name: zip_code_last_4
+            description: Last 4 digits of patient's zip code
+
+          - name: mailing_country
+            description: Country of patient's mailing address
+
+          - name: address_type
+            description: Patient's address type (e.g. home, work, etc.)
+
+          - name: phone_number
+            description: Patient's phone number
+
+          - name: contact_type
+            description: Patient's phone type (e.g. home, work, mobile, etc.)
+
+          - name: email_address
+            description: Patient's email address
+
+          - name: pcp_provider_id
+            description: Provider of the patient's primary care provider (PCP)
+
+          - name: pcp_npi
+            description: The National Provider Identifier (NPI) for the patient's primary care provider (PCP)
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: payer
+        description: Clinical payer
+        identifier: payer
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: payer_id
+            description: Payer ID
+            tests:
+              - not_null
+
+          - name: payer_name
+            description: Name of Payer
+
+          - name: payer_code
+            description: Payer code
+
+          - name: contract_number
+            description: Contract number
+
+          - name: medicaid_id
+            description: Medicaid ID
+
+          - name: medicare_id
+            description: Medicare ID
+
+          - name: insurance_type_flag
+            description: Insurance type flag
+
+          - name: insurance_product_type
+            description: Insurance product type
+
+          - name: coverage_begin_date
+            description: Coverage begin date
+          
+          - name: coverage_end_date
+            description: Coverage end date
+
+          - name: insurance_address_line_1
+            description: Insurance payer address line 1
+
+          - name: insurance_address_line_2
+            description: Insurance payer address line 2
+
+          - name: insurance_city
+            description: Insurance payer city
+
+          - name: insurance_state
+            description: Insurance payer state
+
+          - name: insurance_zip
+            description: Insurance payer zip code
+
+          - name: insurance_group_number
+            description: Insurance payer group number
+
+          - name: insurance_subscriber_first_name
+            description: First name of the insurance subscriber
+
+          - name: insurance_subscriber_last_name
+            description: Last name of the insurnace subscriber
+
+          - name: insurance_subscriber_relation
+            description: Relationship to the subscriber
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: procedure
+        description: Patient procedures
+        identifier: procedure
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: procedure_code
+            description: Procedure code
+            tests:
+              - not_null
+
+          - name: procedure_description
+            description: Description of the procedure
+
+          - name: procedure_code_type
+            description: Code system that defines the procedure code
+
+          - name: modifier1
+            description: Procedure code modifier 1
+          
+          - name: modifier2
+            description: Procedure code modifier 2
+
+          - name: modifier3
+            description: Procedure code modifier 3
+
+          - name: modifier4
+            description: Procedure code modifier 4
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: provider
+        description: SSM provider information
+        identifier: provider
+        columns:
+          - name: provider_id
+            description: Provider ID
+            tests:
+              - not_null
+
+          - name: npi
+            description: The National Provider Identifier (NPI) for the provider
+            tests:
+              - not_null
+
+          - name: first_name
+            description: First name of the provider
+
+          - name: last_name
+            description: Last name of the provider
+
+          - name: suffix
+            description: Suffix of the provider (e.g. MD, etc.)
+
+          - name: provider_type
+            description: Provider type
+
+          - name: title
+            description: Title of the provider
+
+          - name: date_of_birth
+            description: Date of birth of the provider
+
+          - name: gender
+            description: Gender of the provider
+
+          - name: address_line_1
+            description: Address line 1 of the provider
+
+          - name: address_line_2
+            description: Address line 2 of the provider
+
+          - name: city
+            description: City of the provider
+
+          - name: state
+            description: State of the provider
+
+          - name: zip_code
+            description: Zip code of the provider
+
+          - name: zip_code_last_4
+            description: Last 4 digits of the provider's zip code
+
+          - name: address_type
+            description: Type of address (e.g. home, work, etc.)
+
+          - name: phone_number
+            description: Phone number of the provider
+
+          - name: contact_type
+            description: Phone type of the provider (e.g. home, work, mobile, etc.)
+
+          - name: email_address
+            description: Email address of the provider
+
+          - name: fax_number
+            description: Fax number of the provider
+
+          - name: practice_name
+            description: Practice name of the provider
+
+          - name: practice_tin
+            description: Tax ID number of the provider practice
+
+          - name: practice_oid
+            description: Practice OID
+          
+          - name: organization_id
+            description: Organization ID
+
+          - name: organization_type
+            description: Organization type
+
+          - name: organization_group_npi
+            description: The National Provider Identifier (NPI) if the organization group
+
+          - name: organization_group_name
+            description: Name of the organization group
+
+          - name: organization_group_tin
+            description: Tax ID number of the organization group
+
+          - name: organization_group_oid
+            description: OID of the organization group
+
+          - name: organization_group_address_line_1
+            description: Address line 1 of the organization group
+
+          - name: organization_group_address_line_2
+            description: Address line 2 of the organization group
+
+          - name: organization_group_city
+            description: City of the organization group
+
+          - name: organization_group_state
+            description: State of the organization group
+
+          - name: organization_group_zip_code
+            description: Zip code of the organization group
+
+          - name: organization_group_zip_code_4
+            description: Last 4 digits of the organization group zip code
+
+          - name: primary_specialty_code
+            description: Code for the provider's primary specialty
+
+          - name: primary_specialty_description
+            description: Description of the provider's primary specialty
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: referral
+        description: SSM Referrals
+        identifier: referral
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: referral_id
+            description: Referral ID
+            tests:
+              - not_null
+
+          - name: referral_date
+            description: Date of the referral
+
+          - name: sender_network
+            description: Network that sent the referral
+
+          - name: sending_practice
+            description: Practice that sent the referral
+
+          - name: sending_practitioner_npi
+            description: National Provider Identifier (NPI) of the sending practitioner
+
+          - name: receiver_network
+            description: Network that is receiving the referral
+
+          - name: receiver_practice
+            description: Practice that is receiving the referral
+
+          - name: receiving_practitioner_npi
+            description: National Practitioner Identifier (NPI) of the receiving practitioner
+
+          - name: receiving_organization
+            description: Organization that is receiving the referral
+
+          - name: receiving_organization_id
+            description: ID of the organization that is receiving the referral
+
+          - name: referral_icd_code
+            description: ICD code of the referral
+
+          - name: referral_cpt_code
+            description: CPT code of the referral
+
+          - name: referral_description
+            description: Description of the referral
+
+          - name: out_of_network_status
+            description: Out of network status
+
+          - name: out_of_network_reason
+            description: Out of network reason
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: surgical_history
+        description: Patient surgical history
+        identifier: surgical_history
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: reason
+            description: Reason for surgery
+
+          - name: surgical_date
+            description: Date of surgery
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+      - name: vitals
+        description: Patient vitals
+        identifier: vitals
+        columns:
+          - name: patient_id
+            description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+          - name: patient_account_number
+            description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+            tests:
+              - not_null
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_null
+
+          - name: vitals_captured_by
+            description: Vitals captured by
+
+          - name: vitals_name
+            description: Vitals name
+
+          - name: vitals_value
+            description: Vitals measurement
+
+          - name: vitals_unit
+            description: Unit of measurement of the vital result
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
