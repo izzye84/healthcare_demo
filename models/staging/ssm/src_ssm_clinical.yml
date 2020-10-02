@@ -52,6 +52,20 @@ sources:
           - name: modified_timestamp
             description: Timestamp of when the allergy record was last modified
 
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
       - name: diagnosis
         description: Patient diagnoses
         identifier: diagnosis
@@ -95,6 +109,20 @@ sources:
 
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: encounter
         description: Patient clinical encounters
@@ -155,6 +183,20 @@ sources:
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
 
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
       - name: form
         description: SSM clinical form
         identifier: form
@@ -207,6 +249,20 @@ sources:
 
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: immunization
         description: Patient immunizations
@@ -269,6 +325,20 @@ sources:
 
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: labs
         description: Patient lab results
@@ -352,6 +422,20 @@ sources:
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
 
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
       - name: medication
         description: Patient medications
         identifier: medication
@@ -426,6 +510,20 @@ sources:
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
 
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
       - name: patient
         description: Patient demographics
         identifier: patient
@@ -443,9 +541,13 @@ sources:
 
           - name: first_name
             description: Patient's first name
+            tests:
+              - not_blank
 
           - name: last_name
             description: Patient's last name
+            tests:
+              - not_blank
 
           - name: preferred_name
             description: Patient's preferred name
@@ -518,6 +620,20 @@ sources:
 
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: payer
         description: Clinical payer
@@ -596,6 +712,20 @@ sources:
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
 
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
       - name: procedure
         description: Patient procedures
         identifier: procedure
@@ -641,6 +771,20 @@ sources:
 
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: provider
         description: SSM provider information
@@ -767,6 +911,20 @@ sources:
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
 
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
       - name: referral
         description: SSM Referrals
         identifier: referral
@@ -837,6 +995,20 @@ sources:
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
 
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
       - name: surgical_history
         description: Patient surgical history
         identifier: surgical_history
@@ -865,6 +1037,20 @@ sources:
 
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: vitals
         description: Patient vitals
@@ -900,3 +1086,17 @@ sources:
 
           - name: modified_timestamp
             description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_blank
+                - accepted_values:
+                    values: ['ssm']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS

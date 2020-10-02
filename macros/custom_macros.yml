@@ -1,0 +1,43 @@
+version: 2
+
+macros:
+  - name: empty_string_to_null
+    description: >
+      Converts an empty string value to `null`. 
+      Best when used to clean raw source data before sending down stream in a pipeline.
+    arguments:
+      - name: column_name
+        type: string
+        description: >
+          Column name that should be checked for empty strings.
+
+  - name: coalesce_by_date
+    description: >
+      Coalesces two fields together as long as the last updated date of the first field is 
+      greater than or equal to the updated date of the second field
+    arguments:
+        - name: greater_than_date
+          type: date
+          description: >
+            The update date the first field in the field list has to be greater than or
+            equal to, to be coalesced first. If this updated date is not greater than or
+            equal to the second field's updated date, the `default_field` will be used
+
+        - name: less_than_date
+          type: date
+          description: >
+            The update date of the second field in the field list. If the `greater_than_date`
+            is less than this date, the `default_field` will be used
+
+        - name: field_list
+          type: list
+          description: >
+              The list of fields that should be coalesced together if the `greater_than_date`
+              is greater than or equal to the `less_than_date`. This field list should only
+              have two fields listed
+
+        - name: default_field
+          type: string
+          description: >
+            The default field used if the `greater_than_date` is not greater than or equal
+            to the `less_than_date`

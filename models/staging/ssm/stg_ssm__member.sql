@@ -1,32 +1,45 @@
-with 
+with
 
-member as (
-    select * from {{ source('ssm_claims','member_eligibility') }}
-),
+base_member as (
+    
+    select *
+    from {{ ref('base_ssm__member') }}
 
-final as (
-    select distinct
-      {{ dbt_utils.surrogate_key(['patient_id','lob','insurance_name']) }} as identifier_strive_id
-      ,first_name as given_first_name
-      ,middle_name as given_middle_name
-      ,last_name as family_name
-      ,social_security as identifier_social_security_number
-      ,dob::date as birth_date
-      ,patient_id as identifier_external_subscriber_id
-      ,gender as gender
-      ,race
-      ,ethnic_group
-      ,primary_phone as telecom_home_phone_number
-      ,primary_email as telecom_email_address
-      ,address_line1
-      ,address_line2
-      ,city as address_city
-      ,state as address_state
-      ,zip as address_postal_code
-      ,null as general_practitioner
-      ,member.client_id
-      ,member.ingest_date
-    from member
 )
 
-select * from final
+select identifier_strive_id
+    ,given_first_name
+    ,given_middle_name
+    ,family_name
+    ,identifier_social_security_number
+    ,birth_date
+    ,identifier_external_subscriber_id
+
+    ,case
+        when gender not in ('M','F','U') then 'Review'
+        else gender
+    end as gender
+
+    ,case
+        when (race = '0' or race is null) then 'Unknown'
+        when race = '1' then 'White'
+        when race = '2' then 'Black or African American'
+        when race = '3' then 'Other Race'
+        when race = '4' then 'Asian'
+        when race = '5' then 'Hispanic'
+        when race = '6' then 'American Indian or Alaska Native'
+        else 'Review'
+    end as race
+
+    ,ethnic_group
+    ,telecom_home_phone_number
+    ,telecom_email_address
+    ,address_line1
+    ,address_line2
+    ,address_city
+    ,address_state
+    ,address_postal_code
+    ,general_practitioner
+    ,client_id
+    ,ingest_date
+from base_member

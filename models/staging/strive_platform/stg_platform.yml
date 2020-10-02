@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_platform__shuid
+    description: Staging step for eligibility `sh_uid`
+
+    columns:
+      - name: identifier_strive_id
+        description: Strive Unique Identifier
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_sh_uid
+        description: Strive assigned `sh_uid`
+        tests:
+          - not_null
+          - unique
+      
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ssm']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
