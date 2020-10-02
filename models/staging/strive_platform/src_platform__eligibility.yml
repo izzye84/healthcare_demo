@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: platform_data_pro
+    description: Source definition for `platform_data_pro.eligibility`
+    schema: platform_data_pro
+    tables:
+      - name: eligibility
+        description: Platform member eligibility data. 
+        identifier: eligibility
+        columns:
+          - name: sh_uid
+            description: Strive assigned `sh_uid`
+            tests:
+              - not_blank
+
+          - name: member_id
+            description: Member ID from the eligibility table
+            tests:
+              - not_blank
+
+          - name: insurance_type
+            description: Insurance type from the eligibility table
+            tests:
+              - not_blank
+          
+          - name: payer
+            description: Payer from the eligibility table
+            tests:
+              - not_blank

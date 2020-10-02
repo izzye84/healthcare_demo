@@ -40,3 +40,6 @@ models:
     analytics:
       +schema: analytics
       +materialized: table
+      administration:
+          intermediate:
+              +schema: stage

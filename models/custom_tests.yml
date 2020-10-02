@@ -10,3 +10,6 @@ macros:
           A date format string that describes the appropriate date format for this column.
           This tested is based on the Postgres TO_CHAR() function and documentation on available
           format strings can be found [here](https://www.postgresql.org/docs/9.1/functions-formatting.html)
+
+  - name: test_not_blank
+    description: Verifies the string field is not blank. Use this instead of `not_null` for string type fields

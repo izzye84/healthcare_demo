@@ -2,7 +2,9 @@ version: 2
 
 models:
   - name: patient
-    description: Demographics and other administrative information about an individual receiving care or other health-related services.
+    description: >
+      Demographics and other administrative information about an individual receiving care or other health-related services.
+      Refer to the official FHIR documentation for additional information: https://www.hl7.org/fhir/patient.html
     columns:
       - name: identifier_strive_id
         description: Strive Unique Identifier
@@ -10,64 +12,100 @@ models:
           - not_null
           - unique
 
-      - name: given_first_name
-        description: Member first name
-
-      - name: given_middle_name
-        description: Member middle name
-        
-      - name: family_name
-        description: Member last name
-
-      - name: identifier_social_security_number
-        description: Member social security number
-
-      - name: birth_date
-        description: Member birth date
-
       - name: identifier_external_subscriber_id
         description: Member SSM assigned patient ID
 
+      - name: identifier_sh_uid
+        description: Strive assigned `sh_uid`
+
+      - name: given_first_name
+        description: First name associated with the patient
+        tests:
+          - not_null
+
+      - name: given_middle_name
+        description: Middle name associated with the patient
+        
+      - name: family_name
+        description: Last name associated with the patient
+        tests:
+          - not_null
+
+      - name: given_nickname
+        description: Nickname associated with the patient
+
+      - name: name_prefix
+        description: Name prefix associated with the patient
+
+      - name: identifier_social_security_number
+        description: Social security number associated with the patient
+
+      - name: birth_date
+        description: The date of birth for the individual
+
       - name: gender
-        description: Member gender
-      
+        description: Gender of the patient
+        tests:
+          - accepted_values:
+              values: ['M','F','U']
+
       - name: race
-        description: Member race
+        description: Race of the patient
+        tests:
+          - accepted_values:
+              values: ['Unknown','White','Black or African American','Other Race','Asian','Hispanic','American Indian or Alaska Native']
 
       - name: ethnic_group
-        description: Member ethnic group
-      
-      - name: telecom_home_phone_number
-        description: Member home phone number
+        description: Ethnic group of the patient
 
-      - name: telecom_email_address
-        description: Member email address
+      - name: language_preferred
+        description: Primary language spoken by the patient
+
+      - name: language_secondary
+        description: Secondary language spoken by the patient
+
+      - name: deceased_date
+        description: The date the patient was deceased
+
+      - name: birth_country
+        description: Country of birth associated with the patient
 
       - name: address_line1
-        description: Member address line 1
+        description: Address line 1 associated with the patient
 
       - name: address_line2
-        description: Member address line 2
+        description: Address line 2 associated with the patient
 
       - name: address_city
-        description: Member address city
+        description: Address city associated with the patient
 
       - name: address_state
-        description: Member address state
+        description: Address state associated with the patient
 
       - name: address_postal_code
-        description: Member address postal code
+        description: Address postal code associated with the patient
+
+      - name: address_country
+        description: Address country associated with the patient
+
+      - name: telecom_home_phone_number
+        description: Home phone number associated with the patient
+
+      - name: telecom_email_address
+        description: Email address associated with the patient
 
       - name: general_practitioner
-        description: Member primary care physician
+        description: Patient's nominated primary care provider (PCP)
 
       - name: client_id
         description: Strive client ID
         tests:
           - not_null
+          - accepted_values:
+              values: ['ssm']
 
       - name: ingest_date
-        description: Most recent ingest date
+        description: Ingest date of when the record was ingested into the warehouse
         tests:
           - not_null
           - is_date:

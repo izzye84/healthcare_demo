@@ -1,11 +1,9 @@
 with
 
-member as (
-    select row_number() over(partition by identifier_strive_id order by ingest_date desc) as row_num
-        ,*
-    from {{ ref('stg_ssm__member') }}
+ssm_patient as (
+    select *
+    from {{ ref('member_patient__joined') }}
 )
 
 select *
-from member
-where row_num = 1
+from ssm_patient

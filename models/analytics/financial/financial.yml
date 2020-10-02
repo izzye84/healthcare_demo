@@ -17,9 +17,9 @@ models:
         description: Strive unique ID for the person
         tests:
           - not_null
-          - relationships:
-              to: ref('stg_ssm__member')
-              field: identifier_strive_id
+          # - relationships:
+          #     to: ref('stg_ssm__member')
+          #     field: identifier_strive_id
 
       - name: period_coverage_start
         description: The effective date for when the coverage is valid

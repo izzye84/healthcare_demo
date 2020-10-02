@@ -19,28 +19,27 @@ sources:
         columns:
           - name: first_name
             description: Member first name
+            tests:
+              - not_blank
 
           - name: middle_name
             description: Member middle name
 
           - name: last_name
             description: Member last name
+            tests:
+              - not_blank
 
           - name: social_security
             description: Member SSN
 
           - name: dob
             description: Member date of birth
-            tests:
-              - not_null:
-                  severity: warn
-              - is_date:
-                  date_format: yyyy-mm-dd
 
           - name: patient_id
             description: Member id
             tests:
-              - not_null
+              - not_blank
 
           - name: relation
             description: Member relationship to insurance policy holder
@@ -62,53 +61,30 @@ sources:
 
           - name: address_line1
             description: Member address line 1
-            tests:
-              - not_null:
-                  severity: warn
 
           - name: address_line2
             description: Member address line 2
          
           - name: state
             description: Member address state
-            tests:
-              - not_null:
-                  severity: warn
 
           - name: zip
             description: Member address zip code
-            tests:
-              - not_null:
-                  severity: warn
 
           - name: eff_date
             description: Member insurance coverage start date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd
 
           - name: term_date
             description: Member insurance coverage end date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd
 
           - name: lob
             description: Member insurance line of business
-            tests:
-              - not_null
 
           - name: contract
             description: Member insurance contract
-            tests:
-              - not_null
 
           - name: insurance_name
             description: Member insurance name
-            tests:
-              - not_null
 
           - name: primary_care_prov_id
             description: Member's primary care provider id
@@ -116,7 +92,7 @@ sources:
           - name: client_id
             description: Strive client ID
             tests:
-                - not_null
+                - not_blank
                 - accepted_values:
                     values: ['ssm']
 
@@ -134,12 +110,12 @@ sources:
           - name: insurance_name
             description: Member insurance name
             tests:
-              - not_null
+              - not_blank
 
           - name: lob
             description: Line of Business for Member's insurance provider
             tests:
-              - not_null
+              - not_blank
 
           - name: payer_contract
             description: Member contract
@@ -150,17 +126,17 @@ sources:
           - name: enterprise_mrn
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `patient_account_number` in the SSM clinical `patient` source
             tests:
-              - not_null
+              - not_blank
           
           - name: person_id
             description: Crosswalk person_id. This ID matches the `patient_id` in the `member_eligibility` source
             tests:
-                - not_null
+                - not_blank
 
           - name: client_id
             description: Strive client ID
             tests:
-                - not_null
+                - not_blank
                 - accepted_values:
                     values: ['ssm']
 
@@ -178,7 +154,7 @@ sources:
           - name: claim_number
             description: Claim number
             tests:
-              - not_null
+              - not_blank
 
           - name: claim_sequnce_number
             description: Claim sequence number
@@ -186,7 +162,7 @@ sources:
           - name: patient_external_id
             description: Patient external ID. Maps to `patient_id` in the SSM `member_eligibility` file. Also referred to as a Member ID
             tests:
-              - not_null
+              - not_blank
 
           - name: subscriber_id
             description: Subscriber ID
@@ -452,7 +428,7 @@ sources:
           - name: client_id
             description: Strive client ID
             tests:
-                - not_null
+                - not_blank
                 - accepted_values:
                     values: ['ssm']
 
@@ -481,7 +457,7 @@ sources:
           - name: patient_external_id
             description: Patient external ID. Maps to `patient_id` in the SSM `member_eligibility` file. Also referred to as a Member ID
             tests:
-              - not_null
+              - not_blank
 
           - name: subscriber_id
             description: Subscriber id
@@ -564,7 +540,7 @@ sources:
           - name: client_id
             description: Strive client ID
             tests:
-                - not_null
+                - not_blank
                 - accepted_values:
                     values: ['ssm']
 
@@ -590,7 +566,7 @@ sources:
           - name: patient_external_id
             description: Patient external ID. Maps to `patient_id` in the SSM `member_eligibility` file. Also referred to as a Member ID
             tests:
-              - not_null
+              - not_blank
 
           - name: subscriber_id
             description: Subscriber ID
@@ -670,7 +646,7 @@ sources:
           - name: client_id
             description: Strive client ID
             tests:
-                - not_null
+                - not_blank
                 - accepted_values:
                     values: ['ssm']
 
