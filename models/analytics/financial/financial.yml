@@ -2,13 +2,12 @@ version: 2
 
 models:
   - name: coverage
-    description: Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.
-    columns:
-      - name: stg_ssm__eligibility
-    description: Staged SSM eligibility
+    description: >
+      Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.
+      Refer to the official FHIR documentation for additional information: https://www.hl7.org/fhir/coverage.html
     columns:
       - name: identifier
-        description: Unique identifier for the member/eligibility combination
+        description: Unique identifier for the most recent insurance coverage of a Member
         tests:
           - not_null
           - unique
@@ -17,9 +16,12 @@ models:
         description: Strive unique ID for the person
         tests:
           - not_null
-          # - relationships:
-          #     to: ref('stg_ssm__member')
-          #     field: identifier_strive_id
+
+      - name: status
+        description: Status of the most recent insurance coverage of a Member (e.g. active, cancelled)
+        tests:
+          - accepted_values:
+              values: ['active','cancelled']
 
       - name: period_coverage_start
         description: The effective date for when the coverage is valid
@@ -38,7 +40,7 @@ models:
               date_format: yyyy-mm-dd
 
       - name: subscriber_id
-        description: The SSM member id
+        description: ID assigned to the subscriber
         test:
           - not_null
 
