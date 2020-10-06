@@ -1,23 +1,23 @@
 create external table raw_humana.authorization_report (
     type varchar(255),
     src_auth_id varchar(255),
-    initialnotificationdate date,
-    additionalrodrequestdate date,
+    initialnotificationdate varchar(255),
+    additionalrodrequestdate varchar(255),
     auth_status varchar(255),
-    auth_admission_date date,
-    auth_discharge_date date,
-    expected_discharge_dt date,
+    auth_admission_date varchar(255),
+    auth_discharge_date varchar(255),
+    expected_discharge_dt varchar(255),
     authorizeddays numeric(18,0),
-    rodstartdate date,
-    rodenddate date,
+    rodstartdate varchar(255),
+    rodenddate varchar(255),
     admission_type varchar(255),
     bed_type varchar(255),
     category varchar(255),
     primarydiagcode varchar(255),
     primarydiagdescription varchar(255),
     mbr_consolidatedsellingmarket varchar(255),
-    mbr_coverageenddate date,
-    mbr_dateofbirth date,
+    mbr_coverageenddate varchar(255),
+    mbr_dateofbirth varchar(255),
     mbr_subscriber_id varchar(255),
     mbr_memberiddependent_cd varchar(255),
     mbr_employergroupname varchar(255),
@@ -41,8 +41,12 @@ create external table raw_humana.authorization_report (
     discharge_disposition varchar(255)
 )
 partitioned by (client_id varchar(50), ingest_date timestamp)
-row format delimited
-fields terminated by '|'
+row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties (
+  'separatorChar' = ',',
+  'quoteChar' = '\"',
+  'escapeChar' = '\\'
+)
 stored as textfile
 location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/'
 table properties ('skip.header.line.count' = '1');
@@ -50,29 +54,5 @@ table properties ('skip.header.line.count' = '1');
 /* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
 
 alter table raw_humana.authorization_report add
-partition(client_id='humana', ingest_date='2020-03-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-03-01/';
-
-alter table raw_humana.authorization_report add
-partition(client_id='humana', ingest_date='2020-03-16') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-03-16/';
-
-alter table raw_humana.authorization_report add
-partition(client_id='humana', ingest_date='2020-04-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-04-01/';
-
-alter table raw_humana.authorization_report add
-partition(client_id='humana', ingest_date='2020-05-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-05-01/';
-
-alter table raw_humana.authorization_report add
-partition(client_id='humana', ingest_date='2020-06-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-06-01/';
-
-alter table raw_humana.authorization_report add
-partition(client_id='humana', ingest_date='2020-07-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-07-01/';
-
-alter table raw_humana.authorization_report add
-partition(client_id='humana', ingest_date='2020-08-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-08-01/';
+partition(client_id='humana', ingest_date='2020-07-31') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-07-31/';

@@ -12,7 +12,7 @@ create external table raw_humana.pharmacy_claims (
     drug_cov_status_cd varchar(255),
     generic_name varchar(255),
     icd9_diag_cd varchar(255),
-    cov_month date,  
+    cov_month varchar(255),  
     mail_order_ind varchar(255),
     mbr_respons_amt numeric(18,2),
     mco_contract_nbr varchar(255),
@@ -28,14 +28,14 @@ create external table raw_humana.pharmacy_claims (
     phar_npi_id varchar(255),
     phys_npi_id varchar(255),
     plan_ben_pkg_id varchar(255),
-    process_date date,
+    process_date varchar(255),
     refill_nbr varchar(255),
     reversal_ind varchar(255),
     rx_cost numeric(18,2),
     rx_count numeric(18,0),
     rx_ingrd_cost numeric(18,2),
     rx_sales_tax_amt numeric(18,2),
-    service_date date,
+    service_date varchar(255),
     specific_ther_class_cd varchar(255),
     src_mbr_id varchar(255),
     src_platform_cd varchar(255),
@@ -43,8 +43,12 @@ create external table raw_humana.pharmacy_claims (
     withhold_amt numeric(18,2)
 )
 partitioned by (client_id varchar(50), ingest_date timestamp)
-row format delimited
-fields terminated by '|'
+row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties (
+  'separatorChar' = ',',
+  'quoteChar' = '\"',
+  'escapeChar' = '\\'
+)
 stored as textfile
 location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/'
 table properties ('skip.header.line.count' = '1');
@@ -52,29 +56,5 @@ table properties ('skip.header.line.count' = '1');
 /* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
 
 alter table raw_humana.pharmacy_claims add
-partition(client_id='humana', ingest_date='2020-03-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/ingest_date=2020-03-01/';
-
-alter table raw_humana.pharmacy_claims add
-partition(client_id='humana', ingest_date='2020-03-16') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/ingest_date=2020-03-16/';
-
-alter table raw_humana.pharmacy_claims add
-partition(client_id='humana', ingest_date='2020-04-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/ingest_date=2020-04-01/';
-
-alter table raw_humana.pharmacy_claims add
-partition(client_id='humana', ingest_date='2020-05-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/ingest_date=2020-05-01/';
-
-alter table raw_humana.pharmacy_claims add
-partition(client_id='humana', ingest_date='2020-06-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/ingest_date=2020-06-01/';
-
-alter table raw_humana.pharmacy_claims add
-partition(client_id='humana', ingest_date='2020-07-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/ingest_date=2020-07-01/';
-
-alter table raw_humana.pharmacy_claims add
-partition(client_id='humana', ingest_date='2020-08-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/ingest_date=2020-08-01/';
+partition(client_id='humana', ingest_date='2020-06-15') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/pharmacy_claims/ingest_date=2020-06-15/';
