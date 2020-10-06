@@ -7,7 +7,18 @@
 with 
 
 eligibility as (
-    select * from {{ source('ssm_claims','member_eligibility') }}
+    select trim(patient_id) as patient_id
+      ,trim(lob) as lob
+      ,trim(insurance_name) as insurance_name
+      ,eff_date
+      ,term_date
+      ,patient_id
+      ,relation
+      ,lob
+      ,insurance_name
+      ,client_id
+      ,ingest_date 
+    from {{ source('ssm_claims','member_eligibility') }}
 ),
 
 final as (

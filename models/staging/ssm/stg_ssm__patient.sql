@@ -18,12 +18,12 @@ select identifier_strive_id
     ,case
         when gender = 'Male' then 'M'
         when gender = 'Female' then 'F'
-        else 'Review'
+        else 'Review Value: ' || gender
      end as gender
 
     ,case
         when race = 'North American Native' then 'American Indian or Alaska Native'
-        when race not in ('Unknown','Hispanic','Black or African American','White') then 'Review'
+        when race not in ('Unknown','Hispanic','Black or African American','White') then 'Review Value: ' || race
         else race
      end as race
 
