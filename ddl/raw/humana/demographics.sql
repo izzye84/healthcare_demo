@@ -1,7 +1,7 @@
 create external table raw_humana.demographics (
     age varchar(255), 
-    birth_date date, 
-    cov_month date,  
+    birth_date varchar(255), 
+    cov_month varchar(255),  
     ctrct_cat_cd varchar(255),
     esrd_ind varchar(255),
     grpr_comp_name varchar(255),
@@ -24,16 +24,20 @@ create external table raw_humana.demographics (
     src_subs_mbr_id varchar(255),
     state_of_residence varchar(255),
     std_rptg_st varchar(255),
-    decsd_date date, 
-    cov_eff_date date, 
-    cov_end_date date, 
+    decsd_date varchar(255), 
+    cov_eff_date varchar(255), 
+    cov_end_date varchar(255), 
     home_phone_nbr varchar(255),
     pers_first_name varchar(255),
     pers_last_name varchar(255)
 )
 partitioned by (client_id varchar(50), ingest_date timestamp)
-row format delimited
-fields terminated by '|'
+row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties (
+  'separatorChar' = ',',
+  'quoteChar' = '\"',
+  'escapeChar' = '\\'
+)
 stored as textfile
 location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/'
 table properties ('skip.header.line.count' = '1');
@@ -41,29 +45,5 @@ table properties ('skip.header.line.count' = '1');
 /* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
 
 alter table raw_humana.demographics add
-partition(client_id='humana', ingest_date='2020-03-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/ingest_date=2020-03-01/';
-
-alter table raw_humana.demographics add
-partition(client_id='humana', ingest_date='2020-03-16') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/ingest_date=2020-03-16/';
-
-alter table raw_humana.demographics add
-partition(client_id='humana', ingest_date='2020-04-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/ingest_date=2020-04-01/';
-
-alter table raw_humana.demographics add
-partition(client_id='humana', ingest_date='2020-05-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/ingest_date=2020-05-01/';
-
-alter table raw_humana.demographics add
-partition(client_id='humana', ingest_date='2020-06-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/ingest_date=2020-06-01/';
-
-alter table raw_humana.demographics add
-partition(client_id='humana', ingest_date='2020-07-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/ingest_date=2020-07-01/';
-
-alter table raw_humana.demographics add
-partition(client_id='humana', ingest_date='2020-08-01') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/ingest_date=2020-08-01/';
+partition(client_id='humana', ingest_date='2020-06-15') 
+location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/demographics/ingest_date=2020-06-15/';
