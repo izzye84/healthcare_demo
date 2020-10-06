@@ -1,0 +1,952 @@
+version: 2
+
+sources:
+  - name: humana_src
+    description: Source definitions for Humana claims files
+    schema: raw_humana
+    tables:
+      - name: demographics
+        description: Humana demographic data
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - pers_gen_key
+                - cov_month
+                - ingest_date
+        identifier: demographics
+        columns:
+          - name: age
+            description: Member's age
+
+          - name: birth_date
+            description: Member date of birth
+            tests:
+              - not_null:
+                  severity: warn
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: cov_month
+            description: Month date_part from cov_eff_date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: ctrct_cat_cd
+            description: ctrct_cat_cd
+
+          - name: esrd_ind
+            description: esrd_ind
+
+          - name: grpr_comp_name
+            description: grpr_comp_name
+
+          - name: grpr_id
+            description: Group / Department / Division the Member belongs too
+
+          - name: hospice_ind
+            description: hospice_ind
+
+          - name: lob
+            description: Identifies the line of business
+
+          - name: mco_contract_nbr
+            description: Contract Number / HICN Number
+
+          - name: medicaid_dual_status_cd
+            description: Identifies the most recent entitlement status of beneficiaries eligible for a program(s) in addition to Medicare (e.g., Medicaid)
+
+          - name: orig_reas_entitle_cd
+            description: The reason for the beneficiary's original entitlement to benefits (e.g., OASI, DIB, etc.)
+
+          - name: pbp_segment_id
+            description: pbp_segment_id
+
+          - name: pcp_assignment
+            description: pcp_assignment
+
+          - name: pers_gen_key
+            description: Identifies a unique Member and links to Member file
+            tests:
+              - not_null
+
+          - name: plan_benefit_package_id
+            description: plan_benefit_package_id
+
+          - name: product_type
+            description: Plan / Product type member is enrolled in
+
+          - name: recon_ma_risk_score_nbr
+            description: recon_ma_risk_score_nbr
+
+          - name: sex_cd
+            description: Member gender code
+
+          - name: snp_plans
+            description: snp_plans
+
+          - name: src_mbr_id
+            description: Source value that identifies a unique Member
+
+          - name: src_platform_cd
+            description: src_platform_cd
+
+          - name: src_subs_mbr_id
+            description: src_subs_mbr_id
+
+          - name: state_of_residence
+            description: Standardized state code
+
+          - name: std_rptg_st
+            description: std_rptg_st
+
+          - name: decsd_date
+            description: Member deceased date
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: cov_eff_date
+            description: Date coverage becomes effective
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: cov_end_date
+            description: Date coverage ends
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: home_phone_nbr
+            description: Contact number for the Member
+
+          - name: pers_first_name
+            description: Member's first name
+            tests:
+              - not_null:
+                  severity: warn
+
+          - name: pers_last_name
+            description: Member's last name
+            tests:
+              - not_null:
+                  severity: warn
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_null
+                - accepted_values:
+                    values: ['humana']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
+      - name: disenrollment
+        description: List of patients from the referral file that are no longer eligible
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - mbr_pers_gen_key
+                - ingest_date
+        identifier: disenrollment
+        columns:
+          - name: mbr_pers_gen_key
+            description: Member unique identifier
+
+          - name: idcard_mbr_id
+            description: idcard_mbr_id
+
+          - name: pers_first_name
+            description: Member first name
+            tests:
+              - not_null:
+                  severity: warn
+
+          - name: pers_last_name
+            description: Member last name
+            tests:
+              - not_null:
+                  severity: warn
+
+          - name: ineligible_date
+            description: Date member became ineligibile
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: inelig_reason
+            description: Reason for ineligibility
+
+          - name: lob
+            description: Identifies the line of business
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_null
+                - accepted_values:
+                    values: ['humana']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
+      - name: lab_claims
+        description: Humana lab results data
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - lab_result_key
+                - ingest_date
+        identifier: lab_claims
+        columns:
+          - name: cov_month
+            description: Month from cov_eff_date
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: lab_result_key
+            description: Group all lab or procedures together that came from one order
+            tests:
+              - not_null
+
+          - name: lab_results_value
+            description: Text or numeric value depending on result type
+
+          - name: loinc_cd
+            description: LOINC Code
+            tests:
+              - not_null
+
+          - name: pers_gen_key
+            description: Source values that identify a unique Patient
+            tests:
+              - not_null
+
+          - name: service_date
+            description: Date of the lab result
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: src_mbr_id
+            description: Source value that identifies a unique Member
+
+          - name: src_platform_cd
+            description: src_platform_cd
+
+          - name: vendor_loinc_cd
+            description: CPT code for procedure
+
+          - name: vendor_results_units_desc
+            description: Result unit description
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_null
+                - accepted_values:
+                    values: ['humana']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
+      - name: medical_claims
+        description: Humana medical_claims data
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - medclm_key
+                - ingest_date
+        identifier: medical_claims
+        columns:
+          - name: admit_diag_cd
+            description: admit_diag_cd
+
+          - name: admit_src_cd
+            description: Standardized source of admission. (Physical referral, transfer, law enforcement, ...)
+
+          - name: allow_icob_admit_cnt
+            description: allow_icob_admit_cnt
+
+          - name: allow_icob_amt
+            description: Total allowed amount as determined by the members insurer.
+
+          - name: allow_icob_days_cnt
+            description: allow_icob_days_cnt
+
+          - name: allow_icob_visits_cnt
+            description: allow_icob_visits_cnt
+
+          - name: bill_type_cd
+            description: Standardized billing type code (113, 117, ...)
+
+          - name: chrg_amt
+            description: Total charges for this claim line.
+
+          - name: chrg_days_cnt
+            description: chrg_days_cnt
+
+          - name: clm_aso_ind
+            description: clm_aso_ind
+
+          - name: cob_paid_amt
+            description: cob_paid_amt
+
+          - name: copay_amt
+            description: copay_amt
+
+          - name: cpt_mod_cd
+            description: Standardized ICD/CPT/HCPCS procedure code. (Anesthesia, Surgery, Radiology, ...) Do not include decimal point
+
+          - name: cpt_mod_cd2
+            description: Standardized ICD/CPT/HCPCS procedure modifier code. (Pricing modifier, unusual circumstance, ...)
+
+          - name: ctrct_cat_cd
+            description: ctrct_cat_cd
+
+          - name: deduct_amt
+            description: deduct_amt
+
+          - name: primary_diag_cd
+            description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point
+
+          - name: diag_cd2
+            description: diag_cd2
+
+          - name: diag_cd3
+            description: diag_cd3
+
+          - name: diag_cd4
+            description: diag_cd4
+
+          - name: diag_cd5
+            description: diag_cd5
+
+          - name: diag_cd6
+            description: diag_cd6
+
+          - name: diag_cd7
+            description: diag_cd7
+
+          - name: diag_cd8
+            description: diag_cd8
+
+          - name: diag_cd9
+            description: diag_cd9
+
+          - name: diag_cd10
+            description: diag_cd10
+
+          - name: diag_cd11
+            description: diag_cd11
+
+          - name: diag_cd12
+            description: diag_cd12
+
+          - name: diag_cd13
+            description: diag_cd13
+
+          - name: diag_cd14
+            description: diag_cd14
+
+          - name: diag_cd15
+            description: diag_cd15
+
+          - name: diag_cd16
+            description: diag_cd16
+
+          - name: diag_cd17
+            description: diag_cd17
+
+          - name: diag_cd18
+            description: diag_cd18
+
+          - name: diag_cd19
+            description: diag_cd19
+
+          - name: diag_cd20
+            description: diag_cd20
+
+          - name: diag_cd21
+            description: diag_cd21
+
+          - name: diag_cd22
+            description: diag_cd22
+
+          - name: diag_cd23
+            description: diag_cd23
+
+          - name: diag_cd24
+            description: diag_cd24
+
+          - name: diag_cd25
+            description: diag_cd25
+
+          - name: dischg_stat_cd
+            description: Standardized discharge status. (To home/self-care, transfer, expired, to outpatient, ...)
+
+          - name: drg_lclm_cd
+            description: Standardized Diagnosis Related Group Code. (Ventricular shunt, Carotid artery stent, ...)
+
+          - name: fin_prod_cd
+            description: fin_prod_cd
+
+          - name: hcpcs_cpt4_base_cd1
+            description: hcpcs_cpt4_base_cd1
+
+          - name: icd_proc_01_cd
+            description: Standardized ICD procedure code. (Imaging, Nuclear Medicine, Radiation Therapy, ...) Do not include decimal point
+
+          - name: icd_proc_02_cd
+            description: icd_proc_02_cd
+
+          - name: icd_proc_03_cd
+            description: icd_proc_03_cd
+
+          - name: icd_proc_04_cd
+            description: icd_proc_04_cd
+
+          - name: icd_proc_05_cd
+            description: icd_proc_05_cd
+
+          - name: in_plan_ntwk_ind
+            description: in_plan_ntwk_ind
+
+          - name: cov_month
+            description: Month of coverage date
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: mbr_cost_shr_amt
+            description: Amount of member liability as determined by the insurer
+
+          - name: mbr_pers_gen_key
+            description: Source value that identifies a unique Member
+
+          - name: mco_contract_nbr
+            description: mco_contract_nbr
+
+          - name: medclm_key
+            description: Claim line number
+
+          - name: medclm_lclm_from_date
+            description: Beginning date of services this claim applies to
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: medclm_lclm_key
+            description: Claim ID from source system
+
+          - name: medclm_lclm_to_date
+            description: Ending date of services this claim applies to
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: ndc_id
+            description: Standardized NDC (National Drug Code) value. (XXXX-XXXX-XX)
+
+          - name: net_paid_amt
+            description: Total amount paid by the insurer. Does not include member liability.
+
+          - name: net_paid_days_cnt
+            description: net_paid_days_cnt
+
+          - name: npi_id
+            description: Billing Provider NPI (National Provider Identifier) from source data
+
+          - name: paid_date
+            description: Date claim was paid/processed
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: pbp_segment_id
+            description: pbp_segment_id
+
+          - name: plan_benefit_package_id
+            description: plan_benefit_package_id
+
+          - name: pot_cd
+            description: Standardized place of service code (01, 03, 21, ...)
+
+          - name: prov_tax_id
+            description: Provider Tax ID Number
+
+          - name: pymt_cat_cd
+            description: Standardized transaction type. (Original claim, reversal, rebill, interim, ...)
+
+          - name: raw_clm_billg_prov_key
+            description: raw_clm_billg_prov_key
+
+          - name: raw_clm_refr1_prov_key
+            description: raw_clm_refr1_prov_key
+
+          - name: raw_clm_rendr_prov_key
+            description: raw_clm_rendr_prov_key
+
+          - name: revenue_cd
+            description: Standardized UB revenue code. (General, Medical/Surgical/GYN, OB, ...)
+
+          - name: serv_from_date
+            description: Service from date that this line applies to
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: serv_to_date
+            description: Service to date that this line applies to
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: serv_unit_cnt
+            description: Units on claim line.
+
+          - name: src_admit_date
+            description: Date and time of admission
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: src_dischrg_date
+            description: Date and time of discharge
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: src_mbr_id
+            description: Source value that identifies a unique Member
+
+          - name: src_platform_cd
+            description: src_platform_cd
+
+          - name: src_prov_specialty_cd
+            description: src_prov_specialty_cd
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_null
+                - accepted_values:
+                    values: ['humana']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
+      - name: pharmacy_claims
+        description: Humana demographic data
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - document_key
+                - ingest_date
+        identifier: pharmacy_claims
+        columns:
+          - name: aso_ind
+            description: aso_ind
+
+          - name: awp_tot_amt
+            description: awp_tot_amt
+
+          - name: bill_amt
+            description: Amount charged on the line
+
+          - name: brand_name
+            description: Drug label name
+
+          - name: claim_generic_ind
+            description: Indicator if generic drug (Y/N)
+
+          - name: cob_coins_amt
+            description: cob_coins_amt
+
+          - name: dea_id
+            description: dea_id
+
+          - name: ded_paid_amt
+            description: ded_paid_amt
+
+          - name: dispense_fee
+            description: dispense_fee
+
+          - name: document_key
+            description: Pharmacy Claim ID from source system
+
+          - name: drug_cov_status_cd
+            description: drug_cov_status_cd
+
+          - name: generic_name
+            description: generic_name
+
+          - name: icd9_diag_cd
+            description: icd9_diag_cd
+
+          - name: cov_month
+            description: Month of coverage date
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: mail_order_ind
+            description: mail_order_ind
+
+          - name: mbr_respons_amt
+            description: Amount of member liability as determined by the insurer
+
+          - name: mco_contract_nbr
+            description: mco_contract_nbr
+
+          - name: multi_source_ind
+            description: multi_source_ind
+
+          - name: ndc_id
+            description: Standardized NDC (National Drug Code) value. (XXXX-XXXX-XX)
+
+          - name: net_paid_amt
+            description: Total amount paid by the insurer. Does not include member liability.
+
+          - name: part_b_d_cd
+            description: part_b_d_cd
+
+          - name: pay_day_supply_cnt
+            description: Number of days supply of medication
+
+          - name: payable_qty
+            description: Quantity
+
+          - name: pbp_segment_id
+            description: pbp_segment_id
+
+          - name: pcs_group_id
+            description: pcs_group_id
+
+          - name: pers_gen_key
+            description: Source value that identifies a unique Member
+
+          - name: phar_npi_id
+            description: Pharmacy provider NPI if available
+
+          - name: phys_npi_id
+            description: Prescribing provider NPI. (National Provider Identifier)
+
+          - name: plan_ben_pkg_id
+            description: Identifies the insurance product type
+
+          - name: process_date
+            description: Date claim was paid/processed
+
+          - name: refill_nbr
+            description: Refill Number
+
+          - name: reversal_ind
+            description: Standardized transaction type. (Original claim, reversal, rebill, interim, ...)
+
+          - name: rx_cost
+            description: Total allowed amount as determined by the members insurer
+
+          - name: rx_count
+            description: Prescription count
+
+          - name: rx_ingrd_cost
+            description: rx_ingrd_cost
+
+          - name: rx_sales_tax_amt
+            description: rx_sales_tax_amt
+
+          - name: service_date
+            description: Date prescription was filled
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: specific_ther_class_cd
+            description: specific_ther_class_cd
+
+          - name: src_mbr_id
+            description: Source value that identifies a unique Member
+
+          - name: src_platform_cd
+            description: src_platform_cd
+
+          - name: stc_ther_class_cd
+            description: stc_ther_class_cd
+
+          - name: withhold_amt
+            description: withhold_amt
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_null
+                - accepted_values:
+                    values: ['humana']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
+      - name: premium
+        description: Humana premium data
+        identifier: premium
+        columns:
+          - name: cms_premium
+            description: cms_premium
+
+          - name: cms_premium_seq_adj
+            description: cms_premium_seq_adj
+
+          - name: cov_month
+            description: Month of coverage date
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: pers_gen_key
+            description: Source value that identifies a unique Member
+
+          - name: recon_ma_risk_score_nbr
+            description: recon_ma_risk_score_nbr
+
+          - name: src_mbr_id
+            description: Source value that identifies a unique Member
+
+          - name: src_platform_cd
+            description: src_platform_cd
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_null
+                - accepted_values:
+                    values: ['humana']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
+
+      - name: referral
+        description: Patient member and eligibility data
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - mbr_pers_gen_key
+                - ingest_date
+        identifier: referral
+        columns:
+          - name: mbr_pers_gen_key
+            description: Member unique identifier
+            tests:
+              - not_null
+
+          - name: idcard_mbr_id
+            description: idcard_mbr_id
+
+          - name: pers_last_name
+            description: Member last name
+            tests:
+              - not_null:
+                  severity: warn
+
+          - name: pers_first_name
+            description: Member first name
+            tests:
+              - not_null:
+                  severity: warn
+
+          - name: birth_date
+            description: Member date of birth
+            tests:
+              - not_null:
+                  severity: warn
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: gender
+            description: Member gender
+
+          - name: home_phone_nbr
+            description: Member home phone
+
+          - name: work_phone_nbr
+            description: Member work phone number
+
+          - name: work_phone_ext
+            description: Member work phone extension
+
+          - name: primary_email_addr
+            description: Member primary email address
+
+          - name: ckd_stage
+            description: Member ckd disease stage
+
+          - name: latest_gfr
+            description:  Member's most recent gfr
+
+          - name: latest_acr_score_over300
+            description: latest_acr_score_over300
+
+          - name: esrd_2clms_last4mo
+            description: esrd_2clms_last4mo
+
+          - name: dialysis_predictive_model_score
+            description: dialysis_predictive_model_score
+
+          - name: state_of_residence
+            description: state_of_residence
+
+          - name: county_of_residence
+            description: county_of_residence
+
+          - name: current_zip_code
+            description: current_zip_code
+
+          - name: addr_line1
+            description: Member address line 1
+
+          - name: addr_line2
+            description: Member address line 2
+
+          - name: city_name
+            description: Member address city
+
+          - name: zip_cd
+            description: Member address 5 digit zip code
+
+          - name: zip_plus_cd
+            description: Member address Zip+4 code if available
+
+          - name: latest_month_neph_visit
+            description: latest_month_neph_visit
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: neph_provider_name
+            description: Nephrologist provider name
+
+          - name: neph_npi
+            description: Nephrologist NPI number
+
+          - name: neph_practice_name
+            description: Nephrologist practice name
+
+          - name: neph_first_name
+            description: Nephrologist first name
+
+          - name: neph_last_name
+            description: Nephrologist last name
+
+          - name: rendering_nephrologist_npi
+            description: rendering_nephrologist_npi
+
+          - name: last_pcp_attributed_month
+            description: last_pcp_attributed_month
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: pcp_provider_name
+            description: Primary care provider name
+
+          - name: pcp_npi
+            description: Primary care provider npi number
+
+          - name: pcp_practice_name
+            description: Primary care provider practice name
+
+          - name: pcp_first_name
+            description: Primary care provider first name
+
+          - name: pcp_last_name
+            description: Primary care provider last name
+
+          - name: pcp_tax_id
+            description: Primary care provider tax ID
+
+          - name: latest_month_cardiologist_visit
+            description: latest_month_cardiologist_visit
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: cardiologist_practice_name
+            description: Cardiologist practice name
+
+          - name: cardiologist_first_name
+            description: Cardiologist first name
+
+          - name: cardiologist_last_name
+            description: Cardiologist last name
+
+          - name: latest_mo_endocrinologist_visit
+            description: latest_mo_endocrinologist_visit
+            tests:
+              - is_date:
+                  date_format: mm/dd/yyyy
+
+          - name: endocrinologist_practice_name
+            description: Endocrinologist practice name
+
+          - name: endocrinologist_first_name
+            description: Endocrinologist first name
+
+          - name: endocrinologist_last_name
+            description: Endocrinologist last name
+
+          - name: vendor
+            description: vendor
+
+          - name: lob
+            description: Identifies the line of business
+
+          - name: referral_month
+            description: referral_month
+
+          - name: live
+            description: live
+
+          - name: notes
+            description: notes
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+                - not_null
+                - accepted_values:
+                    values: ['humana']
+
+          - name: ingest_date
+            description: Strive ingest date
+            tests:
+              - not_null
+              - is_date:
+                  date_format: yyyy-mm-dd HH24:MI:SS
