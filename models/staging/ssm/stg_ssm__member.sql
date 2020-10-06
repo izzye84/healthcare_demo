@@ -16,7 +16,7 @@ select identifier_strive_id
     ,identifier_external_subscriber_id
 
     ,case
-        when gender not in ('M','F','U') then 'Review'
+        when gender not in ('M','F','U') then 'Review Value: ' || gender
         else gender
     end as gender
 
@@ -28,7 +28,7 @@ select identifier_strive_id
         when race = '4' then 'Asian'
         when race = '5' then 'Hispanic'
         when race = '6' then 'American Indian or Alaska Native'
-        else 'Review'
+        else 'Review Value: ' || race
     end as race
 
     ,ethnic_group

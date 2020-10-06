@@ -20,19 +20,26 @@ https://docs.getdbt.com/docs/profile
 strive_health:
   outputs:
     dev:
-      type: postgres
+      type: redshift
       threads: 4
-      host: 127.0.0.1
-      port: 5432
+      host: strive-health-redshift-cluster-1.ckveagnyu9df.us-east-1.redshift.amazonaws.com
+      port: 5439
       user: <username>
-      pass: <pass>
-      dbname: <db name>
-      schema: dev
+      pass: <password>
+      dbname: strive-dev
+      schema: stage
+    prod:
+      type: redshift
+      threads: 4
+      host: strive-health-redshift-cluster-1.ckveagnyu9df.us-east-1.redshift.amazonaws.com
+      port: 5439
+      user: <username>
+      pass: <password>
+      dbname: strive-prod
+      schema: stage
   target: dev
+
   ```
-  
-  This assumes you have a local instance of postgres running 
-  with a database that contains a schema called `dev`.
 
   ### Commands to Run the project:
   

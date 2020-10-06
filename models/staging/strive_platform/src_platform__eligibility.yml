@@ -8,6 +8,15 @@ sources:
       - name: eligibility
         description: Platform member eligibility data. 
         identifier: eligibility
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - member_id
+                - insurance_type
+                - payer
+                - sh_uid
+                - id
+                - ingest_id
         columns:
           - name: sh_uid
             description: Strive assigned `sh_uid`

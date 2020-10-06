@@ -106,6 +106,13 @@ sources:
       - name: member_crosswalk
         description: SSM member crosswalk. Used to link patient ids to their enterprise mrn id
         identifier: member_crosswalk
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - person_id
+                - lob
+                - insurance_name
+                - ingest_date
         columns:
           - name: insurance_name
             description: Member insurance name

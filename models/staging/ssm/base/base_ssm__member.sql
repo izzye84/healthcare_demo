@@ -8,7 +8,27 @@ with
 
 source_member as (
     select row_number() over(partition by patient_id,lob,insurance_name order by ingest_date desc, eff_date desc) as row_num
-      ,* 
+        ,trim(patient_id) as patient_id
+        ,trim(lob) as lob
+        ,trim(insurance_name) as insurance_name
+        ,first_name
+        ,middle_name
+        ,last_name
+        ,social_security
+        ,dob
+        ,gender
+        ,race
+        ,ethnic_group
+        ,primary_phone
+        ,primary_email
+        ,address_line1
+        ,address_line2
+        ,city
+        ,state
+        ,zip
+        ,primary_care_prov_id
+        ,client_id
+        ,ingest_date                
     from {{ source('ssm_claims','member_eligibility') }}
 )
 
