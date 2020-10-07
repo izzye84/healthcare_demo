@@ -85,11 +85,17 @@ models:
       - name: address_postal_code
         description: Address postal code associated with the patient
 
+      - name: address_district
+        description: Address county associated with the patient
+
       - name: address_country
         description: Address country associated with the patient
 
       - name: telecom_home_phone_number
         description: Home phone number associated with the patient
+
+      - name: telecom_work_phone_number
+        description: Work phone number associated with the patient
 
       - name: telecom_email_address
         description: Email address associated with the patient
@@ -102,7 +108,7 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['ssm']
+              values: ['ssm','humana']
 
       - name: ingest_date
         description: Ingest date of when the record was ingested into the warehouse

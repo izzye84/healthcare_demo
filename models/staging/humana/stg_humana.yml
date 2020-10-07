@@ -1,0 +1,111 @@
+version: 2
+
+models:
+  - name: stg_humana__referral
+    description: Staging step for Humana referrals
+    columns:
+      - name: identifier_strive_id
+        description: Strive Unique Identifier
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_subscriber_id
+        description: Humana member ID. Also referred to as `mbr_pers_gen_key` or `pers_gen_key`
+        tests:
+          - not_null
+
+      - name: given_first_name
+        description: Member first name
+        tests:
+          - not_null
+
+      - name: family_name
+        description: Member last name
+        tests:
+          - not_null
+
+      - name: birth_date
+        description: Member birth date
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: gender
+        description: Member gender
+        tests:
+          - accepted_values:
+              values: ['M','F','U']
+
+      - name: telecom_home_phone_number
+        description: Member home phone number
+
+      - name: telecom_work_phone_number
+        description: Member work phone number
+
+      - name: telecom_email_address
+        description: Member email address
+
+      - name: address_line1
+        description: Member address line 1
+
+      - name: address_line2
+        description: Member address line 2
+
+      - name: address_city
+        description: Member address city
+      
+      - name: address_state
+        description: Member address state
+
+      - name: address_postal_code
+        description: Address postal code
+
+      - name: address_district
+        description: Address county
+
+      - name: general_practitioner
+        description: Member primary care physician (PCP)
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['humana']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: stg_humana__patient_demographics
+    description: Staging step for Humana patient demographics
+    columns:
+      - name: identifier_strive_id
+        description: Strive Unique Identifier
+        tests:
+          - not_null
+          - unique
+
+      - name: deceased_date
+        description: Patient deceased date
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['humana']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
