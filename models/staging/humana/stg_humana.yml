@@ -109,3 +109,70 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: stg_humana__eligibility
+    description: Staging step for Humana eligibility
+    columns:
+      - name: identifier
+        description: Unique identifier for the most recent insurance coverage of a Member
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_strive_id
+        description: Strive Unique Identifier
+        tests:
+          - not_null
+          - unique
+
+      - name: status
+        description: Status of the most recent insurance coverage of a Member (e.g. active, cancelled)
+        tests:
+          - accepted_values:
+              values: ['active','cancelled']
+
+      - name: period_coverage_start
+        description: Coverage start date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: period_coverage_end
+        description: Coverage end date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: subscriber_id
+        description: ID assigned to the subscriber. This can be linked to the `mbr_pers_gen_key` in `referral`
+        tests:
+          - not_null
+
+      - name: relationship
+        description: Member relationship to insurance policy holder
+
+      - name: network
+        description: Insurer network
+        tests:
+          - not_null
+
+      - name: payor
+        description: Insurer of the policy
+        tests:
+          - not_null
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['humana']
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
