@@ -83,7 +83,7 @@ models:
               date_format: yyyy-mm-dd HH24:MI:SS
 
   - name: base_humana__demographics
-    description: Base Humana demographics
+    description: Base Humana patient demographics
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -111,3 +111,64 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: base_humana__eligibility
+    description: Base Humana eligibility
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier
+            - ingest_date
+    columns:
+      - name: identifier
+        description: Unique identifier for the most recent insurance coverage of a Member
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_strive_id
+        description: Strive Unique Identifier
+
+      - name: period_coverage_start
+        description: Coverage start date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: period_coverage_end
+        description: Coverage end date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+      
+      - name: subscriber_id
+        description: ID assigned to the subscriber. This can be linked to the `mbr_pers_gen_key` in `referral`
+        tests:
+          - not_null
+
+      - name: network
+        description: Insurer network
+        tests:
+          - not_null
+
+      - name: payor
+        description: Insurer of the policy
+        tests:
+          - not_null
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['humana']
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+

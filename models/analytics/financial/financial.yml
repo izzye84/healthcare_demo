@@ -33,7 +33,7 @@ models:
       - name: period_coverage_end
         description: >
           The date when coverage is no longer valid. The current active 
-          coverage has a default date of '2999-01-01'
+          coverage has a default year of `2999` or `9999`
         tests:
           - not_null
           - is_date:
@@ -57,6 +57,8 @@ models:
         description: Strive client ID
         tests:
           - not_null
+          - accepted_values:
+              values: ['ssm','humana']
 
       - name: ingest_date
         description: Most recent ingest date
