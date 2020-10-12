@@ -37,3 +37,13 @@ sources:
             description: Payer from the eligibility table
             tests:
               - not_blank
+
+          - name: client_id
+            description: Strive client ID
+            tests:
+              - not_blank
+
+          - name: ingest_id
+            description: Most recent ingest date
+            tests:
+              - not_blank

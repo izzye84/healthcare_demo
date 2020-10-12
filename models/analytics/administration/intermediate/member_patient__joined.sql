@@ -8,14 +8,14 @@ patient as (
     select * from {{ ref('stg_ssm__patient') }}
 ),
 
-ssm_shuid as (
+platform_shuid as (
     select * from {{ ref('stg_platform__shuid') }}
 )
 
 select 
     member.identifier_strive_id
     ,member.identifier_external_subscriber_id
-    ,ssm_shuid.identifier_sh_uid
+    ,platform_shuid.identifier_sh_uid
     ,coalesce(patient.given_first_name,member.given_first_name) as given_first_name
     ,member.given_middle_name
     ,coalesce(patient.family_name,member.family_name) as family_name
@@ -42,5 +42,5 @@ select
     ,member.client_id
     ,coalesce(patient.ingest_date,member.ingest_date) as ingest_date
 from member left join patient
-    on member.identifier_strive_id = patient.identifier_strive_id left join ssm_shuid
-    on member.identifier_strive_id = ssm_shuid.identifier_strive_id
+    on member.identifier_strive_id = patient.identifier_strive_id left join platform_shuid
+    on member.identifier_strive_id = platform_shuid.identifier_strive_id

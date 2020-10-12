@@ -1,3 +1,9 @@
+{{
+    config(
+        dist = 'identifier_strive_id'
+    )
+}}
+
 with
 
 ssm_patient as (
@@ -44,7 +50,7 @@ union
 
 select identifier_strive_id
     ,identifier_external_subscriber_id
-    ,null as identifier_sh_uid
+    ,identifier_sh_uid
     ,given_first_name
     ,null as given_middle_name
     ,family_name

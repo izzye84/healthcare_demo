@@ -6,11 +6,16 @@ referral as (
 
 patient_demographics as (
     select * from {{ ref('stg_humana__patient_demographics') }}
+),
+
+platform_shuid as (
+    select * from {{ ref('stg_platform__shuid') }}
 )
 
 select
     referral.identifier_strive_id
     ,referral.identifier_external_subscriber_id
+    ,platform_shuid.identifier_sh_uid
     ,referral.given_first_name
     ,referral.family_name
     ,referral.birth_date
@@ -29,4 +34,5 @@ select
     ,referral.client_id
     ,referral.ingest_date
 from referral left join patient_demographics
-    on referral.identifier_strive_id = patient_demographics.identifier_strive_id
+    on referral.identifier_strive_id = patient_demographics.identifier_strive_id left join platform_shuid
+    on referral.identifier_strive_id = platform_shuid.identifier_strive_id
