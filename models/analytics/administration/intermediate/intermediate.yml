@@ -124,6 +124,9 @@ models:
         tests:
           - not_null
 
+      - name: identifier_sh_uid
+        description: Strive assigned `sh_uid`
+
       - name: given_first_name
         description: Member first name
         tests:

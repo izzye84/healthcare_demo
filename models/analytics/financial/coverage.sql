@@ -1,3 +1,9 @@
+{{
+    config(
+        dist = 'identifier_strive_id'
+    )
+}}
+
 with
 
 ssm_coverage as (

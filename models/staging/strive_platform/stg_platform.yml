@@ -22,7 +22,7 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['ssm']
+              values: ['ssm','humana']
 
       - name: ingest_date
         description: Most recent ingest date
