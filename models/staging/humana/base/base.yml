@@ -55,7 +55,7 @@ models:
 
       - name: address_city
         description: Member address city
-      
+
       - name: address_state
         description: Member address state
 
@@ -142,7 +142,7 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd
-      
+
       - name: subscriber_id
         description: ID assigned to the subscriber. This can be linked to the `mbr_pers_gen_key` in `referral`
         tests:
@@ -171,4 +171,3 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
-
