@@ -13,6 +13,7 @@ validation_errors as (
         date_string
     from validation
     where date_string != TO_CHAR(date_string::date,'{{ date_format }}')
+        and date_string <> ''
 )
 
 select count(*)

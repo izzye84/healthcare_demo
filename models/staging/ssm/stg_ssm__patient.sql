@@ -9,9 +9,9 @@ base_patient as (
 
 select identifier_strive_id
     ,identifier_social_security_number
-    ,given_first_name
-    ,family_name
-    ,given_nickname
+    ,name_given_first
+    ,name_family
+    ,name_given_nickname
     ,name_prefix
     ,birth_date
     
@@ -40,7 +40,7 @@ select identifier_strive_id
     
     ,case
         when telecom_phone_use = 'Home' then telecom_phone_number
-     end as telecom_home_phone_number
+     end as telecom_phone_number_home
     
     ,telecom_email_address
     ,general_practitioner

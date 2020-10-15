@@ -14,12 +14,12 @@ source_referral as (
 
 select {{ dbt_utils.surrogate_key(['mbr_pers_gen_key']) }} as identifier_strive_id
     ,mbr_pers_gen_key as identifier_external_subscriber_id
-    ,initcap({{ empty_string_to_null('pers_first_name') }}) as given_first_name
-    ,initcap({{ empty_string_to_null('pers_last_name') }}) as family_name
+    ,initcap({{ empty_string_to_null('pers_first_name') }}) as name_given_first
+    ,initcap({{ empty_string_to_null('pers_last_name') }}) as name_family
     ,date(birth_date) as birth_date
     ,{{ empty_string_to_null('gender') }} as gender
-    ,{{ empty_string_to_null('home_phone_nbr') }} as telecom_home_phone_number
-    ,{{ empty_string_to_null('work_phone_nbr') }} as telecom_work_phone_number
+    ,{{ empty_string_to_null('home_phone_nbr') }} as telecom_phone_number_home
+    ,{{ empty_string_to_null('work_phone_nbr') }} as telecom_phone_number_work
     ,{{ empty_string_to_null('primary_email_addr') }} as telecom_email_address
     ,initcap({{ empty_string_to_null('addr_line1') }}) as address_line1
     ,initcap({{ empty_string_to_null('addr_line2') }}) as address_line2

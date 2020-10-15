@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: base_ssm__member
-    description: Base SSM members
+  - name: base_ssm__member_eligibility
+    description: Base SSM member/eligibility
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -14,15 +14,15 @@ models:
         tests:
           - not_null
 
-      - name: given_first_name
+      - name: name_given_first
         description: Member first name
         tests:
           - not_null
 
-      - name: given_middle_name
+      - name: name_given_middle
         description: Member middle name
         
-      - name: family_name
+      - name: name_family
         description: Member last name
         tests:
           - not_null
@@ -45,7 +45,7 @@ models:
       - name: ethnic_group
         description: Member ethnic group
       
-      - name: telecom_home_phone_number
+      - name: telecom_phone_number_home
         description: Member home phone number
 
       - name: telecom_email_address
@@ -68,6 +68,33 @@ models:
 
       - name: general_practitioner
         description: Member primary care physician
+
+      - name: period_coverage_start
+        description: Coverage start date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: period_coverage_end
+        description: Coverage end date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: relationship
+        description: Member relationship to insurance policy holder
+
+      - name: network
+        description: Insurer network
+        tests:
+          - not_null
+
+      - name: payor
+        description: Insurer of the policy
+        tests:
+          - not_null
 
       - name: client_id
         description: Strive client ID
@@ -99,13 +126,13 @@ models:
       - name: identifier_social_security_number
         description: Patient social security number
 
-      - name: given_first_name
+      - name: name_given_first
         description: Patient first name
 
-      - name: family_name
+      - name: name_family
         description: Patient last name
 
-      - name: given_nickname
+      - name: name_given_nickname
         description: Patient preferred name
 
       - name: name_prefix
@@ -184,66 +211,3 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS 
-
-  - name: base_ssm__eligibility
-    description: Base SSM Eligibility
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - identifier
-            - ingest_date
-    columns:
-      - name: identifier
-        description: Unique identifier for the most recent insurance coverage of a Member
-        tests:
-          - not_null
-          - unique
-
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
-
-      - name: period_coverage_start
-        description: Coverage start date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
-
-      - name: period_coverage_end
-        description: Coverage end date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
-      
-      - name: subscriber_id
-        description: ID assigned to the subscriber. This can be linked to the `person_id` in `member_crosswalk`
-        tests:
-          - not_null
-
-      - name: relationship
-        description: Member relationship to insurance policy holder
-
-      - name: network
-        description: Insurer network
-        tests:
-          - not_null
-
-      - name: payor
-        description: Insurer of the policy
-        tests:
-          - not_null
-
-      - name: client_id
-        description: Strive client ID
-        tests:
-            - not_blank
-            - accepted_values:
-                values: ['ssm']
-
-      - name: ingest_date
-        description: Strive ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

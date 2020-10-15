@@ -69,9 +69,9 @@ joined as (
 select 
     {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name']) }} as identifier_strive_id
     ,{{ empty_string_to_null('social_security_number') }} as identifier_social_security_number
-    ,initcap({{ empty_string_to_null('first_name') }}) as given_first_name
-    ,initcap({{ empty_string_to_null('last_name') }}) as family_name
-    ,initcap({{ empty_string_to_null('preferred_name') }}) given_nickname
+    ,initcap({{ empty_string_to_null('first_name') }}) as name_given_first
+    ,initcap({{ empty_string_to_null('last_name') }}) as name_family
+    ,initcap({{ empty_string_to_null('preferred_name') }}) name_given_nickname
     ,initcap({{ empty_string_to_null('salutation') }}) name_prefix
     ,date_of_birth as birth_date
     ,{{ empty_string_to_null('gender') }} as gender

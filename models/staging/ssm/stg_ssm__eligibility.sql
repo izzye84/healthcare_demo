@@ -1,7 +1,7 @@
 with
 
 eligibility as (
-    select * from {{ ref('base_ssm__eligibility') }}
+    select * from {{ ref('base_ssm__member_eligibility') }}
 )
 
 select identifier
@@ -14,7 +14,7 @@ select identifier
 
     ,period_coverage_start
     ,period_coverage_end
-    ,subscriber_id
+    ,identifier_external_subscriber_id as subscriber_id
     ,relationship
     ,network
     ,payor
