@@ -16,8 +16,8 @@ select
     referral.identifier_strive_id
     ,referral.identifier_external_subscriber_id
     ,platform_shuid.identifier_sh_uid
-    ,referral.given_first_name
-    ,referral.family_name
+    ,referral.name_given_first
+    ,referral.name_family
     ,referral.birth_date
     ,referral.gender
     ,patient_demographics.deceased_date
@@ -27,8 +27,8 @@ select
     ,referral.address_state
     ,referral.address_postal_code
     ,referral.address_district
-    ,referral.telecom_home_phone_number
-    ,referral.telecom_work_phone_number
+    ,referral.telecom_phone_number_home
+    ,referral.telecom_phone_number_work
     ,referral.telecom_email_address
     ,referral.general_practitioner
     ,referral.client_id

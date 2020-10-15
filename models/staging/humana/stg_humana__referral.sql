@@ -6,8 +6,8 @@ referral as (
 
 select identifier_strive_id
     ,identifier_external_subscriber_id
-    ,given_first_name
-    ,family_name
+    ,name_given_first
+    ,name_family
     ,birth_date
     
     ,case
@@ -15,8 +15,8 @@ select identifier_strive_id
         else gender
     end as gender
 
-    ,telecom_home_phone_number
-    ,telecom_work_phone_number
+    ,telecom_phone_number_home
+    ,telecom_phone_number_work
     ,telecom_email_address
     ,address_line1
     ,address_line2

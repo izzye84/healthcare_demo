@@ -109,15 +109,9 @@ sources:
 
           - name: cov_eff_date
             description: Date coverage becomes effective
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: cov_end_date
             description: Date coverage ends
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: home_phone_nbr
             description: Contact number for the Member
@@ -179,7 +173,7 @@ sources:
             description: Date member became ineligibile
             tests:
               - is_date:
-                  date_format: mm/dd/yyyy
+                  date_format: fmMM/fmDD/yy
 
           - name: inelig_reason
             description: Reason for ineligibility
@@ -238,7 +232,7 @@ sources:
             description: Date of the lab result
             tests:
               - is_date:
-                  date_format: mm/dd/yyyy
+                  date_format: mm/dd/yy
 
           - name: src_mbr_id
             description: Source value that identifies a unique Member
@@ -677,10 +671,7 @@ sources:
             description: rx_sales_tax_amt
 
           - name: service_date
-            description: Date prescription was filled
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
+            description: service_date
 
           - name: specific_ther_class_cd
             description: specific_ther_class_cd

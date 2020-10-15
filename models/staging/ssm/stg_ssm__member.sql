@@ -3,14 +3,14 @@ with
 base_member as (
     
     select *
-    from {{ ref('base_ssm__member') }}
+    from {{ ref('base_ssm__member_eligibility') }}
 
 )
 
 select identifier_strive_id
-    ,given_first_name
-    ,given_middle_name
-    ,family_name
+    ,name_given_first
+    ,name_given_middle
+    ,name_family
     ,identifier_social_security_number
     ,birth_date
     ,identifier_external_subscriber_id
@@ -32,7 +32,7 @@ select identifier_strive_id
     end as race
 
     ,ethnic_group
-    ,telecom_home_phone_number
+    ,telecom_phone_number_home
     ,telecom_email_address
     ,address_line1
     ,address_line2

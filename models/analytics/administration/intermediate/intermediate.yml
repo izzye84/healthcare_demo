@@ -17,20 +17,20 @@ models:
       - name: identifier_sh_uid
         description: Strive assigned `sh_uid`
 
-      - name: given_first_name
+      - name: name_given_first
         description: Patient or member first name. SSM patient data takes precedence over member
         tests: 
           - not_null
 
-      - name: given_middle_name
+      - name: name_given_middle
         description: Member middle name. Middle name does not exist in SSM patient data
         
-      - name: family_name
+      - name: name_family
         description: Patient or member last name. SSM patient data takes precedence over member
         tests:
           - not_null
 
-      - name: given_nickname
+      - name: name_given_nickname
         description: Patient preferred name. Preferred name does not exist in SSM member data
 
       - name: name_prefix
@@ -87,7 +87,7 @@ models:
       - name: address_country
         description: Patient address country. Country does not exist in SSM member data
 
-      - name: telecom_home_phone_number
+      - name: telecom_phone_number_home
         description: Patient or member home phone number. SSM patient data takes precedence over member
 
       - name: telecom_email_address
@@ -127,12 +127,12 @@ models:
       - name: identifier_sh_uid
         description: Strive assigned `sh_uid`
 
-      - name: given_first_name
+      - name: name_given_first
         description: Member first name
         tests:
           - not_null
 
-      - name: family_name
+      - name: name_family
         description: Member last name
         tests:
           - not_null
@@ -173,10 +173,10 @@ models:
       - name: address_district
         description: Address county
 
-      - name: telecom_home_phone_number
+      - name: telecom_phone_number_home
         description: Member home phone number
 
-      - name: telecom_work_phone_number
+      - name: telecom_phone_number_work
         description: Member work phone number
 
       - name: telecom_email_address

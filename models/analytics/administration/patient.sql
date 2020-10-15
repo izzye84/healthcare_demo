@@ -17,10 +17,10 @@ humana_patient as (
 select identifier_strive_id
     ,identifier_external_subscriber_id
     ,identifier_sh_uid
-    ,given_first_name
-    ,given_middle_name
-    ,family_name
-    ,given_nickname
+    ,name_given_first
+    ,name_given_middle
+    ,name_family
+    ,name_given_nickname
     ,name_prefix
     ,identifier_social_security_number
     ,birth_date
@@ -38,7 +38,7 @@ select identifier_strive_id
     ,address_postal_code
     ,null as address_district
     ,address_country
-    ,telecom_home_phone_number
+    ,telecom_phone_number_home
     ,null as telecom_work_phone_number
     ,telecom_email_address
     ,general_practitioner
@@ -51,10 +51,10 @@ union
 select identifier_strive_id
     ,identifier_external_subscriber_id
     ,identifier_sh_uid
-    ,given_first_name
-    ,null as given_middle_name
-    ,family_name
-    ,null as given_nickname
+    ,name_given_first
+    ,null as name_given_middle
+    ,name_family
+    ,null as name_given_nickname
     ,null as name_prefix
     ,null as identifier_social_security_number
     ,birth_date
@@ -72,8 +72,8 @@ select identifier_strive_id
     ,address_postal_code
     ,address_district
     ,null as address_country
-    ,telecom_home_phone_number
-    ,telecom_work_phone_number
+    ,telecom_phone_number_home
+    ,telecom_phone_number_work
     ,telecom_email_address
     ,general_practitioner
     ,client_id

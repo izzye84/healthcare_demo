@@ -19,12 +19,12 @@ models:
         tests:
           - not_null
 
-      - name: given_first_name
+      - name: name_given_first
         description: Member first name
         tests:
           - not_null
 
-      - name: family_name
+      - name: name_family
         description: Member last name
         tests:
           - not_null
@@ -38,10 +38,10 @@ models:
       - name: gender
         description: Member gender
 
-      - name: telecom_home_phone_number
+      - name: telecom_phone_number_home
         description: Member home phone number
 
-      - name: telecom_work_phone_number
+      - name: telecom_phone_number_work
         description: Member work phone number
 
       - name: telecom_email_address

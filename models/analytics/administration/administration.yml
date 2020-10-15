@@ -18,20 +18,20 @@ models:
       - name: identifier_sh_uid
         description: Strive assigned `sh_uid`
 
-      - name: given_first_name
+      - name: name_given_first
         description: First name associated with the patient
         tests:
           - not_null
 
-      - name: given_middle_name
+      - name: name_given_middle
         description: Middle name associated with the patient
         
-      - name: family_name
+      - name: name_family
         description: Last name associated with the patient
         tests:
           - not_null
 
-      - name: given_nickname
+      - name: name_given_nickname
         description: Nickname associated with the patient
 
       - name: name_prefix
@@ -91,10 +91,10 @@ models:
       - name: address_country
         description: Address country associated with the patient
 
-      - name: telecom_home_phone_number
+      - name: telecom_phone_number_home
         description: Home phone number associated with the patient
 
-      - name: telecom_work_phone_number
+      - name: telecom_phone_number_work
         description: Work phone number associated with the patient
 
       - name: telecom_email_address

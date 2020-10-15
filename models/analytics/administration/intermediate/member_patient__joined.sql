@@ -16,10 +16,10 @@ select
     member.identifier_strive_id
     ,member.identifier_external_subscriber_id
     ,platform_shuid.identifier_sh_uid
-    ,coalesce(patient.given_first_name,member.given_first_name) as given_first_name
-    ,member.given_middle_name
-    ,coalesce(patient.family_name,member.family_name) as family_name
-    ,patient.given_nickname
+    ,coalesce(patient.name_given_first,member.name_given_first) as name_given_first
+    ,member.name_given_middle
+    ,coalesce(patient.name_family,member.name_family) as name_family
+    ,patient.name_given_nickname
     ,patient.name_prefix
     ,coalesce(patient.identifier_social_security_number,member.identifier_social_security_number) as identifier_social_security_number
     ,coalesce(patient.birth_date,member.birth_date) as birth_date
@@ -36,7 +36,7 @@ select
     ,coalesce(patient.address_state,member.address_state) as address_state
     ,coalesce(patient.address_postal_code,member.address_postal_code) as address_postal_code
     ,patient.address_country
-    ,coalesce(patient.telecom_home_phone_number,member.telecom_home_phone_number) as telecom_home_phone_number
+    ,coalesce(patient.telecom_phone_number_home,member.telecom_phone_number_home) as telecom_phone_number_home
     ,coalesce(patient.telecom_email_address,member.telecom_email_address) as telecom_email_address
     ,coalesce(patient.general_practitioner,member.general_practitioner) as general_practitioner
     ,member.client_id
