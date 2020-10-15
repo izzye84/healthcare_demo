@@ -13,10 +13,10 @@
 ### Sample profiles.yml file to get the project to work locally:
 
 Local profiles.yml file should be stored at ~/.dbt/profiles.yml
-For more information on configuring the profiles.yml file, please see: 
+For more information on configuring the profiles.yml file, please see:
 https://docs.getdbt.com/docs/profile
 
-``` 
+```
 strive_health:
   outputs:
     dev:
@@ -42,9 +42,10 @@ strive_health:
   ```
 
   ### Commands to Run the project:
-  
+
+  - `dbt debug` tests database connection
   - `dbt run` will run the project and materialize the models
   - `dbt test` will run the tests for the project
+  - `dbt deps` installs packages (e.g., `dbt_utils`) found in the packages.yml needed to run the project and generate dbt docs
   - `dbt docs generate` will generate the documentation for the project
   - `dbt docs serve` will serve the documentation in the web browser at `http://localhost:8080`
-  
