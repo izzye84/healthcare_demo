@@ -303,3 +303,49 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: stg_ssm__clinical_procedure
+    description: Base SSM Clinical Procedure
+    columns:
+      - name: identifier
+        description: Unique identifier for the distinct diagnosis for a patient
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_strive_id
+        description: Strive Unique Identifier
+        tests:
+          - not_null
+
+      - name: encounter
+        description: Clinical encounter ID
+
+      - name: code
+        description: Procedure code
+        tests:
+          - not_null
+
+      - name: code_system
+        description: Code system that defines the procedure code
+
+      - name: performed_datetime
+        description: When the procedure was performed
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['ssm']
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
