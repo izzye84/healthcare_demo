@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: condition
+    description: A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.
+    columns:
+      - name: identifier
+        description: Unique identifier for the distinct diagnosis for a patient
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_strive_id
+        description: Strive Unique Identifier
+        tests:
+          - not_null
+
+      - name: encounter
+        description: Encounter created as part of
+        tests:
+          - not_null
+
+      - name: recorded_date
+        description: Date record was first recorded
+
+      - name: code
+        description: Identification of the condition, problem or diagnosis
+        tests:
+          - not_null
+
+      - name: code_system
+        description: The coding system used to define the condition code (e.g. ICD-10)
+
+      - name: onset_datetime
+        description: Estimated or actual date, date-time the condition started
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: abatement_datetime
+        description: Date when condition was in resolution/remission
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['ssm']
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

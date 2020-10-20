@@ -110,6 +110,43 @@ models:
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
 
+  - name: base_ssm__crosswalk
+    description: Base SSM Member Crosswalk
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - enterprise_mrn
+            - person_id
+            - lob
+            - insurance_name
+            - ingest_date
+    columns:
+      - name: enterprise_mrn
+        description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `patient_account_number` in the SSM clinical `patient` source
+        tests:
+          - not_null
+      
+      - name: person_id
+        description: Crosswalk person_id. This ID matches the `patient_id` in the `member_eligibility` source
+        tests:
+            - not_null
+      - name: lob
+        description: Line of Business for Member's insurance provider
+        tests:
+          - not_null
+      
+      - name: insurance_name
+        description: Member insurance name
+        tests:
+          - not_null
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+
   - name: base_ssm__patient
     description: Base SSM Patients
     tests:
@@ -211,3 +248,88 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS 
+
+  - name: base_ssm__clinical_diagnoses
+    description: Base SSM Clinical Diagnoses
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - patient_account_number
+            - encounter
+            - code
+            - ingest_date
+    columns:
+      - name: patient_id
+        description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+      - name: patient_account_number
+        description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+        tests:
+          - not_null
+
+      - name: encounter
+        description: Clinical encounter ID
+        tests:
+          - not_null
+
+      - name: recorded_date
+        description: Date of diagnosis
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: code
+        description: Diagnosis code
+        tests:
+          - not_null
+
+      - name: onset_datetime
+        description: Onset date of the diagnosis
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+      
+      - name: abatement_datetime
+        description: Date the diagnosis was resolved
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: code_system
+        description: The code system that defines the diagnosis code
+
+      - name: service_date
+        description: Service date
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: created_timestamp
+        description: Timestamp of when the diagnosis record was created
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: modified_timestamp
+        description: Timestamp of when the diagnosis record was last modified
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_null
+            - accepted_values:
+                values: ['ssm']
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
