@@ -12,6 +12,8 @@ sources:
               combination_of_columns:
                 - pers_gen_key
                 - cov_month
+                - lob
+                - src_subs_mbr_id
                 - ingest_date
         identifier: demographics
         columns:

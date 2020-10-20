@@ -11,5 +11,11 @@ macros:
           This tested is based on the Postgres TO_CHAR() function and documentation on available
           format strings can be found [here](https://www.postgresql.org/docs/9.1/functions-formatting.html)
 
+      - name: date_type
+        type: string
+        description: >
+          The date type that conforms to the date format that is being tested. Valid values are `date` or `timestamp`.
+          This is an optional argument. If `date_type` is not provided, a default of `date` will be used
+
   - name: test_not_blank
     description: Verifies the string field is not blank. Use this instead of `not_null` for string type fields
