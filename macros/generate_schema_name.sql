@@ -7,7 +7,15 @@
 
     {%- else -%}
 
-        {{ custom_schema_name | trim }}
+        {%- if target.name == 'dev' -%}
+
+            {{ custom_schema_name + '_' + target.user | trim }}
+        
+        {%- else -%}
+            
+            {{ custom_schema_name | trim }}
+        
+        {%- endif -%}
 
     {%- endif -%}
 

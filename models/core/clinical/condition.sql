@@ -1,3 +1,9 @@
+{{
+    config(
+        dist = 'identifier_external_source'
+    )
+}}
+
 with
 
 ssm_clinical_diagnoses as (

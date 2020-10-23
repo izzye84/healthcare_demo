@@ -6,8 +6,8 @@ models:
       Demographics and other administrative information about an individual receiving care or other health-related services.
       Refer to the official FHIR documentation for additional information: https://www.hl7.org/fhir/patient.html
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique

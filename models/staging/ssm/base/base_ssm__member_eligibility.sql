@@ -36,7 +36,7 @@ source_member_eligibility as (
 )
 
 select distinct
-    {{ dbt_utils.surrogate_key(['patient_id','lob','insurance_name']) }} as identifier_strive_id
+    {{ dbt_utils.surrogate_key(['patient_id','lob','insurance_name']) }} as identifier_external_source
     ,{{ dbt_utils.surrogate_key(['patient_id','lob','insurance_name','eff_date']) }} as identifier
     ,initcap({{ empty_string_to_null('first_name') }}) as name_given_first
     ,initcap({{ empty_string_to_null('middle_name') }}) as name_given_middle

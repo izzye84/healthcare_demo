@@ -5,8 +5,8 @@ models:
     description: Staging step for SSM members
 
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique
@@ -92,8 +92,8 @@ models:
   - name: stg_ssm__patient
     description: Staging step for SSM Patients
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique
@@ -190,8 +190,8 @@ models:
           - not_null
           - unique
 
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique
@@ -257,8 +257,8 @@ models:
           - not_null
           - unique
 
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
 
@@ -313,8 +313,8 @@ models:
           - not_null
           - unique
 
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
 

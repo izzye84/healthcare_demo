@@ -5,7 +5,7 @@ eligibility as (
 )
 
 select identifier
-    ,identifier_strive_id
+    ,identifier_external_source
     
     ,case
         when period_coverage_end >= date(getdate()) then 'active'

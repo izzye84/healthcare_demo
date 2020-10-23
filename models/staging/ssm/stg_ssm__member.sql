@@ -7,7 +7,7 @@ base_member as (
 
 )
 
-select identifier_strive_id
+select identifier_external_source
     ,name_given_first
     ,name_given_middle
     ,name_family

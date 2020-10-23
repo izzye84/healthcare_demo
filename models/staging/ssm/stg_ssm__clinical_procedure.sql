@@ -18,12 +18,12 @@ joined as (
         ,clinical_procedure_base.modified_timestamp
         ,clinical_procedure_base.client_id
         ,clinical_procedure_base.ingest_date
-    from clinical_procedure_base join crosswalk_base
+    from clinical_procedure_base inner join crosswalk_base
         on clinical_procedure_base.patient_account_number = crosswalk_base.enterprise_mrn
 )
 
 select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','code','encounter']) }} as identifier
-    ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name']) }} as identifier_strive_id
+    ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name']) }} as identifier_external_source
     ,encounter
     ,code
     ,code_system

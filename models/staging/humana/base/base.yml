@@ -6,11 +6,11 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - identifier_strive_id
+            - identifier_external_source
             - ingest_date
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
 
@@ -87,11 +87,11 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - identifier_strive_id
+            - identifier_external_source
             - ingest_date
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
 
@@ -126,8 +126,8 @@ models:
           - not_null
           - unique
 
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
 
       - name: period_coverage_start
         description: Coverage start date

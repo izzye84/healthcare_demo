@@ -62,12 +62,12 @@ member_crosswalk_dedup as (
 joined as (
     select row_number() over(partition by person_id, lob, insurance_name order by ingest_date desc) as row_num
         ,*
-    from source_patient join member_crosswalk_dedup
+    from source_patient inner join member_crosswalk_dedup
         on source_patient.patient_account_number = member_crosswalk_dedup.enterprise_mrn
 )
 
 select 
-    {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name']) }} as identifier_strive_id
+    {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name']) }} as identifier_external_source
     ,{{ empty_string_to_null('social_security_number') }} as identifier_social_security_number
     ,initcap({{ empty_string_to_null('first_name') }}) as name_given_first
     ,initcap({{ empty_string_to_null('last_name') }}) as name_family

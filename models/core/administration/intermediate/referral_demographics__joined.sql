@@ -13,7 +13,7 @@ platform_shuid as (
 )
 
 select
-    referral.identifier_strive_id
+    referral.identifier_external_source
     ,referral.identifier_external_subscriber_id
     ,platform_shuid.identifier_sh_uid
     ,referral.name_given_first
@@ -34,5 +34,5 @@ select
     ,referral.client_id
     ,referral.ingest_date
 from referral left join patient_demographics
-    on referral.identifier_strive_id = patient_demographics.identifier_strive_id left join platform_shuid
-    on referral.identifier_strive_id = platform_shuid.identifier_strive_id
+    on referral.identifier_external_source = patient_demographics.identifier_external_source left join platform_shuid
+    on referral.identifier_external_source = platform_shuid.identifier_external_source

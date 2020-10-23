@@ -4,8 +4,8 @@ models:
   - name: stg_humana__referral
     description: Staging step for Humana referrals
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique
@@ -84,8 +84,8 @@ models:
   - name: stg_humana__patient_demographics
     description: Staging step for Humana patient demographics
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique
@@ -119,8 +119,8 @@ models:
           - not_null
           - unique
 
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique
@@ -338,8 +338,8 @@ models:
       - name: identifier_claim_line
         description: Claim line number
 
-      - name: identifier_strive_id
-        description: identifier_strive_id
+      - name: identifier_external_source
+        description: identifier_external_source
 
       - name: in_plan_ntwk_ind
         description: in_plan_ntwk_ind

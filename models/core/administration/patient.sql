@@ -1,6 +1,6 @@
 {{
     config(
-        dist = 'identifier_strive_id'
+        dist = 'identifier_external_source'
     )
 }}
 
@@ -14,7 +14,7 @@ humana_patient as (
     select * from {{ ref('referral_demographics__joined') }}
 )
 
-select identifier_strive_id
+select identifier_external_source
     ,identifier_external_subscriber_id
     ,identifier_sh_uid
     ,name_given_first
@@ -46,9 +46,9 @@ select identifier_strive_id
     ,ingest_date
 from ssm_patient
 
-union
+union all
 
-select identifier_strive_id
+select identifier_external_source
     ,identifier_external_subscriber_id
     ,identifier_sh_uid
     ,name_given_first

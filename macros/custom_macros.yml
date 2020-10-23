@@ -41,3 +41,17 @@ macros:
           description: >
             The default field used if the `greater_than_date` is not greater than or equal
             to the `less_than_date`
+
+  - name: grant_select_on_schemas
+    description: >
+      Used to apply appropriate grants and permissions after dbt models are run
+    arguments:
+      - name: schemas
+        type: string
+        description: >
+          The schema name to grant permissions to. Passing in the dbt variable `schemas` will grant permissions to all schemas defined in dbt
+
+      - name: group
+        type: string
+        description: >
+          The group name to apply permissions to

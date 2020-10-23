@@ -16,11 +16,11 @@ partitioned by (client_id varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile
-location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/procedure/'
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/procedure/'
 table properties ('skip.header.line.count' = '1');
 
 /* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
 
 alter table raw_ssm.procedure add
 partition(client_id='ssm', ingest_date='2020-05-06') 
-location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/procedure/ingest_date=2020-05-06/';
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/procedure/ingest_date=2020-05-06/';

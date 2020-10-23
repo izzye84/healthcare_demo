@@ -13,7 +13,7 @@ demographics_eligibility as (
 )
 
 select {{ dbt_utils.surrogate_key(['pers_gen_key','cov_eff_date']) }} as identifier
-    ,{{ dbt_utils.surrogate_key(['pers_gen_key']) }} as identifier_strive_id
+    ,{{ dbt_utils.surrogate_key(['pers_gen_key']) }} as identifier_external_source
     ,date(substring(cov_eff_date,1,9)) as period_coverage_start
     ,date(substring(cov_end_date,1,9)) as period_coverage_end
     ,{{ empty_string_to_null('pers_gen_key') }} as subscriber_id
