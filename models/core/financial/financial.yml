@@ -71,12 +71,16 @@ models:
     description: >
       A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
       Refer to the official FHIR documentation for additional information: https://www.hl7.org/fhir/claim.html
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - client_id
     columns:
       - name: identifier_claim_header
         description: A unique identifier assigned to this claim.
         tests:
           - not_null
-          - unique
 
       - name: type
         description: The category of claim, e.g. oral, pharmacy, vision, institutional, professional.
@@ -133,6 +137,7 @@ models:
           combination_of_columns:
             - identifier_claim_header
             - identifier_claim_line
+            - client_id
     columns:
       - name: identifier_claim_header
         description: A unique identifier assigned to this claim.

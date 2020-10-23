@@ -18,7 +18,7 @@ models:
 
       - name: name_given_middle
         description: Member middle name
-        
+
       - name: name_family
         description: Member last name
         tests:
@@ -41,7 +41,7 @@ models:
         tests:
           - accepted_values:
               values: ['M','F','U']
-      
+
       - name: race
         description: Member race
         tests:
@@ -50,7 +50,7 @@ models:
 
       - name: ethnic_group
         description: Member ethnic group
-      
+
       - name: telecom_phone_number_home
         description: Member home phone number
 
@@ -121,7 +121,7 @@ models:
         tests:
           - accepted_values:
               values: ['M','F','U']
-      
+
       - name: race
         description: Patient race
         tests:
@@ -349,3 +349,95 @@ models:
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
               date_type: timestamp
+
+  - name: stg_ssm__claim_header
+    description: Add missing columns to SSM's claim header data
+    columns:
+      - name: identifier_claim_header
+        description: A unique identifier assigned to this claim.
+        tests:
+          - unique
+          - not_null
+
+      - name: type
+        description: The category of claim, e.g. oral, pharmacy, vision, institutional, professional.
+
+      - name: sub_type
+        description: A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.
+
+      - name: patient
+        description: The party to whom the professional services and/or products have been supplied or are being considered and for whom actual or forecast reimbursement is sought.
+
+      - name: billable_period_start
+        description: The period for which charges are being submitted.
+
+      - name: billable_period_end
+        description: The period for which charges are being submitted.
+
+      - name: insurer
+        description: The Insurer who is target of the request.
+
+      - name: provider
+        description: The provider which is responsible for the claim, predetermination or preauthorization.
+
+      - name: facility
+        description: Facility where the services were provided.
+
+      - name: total
+        description: The total value of the all the items in the claim.
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date
+
+  - name: stg_ssm__claim_line
+    description: Add missing columns to SSM's claim line data
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - identifier_claim_line
+    columns:
+      - name: identifier_claim_header
+        description: A unique identifier assigned to this claim.
+
+      - name: identifier_claim_line
+        description: A number to uniquely identify item entries.
+
+      - name: revenue
+        description: The type of revenue or cost center providing the product and/or service.
+
+      - name: product_or_service
+        description: When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item.
+
+      - name: modifier_1
+        description: Item typification or modifiers codes to convey additional context for the product or service.
+
+      - name: modifier_2
+        description: Item typification or modifiers codes to convey additional context for the product or service.
+
+      - name: serviced_period_start
+        description: The date or dates when the service or product was supplied, performed or completed.
+
+      - name: serviced_period_end
+        description: The date or dates when the service or product was supplied, performed or completed.
+
+      - name: location
+        description: Where the product or service was provided.
+
+      - name: quantity
+        description: The number of repetitions of a service or product.
+
+      - name: unit_price
+        description: The amount charged to the patient by the provider for a single unit.
+
+      - name: net
+        description: The quantity times the unit price for an additional service or product or charge.
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date
