@@ -1,12 +1,18 @@
 version: 2
 
 models:
-  - name: claim_header__sum
-    description: Add missing columns to Humana's claim header data
-
+  - name: claim_header__union
+    description: Consolidate client claim_header data into a single dataset
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - client_id
     columns:
       - name: identifier_claim_header
         description: A unique identifier assigned to this claim.
+        tests:
+          - not_null
 
       - name: type
         description: The category of claim, e.g. oral, pharmacy, vision, institutional, professional.
@@ -38,8 +44,14 @@ models:
       - name: ingest_date
         description: Most recent ingest date
 
-  - name: claim_line__calculations
-    description: Add missing columns to Humana's claim header data
+  - name: claim_line__union
+    description: Consolidate client claim_line data into a single dataset
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - identifier_claim_line
+            - client_id
     columns:
       - name: identifier_claim_header
         description: A unique identifier assigned to this claim.
