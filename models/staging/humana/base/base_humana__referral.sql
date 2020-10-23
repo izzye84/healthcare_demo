@@ -12,7 +12,7 @@ source_referral as (
     from {{ source('humana_src','referral') }}
 )
 
-select {{ dbt_utils.surrogate_key(['mbr_pers_gen_key']) }} as identifier_strive_id
+select {{ dbt_utils.surrogate_key(['mbr_pers_gen_key']) }} as identifier_external_source
     ,mbr_pers_gen_key as identifier_external_subscriber_id
     ,initcap({{ empty_string_to_null('pers_first_name') }}) as name_given_first
     ,initcap({{ empty_string_to_null('pers_last_name') }}) as name_family

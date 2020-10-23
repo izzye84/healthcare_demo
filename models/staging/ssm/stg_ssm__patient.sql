@@ -7,7 +7,7 @@ base_patient as (
 
 )
 
-select identifier_strive_id
+select identifier_external_source
     ,identifier_social_security_number
     ,name_given_first
     ,name_family

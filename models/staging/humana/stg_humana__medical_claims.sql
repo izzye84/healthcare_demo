@@ -61,7 +61,7 @@ source_renamed AS (
            medclm_lclm_key AS identifier_claim_header,
            ROW_NUMBER() OVER(PARTITION BY medclm_lclm_key
                              ORDER BY medclm_key) AS identifier_claim_line,
-           {{ dbt_utils.surrogate_key(['mbr_pers_gen_key']) }} AS identifier_strive_id,
+           {{ dbt_utils.surrogate_key(['mbr_pers_gen_key']) }} AS identifier_external_source,
            {{ empty_string_to_null('in_plan_ntwk_ind') }} AS in_plan_ntwk_ind,
            {{ empty_string_to_null('mbr_cost_shr_amt') }} AS mbr_cost_shr_amt,
            {{ empty_string_to_null('mco_contract_nbr') }} AS mco_contract_nbr,

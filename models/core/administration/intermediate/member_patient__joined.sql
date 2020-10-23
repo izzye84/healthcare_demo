@@ -13,7 +13,7 @@ platform_shuid as (
 )
 
 select 
-    member.identifier_strive_id
+    member.identifier_external_source
     ,member.identifier_external_subscriber_id
     ,platform_shuid.identifier_sh_uid
     ,coalesce(patient.name_given_first,member.name_given_first) as name_given_first
@@ -42,5 +42,5 @@ select
     ,member.client_id
     ,coalesce(patient.ingest_date,member.ingest_date) as ingest_date
 from member left join patient
-    on member.identifier_strive_id = patient.identifier_strive_id left join platform_shuid
-    on member.identifier_strive_id = platform_shuid.identifier_strive_id
+    on member.identifier_external_source = patient.identifier_external_source left join platform_shuid
+    on member.identifier_external_source = platform_shuid.identifier_external_source

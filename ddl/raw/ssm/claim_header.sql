@@ -97,11 +97,11 @@ partitioned by (client_id varchar(50), ingest_date timestamp, lob varchar(50), i
 row format delimited
 fields terminated by '|'
 stored as textfile
-location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/'
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_header/'
 table properties ('skip.header.line.count' = '1');
 
 /* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
 
 alter table raw_ssm.claim_header add
 partition(client_id='ssm', ingest_date='2020-03-06',lob='Medicare FFS',insurance_name='MSSP Missouri') 
-location 's3://strive-analytics-warehouse/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-03-06/lob=Medicare_FFS/insurance_name=MSSP_Missouri/';
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_header/ingest_date=2020-03-06/lob=Medicare_FFS/insurance_name=MSSP_Missouri/';

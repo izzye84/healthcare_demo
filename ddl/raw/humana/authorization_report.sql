@@ -48,11 +48,11 @@ with serdeproperties (
   'escapeChar' = '\\'
 )
 stored as textfile
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/'
+location 's3://strive-analytics-warehouse-pro/clients/client_id=humana/data_frequency=batch/authorization_report/'
 table properties ('skip.header.line.count' = '1');
 
 /* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
 
 alter table raw_humana.authorization_report add
 partition(client_id='humana', ingest_date='2020-07-31') 
-location 's3://strive-analytics-warehouse/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-07-31/';
+location 's3://strive-analytics-warehouse-pro/clients/client_id=humana/data_frequency=batch/authorization_report/ingest_date=2020-07-31/';

@@ -4,7 +4,7 @@ referral as (
     select * from {{ ref('base_humana__referral') }}
 )
 
-select identifier_strive_id
+select identifier_external_source
     ,identifier_external_subscriber_id
     ,name_given_first
     ,name_family

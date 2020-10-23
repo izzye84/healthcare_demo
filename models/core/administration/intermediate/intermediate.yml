@@ -5,8 +5,8 @@ models:
     description: Combine the SSM member and patient demographics into one table
 
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique
@@ -113,8 +113,8 @@ models:
   - name: referral_demographics__joined
     description: Join the Humana referral and patient demographics together into one table
     columns:
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
           - unique

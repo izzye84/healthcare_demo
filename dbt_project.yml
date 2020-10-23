@@ -31,15 +31,35 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/ directory
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
+on-run-end:
+    - "{{ grant_select_on_schemas(schemas, 'data_users') }}"
+    
 models:
   strive_health:
     staging:
       +schema: stage
       +materialized: table
 
-    analytics:
-      +schema: analytics
+    core:
+      +schema: core
       +materialized: table
       administration:
-          intermediate:
-              +schema: stage
+        intermediate:
+          +schema: stage
+      clinical:
+        intermediate:
+          +schema: stage
+      diagnostics:
+        intermediate:
+          +schema: stage
+      financial:
+        intermediate:
+          +schema: stage
+      medications:
+        intermediate:
+          +schema: stage
+
+    marts:
+        +schema: analytics
+        +materialized: table
+

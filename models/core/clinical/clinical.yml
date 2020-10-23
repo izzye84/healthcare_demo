@@ -10,8 +10,8 @@ models:
           - not_null
           - unique
 
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
 
@@ -66,8 +66,8 @@ models:
           - not_null
           - unique
 
-      - name: identifier_strive_id
-        description: Strive Unique Identifier
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
         tests:
           - not_null
 

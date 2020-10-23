@@ -1,6 +1,6 @@
 {{
     config(
-        dist = 'identifier_strive_id'
+        dist = 'identifier_external_source'
     )
 }}
 
@@ -15,7 +15,7 @@ humana_coverage as (
 )
 
 select identifier
-    ,identifier_strive_id
+    ,identifier_external_source
     ,status
     ,period_coverage_start
     ,period_coverage_end
@@ -27,10 +27,10 @@ select identifier
     ,ingest_date
 from ssm_coverage
 
-union
+union all
 
 select identifier
-    ,identifier_strive_id
+    ,identifier_external_source
     ,status
     ,period_coverage_start
     ,period_coverage_end
