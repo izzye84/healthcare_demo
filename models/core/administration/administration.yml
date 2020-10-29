@@ -20,16 +20,12 @@ models:
 
       - name: name_given_first
         description: First name associated with the patient
-        tests:
-          - not_null
 
       - name: name_given_middle
         description: Middle name associated with the patient
         
       - name: name_family
         description: Last name associated with the patient
-        tests:
-          - not_null
 
       - name: name_given_nickname
         description: Nickname associated with the patient

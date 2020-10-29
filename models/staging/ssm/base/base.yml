@@ -16,16 +16,12 @@ models:
 
       - name: name_given_first
         description: Member first name
-        tests:
-          - not_null
 
       - name: name_given_middle
         description: Member middle name
 
       - name: name_family
         description: Member last name
-        tests:
-          - not_null
 
       - name: identifier_social_security_number
         description: Member social security number
@@ -425,13 +421,13 @@ models:
         description: billable_period_start
         tests:
           - is_date:
-              date_format: yyyymmdd
+              date_format: yyyy-mm-dd
 
       - name: billable_period_end
         description: billable_period_end
         tests:
           - is_date:
-              date_format: yyyymmdd
+              date_format: yyyy-mm-dd
 
       - name: admission_type
         description: admission_type
