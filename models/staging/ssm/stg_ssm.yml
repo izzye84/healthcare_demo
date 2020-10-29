@@ -13,16 +13,12 @@ models:
 
       - name: name_given_first
         description: Member first name
-        tests:
-          - not_null
 
       - name: name_given_middle
         description: Member middle name
 
       - name: name_family
         description: Member last name
-        tests:
-          - not_null
 
       - name: identifier_social_security_number
         description: Member social security number

@@ -30,7 +30,7 @@ create external table raw_ssm.claim_detail(
     plan_payment_amount numeric(18,2),
     member_payment_amount numeric(18,2)
 )
-partitioned by (client_id varchar(50), ingest_date timestamp)
+partitioned by (client_id varchar(50), lob varchar(50), insurance_name varchar(50), ingest_date timestamp)
 row format delimited
 fields terminated by '|'
 stored as textfile
@@ -40,29 +40,80 @@ table properties ('skip.header.line.count' = '1');
 /* The following statement is an example of what needs to be run for each partition to ensure all data is loaded into the external table */
 
 alter table raw_ssm.claim_detail add
-partition(client_id='ssm', ingest_date='2020-03-01') 
-location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/ingest_date=2020-03-01/';
+partition(client_id='ssm', lob='Commercial', insurance_name='Anthem', ingest_date='2020-06-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=Anthem/ingest_date=2020-06-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Commercial', insurance_name='Anthem', ingest_date='2020-07-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=Anthem/ingest_date=2020-07-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Commercial', insurance_name='Anthem', ingest_date='2020-08-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=Anthem/ingest_date=2020-08-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Commercial', insurance_name='Anthem', ingest_date='2020-09-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=Anthem/ingest_date=2020-09-01/';
 
 alter table raw_ssm.claim_detail add
-partition(client_id='ssm', ingest_date='2020-03-16') 
-location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/ingest_date=2020-03-16/';
+partition(client_id='ssm', lob='Commercial', insurance_name='Cigna', ingest_date='2020-06-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=Cigna/ingest_date=2020-06-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Commercial', insurance_name='Cigna', ingest_date='2020-07-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=Cigna/ingest_date=2020-07-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Commercial', insurance_name='Cigna', ingest_date='2020-08-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=Cigna/ingest_date=2020-08-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Commercial', insurance_name='Cigna', ingest_date='2020-09-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=Cigna/ingest_date=2020-09-01/';
 
 alter table raw_ssm.claim_detail add
-partition(client_id='ssm', ingest_date='2020-04-01') 
-location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/ingest_date=2020-04-01/';
+partition(client_id='ssm', lob='Commercial', insurance_name='United Healthcare', ingest_date='2020-06-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Commercial/insurance_name=United_Healthcare/ingest_date=2020-06-01/';
 
 alter table raw_ssm.claim_detail add
-partition(client_id='ssm', ingest_date='2020-05-01') 
-location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/ingest_date=2020-05-01/';
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='Anthem', ingest_date='2020-06-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=Anthem/ingest_date=2020-06-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='Anthem', ingest_date='2020-07-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=Anthem/ingest_date=2020-07-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='Anthem', ingest_date='2020-08-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=Anthem/ingest_date=2020-08-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='Anthem', ingest_date='2020-09-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=Anthem/ingest_date=2020-09-01/';
 
 alter table raw_ssm.claim_detail add
-partition(client_id='ssm', ingest_date='2020-06-01') 
-location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/ingest_date=2020-06-01/';
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='Coventry', ingest_date='2020-06-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=Coventry/ingest_date=2020-06-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='Coventry', ingest_date='2020-07-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=Coventry/ingest_date=2020-07-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='Coventry', ingest_date='2020-08-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=Coventry/ingest_date=2020-08-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='Coventry', ingest_date='2020-09-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=Coventry/ingest_date=2020-09-01/';
 
 alter table raw_ssm.claim_detail add
-partition(client_id='ssm', ingest_date='2020-07-01') 
-location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/ingest_date=2020-07-01/';
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='United Healthcare', ingest_date='2020-06-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=United_Healthcare/ingest_date=2020-06-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='United Healthcare', ingest_date='2020-07-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=United_Healthcare/ingest_date=2020-07-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare Advantage', insurance_name='United Healthcare', ingest_date='2020-08-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_Advantage/insurance_name=United_Healthcare/ingest_date=2020-08-01/';
 
 alter table raw_ssm.claim_detail add
-partition(client_id='ssm', ingest_date='2020-08-01') 
-location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/ingest_date=2020-08-01/';
+partition(client_id='ssm', lob='Medicare FFS', insurance_name='MSSP Missouri', ingest_date='2020-06-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_FFS/insurance_name=MSSP_Missouri/ingest_date=2020-06-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare FFS', insurance_name='MSSP Missouri', ingest_date='2020-07-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_FFS/insurance_name=MSSP_Missouri/ingest_date=2020-07-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare FFS', insurance_name='MSSP Missouri', ingest_date='2020-08-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_FFS/insurance_name=MSSP_Missouri/ingest_date=2020-08-01/';
+alter table raw_ssm.claim_detail add
+partition(client_id='ssm', lob='Medicare FFS', insurance_name='MSSP Missouri', ingest_date='2020-09-01') 
+location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/claim_detail/lob=Medicare_FFS/insurance_name=MSSP_Missouri/ingest_date=2020-09-01/';

@@ -1,9 +1,14 @@
-WITH claim_header AS (
+{{
+    config(
+        dist = 'identifier_claim_header'
+    )
+}}
+with claim_header as (
 
-    SELECT *
-    FROM {{ ref('claim_header__union') }}
+    select *
+    from {{ ref('claim_header__union') }}
 
 )
 
-SELECT *
-FROM claim_header
+select *
+from claim_header

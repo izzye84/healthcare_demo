@@ -105,9 +105,6 @@ sources:
 
           - name: decsd_date
             description: Member deceased date
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: cov_eff_date
             description: Date coverage becomes effective

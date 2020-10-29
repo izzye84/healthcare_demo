@@ -13,7 +13,7 @@ source_referral as (
 )
 
 select {{ dbt_utils.surrogate_key(['pers_gen_key']) }} as identifier_external_source
-    ,date(decsd_date) as deceased_date
+    ,date(substring(decsd_date,1,9)) as deceased_date
     ,{{ empty_string_to_null('client_id') }} as client_id
     ,ingest_date
 from source_referral

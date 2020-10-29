@@ -19,7 +19,6 @@ models:
 
       - name: name_given_first
         description: Patient or member first name. SSM patient data takes precedence over member
-        tests: 
           - not_null
 
       - name: name_given_middle
@@ -27,8 +26,6 @@ models:
         
       - name: name_family
         description: Patient or member last name. SSM patient data takes precedence over member
-        tests:
-          - not_null
 
       - name: name_given_nickname
         description: Patient preferred name. Preferred name does not exist in SSM member data
