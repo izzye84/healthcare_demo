@@ -16,12 +16,6 @@ clinical_diagnoses_add_rownum as (
     from clinical_diagnoses_source
 ),
 
-clinical_diagnoses_dedup as (
-    select *
-    from clinical_diagnoses_add_rownum
-    where row_num = 1
-),
-
 renamed as (
     select 
         {{ empty_string_to_null('patient_id') }} as patient_id
@@ -37,7 +31,8 @@ renamed as (
         ,modified_timestamp as modified_timestamp
         ,{{ empty_string_to_null('client_id') }} as client_id
         ,ingest_date as ingest_date
-    from clinical_diagnoses_dedup
+    from clinical_diagnoses_add_rownum
+    where row_num = 1
 )
 
 select * from renamed

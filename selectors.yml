@@ -1,0 +1,22 @@
+selectors:
+  - name: ingest_ssm
+    definition:
+      union:
+        - method: path
+          value: models/staging/ssm
+        - method: path
+          value: models/core
+
+  - name: ingest_humana
+    definition:
+      union:
+        - method: path
+          value: models/staging/humana
+        - method: path
+          value: models/core
+
+  - name: build_core
+    definition:
+      method: path
+      value: models/core
+      parents: true

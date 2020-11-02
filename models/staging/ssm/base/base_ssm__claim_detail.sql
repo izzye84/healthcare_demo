@@ -1,11 +1,21 @@
+{{
+    config(
+        materialized = 'ephemeral'
+    )
+}}
+
 with source as (
 
+    select * from {{ source('ssm_claims','claim_detail') }}
+
+),
+
+add_row_num as (
     select row_number() over(partition by claim_number,
                                           claim_line_number
                              order by ingest_date desc) as row_num,
-           *
-    from {{ source('ssm_claims','claim_detail') }}
-
+            *
+    from source
 ),
 
 source_renamed as (
@@ -30,7 +40,7 @@ source_renamed as (
            {{ empty_string_to_null('cpt_hcpcs') }} as product_or_service,
            {{ empty_string_to_null('loinc') }} as loinc,
            {{ empty_string_to_null('snomed') }} as snomed,
-           units::numeric(18,2) as quantity,
+           {{ empty_string_to_null('units') }}::numeric(18,2) as quantity,
            {{ empty_string_to_null('claim_adjustment_type_code') }} as claim_adjustment_type_code,
            {{ empty_string_to_null('claim_adjustment_sequence_number') }} as claim_adjustment_sequence_number,
            claim_adjustment_date_time,
@@ -43,7 +53,7 @@ source_renamed as (
            client_id,
            ingest_date
 
-        from source
+        from add_row_num
         where row_num = 1
 
     )
