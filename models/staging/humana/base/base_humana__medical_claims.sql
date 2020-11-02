@@ -1,10 +1,20 @@
+{{
+    config(
+        materialized = 'ephemeral'
+    )
+}}
+
 with source as (
 
+    select * from {{ source('humana_src','medical_claims') }}
+
+),
+
+add_row_num as (
     select row_number() over(partition by medclm_key
                              order by ingest_date desc) as row_num,
            *
-    from {{ source('humana_src','medical_claims') }}
-
+    from source
 ),
 
 source_renamed as (
@@ -96,7 +106,7 @@ source_renamed as (
            client_id,
            ingest_date
 
-    from source
+    from add_row_num
     where row_num = 1
 
 )

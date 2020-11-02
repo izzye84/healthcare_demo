@@ -1,10 +1,20 @@
+{{
+    config(
+        materialized = 'ephemeral'
+    )
+}}
+
 with source as (
 
+    select * from {{ source('ssm_claims','claim_header') }}
+
+),
+
+add_row_num as (
     select row_number() over(partition by claim_number
                              order by ingest_date desc) as row_num,
-           *
-    from {{ source('ssm_claims','claim_header') }}
-
+            *
+    from source
 ),
 
 source_renamed as (
@@ -106,7 +116,7 @@ source_renamed as (
            client_id,
            ingest_date
 
-    from source
+    from add_row_num
     where row_num = 1
 
 )
