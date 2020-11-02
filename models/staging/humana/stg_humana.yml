@@ -268,3 +268,45 @@ models:
 
       - name: ingest_date
         description: Most recent ingest date
+
+  - name: stg_humana__pharmacy_claims
+    description: Add missing columns to Humana's claim header data
+    columns:
+      - name: identifier_claim_header
+        description: A unique identifier assigned to this claim.
+        tests:
+          - not_null
+          - unique
+
+      - name: type
+        description: The category of claim, e.g. oral, pharmacy, vision, institutional, professional.
+
+      - name: sub_type
+        description: A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.
+
+      - name: patient
+        description: The party to whom the professional services and/or products have been supplied or are being considered and for whom actual or forecast reimbursement is sought.
+
+      - name: billable_period_start
+        description: The period for which charges are being submitted.
+
+      - name: billable_period_end
+        description: The period for which charges are being submitted.
+
+      - name: insurer
+        description: The Insurer who is target of the request.
+
+      - name: provider
+        description: The provider which is responsible for the claim, predetermination or preauthorization.
+
+      - name: facility
+        description: Facility where the services were provided.
+
+      - name: total
+        description: The total value of the all the items in the claim.
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date
