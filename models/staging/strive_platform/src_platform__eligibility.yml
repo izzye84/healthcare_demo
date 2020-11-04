@@ -47,3 +47,179 @@ sources:
             description: Most recent ingest date
             tests:
               - not_blank
+
+      - name: health_cloud_account
+        description: Patient information from the Health Cloud Account object
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - id
+                - ingest_id
+                - table_id
+
+        columns:
+          - name: care_giver__c
+            description: Patient care giver
+
+          - name: description
+            description: Text description of the account
+
+          - name: emergency_contact__c
+            description: Emergency contact for a patient
+
+          - name: engagement_level__c
+            description: Engagement level of a patient
+
+          - name: healthcloudga__countryofbirth__pc
+            description: Patient country of birth
+
+          - name: healthcloudga__deceaseddate__pc
+            description: Patient deceased date
+
+          - name: healthcloudga__disabled__c
+            description: Patient disabled status
+
+          - name: healthcloudga__medicaideligibilitystatus__c
+            description: Patient MedicAid eligibility status
+
+          - name: healthcloudga__medicareenrollee__c
+            description: Patient Medicare enrollee
+
+          - name: healthcloudga__preferredname__pc
+            description: Patient perferred name
+
+          - name: healthcloudga__primarylanguage__pc
+            description: Patient primary language
+
+          - name: healthcloudga__secondarylanguage__pc
+            description: Patient secondary language
+
+          - name: healthcloudga__sourcesystemid__c
+            description: Source system id
+
+          - name: id
+            description: Health Cloud Account ID
+            tests:
+              - not_blank
+
+          - name: initial_appointment_date__c
+            description: Date of patient's initial appointment
+
+          - name: legal_guardian__c
+            description: Patient legal guardian
+
+          - name: marital_status__c
+            description: Patient marital status
+
+          - name: ownerid
+            description: Owner ID
+
+          - name: patient_status__c
+            description: Current Patient enrollment status
+
+          - name: patient_type__c
+            description: Patient type
+
+          - name: personbirthdate
+            description: Patient birth date
+
+          - name: personemail
+            description: Patient email address
+
+          - name: personmobilephone
+            description: Patient mobile phone number
+
+          - name: phone
+            description: Patient phone number
+
+          - name: preferred_contact_method__c
+            description: Patient preferred contact method
+
+          - name: recordtypeid
+            description: Health Cloud record type. This should be used to determine Strive client id
+
+          - name: salutation
+            description: Patient salutation
+
+          - name: sh_uid
+            description: Strive unique id
+            tests:
+              - not_blank
+
+          - name: sh_ingest_utc
+            description: Strive ingest date time
+
+          - name: sh_source
+            description: Strive S3 location of Health Cloud data
+
+          - name: health_system_or_plan_text__c
+            description: Health system or plan text
+
+          - name: disenrolled_reason__c
+            description: Reason Patient was disenrolled from Strive's program
+
+          - name: enrollment_delayed__c
+            description: Enrollement requested to be delayed
+
+          - name: inadmissible_reason__c
+            description: Reason Patient was inadmissible to Strive's program
+
+          - name: risk_rating__c
+            description: Risk rating of the patient (Low, Medium, High, Complex)
+
+          - name: disenrolled_date__c
+            description: Date Patient was disenrolled from Strive's program
+
+          - name: enrollment_packet_received__c
+            description: Patient's enrollemnt packet was received
+
+          - name: enrollment_packet_sent__c
+            decription: Shows if an enrollment packet was sent to the patient
+
+          - name: owner.firstname
+            description: Owner first name
+
+          - name: owner.lastname
+            description: Owner last name
+
+          - name: verbal_agreement_received__c
+            description: Indicates if verbal agreement to be enrolled in Strive's program was received
+
+          - name: firstname
+            description: Patient first name
+
+          - name: healthcloudga__gender__pc
+            description: Patient gender
+
+          - name: lastname
+            description: Patient last name
+
+          - name: personmailingcity
+            description: Patient mailing city
+
+          - name: personmailingcountry
+            description: Patient postal code
+
+          - name: personmailingpostalcode
+            description: Patient mailing state
+
+          - name: personmailingstate
+            description: Patient mailing state
+
+          - name: personmailingstreet
+            description: Patient mailing street
+
+          - name: race__c
+            description: Patient race
+
+          - name: shadow_care_management_reason__c
+            description: Reason why a patient is in shadow care management
+
+          - name: client_id
+            description: Strive client id
+
+          - name: table_id
+            description: Strive ingest table id
+
+          - name: ingest_id
+            description: Strive ingest date
