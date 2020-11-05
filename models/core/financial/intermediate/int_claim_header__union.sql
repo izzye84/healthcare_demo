@@ -13,6 +13,11 @@ with final as (
     select *
     from {{ ref('stg_humana__pharmacy_claims') }}
 
+    union all
+
+    select *
+    from {{ ref('stg_ssm__pharmacy_claims') }}
+
 )
 
 select *

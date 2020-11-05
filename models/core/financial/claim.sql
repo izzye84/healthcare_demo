@@ -6,7 +6,7 @@
 with claim_header as (
 
     select *
-    from {{ ref('claim_header__union') }}
+    from {{ ref('int_claim_header__union') }}
 
 )
 

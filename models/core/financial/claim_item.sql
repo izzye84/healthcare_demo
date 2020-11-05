@@ -7,7 +7,7 @@
 with claim_line as (
 
     select *
-    from {{ ref('claim_line__union') }}
+    from {{ ref('int_claim_line__union') }}
 
 )
 

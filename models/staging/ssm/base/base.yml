@@ -709,7 +709,6 @@ models:
           combination_of_columns:
             - identifier_claim_header
             - identifier_claim_line
-
     columns:
       - name: identifier_claim_header
         description: identifier_claim_header
@@ -814,6 +813,132 @@ models:
 
       - name: ingest_date
         description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: base_ssm__pharmacy_claims
+    description: Base for SSM pharmacy_claims
+    columns:
+      - name: identifier_claim_header
+        description: identifier_claim_header
+        tests:
+          - not_null
+
+      - name: allowed_amount
+        description: allowed_amount
+
+      - name: charge_amount
+        description: charge_amount
+
+      - name: claim_adjustment_type_code
+        description: claim_adjustment_type_code
+
+      - name: claim_adjustment_sequence_number
+        description: claim_adjustment_sequence_number
+
+      - name: claim_adjustment_date_time
+        description: claim_adjustment_date_time
+
+      - name: claim_sequence_number
+        description: claim_sequence_number
+
+      - name: days_supply
+        description: days_supply
+
+      - name: date_of_birth
+        description: date_of_birth
+
+      - name: daw
+        description: daw
+
+      - name: dependent_number
+        description: dependent_number
+
+      - name: dosage
+        description: dosage
+
+      - name: billable_period
+        description: billable_period
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: first_name
+        description: first_name
+
+      - name: formulary
+        description: formulary
+
+      - name: gender
+        description: gender
+
+      - name: generic
+        description: generic
+
+      - name: last_name
+        description: last_name
+
+      - name: member_payment_amount
+        description: member_payment_amount
+
+      - name: metric_qty
+        description: metric_qty
+
+      - name: patient
+        description: patient
+
+      - name: patient_external_id
+        description: patient_external_id
+        tests:
+          - not_null
+
+      - name: payment_date_time
+        description: payment_date_time
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: plan_payment_amount
+        description: plan_payment_amount
+
+      - name: prescribing_npi
+        description: prescribing_npi
+
+      - name: provider
+        description: provider
+
+      - name: retail
+        description: retail
+
+      - name: rx_number
+        description: rx_number
+
+      - name: qty_units
+        description: qty_units
+
+      - name: subscriber_id
+        description: subscriber_id
+
+      - name: sub_type
+        description: sub_type
+
+      - name: lob
+        description: lob
+
+      - name: insurer
+        description: insurer
+
+      - name: client_id
+        description: client_id
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['ssm']
+
+      - name: ingest_date
+        description: ingest_date
         tests:
           - not_null
           - is_date:
