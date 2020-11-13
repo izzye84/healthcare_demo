@@ -1,0 +1,1001 @@
+version: 2
+
+sources:
+  - name: reference_data
+    description: Source definition for reference data used in other models
+    schema: reference_data
+    tables:
+      - name: npi
+        description: National Provider Identifier (NPI) demographic and specialty look up table
+        identifier: npi
+        columns:
+          - name: npi
+            description: National Provider Identifier (NPI)
+            tests:
+              - not_blank
+              - unique
+
+          - name: entity_type_code 
+            description: Entity type code
+
+          - name: replacement_npi
+            description: Replacement NPI
+
+          - name: employer_identification_number_ein 
+            description: Employer Identification Number (EIN)
+
+          - name: provider_organization_name_legal_business_name 
+            description: Provider organization name (Legal business name)
+         
+          - name: provider_last_name_legal_name 
+            description: Provider last name (Legal name)
+
+          - name: provider_first_name 
+            description: Provider first name
+
+          - name: provider_middle_name 
+            description: Provider middle name
+
+          - name: provider_name_prefix_text 
+            description: Provider name prefix test
+
+          - name: provider_name_suffix_text 
+            description: Provider name suffix text
+
+          - name: provider_credential_text
+            description: Provider credential text
+
+          - name: provider_other_organization_name 
+            description: Provider other organization name
+
+          - name: provider_other_organization_name_type_code 
+            description: Provider other organization name type code
+
+          - name: provider_other_last_name 
+            description: Provider other last name
+
+          - name: provider_other_first_name 
+            description: Provider other first name
+
+          - name: provider_other_middle_name 
+            description: Provider other middle name
+
+          - name: provider_other_name_prefix_text 
+            description: Provider other name prefix text
+            
+          - name: provider_other_name_suffix_text 
+            descriptioN: Provider other name suffix text
+
+          - name: provider_other_credential_text 
+            description: Provider other credential text
+
+          - name: provider_other_last_name_type_code 
+            description: Provider other last name type code
+
+          - name: provider_first_line_business_mailing_address 
+            description: Provider first line business mailing address
+
+          - name: provider_second_line_business_mailing_address 
+            description: Provider second line business mailing address
+
+          - name: provider_business_mailing_address_city_name 
+
+          - name: provider_business_mailing_address_state_name 
+            description: Provider business mailing address state name
+
+          - name: provider_business_mailing_address_postal_code 
+            description: Provider business mailing address postal code
+
+          - name: provider_business_mailing_address_country_code_if_outside_us 
+            description: Provider business mailing address country code (If outside the U.S.)
+
+          - name: provider_business_mailing_address_telephone_number 
+            description: Provider business mailing address telephone number
+
+          - name: provider_business_mailing_address_fax_number 
+            description: Provider business mailing address fax number
+          
+          - name: provider_first_line_business_practice_location_address 
+            description: Provider first line business practice location address
+
+          - name: provider_second_line_business_practice_location_address 
+            description: Provider second line business practice location address
+
+          - name: provider_business_practice_location_address_city_name 
+            description: Provider business practice location address city name
+
+          - name: provider_business_practice_location_address_state_name 
+            description: Provider business practice location address state name
+
+          - name: provider_business_practice_location_address_postal_code 
+            description: Provider business practice location address postal code
+
+          - name: provider_business_practice_location_address_country_code_if_outside_us
+            description: Provider business practice location address country code (If outside U.S.)
+
+          - name: provider_business_practice_location_address_telephone_number
+            description: Provider business practice location address telephone number
+
+          - name: provider_business_practice_location_address_fax_number 
+            description: Provider business practice location address fax number
+
+          - name: provider_enumeration_date 
+            description: Provider enumeration date
+
+          - name: last_update_date 
+            description: Last update date
+
+          - name: npi_deactivation_reason_code 
+            description: NPI deactivation reason code
+
+          - name: npi_deactivation_date 
+            description: NPI deactivation date
+
+          - name: npi_reactivation_date 
+            descriptioN: NPI reactivation date
+
+          - name: provider_gender_code 
+            description: Provider gender code
+
+          - name: authorized_official_last_name 
+            description: Authorized official last name
+
+          - name: authorized_official_first_name 
+            description: Authorized official first name
+
+          - name: authorized_official_middle_name 
+            description: Authorized official middle name
+
+          - name: authorized_official_title_or_position 
+            description: Authorized official title or position
+
+          - name: authorized_official_telephone_number 
+            descriptioN: Authorized official telephone number
+
+          - name: healthcare_provider_taxonomy_code_1 
+            description: Healthcare provider taxonomy code 1
+
+          - name: provider_license_number_1 
+            description: Provider license number 1
+
+          - name: provider_license_number_state_code_1 
+            description: Provider license number state code 1
+
+          - name: healthcare_provider_primary_taxonomy_switch_1 
+            description: Healthcare provider primary taxonomy switch 1
+
+          - name: healthcare_provider_taxonomy_code_2 
+            description: Healthcare provider taxonomy code 2
+
+          - name: provider_license_number_2 
+            description: Provider license number 2
+
+          - name: provider_license_number_state_code_2 
+            description: Provider license number state code 2
+
+          - name: healthcare_provider_primary_taxonomy_switch_2 
+            description: Healthcare provider primary taxonomy switch 2
+
+          - name: healthcare_provider_taxonomy_code_3
+            description: Healthcare provider taxonomy code 3
+
+          - name: provider_license_number_3 
+            description: Provider license number 3
+
+          - name: provider_license_number_state_code_3 
+            description: Provider license number state code 3
+
+          - name: healthcare_provider_primary_taxonomy_switch_3 
+            description: Healthcare provider primary taxonomy switch 3
+
+          - name: healthcare_provider_taxonomy_code_4 
+            description: Healthcare provider taxonomy code 4
+
+          - name: provider_license_number_4 
+            description: Provider license number 4
+
+          - name: provider_license_number_state_code_4 
+            description: Provider license number state code 4
+
+          - name: healthcare_provider_primary_taxonomy_switch_4 
+            description: Healthcare provider primary taxonomy switch 4
+
+          - name: healthcare_provider_taxonomy_code_5 
+            description: Healthcare provider taxonomy code 5
+
+          - name: provider_license_number_5 
+            description: Provider license number 5
+
+          - name: provider_license_number_state_code_5 
+            description: Provider license number state code 5
+
+          - name: healthcare_provider_primary_taxonomy_switch_5 
+            description: Healthcare provider primary taxonomy switch 5
+
+          - name: healthcare_provider_taxonomy_code_6 
+            description: Healthcare provider taxonomy code 6
+
+          - name: provider_license_number_6 
+            description: Provider license number 6
+
+          - name: provider_license_number_state_code_6 
+            description: Provider license number state code 6
+
+          - name: healthcare_provider_primary_taxonomy_switch_6 
+            description: Healthcare provider primary taxonomy switch 6
+
+          - name: healthcare_provider_taxonomy_code_7 
+            description: Healthcare provider taxonomy code 7
+            
+          - name: provider_license_number_7 
+            description: Provider license number 7
+
+          - name: provider_license_number_state_code_7 
+            description: Provider license number state code 7
+
+          - name: healthcare_provider_primary_taxonomy_switch_7 
+            description: Healthcare provider primary taxonomy switch 7
+
+          - name: healthcare_provider_taxonomy_code_8 
+            description: Healthcare provider taxonomy code 8
+
+          - name: provider_license_number_8 
+            description: Provider license number 8
+
+          - name: provider_license_number_state_code_8 
+            description: Provider license number state code 8
+
+          - name: healthcare_provider_primary_taxonomy_switch_8 
+            description: Healthcare provider primary taxonomy switch 8
+            
+          - name: healthcare_provider_taxonomy_code_9 
+            description: Healthcare provider taxonomy code 9
+
+          - name: provider_license_number_9 
+            description: Provider license number 9
+
+          - name: provider_license_number_state_code_9 
+            description: Provider license number state code 9
+
+          - name: healthcare_provider_primary_taxonomy_switch_9 
+            description: Healthcare provider primary taxonomy switch 9
+            
+          - name: healthcare_provider_taxonomy_code_10 
+            description: Healthcare provider taxonomy code 10
+
+          - name: provider_license_number_10 
+            description: Provider license number 10
+
+          - name: provider_license_number_state_code_10 
+            description: Provider license number state code 10
+
+          - name: healthcare_provider_primary_taxonomy_switch_10 
+            description: Healthcare provider primary taxonomy switch 10
+
+          - name: healthcare_provider_taxonomy_code_11 
+            description: Healthcare provider taxonomy code 11
+
+          - name: provider_license_number_11 
+            description: Provider license number 11
+            
+          - name: provider_license_number_state_code_11 
+            description: Provider license number state code 11
+
+          - name: healthcare_provider_primary_taxonomy_switch_11 
+            description: Healthcare provider primary taxonomy switch 11
+            
+          - name: healthcare_provider_taxonomy_code_12 
+            description: Healthcare provider taxonomy code 12
+
+          - name: provider_license_number_12 
+            description: Provider license number 12
+
+          - name: provider_license_number_state_code_12 
+            description: Provider license number state code 12
+
+          - name: healthcare_provider_primary_taxonomy_switch_12 
+            description: Healthcare provider primary taxonomy swith 12
+
+          - name: healthcare_provider_taxonomy_code_13 
+            description: Healthcare provider taxonomy code 13
+
+          - name: provider_license_number_13 
+            description: Provider license number 13
+
+          - name: provider_license_number_state_code_13 
+            description: Provider license number state code 13
+
+          - name: healthcare_provider_primary_taxonomy_switch_13 
+            description: Healthcare provider primary taxonomy switch 13
+
+          - name: healthcare_provider_taxonomy_code_14 
+            description: Healthcare provider taxonomy code 14
+
+          - name: provider_license_number_14 
+            description: Provider license number 14
+
+          - name: provider_license_number_state_code_14 
+            description: Provider license number state_code 14
+
+          - name: healthcare_provider_primary_taxonomy_switch_14 
+            description: Healthcare provider primary taxonomy switch 14
+
+          - name: healthcare_provider_taxonomy_code_15 
+            description: Healthcare provider taxonomy code 15
+
+          - name: provider_license_number_15 
+            description: Provider license number 15
+
+          - name: provider_license_number_state_code_15 
+            description: Provider license number state code 15
+
+          - name: healthcare_provider_primary_taxonomy_switch_15 
+            description: Healthcare provider primary taxonomy switch 15
+
+          - name: other_provider_identifier_1 
+            description: Other provider identifier 1
+
+          - name: other_provider_identifier_type_code_1 
+            description: Other provider identifier type code 1
+
+          - name: other_provider_identifier_state_1 
+            description: Other provider identifier state 1
+
+          - name: other_provider_identifier_issuer_1 
+            description: Other provider identifer issuer 1
+
+          - name: other_provider_identifier_2 
+            description: Other provider identifier 2
+
+          - name: other_provider_identifier_type_code_2 
+            description: Other provider identifier type code 2
+
+          - name: other_provider_identifier_state_2 
+            description: Other provier identifier state 2
+
+          - name: other_provider_identifier_issuer_2 
+            description: Other provider identifier issuer 2
+
+          - name: other_provider_identifier_3
+            description: Other provider identifier 3
+
+          - name: other_provider_identifier_type_code_3 
+            description: Other provider identifier type code 3
+
+          - name: other_provider_identifier_state_3 
+            description: Other provider identifier state 3
+
+          - name: other_provider_identifier_issuer_3 
+            description: Other provider identifier issuer 3
+
+          - name: other_provider_identifier_4 
+            description: Other provider identifier 4
+
+          - name: other_provider_identifier_type_code_4 
+            description: Other provider identifier type code 4
+
+          - name: other_provider_identifier_state_4 
+            description: Other provider identifier state 4
+
+          - name: other_provider_identifier_issuer_4 
+            description: Other provider identifier issuer 4
+
+          - name: other_provider_identifier_5 
+            description: Other provider identifier 5
+          
+          - name: other_provider_identifier_type_code_5 
+            description: Other provider identifier type code 5
+
+          - name: other_provider_identifier_state_5 
+            description: Other provider identifier state 5
+
+          - name: other_provider_identifier_issuer_5 
+            description: Other provider identifier issuer 5
+
+          - name: other_provider_identifier_6 
+            description: Other provider identifier 6
+
+          - name: other_provider_identifier_type_code_6 
+            description: Other provider identifier type code 6
+
+          - name: other_provider_identifier_state_6 
+            description: Other provider identifier state 6
+
+          - name: other_provider_identifier_issuer_6 
+            description: Other provider identifier issuer 6
+
+          - name: other_provider_identifier_7 
+            description: Other provider identifier 7
+
+          - name: other_provider_identifier_type_code_7 
+            description: Other provider identifier type code 7
+
+          - name: other_provider_identifier_state_7 
+            description: Other provider identifier state 7
+
+          - name: other_provider_identifier_issuer_7 
+            description: Other provider identifier issuer 7
+
+          - name: other_provider_identifier_8 
+            description: Other provider identifier 8
+            
+          - name: other_provider_identifier_type_code_8 
+            description: Other provider identifier type code 8
+
+          - name: other_provider_identifier_state_8 
+            description: Other provider identifier state 8
+
+          - name: other_provider_identifier_issuer_8 
+            description: Other provider identifier issuer 8
+
+          - name: other_provider_identifier_9 
+            description: Other provider identifier 9
+
+          - name: other_provider_identifier_type_code_9 
+            description: Other provider identifier type code 9
+
+          - name: other_provider_identifier_state_9 
+            description: Other provider identifier state 9
+
+          - name: other_provider_identifier_issuer_9 
+            description: Other provider identifier issuer 9
+
+          - name: other_provider_identifier_10 
+            description: Other provider identifier 10
+
+          - name: other_provider_identifier_type_code_10 
+            description: Other provider identifier type code 10
+
+          - name: other_provider_identifier_state_10 
+            description: Other provider identifier state 10
+
+          - name: other_provider_identifier_issuer_10 
+            description: Other provider identifier issuer 10
+
+          - name: other_provider_identifier_11 
+            description: Other provider identifier 11
+
+          - name: other_provider_identifier_type_code_11 
+            description: Other provider identifier type code 11
+
+          - name: other_provider_identifier_state_11 
+            description: Other provider identifier state 11
+
+          - name: other_provider_identifier_issuer_11 
+            description: Other provider identifier issuer 11
+
+          - name: other_provider_identifier_12 
+            description: Other provider identifier 12
+
+          - name: other_provider_identifier_type_code_12 
+            description: Other provider identifier type code 12
+
+          - name: other_provider_identifier_state_12 
+            description: Other provider identifier state 12
+
+          - name: other_provider_identifier_issuer_12 
+            description: Other provider identifier issuer 12
+
+          - name: other_provider_identifier_13 
+            description: Other provider identifier 13
+
+          - name: other_provider_identifier_type_code_13 
+            description: Other provider identifier type code 13
+
+          - name: other_provider_identifier_state_13
+            description: Other provider identifier state 13
+
+          - name: other_provider_identifier_issuer_13 
+            description: Other provider identifier issuer 13
+
+          - name: other_provider_identifier_14 
+            description: Other provider identifier 14
+
+          - name: other_provider_identifier_type_code_14 
+            description: Other provider identifier type code 14
+
+          - name: other_provider_identifier_state_14 
+            description: Other provider identifier state 14
+
+          - name: other_provider_identifier_issuer_14 
+            description: Other provider identifier issuer 14
+
+          - name: other_provider_identifier_15 
+            description: Other provider identifier 15
+
+          - name: other_provider_identifier_type_code_15 
+            description: Other provider identifier type code 15
+
+          - name: other_provider_identifier_state_15 
+            description: Other provider identifier state 15
+
+          - name: other_provider_identifier_issuer_15 
+            description: Other provider identifier issuer 15
+
+          - name: other_provider_identifier_16 
+            description: Other provider identifier 16
+
+          - name: other_provider_identifier_type_code_16 
+            description: Other provider identifier type code 16
+
+          - name: other_provider_identifier_state_16 
+            description: Other provider identifier state 16
+
+          - name: other_provider_identifier_issuer_16 
+            description: Other provider identifier issuer 16
+
+          - name: other_provider_identifier_17 
+            description: Other provider identifier 17
+
+          - name: other_provider_identifier_type_code_17 
+            description: Other provider identifier type code 17
+
+          - name: other_provider_identifier_state_17 
+            description: Other provider identifier state 17
+
+          - name: other_provider_identifier_issuer_17 
+            description: Other provider identifier issuer 17
+
+          - name: other_provider_identifier_18 
+            description: Other provider identifier 18
+
+          - name: other_provider_identifier_type_code_18
+            description: Other provider identifier type code 18
+
+          - name: other_provider_identifier_state_18 
+            description: Other provider identifier state 18
+
+          - name: other_provider_identifier_issuer_18 
+            description: Other provider identifier issuer 18
+
+          - name: other_provider_identifier_19 
+            description: Other provider identifier 19
+
+          - name: other_provider_identifier_type_code_19 
+            description: Other provider identifier type code 19
+
+          - name: other_provider_identifier_state_19 
+            description: Other provider identifier state 19
+
+          - name: other_provider_identifier_issuer_19 
+            description: Other provider identifier issuer 19
+
+          - name: other_provider_identifier_20 
+            description: Other provider identifier 20
+
+          - name: other_provider_identifier_type_code_20 
+            description: Other provider identifier type code 20
+
+          - name: other_provider_identifier_state_20 
+            description: Other provider identifier state 20
+
+          - name: other_provider_identifier_issuer_20 
+            description: Other provider identifier issuer 20
+
+          - name: other_provider_identifier_21 
+            description: Other provider identifier 21
+
+          - name: other_provider_identifier_type_code_21 
+            description: Other provider identifier type code 21
+
+          - name: other_provider_identifier_state_21 
+            description: Other provider identifier state 21
+
+          - name: other_provider_identifier_issuer_21 
+            description: Other provider identifier issuer 21
+
+          - name: other_provider_identifier_22 
+            description: Other provider identifier 22
+            
+          - name: other_provider_identifier_type_code_22 
+            description: Other provider identifier 22
+
+          - name: other_provider_identifier_state_22 
+            description: Other provider identifier state 22
+
+          - name: other_provider_identifier_issuer_22
+            description: Other provider identifier issuer 22
+
+          - name: other_provider_identifier_23 
+            description: Other provider identifier 23
+
+          - name: other_provider_identifier_type_code_23 
+            description: Other provider identifier type code 23
+
+          - name: other_provider_identifier_state_23 
+            description: Other provider identifier state 23
+
+          - name: other_provider_identifier_issuer_23 
+            description: Other provider identifier issuer 23
+
+          - name: other_provider_identifier_24 
+            description: Other provider identifier 24
+
+          - name: other_provider_identifier_type_code_24 
+            description: Other provider identifier type code 24
+
+          - name: other_provider_identifier_state_24 
+            description: Other provider identifier state 24
+
+          - name: other_provider_identifier_issuer_24 
+            description: Other provider identifier issuer 24
+
+          - name: other_provider_identifier_25
+            description: Other provider identifier 25
+
+          - name: other_provider_identifier_type_code_25 
+            description: Other provider identifier type code 25
+
+          - name: other_provider_identifier_state_25 
+            description: Other provider identifier state 25
+
+          - name: other_provider_identifier_issuer_25 
+            description: Other provider identifier issuer 25
+
+          - name: other_provider_identifier_26 
+            description: Other provider identifier 26
+
+          - name: other_provider_identifier_type_code_26
+            description: Other provider identifier type code 26
+
+          - name: other_provider_identifier_state_26 
+            description: Other provider identifier state 26
+
+          - name: other_provider_identifier_issuer_26 
+            description: Other provider identifier issuer 26
+
+          - name: other_provider_identifier_27
+            description: Other provider identifier 27
+
+          - name: other_provider_identifier_type_code_27 
+            description: Other provider identifier type code 27
+
+          - name: other_provider_identifier_state_27 
+            description: Other provider identifier state 27
+
+          - name: other_provider_identifier_issuer_27 
+            description: Other provider identifier issuer 28
+
+          - name: other_provider_identifier_28 
+            description: Other provider identifier 28
+
+          - name: other_provider_identifier_type_code_28 
+            description: Other provider identifier type code 28
+
+          - name: other_provider_identifier_state_28 
+            description: Other provider identifier state 28
+
+          - name: other_provider_identifier_issuer_28 
+            description: Other provider identifier issuer 28
+
+          - name: other_provider_identifier_29 
+            description: Other provider identifier 29
+
+          - name: other_provider_identifier_type_code_29 
+            description: Other provider identifier type code 29
+
+          - name: other_provider_identifier_state_29 
+            description: Other provider identifier state 29
+
+          - name: other_provider_identifier_issuer_29 
+            description: Other provider identifier issuer 29
+
+          - name: other_provider_identifier_30  
+            description: Other provider identifier 30
+
+          - name: other_provider_identifier_type_code_30 
+            description: Other provider identifier type code 30
+
+          - name: other_provider_identifier_state_30  
+            description: Other provider identifier state 30
+
+          - name: other_provider_identifier_issuer_30 
+            description: Other provider identifier issuer 30
+
+          - name: other_provider_identifier_31  
+            description: Other provider identifier 31
+
+          - name: other_provider_identifier_type_code_31 
+            description: Other provider identifier type code 31
+
+          - name: other_provider_identifier_state_31  
+            description: Other provider identifier state 31
+
+          - name: other_provider_identifier_issuer_31   
+            description: Other provider identifier issuer 31
+
+          - name: other_provider_identifier_32 
+            description: Other provider identifier 32
+
+          - name: other_provider_identifier_type_code_32 
+            description: Other provider identifier type code 32
+
+          - name: other_provider_identifier_state_32 
+            description: Other provider identifier state 32
+
+          - name: other_provider_identifier_issuer_32
+            description: Other provider identifier issuer 32
+
+          - name: other_provider_identifier_33 
+            description: Other provider identifier 33
+
+          - name: other_provider_identifier_type_code_33 
+            description: Other provider identifier type code 33
+
+          - name: other_provider_identifier_state_33 
+            description: Other provider identifier state 33
+
+          - name: other_provider_identifier_issuer_33 
+            description: Other provider identifier issuer 33
+
+          - name: other_provider_identifier_34 
+            description: Other provider identifier 34
+
+          - name: other_provider_identifier_type_code_34 
+            description: Other provider identifier type code 34
+
+          - name: other_provider_identifier_state_34 
+            description: Other provider identifier state 34
+
+          - name: other_provider_identifier_issuer_34 
+            description: Other provider identifier issuer 34
+
+          - name: other_provider_identifier_35 
+            description: Other provider identifier 35
+
+          - name: other_provider_identifier_type_code_35 
+            description: Other provider identifier type code 35
+
+          - name: other_provider_identifier_state_35 
+            description: Other provider identifier state 35
+
+          - name: other_provider_identifier_issuer_35 
+            description: Other provider identifier issuer 35
+
+          - name: other_provider_identifier_36  
+            description: Other provider identifier 36
+
+          - name: other_provider_identifier_type_code_36 
+            description: Other provider identifier type code 36
+
+          - name: other_provider_identifier_state_36  
+            description: Other provider identifier state 36
+
+          - name: other_provider_identifier_issuer_36   
+            description: Other provider identifier issuer 36
+
+          - name: other_provider_identifier_37
+            description: Other provider identifier 37
+
+          - name: other_provider_identifier_type_code_37 
+            description: Other provider identifier type code 37
+
+          - name: other_provider_identifier_state_37 
+            description: Other provider identifier state 37
+
+          - name: other_provider_identifier_issuer_37 
+            description: Other provider identifier issuer 37
+
+          - name: other_provider_identifier_38 
+            description: Other provider identifier 38
+
+          - name: other_provider_identifier_type_code_38 
+            description: Other provider identifier type code 38
+
+          - name: other_provider_identifier_state_38 
+            description: Other provider identifier state 38
+
+          - name: other_provider_identifier_issuer_38 
+            description: Other provider identifier issuer 38
+
+          - name: other_provider_identifier_39 
+            description: Other provider identifier 39
+
+          - name: other_provider_identifier_type_code_39 
+            description: Other provider identifier type code 39
+
+          - name: other_provider_identifier_state_39 
+            description: Other provider identifier state 39
+
+          - name: other_provider_identifier_issuer_39 
+            description: Other provider identifier issuer 39
+
+          - name: other_provider_identifier_40 
+            description: Other provider identifier 40
+
+          - name: other_provider_identifier_type_code_40 
+            description: Other provider identifier type code 40
+
+          - name: other_provider_identifier_state_40 
+            description: Other provider identifier state 40
+
+          - name: other_provider_identifier_issuer_40 
+            description: Other provider identifier issuer 40
+
+          - name: other_provider_identifier_41 
+            description: Other provider identifier 41
+
+          - name: other_provider_identifier_type_code_41 
+            
+          - name: other_provider_identifier_state_41 
+            description: Other provider identifier state 41
+
+          - name: other_provider_identifier_issuer_41 
+            description: Other provider identifier issuer 41
+
+          - name: other_provider_identifier_42 
+            description: Other provider identifier 42
+
+          - name: other_provider_identifier_type_code_42 
+            description: Other provider identifier type code 42
+
+          - name: other_provider_identifier_state_42  
+            description: Other provider identifier state 42
+
+          - name: other_provider_identifier_issuer_42   
+            description: Other provider identifier issuer 42
+
+          - name: other_provider_identifier_43 
+            description: Other provider identifier 43
+
+          - name: other_provider_identifier_type_code_43 
+            description: Other provider identifier type code 43
+
+          - name: other_provider_identifier_state_43  
+            description: Other provider identifier state 43
+
+          - name: other_provider_identifier_issuer_43 
+            description: Other provider identifier issuer 43
+            
+          - name: other_provider_identifier_44 
+            description: Other provider identifier 44
+
+          - name: other_provider_identifier_type_code_44 
+            description: Other provider identifier type code 44
+
+          - name: other_provider_identifier_state_44  
+            description: Other provider identifier state 44
+
+          - name: other_provider_identifier_issuer_44 
+            description: Other provider identifier issuer 44
+
+          - name: other_provider_identifier_45 
+            description: Other provider identifier 45
+
+          - name: other_provider_identifier_type_code_45 
+            description: Other provider identifier type code 45
+
+          - name: other_provider_identifier_state_45  
+            description: Other provider identifier state 45
+
+          - name: other_provider_identifier_issuer_45 
+            description: Other provider identifier issuer 45
+
+          - name: other_provider_identifier_46 
+            description: Other provider identifier 46
+
+          - name: other_provider_identifier_type_code_46 
+            description: Other provider identifier type code 46
+
+          - name: other_provider_identifier_state_46 
+            description: Other provider identifier state 46
+
+          - name: other_provider_identifier_issuer_46 
+            description: Other provider identifier issuer 46
+
+          - name: other_provider_identifier_47 
+            description: Other provider identifier 47
+
+          - name: other_provider_identifier_type_code_47 
+            description: Other provider identifier type code 47
+
+          - name: other_provider_identifier_state_47 
+            description: Other provider identifier state 47
+
+          - name: other_provider_identifier_issuer_47 
+            description: Other provider identifier issuer 47
+
+          - name: other_provider_identifier_48 
+            description: Other provider identifier 48
+
+          - name: other_provider_identifier_type_code_48 
+            description: Other provider identifier type code 48
+
+          - name: other_provider_identifier_state_48 
+            description: Other provider identifier state 48
+
+          - name: other_provider_identifier_issuer_48 
+            description: Other provider identifier issuer 48
+
+          - name: other_provider_identifier_49 
+            description: Other provider identifier 49
+
+          - name: other_provider_identifier_type_code_49 
+            description: Other provider identifier type cdoe 49
+
+          - name: other_provider_identifier_state_49 
+            description: Other provider identifier state 49
+
+          - name: other_provider_identifier_issuer_49 
+            description: Other provider identifier issuer 49
+
+          - name: other_provider_identifier_50 
+            description: Other provider identifier 50
+
+          - name: other_provider_identifier_type_code_50 
+            description: Other provider identifier type code 50
+
+          - name: other_provider_identifier_state_50 
+            description: Other provider identifier state 50
+
+          - name: other_provider_identifier_issuer_50 
+            description: Other provider identifier issuer 50
+
+          - name: is_sole_proprietor 
+            description: Is sole proprietor
+
+          - name: is_organization_subpart
+            description: Is organization subpart
+
+          - name: parent_organization_lbn 
+            description: Parent organization legal business name (LBN)
+
+          - name: parent_organization_tin 
+            description: Organization subpart TIN
+
+          - name: authorized_official_name_prefix_text
+            description: Authorized official name prefix text
+
+          - name: authorized_official_name_suffix_text 
+            description: Authorized official name suffix text
+
+          - name: authorized_official_credential_text 
+            description: Authorized official credential text
+
+          - name: healthcare_provider_taxonomy_group_1 
+            description: Healthcare provider taxonomy group 1
+
+          - name: healthcare_provider_taxonomy_group_2 
+            description: Healthcare provider taxonomy group 2
+
+          - name: healthcare_provider_taxonomy_group_3 
+            description: Healthcare provider taxonomy group 3
+
+          - name: healthcare_provider_taxonomy_group_4 
+            description: Healthcare provider taxonomy group 4
+
+          - name: healthcare_provider_taxonomy_group_5 
+            description: Healthcare provider taxonomy group 5
+
+          - name: healthcare_provider_taxonomy_group_6 
+            description: Healthcare provider taxonomy group 6
+
+          - name: healthcare_provider_taxonomy_group_7 
+            description: Healthcare provider taxonomy group 7
+
+          - name: healthcare_provider_taxonomy_group_8 
+            description: Healthcare provider taxonomy group 8
+
+          - name: healthcare_provider_taxonomy_group_9 
+            description: Healthcare provider taxonomy group 9
+
+          - name: healthcare_provider_taxonomy_group_10 
+            description: Healthcare provider taxonomy group 10
+
+          - name: healthcare_provider_taxonomy_group_11 
+            description: Healthcare provider taxonomy group 11
+
+          - name: healthcare_provider_taxonomy_group_12 
+            description: Healthcare provider taxonomy group 12
+
+          - name: healthcare_provider_taxonomy_group_13 
+            description: Healthcare provider taxonomy group 13
+
+          - name: healthcare_provider_taxonomy_group_14 
+            description: Healthcare provider taxonomy group 14
+
+          - name: healthcare_provider_taxonomy_group_15 
+            description: Healthcare provider taxonomy group 15
+
+          - name: certification_date
+            descripiton: Certification date
