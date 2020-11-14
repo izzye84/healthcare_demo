@@ -943,3 +943,100 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: base_ssm__clinical_encounters
+    description: Base for SSM encounters
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_external_encounter
+            - reason_code_text
+            - patient_account_number
+    columns:
+      - name: clinical_encounter_facility_name
+        description: clinical_encounter_facility_name
+
+      - name: identifier_external_encounter
+        description: identifier_external_encounter
+        tests:
+          - not_null
+
+      - name: patient_account_number
+        description: patient_account_number
+        tests:
+          - not_null
+
+      - name: patient_id
+        description: patient_id
+
+      - name: period
+        description: period
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: period_end
+        description: period_end
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: period_start
+        description: period_start
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: place_of_service_code
+        description: place_of_service_code
+
+      - name: place_of_service_description
+        description: place_of_service_description
+
+      - name: provider_id
+        description: provider_id
+
+      - name: reason_code_text
+        description: reason_code_text
+
+      - name: service_provider
+        description: service_provider
+
+      - name: service_type
+        description: service_type
+
+      - name: status
+        description: status
+
+      - name: user_id
+        description: user_id
+
+      - name: created_timestamp
+        description: created_timestamp
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: modified_timestamp
+        description: modified_timestamp
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: client_id
+        description: client_id
+        tests:
+          - not_blank
+          - accepted_values:
+              values: ['ssm']
+
+      - name: ingest_date
+        description: ingest_date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

@@ -479,3 +479,46 @@ models:
 
       - name: ingest_date
         description: Most recent ingest date
+
+  - name: stg_ssm__clinical_encounters
+    description: taging step for SSM clinical encounters
+    tests:
+
+    columns:
+      - name: identifier_encounter
+        description: Unique identifier for a patients encounter
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_encounter
+        description: identifier_external_encounter
+
+      - name: status
+        description: status
+
+      - name: type
+        description: type
+
+      - name: service_type
+        description: service_type
+
+      - name: subject
+        description: subject
+        tests:
+          - not_null
+
+      - name: period
+        description: period
+
+      - name: reason_code_text
+        description: reason_code_text
+
+      - name: service_provider
+        description: service_provider
+
+      - name: client_id
+        description: client_id
+
+      - name: ingest_date
+        description: ingest_date
