@@ -1002,16 +1002,14 @@ sources:
 
       - name: loinc
         description: Export of all LOINC terms from https://loinc.org/downloads/loinc-table
-        identifier: loinc_num
-        tests:
-          - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - loinc_num
+        identifier: loinc
+
         columns:
           - name: loinc_num
             description: loinc_num
             tests:
               - not_blank
+              - unique
 
           - name: component
             description: component
@@ -1147,5 +1145,3 @@ sources:
 
           - name: displayname
             description: displayname
-            tests:
-              - not_blank
