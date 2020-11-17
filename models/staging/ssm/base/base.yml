@@ -1021,7 +1021,7 @@ models:
               date_type: timestamp
 
       - name: modified_timestamp
-        description: modified_timestamp
+        description: date modified in source system
         tests:
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
@@ -1032,10 +1032,192 @@ models:
         tests:
           - not_blank
           - accepted_values:
-              values: ['ssm']
+              values: [ 'ssm' ]
 
       - name: ingest_date
         description: ingest_date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: base_ssm__lab
+    description: Base for SSM labs
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - patient_account_number
+            - identifier_encounter
+            - lab_id
+            - code_source
+            - detail
+            - code_source_display
+            - ingest_date
+    columns:
+      - name: patient_id
+        description: External patient identifer
+        tests:
+          - not_null
+
+      - name: patient_account_number
+        description: External medical record number
+        tests:
+          - not_null
+
+      - name: identifier_encounter
+        description: Encounter identifier
+
+      - name: lab_id
+        description: Lab order identifier
+
+      - name: code_source_system
+        description: Source lab code set
+
+      - name: code_source
+        description: Source lab code
+
+      - name: order_date
+        description: Date lab was ordered
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: detail
+        description: Lab order description
+
+      - name: reason_code
+        description: Service code for procedure
+
+      - name: service_code_modifier
+        description: Modifier for procedure
+
+      - name: reason_system
+        description: Service code type
+
+      - name: reason_display
+        description: Service description
+
+      - name: code_source_display
+        description: Result description
+
+      - name: collection_date
+        description: Date lab was collected
+
+      - name: effective_date
+        description: Date of the lab result
+
+      - name: value_string
+        description: Result text value
+
+      - name: value_quantity
+        description: Result numeric or integer value
+
+      - name: value_boolean
+        description: Binary result of a positive or negative test
+
+      - name: value_quantity_unit
+        description: Unit of measure
+
+      - name: reference_range_text
+        description: Standard upper and lower limit
+
+      - name: interpretation_code
+        description: Indicates the normalcy status of the result
+
+      - name: status_code
+        description: Status of results for this order
+
+      - name: created_timestamp
+        description: Timestamp created in source system
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: modified_timestamp
+        description: Timestamp modified in source system
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_blank
+          - accepted_values:
+              values: [ 'ssm' ]
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: base_ssm__vital
+    description: Base for SSM vitals
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - patient_account_number
+            - encounter
+            - code_source
+            - value_quantity
+            - ingest_date
+    columns:
+      - name: patient_id
+        description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+        tests:
+          - not_null
+
+      - name: patient_account_number
+        description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+        tests:
+          - not_null
+
+      - name: identifier_encounter
+        description: Clinical encounter ID
+        tests:
+          - not_null
+
+      - name: vitals_captured_by
+        description: Vitals captured by
+
+      - name: code_source
+        description: Vitals name
+        tests:
+          - not_null
+
+      - name: value_quantity
+        description: Vitals measurement
+
+      - name: value_quantity_unit
+        description: Unit of measurement of the vital result
+
+      - name: created_timestamp
+        description: Timestamp created in source system
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: modified_timestamp
+        description: Timestamp created in source system
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_blank
+          - accepted_values:
+              values: [ 'ssm' ]
+
+      - name: ingest_date
+        description: Most recent ingest date
         tests:
           - not_null
           - is_date:
