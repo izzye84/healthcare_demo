@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: readmission_30d
+    description: Discharge Readmissions - 30 Day
+
+    columns:
+      - name: identifier_claim_header
+        description: Unique ID that links back to the `core.claim_item` resource
+
+      - name: gender
+        description: Patient gender
+
+      - name: admit_rate_12months
+        description: The number of hospital admissions over prior 12 months up to current admission date
+
+      - name: admit_length
+        description: The number of days between the `serviced_period_end` and `serviced_period_start
+
+      - name: age_at_claim_date
+        description: Patient age at the time of the claim
