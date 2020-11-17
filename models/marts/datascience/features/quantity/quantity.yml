@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: quantity_features
+    description: Engineered features with a value data type of `Quantity`
+
+    columns:
+      - name: feature_link
+        description: Field used to link to other resources
+        tests:
+          - not_null
+
+      - name: feature_code
+        description: Strive Data Science feature code. [Reference](https://strivehealth.atlassian.net/wiki/spaces/STRIVEHEAL/pages/844955749/Strive+Data+Science+Model+Features+Code+System)
+
+      - name: feature_display
+        description: Description of the Strive Data Science feature code
+
+      - name: feature_value
+        description: The quantity value to be used for the feature
+
+      - name: feature_date
+        description: Date the event occurred
