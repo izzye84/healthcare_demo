@@ -999,3 +999,153 @@ sources:
 
           - name: certification_date
             descripiton: Certification date
+
+      - name: loinc
+        description: Export of all LOINC terms from https://loinc.org/downloads/loinc-table
+        identifier: loinc_num
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - loinc_num
+        columns:
+          - name: loinc_num
+            description: loinc_num
+            tests:
+              - not_blank
+
+          - name: component
+            description: component
+
+          - name: property
+            description: property
+
+          - name: time_aspct
+            description: time_aspct
+
+          - name: body_system
+            description: body_system
+
+          - name: scale_typ
+            description: scale_typ
+
+          - name: method_typ
+            description: method_typ
+
+          - name: class
+            description: class
+
+          - name: versionlastchanged
+            description: versionlastchanged
+
+          - name: chng_type
+            description: chng_type
+
+          - name: definitiondescription
+            description: definitiondescription
+
+          - name: status
+            description: status
+
+          - name: consumer_name
+            description: consumer_name
+
+          - name: classtype
+            description: classtype
+
+          - name: formula
+            description: formula
+
+          - name: species
+            description: species
+
+          - name: exmpl_answers
+            description: exmpl_answers
+
+          - name: survey_quest_text
+            description: survey_quest_text
+
+          - name: survey_quest_src
+            description: survey_quest_src
+
+          - name: unitsrequired
+            description: unitsrequired
+
+          - name: submitted_units
+            description: submitted_units
+
+          - name: relatednames2
+            description: relatednames2
+
+          - name: shortname
+            description: shortname
+
+          - name: order_obs
+            description: order_obs
+
+          - name: cdisc_common_tests
+            description: cdisc_common_tests
+
+          - name: hl7_field_subfield_id
+            description: hl7_field_subfield_id
+
+          - name: external_copyright_notice
+            description: external_copyright_notice
+
+          - name: example_units
+            description: example_units
+
+          - name: long_common_name
+            description: long_common_name
+
+          - name: unitsandrange
+            description: unitsandrange
+
+          - name: example_ucum_units
+            description: example_ucum_units
+
+          - name: example_si_ucum_units
+            description: example_si_ucum_units
+
+          - name: status_reason
+            description: status_reason
+
+          - name: status_text
+            description: status_text
+
+          - name: change_reason_public
+            description: change_reason_public
+
+          - name: common_test_rank
+            description: common_test_rank
+
+          - name: common_order_rank
+            description: common_order_rank
+
+          - name: common_si_test_rank
+            description: common_si_test_rank
+
+          - name: hl7_attachment_structure
+            description: hl7_attachment_structure
+
+          - name: externalcopyrightlink
+            description: externalcopyrightlink
+
+          - name: paneltype
+            description: paneltype
+
+          - name: askatorderentry
+            description: askatorderentry
+
+          - name: associatedobservations
+            description: associatedobservations
+
+          - name: versionfirstreleased
+            description: versionfirstreleased
+
+          - name: validhl7attachmentrequest
+            description: validhl7attachmentrequest
+
+          - name: displayname
+            description: displayname
+            tests:
+              - not_blank
