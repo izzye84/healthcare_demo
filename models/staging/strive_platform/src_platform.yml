@@ -223,3 +223,118 @@ sources:
 
           - name: ingest_id
             description: Strive ingest date
+
+      - name: patient_admissibility
+        description: Patient admissibility calculated by the Strive Platform
+              
+        columns:
+          - name: sh_uid
+            description: Strive Unique Patient ID
+            tests:
+              - not_null
+
+          - name: admissible
+            description: Flag indicating whether the patient is admissible into the Strive program
+            tests:
+              - accepted_values:
+                  values: ['true', 'false']
+
+          - name: sh_ingest_utc
+            description: Strive ingest date/time in UTC format
+
+          - name: sh_source
+            description: The S3 path to the admissibility file
+
+          - name: member_id
+            description: The member ID that can be linked to the the Platform `member` table
+
+          - name: reason
+            description: Reason for the current admissibility status
+
+          - name: status_date
+            description: The date the admissibilty status changed
+
+          - name: patient_id
+            description: The patient ID that can be lined to the Platform `patient` table
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: table_id
+            description: Strive table ID
+
+          - name: ingest_id
+            description: Platform ingest ID
+
+      - name: patient_disease_stage
+        description: Patient disease stage calculated by the Strive Platform
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - sh_uid
+                - ingest_id
+              
+        columns:
+          - name: sh_uid
+            description: Strive Unique Patient ID
+            tests:
+              - not_null
+
+          - name: disease_stage
+            description: Strive identified CKD stage used to detemine admissibility
+            tests:
+              - accepted_values:
+                  values: ['CKD 1','CKD 2','CKD 3','CKD 4','CKD 5','CKD UNSPECIFIED','ESRD',null]
+
+          - name: sh_ingest_utc
+            description: Strive ingest date/time in UTC format
+
+          - name: sh_source
+            description: The S3 path to the admissibility file
+
+          - name: member_id
+            description: The member ID that can be linked to the the Platform `member` table
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: table_id
+            description: Strive table ID
+
+          - name: ingest_id
+            description: Platform ingest ID
+
+      - name: enrollment_status
+        description: Patient Strive enrollment status
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - sh_uid
+                - run_id
+              
+        columns:
+          - name: sh_uid
+            description: Strive Unique Patient ID
+            tests:
+              - not_null
+
+          - name: status
+            description: Current enrollment status of a patient
+
+          - name: reason
+            description: Reasons associated with various statuses (e.g. ineligible reason, declined reason, etc.)
+
+          - name: disenrolled_date
+            description: Date the patient was disenrolled from the Strive program
+
+          - name: update_date
+            description: The update date of the enrollment status
+
+          - name: schema_id
+            description: Strive Platform schema ID
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: run_id
+            description: Date the enrollment status job was run
