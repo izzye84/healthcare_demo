@@ -1,6 +1,7 @@
 {{
     config(
-        dist = 'identifier_npi'
+        dist = 'identifier_npi',
+        sort = 'identifier_npi'
     )
 }}
 

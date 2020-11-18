@@ -178,3 +178,27 @@ models:
 
       - name: certification_date
         description: Certification date
+
+  - name: base_reference_data__npi_taxonomy
+    description: Staging step for NPI taxonomy reference table
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - medicare_specialty_code
+            - specialty_code
+            - specialty_code_display
+
+    columns:
+      - name: medicare_specialty_code
+        description: Medicare specialty code
+        tests:
+          - not_blank
+
+      - name: specialty_code_display
+        description: Medicare provider supplier type description
+      
+      - name: specialty_code
+        description: Provider taxonomy code
+
+      - name: specialty_code_text
+        description: Provider taxonomy description

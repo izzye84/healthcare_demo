@@ -8,6 +8,7 @@ sources:
       - name: npi
         description: National Provider Identifier (NPI) demographic and specialty look up table
         identifier: npi
+        
         columns:
           - name: npi
             description: National Provider Identifier (NPI)
@@ -1145,3 +1146,28 @@ sources:
 
           - name: displayname
             description: displayname
+
+      - name: npi_taxonomy
+        description: National Provider Identifier (NPI) taxonomy (specialty) look up table
+        identifier: npi_taxonomy
+        tests:
+            - dbt_utils.unique_combination_of_columns:
+                combination_of_columns:
+                  - medicare_specialty_code
+                  - provider_taxonomy_code
+                  - medicare_provider_supplier_type_description
+        
+        columns:
+          - name: medicare_specialty_code
+            description: Medicare specialty code
+            tests:
+              - not_blank
+
+          - name: medicare_provider_supplier_type_description
+            description: Medicare provider supplier type description
+          
+          - name: provider_taxonomy_code
+            description: Provider taxonomy code
+
+          - name: provider_taxonomy_description
+            description: Provider taxonomy description
