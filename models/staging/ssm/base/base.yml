@@ -1052,6 +1052,8 @@ models:
             - code_source
             - detail
             - code_source_display
+            - value_quantity
+            - value_string
             - ingest_date
     columns:
       - name: patient_id

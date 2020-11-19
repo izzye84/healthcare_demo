@@ -41,7 +41,7 @@ joined as (
  Parses reference_range_text to low and high with exceptions
 ************************************************************/
 mapped as (
-    select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','identifier_encounter','lab_id','code_source','code_source_display']) }} as identifier_observation
+    select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','identifier_encounter','lab_id','code_source','code_source_display','value_quantity','value_string']) }} as identifier_observation
         ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','identifier_encounter','lab_id','reason_code','reason_display']) }} as identifier_order
         ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name'])}} as identifier_external_source
         ,identifier_encounter

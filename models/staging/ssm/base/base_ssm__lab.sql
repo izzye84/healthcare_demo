@@ -11,7 +11,7 @@ lab_source as (
 ),
 
 lab_add_rownum as (
-    select row_number() over(partition by patient_account_number, clinical_encounter_id, lab_id, lab_code, result_description order by ingest_date desc, modified_timestamp desc) as row_num
+    select row_number() over(partition by patient_account_number, clinical_encounter_id, lab_id, lab_code, result_description, result_numeric, result_text order by ingest_date desc, modified_timestamp desc) as row_num
         ,*
     from lab_source
 ),
