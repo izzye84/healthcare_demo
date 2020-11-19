@@ -246,7 +246,7 @@ models:
   - name: stg_ssm__clinical_diagnoses
     description: Staging step for SSM clinical diagnoses
     columns:
-      - name: identifier
+      - name: identifier_condition
         description: Unique identifier for the distinct diagnosis for a patient
         tests:
           - not_null
@@ -264,6 +264,9 @@ models:
 
       - name: recorded_date
         description: Date the diagnosis was recorded
+
+      - name: category_code
+        description: A code that classifies the type of condition——e.g., claim or clinical
 
       - name: code
         description: Diagnosis code
