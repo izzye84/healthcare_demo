@@ -24,10 +24,11 @@ joined as (
         on clinical_diagnoses_base.patient_account_number = crosswalk_base.enterprise_mrn
 )
 
-select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','code','encounter']) }} as identifier
+select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','code','encounter']) }} as identifier_condition
     ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name'])}} as identifier_external_source
     ,encounter
     ,recorded_date
+    ,'clinical' as category_code
     ,code
     ,code_system
     ,onset_datetime

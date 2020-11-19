@@ -6,8 +6,8 @@
 
 with
 
-ssm_clinical_diagnoses as (
-    select * from {{ ref('stg_ssm__clinical_diagnoses') }}
+clinical_diagnoses as (
+    select * from {{ ref('int_condition__unioned') }}
 )
 
-select * from ssm_clinical_diagnoses
+select * from clinical_diagnoses

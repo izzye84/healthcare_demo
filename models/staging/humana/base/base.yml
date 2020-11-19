@@ -228,77 +228,80 @@ models:
       - name: deduct_amt
         description: deduct_amt
 
-      - name: diag_cd2
-        description: diag_cd2
+      - name: diagnosis_code_1
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd3
-        description: diag_cd3
+      - name: diagnosis_code_2
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd4
-        description: diag_cd4
+      - name: diagnosis_code_3
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd5
-        description: diag_cd5
+      - name: diagnosis_code_4
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd6
-        description: diag_cd6
+      - name: diagnosis_code_5
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd7
-        description: diag_cd7
+      - name: diagnosis_code_6
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd8
-        description: diag_cd8
+      - name: diagnosis_code_7
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd9
-        description: diag_cd9
+      - name: diagnosis_code_8
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd10
-        description: diag_cd10
+      - name: diagnosis_code_9
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd11
-        description: diag_cd11
+      - name: diagnosis_code_10
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd12
-        description: diag_cd12
+      - name: diagnosis_code_11
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd13
-        description: diag_cd13
+      - name: diagnosis_code_12
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd14
-        description: diag_cd14
+      - name: diagnosis_code_13
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd15
-        description: diag_cd15
+      - name: diagnosis_code_14
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd16
-        description: diag_cd16
+      - name: diagnosis_code_15
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd17
-        description: diag_cd17
+      - name: diagnosis_code_16
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd18
-        description: diag_cd18
+      - name: diagnosis_code_17
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd19
-        description: diag_cd19
+      - name: diagnosis_code_18
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd20
-        description: diag_cd20
+      - name: diagnosis_code_19
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd21
-        description: diag_cd21
+      - name: diagnosis_code_20
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd22
-        description: diag_cd22
+      - name: diagnosis_code_21
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd23
-        description: diag_cd23
+      - name: diagnosis_code_22
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd24
-        description: diag_cd24
+      - name: diagnosis_code_23
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
-      - name: diag_cd25
-        description: diag_cd25
+      - name: diagnosis_code_24
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
+
+      - name: diagnosis_code_25
+        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
       - name: dischg_stat_cd
         description: dischg_stat_cd
@@ -377,9 +380,6 @@ models:
 
       - name: pot_cd
         description: Standardized place of service code (01, 03, 21, ...)
-
-      - name: primary_diag_cd
-        description: Standardized ICD (International Classification of Diseases) diagnostic code.
 
       - name: product_or_service
         description: When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item.

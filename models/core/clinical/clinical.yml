@@ -3,12 +3,16 @@ version: 2
 models:
   - name: condition
     description: A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_condition
+            - client_id
     columns:
-      - name: identifier
+      - name: identifier_condition
         description: Unique identifier for the distinct diagnosis for a patient
         tests:
           - not_null
-          - unique
 
       - name: identifier_external_source
         description: Surrogate key made from various external source IDs
@@ -22,6 +26,9 @@ models:
 
       - name: recorded_date
         description: Date record was first recorded
+
+      - name: category_code
+        description: A code that classifies the type of condition——e.g., claim or clinical
 
       - name: code
         description: Identification of the condition, problem or diagnosis
@@ -48,7 +55,8 @@ models:
         tests:
             - not_blank
             - accepted_values:
-                values: ['ssm']
+                values: ['ssm',
+                         'humana']
 
       - name: ingest_date
         description: Strive ingest date
