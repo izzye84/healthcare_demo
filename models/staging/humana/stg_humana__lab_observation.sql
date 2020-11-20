@@ -1,135 +1,118 @@
 with
 
 lab_base as (
-    select * from {{ ref('base_ssm__lab') }}
+    select * from {{ ref('base_humana__lab') }}
 ),
 
-crosswalk_base as (
-    select * from {{ ref('base_ssm__crosswalk') }}
+loinc_base as (
+    select * from {{ ref('stg_reference_data__loinc') }}
+),
+
+loinc_concept_10000 as (
+    select loinc_num
+    from loinc_base
+    where component like '%Glomerular filtration%'
+),
+
+loinc_concept_10001 as (
+    select loinc_num
+    from loinc_base
+    where (component like 'Albumin/Creatinine%'
+    or component like 'Microalbumin/Creatinine%')
+),
+
+loinc_concept_10002 as (
+    select loinc_num
+    from loinc_base
+    where component = 'Albumin'
+    and body_system in ('Ser', 'Ser/Plas', 'Ser/Plas/Bld', 'Ser/Bld', 'Ser+Plas', 'Ser+Bld', 'Bld')
+),
+
+loinc_concept_10003 as (
+    select loinc_num
+    from loinc_base
+    where component = 'Phosphate'
+    and body_system in ('Ser', 'Ser/Plas', 'Ser/Plas/Bld', 'Ser/Bld', 'Ser+Plas', 'Ser+Bld', 'Bld')
+),
+
+loinc_concept_10004 as (
+    select loinc_num
+    from loinc_base
+    where component = 'Calcium'
+    and body_system in ('Ser', 'Ser/Plas', 'Ser/Plas/Bld', 'Ser/Bld', 'Ser+Plas', 'Ser+Bld', 'Bld')
+),
+
+loinc_concept_10005 as (
+    select loinc_num
+    from loinc_base
+    where component like 'Hemoglobin A1c%'
+    and body_system in ('Ser', 'Ser/Plas', 'Ser/Plas/Bld', 'Ser/Bld', 'Ser+Plas', 'Ser+Bld', 'Bld')
+),
+
+loinc_concept_10006 as (
+    select loinc_num
+    from loinc_base
+    where component = 'Carbon dioxide'
+    and body_system in ('Ser', 'Ser/Plas', 'Ser/Plas/Bld', 'Ser/Bld', 'Ser+Plas', 'Ser+Bld', 'Bld')
+),
+
+loinc_concept_10007 as (
+  select loinc_num
+  from loinc_base
+  where component = 'Cholesterol.in LDL'
+  and body_system in ('Ser', 'Ser/Plas', 'Ser/Plas/Bld', 'Ser/Bld', 'Ser+Plas', 'Ser+Bld', 'Bld')
 
 ),
 
-joined as (
-    select crosswalk_base.person_id
-        ,crosswalk_base.lob
-        ,crosswalk_base.insurance_name
-        ,lab_base.identifier_encounter
-        ,lab_base.lab_id
-        ,lab_base.reason_code
-        ,lab_base.reason_display
-        ,lab_base.code_source
-        ,lab_base.code_source_display
-        ,lab_base.code_source_system
-        ,lab_base.value_quantity
-        ,lab_base.value_quantity_unit
-        ,lab_base.value_string
-        ,lab_base.value_boolean
-        ,lab_base.reference_range_text
-        ,lab_base.interpretation_code
-        ,lab_base.status_code
-        ,lab_base.effective_date
-        ,lab_base.ingest_date
-        ,lab_base.client_id
-    from lab_base inner join crosswalk_base
-        on lab_base.patient_account_number = crosswalk_base.enterprise_mrn
+loinc_concept_10008 as (
+    select loinc_num
+    from loinc_base
+    where component like 'Triglyceride'
+    and body_system in ('Ser', 'Ser/Plas', 'Ser/Plas/Bld', 'Ser/Bld', 'Ser+Plas', 'Ser+Bld', 'Bld')
 ),
 
 /***********************************************************
  Creates surrogate keys
- Maps codes for status, category, and interpretation
- Parses reference_range_text to low and high with exceptions
+ Splits result value into string and numeric, the order of
+ the case statements is important!
 ************************************************************/
 mapped as (
-    select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','identifier_encounter','lab_id','code_source','code_source_display','value_quantity','value_string']) }} as identifier_observation
-        ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','identifier_encounter','lab_id','reason_code','reason_display']) }} as identifier_order
-        ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name'])}} as identifier_external_source
-        ,identifier_encounter
-
-        ,case status_code
-            when 'P' then 'preliminary'
-            when 'F' then 'final'
-            when 'V' then 'final'
-            when 'A' then 'amended'
-            when 'C' then 'corrected'
-            when 'W' then 'entered-in-error'
-            else 'unknown'
-            end as status_code
-
-        ,case status_code
-            when 'P' then 'Preliminary'
-            when 'F' then 'Final'
-            when 'V' then 'Final'
-            when 'A' then 'Amended'
-            when 'C' then 'Corrected'
-            when 'W' then 'Entered in Error'
-            else 'Unknown'
-            end as status_display
-
-        ,'http://hl7.org/fhir/observation-status' as status_system
+    select {{ dbt_utils.surrogate_key(['identifier_external_source','identifier_observation']) }} as identifier_observation
+        ,null as identifier_order
+        ,identifier_external_source
+        ,null as identifier_encounter
+        ,null as status_code
+        ,null as status_display
+        ,null as status_system
         ,'laboratory' as category_code
         ,'Laboratory' as category_display
         ,'http://terminology.hl7.org/CodeSystem/observation-category' as category_system
         ,code_source
-        ,code_source_display
-        ,code_source_system
-        ,value_quantity
+        ,null as code_source_display
+        ,null as code_source_system
+
+        ,case when regexp_count(value_quantity, '^\\-?[0-9]\\d*(\\.\\d+)?$') > 0 then value_quantity
+            else null
+            end as value_quantity
+
         ,value_quantity_unit
-        ,value_string
-        ,value_boolean
-        ,interpretation_code
 
-        ,case interpretation_code
-            when 'L' then 'Low'
-            when 'H' then 'High'
-            when 'LL' then 'Critical low'
-            when 'HH' then 'Critical high'
-            when '<' then 'Off scale low'
-            when '>' then 'Off scale high'
-            when 'N' then 'Normal'
-            when 'A' then 'Abnormal'
-            when 'AA' then 'Critical abnormal'
-            when 'U' then 'Significant change up'
-            when 'D' then 'Significant change down'
-            when 'B' then 'Better'
-            when 'W' then 'Worse'
-            when 'S' then 'Susceptible'
-            when 'MS' then 'Susceptible'
-            when 'VS' then 'Susceptible'
-            when 'R' then 'Resistant'
-            when 'I' then 'Intermediate'
-            when 'POS' then 'Positive'
-            when 'NEG' then 'Negative'
-            when 'IND' then 'Indeterminate'
-            when 'DET' then 'Detected'
-            when 'ND' then 'Not detected'
-            when 'AC' then 'Anti-complementary substances present'
-            when 'TOX' then 'Cytotoxic substance present'
-            when 'QCF' then 'Quality Control Failure'
-            when 'RR' then 'Reactive'
-            when 'WR' then 'Weakly reactive'
-            when 'NR' then 'Non-reactive'
-            when 'HM' then 'Hold for Medical Review'
+        ,case when regexp_count(value_quantity, '^\\-?[0-9]\\d*(\\.\\d+)?$') = 0 then value_quantity
             else null
-            end as interpretation_display
+            end as value_string
 
-        ,'http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation' as interpretation_system
-
-        ,case
-            when split_part(reference_range_text,'-',3) is null then split_part(reference_range_text,'-',1)
-            else null
-            end as reference_range_low
-
-        ,case
-            when split_part(reference_range_text,'-',3) is null then split_part(reference_range_text,'-',2)
-            else null
-            end as reference_range_high
-
-        ,reference_range_text
+        ,null as value_boolean
+        ,null as interpretation_code
+        ,null as interpretation_display
+        ,null as interpretation_system
+        ,null as reference_range_low
+        ,null as reference_range_high
+        ,null as reference_range_text
         ,effective_date
         ,effective_date as issued_date
         ,ingest_date
         ,client_id
-    from joined
+    from lab_base
 ),
 
 /***************************************************
@@ -167,10 +150,11 @@ lab_concept_10000 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display like '%GFR%'
-        and value_quantity not in ('9999999', '0')
-        and value_quantity is not null
-        and value_quantity not like '%.%'
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10000
+        )
+    and value_quantity is not null
 ),
 
 /***************************************************
@@ -208,9 +192,11 @@ lab_concept_10001 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display like 'MICROALB%CREAT%'
-        and value_quantity not in ('9999999')
-        and value_quantity is not null
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10001
+        )
+    and value_quantity is not null
 ),
 
 /***************************************************
@@ -248,9 +234,11 @@ lab_concept_10002 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display like 'ALBUMIN'
-        and value_quantity not in ('9999999')
-        and value_quantity is not null
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10002
+        )
+    and value_quantity is not null
 ),
 
 /***************************************************
@@ -288,9 +276,11 @@ lab_concept_10003 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display like 'PHOSPHORUS'
-        and value_quantity not in ('9999999')
-        and value_quantity is not null
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10003
+        )
+    and value_quantity is not null
 ),
 
 /***************************************************
@@ -328,9 +318,11 @@ lab_concept_10004 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display like 'CALCIUM'
-        and value_quantity not in ('9999999')
-        and value_quantity is not null
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10004
+        )
+    and value_quantity is not null
 ),
 
 /***************************************************
@@ -368,9 +360,11 @@ lab_concept_10005 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display like '%A1C%'
-        and value_quantity not in ('9999999')
-        and value_quantity is not null
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10005
+        )
+    and value_quantity is not null
 ),
 
 /***************************************************
@@ -408,9 +402,11 @@ lab_concept_10006 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display like 'CO2'
-        and value_quantity not in ('9999999')
-        and value_quantity is not null
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10006
+        )
+    and value_quantity is not null
 ),
 
 /***************************************************
@@ -448,9 +444,11 @@ lab_concept_10007 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display in ('LDL', 'LDL EXTERNAL', 'LDL CALCULATED EXTERNAL', 'LDL CALCULATED', 'LDL DIRECT', 'LDL DIRECT EXTERNAL')
-        and value_quantity not in ('9999999')
-        and value_quantity is not null
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10007
+        )
+    and value_quantity is not null
 ),
 
 /***************************************************
@@ -488,9 +486,11 @@ lab_concept_10008 as (
         ,ingest_date
         ,client_id
     from mapped
-    where code_source_display in ('TRIGLYCERIDES', 'TRIGLYCERIDES EXTERNAL', 'TRIGLYCERIDES FLD')
-        and value_quantity not in ('9999999')
-        and value_quantity is not null
+    where code_source in (
+        select loinc_num
+        from loinc_concept_10008
+        )
+    and value_quantity is not null
 )
 
 select * from lab_concept_10000

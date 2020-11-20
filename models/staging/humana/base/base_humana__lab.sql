@@ -23,15 +23,15 @@ lab_dedup as (
 ),
 
 renamed as (
-    select {{ dbt_utils.surrogate_key(['lab_result_key']) }} as identifier
+    select {{ dbt_utils.surrogate_key(['lab_result_key']) }} as identifier_observation
         ,{{ dbt_utils.surrogate_key(['pers_gen_key']) }} as identifier_external_source
         ,{{ empty_string_to_null('src_mbr_id') }} as src_mbr_id
         ,{{ empty_string_to_null('src_platform_cd') }} as src_platform_cd
         ,{{ empty_string_to_null('loinc_cd') }} as code_source
         ,{{ empty_string_to_null('vendor_loinc_cd') }} as vendor_loinc_cd
-        ,try_cast({{ empty_string_to_null('lab_results_value') }} as double) as value_quantity
+        ,{{ empty_string_to_null('lab_results_value') }} as value_quantity
         ,{{ empty_string_to_null('vendor_results_units_desc') }} as value_quantity_unit
-        ,{{ empty_string_to_null('service_date') }} as effective_date
+        ,date(service_date) as effective_date
         ,{{ empty_string_to_null('cov_month') }} as cov_month
         ,{{ empty_string_to_null('client_id') }} as client_id
         ,ingest_date as ingest_date

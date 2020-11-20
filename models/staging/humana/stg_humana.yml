@@ -3,6 +3,7 @@ version: 2
 models:
   - name: stg_humana__referral
     description: Staging step for Humana referrals
+
     columns:
       - name: identifier_external_source
         description: Surrogate key made from various external source IDs
@@ -83,6 +84,7 @@ models:
 
   - name: stg_humana__patient_demographics
     description: Staging step for Humana patient demographics
+
     columns:
       - name: identifier_external_source
         description: Surrogate key made from various external source IDs
@@ -112,6 +114,7 @@ models:
 
   - name: stg_humana__eligibility
     description: Staging step for Humana eligibility
+
     columns:
       - name: identifier
         description: Unique identifier for the most recent insurance coverage of a Member
@@ -179,6 +182,7 @@ models:
 
   - name: stg_humana__claim_header
     description: Add missing columns to Humana's claim header data
+
     columns:
       - name: identifier_claim_header
         description: A unique identifier assigned to this claim.
@@ -226,6 +230,7 @@ models:
           combination_of_columns:
             - identifier_claim_header
             - identifier_claim_line
+
     columns:
       - name: identifier_claim_header
         description: A unique identifier assigned to this claim.
@@ -271,6 +276,7 @@ models:
 
   - name: stg_humana__pharmacy_claims
     description: Add missing columns to Humana's claim header data
+
     columns:
       - name: identifier_claim_header
         description: A unique identifier assigned to this claim.
@@ -313,6 +319,7 @@ models:
 
   - name: stg_humana__claim_diagnoses
     description: Staging step for Humana clinical diagnoses
+
     columns:
       - name: identifier_condition
         description: Unique identifier for the distinct diagnosis for a patient
@@ -363,3 +370,118 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: stg_humana__lab_observation
+    description: Staging step for Humana lab results to observations for labs that have been coded to the Strive Lab Code System
+
+    columns:
+      - name: identifier_observation
+        description: Surrogate key for the result made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_order
+        description: Placeholder, not applicable for Humana
+
+      - name: identifier_external_source
+        description: Surrogate key for the patient made from various external source IDs
+        tests:
+          - not_null
+
+      - name: identifier_encounter
+        description: Placeholder, not applicable for Humana
+
+      - name: status_code
+        description: Placeholder, not applicable for Humana
+
+      - name: status_display
+        description: Placeholder, not applicable for Humana
+
+      - name: status_system
+        description: Placeholder, not applicable for Humana
+
+      - name: category_code
+        description: A code that classifies the general type of observation being made
+
+      - name: category_display
+        description: Display value
+
+      - name: category_system
+        description: Coding system
+
+      - name: code_source
+        description: Source code that classifies the general type of observation being made
+
+      - name: code_source_display
+        description: Placeholder, not applicable for Humana
+
+      - name: code_source_system
+        description: Placeholder, not applicable for Humana
+
+      - name: code_strive
+        description: Strive's coded concept that classifies the general type of observation being made
+
+      - name: code_strive_display
+        description: Display value
+
+      - name: code_strive_system
+        description: Coding system
+
+      - name: value_quantity
+        description: The information determined as a result of making the observation, if the information has a simple value
+        tests:
+          - not_null
+
+      - name: value_quantity_unit
+        description: Unit of measure for the value_quantity
+
+      - name: value_string
+        description: The information determined as a result of making the observation, if the information is a string
+
+      - name: value_boolean
+        description: Placeholder, not applicable for Humana
+
+      - name: interpretation_code
+        description: Placeholder, not applicable for Humana
+
+      - name: interpretation_display
+        description: Placeholder, not applicable for Humana
+
+      - name: interpretation_system
+        description: Placeholder, not applicable for Humana
+
+      - name: reference_range_low
+        description: Placeholder, not applicable for Humana
+
+      - name: reference_range_high
+        description: Placeholder, not applicable for Humana
+
+      - name: reference_range_text
+        description: Placeholder, not applicable for Humana
+
+      - name: effective_date
+        description: Clinically relevant time/time-period for observation
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: issued_date
+        description: Date/Time this version was made available
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: [ 'humana' ]
