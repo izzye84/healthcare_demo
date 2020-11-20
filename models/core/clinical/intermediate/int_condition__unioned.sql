@@ -6,6 +6,11 @@ with conditions_unioned as (
     union all
 
     select *
+    from {{ ref('stg_ssm__claim_diagnoses') }}
+
+    union all
+
+    select *
     from {{ ref('stg_humana__claim_diagnoses') }}
 
 )
