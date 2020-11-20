@@ -301,4 +301,4 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: [ 'ssm' ]
+              values: ['ssm','humana']

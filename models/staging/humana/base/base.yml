@@ -597,15 +597,12 @@ models:
 
   - name: base_humana__lab
     description: Base Humana lab claims
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - identifier
     columns:
-      - name: identifier
+      - name: identifier_observation
         description: Unique identifier per lab result
         tests:
           - not_null
+          - unique
 
       - name: identifier_external_source
         description: Source values that identify a unique Patient
@@ -626,14 +623,15 @@ models:
 
       - name: value_quantity
         description: Text or numeric value depending on result type
-        tests:
-          - not_null
 
       - name: value_quantity_unit
         description: Result unit description
 
       - name: effective_date
         description: Date of the lab result
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: cov_month
         description: Month from cov_eff_date

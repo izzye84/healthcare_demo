@@ -1002,7 +1002,7 @@ sources:
             descripiton: Certification date
 
       - name: loinc
-        description: Export of all LOINC terms from https://loinc.org/downloads/loinc-table
+        description: Export of all LOINC codes from https://loinc.org/downloads/loinc-table
         identifier: loinc
 
         columns:
@@ -1156,7 +1156,7 @@ sources:
                   - medicare_specialty_code
                   - provider_taxonomy_code
                   - medicare_provider_supplier_type_description
-        
+
         columns:
           - name: medicare_specialty_code
             description: Medicare specialty code
