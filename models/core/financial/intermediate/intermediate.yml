@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: claim_header__union
+  - name: int_claim_header__union
     description: Consolidate client claim_header data into a single dataset
     tests:
       - dbt_utils.unique_combination_of_columns:
@@ -44,7 +44,7 @@ models:
       - name: ingest_date
         description: Most recent ingest date
 
-  - name: claim_line__union
+  - name: int_claim_line__union
     description: Consolidate client claim_line data into a single dataset
     tests:
       - dbt_utils.unique_combination_of_columns:
