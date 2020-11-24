@@ -1163,7 +1163,7 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - patient_account_number
-            - encounter
+            - identifier_encounter
             - code_source
             - value_quantity
             - ingest_date
