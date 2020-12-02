@@ -17,6 +17,7 @@ humana_patient as (
 select identifier_external_source
     ,identifier_external_subscriber_id
     ,identifier_sh_uid
+    ,active
     ,name_given_first
     ,name_given_middle
     ,name_family
@@ -51,6 +52,7 @@ union all
 select identifier_external_source
     ,identifier_external_subscriber_id
     ,identifier_sh_uid
+    ,active
     ,name_given_first
     ,null as name_given_middle
     ,name_family

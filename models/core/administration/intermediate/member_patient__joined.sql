@@ -10,12 +10,17 @@ patient as (
 
 platform_shuid as (
     select * from {{ ref('stg_platform__shuid') }}
+),
+
+platform_admissibility as (
+    select * from {{ ref('stg_platform__admissibility') }}
 )
 
 select 
     member.identifier_external_source
     ,member.identifier_external_subscriber_id
     ,platform_shuid.identifier_sh_uid
+    ,platform_admissibility.active
     ,coalesce(patient.name_given_first,member.name_given_first) as name_given_first
     ,member.name_given_middle
     ,coalesce(patient.name_family,member.name_family) as name_family
@@ -43,4 +48,5 @@ select
     ,coalesce(patient.ingest_date,member.ingest_date) as ingest_date
 from member left join patient
     on member.identifier_external_source = patient.identifier_external_source left join platform_shuid
-    on member.identifier_external_source = platform_shuid.identifier_external_source
+    on member.identifier_external_source = platform_shuid.identifier_external_source left join platform_admissibility
+    on platform_shuid.identifier_sh_uid = platform_admissibility.identifier_sh_uid

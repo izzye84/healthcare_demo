@@ -30,3 +30,20 @@ models:
           - not_null
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
+
+  - name: stg_platform__admissibility
+    description: Staging step to find the most recent admissibility value for each `sh_uid`
+
+    columns:
+      - name: identifier_sh_uid
+        description: Strive assigned `sh_uid`
+        tests:
+          - not_null
+          - unique
+
+      - name: active
+        description: Flag to indicate whether a patient is considered admissible or not
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true','false']
