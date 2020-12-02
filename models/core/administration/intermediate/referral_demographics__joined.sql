@@ -10,12 +10,17 @@ patient_demographics as (
 
 platform_shuid as (
     select * from {{ ref('stg_platform__shuid') }}
+),
+
+platform_admissibility as (
+    select * from {{ ref('stg_platform__admissibility') }}
 )
 
 select
     referral.identifier_external_source
     ,referral.identifier_external_subscriber_id
     ,platform_shuid.identifier_sh_uid
+    ,platform_admissibility.active
     ,referral.name_given_first
     ,referral.name_family
     ,referral.birth_date
@@ -35,4 +40,5 @@ select
     ,referral.ingest_date
 from referral left join patient_demographics
     on referral.identifier_external_source = patient_demographics.identifier_external_source left join platform_shuid
-    on referral.identifier_external_source = platform_shuid.identifier_external_source
+    on referral.identifier_external_source = platform_shuid.identifier_external_source left join platform_admissibility
+    on platform_shuid.identifier_sh_uid = platform_admissibility.identifier_sh_uid

@@ -18,6 +18,12 @@ models:
       - name: identifier_sh_uid
         description: Strive assigned `sh_uid`
 
+      - name: active
+        description: Whether this patient's record is in active use. Can be used to determine admissibility
+        tests:
+          - accepted_values:
+              values: ['true','false']
+
       - name: name_given_first
         description: First name associated with the patient
 
