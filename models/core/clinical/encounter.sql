@@ -1,12 +1,11 @@
 {{ config(dist = 'subject') }}
 
-with
-
-ssm_clinical_encounters as (
+with all_client_encounters as (
 
     select *
-    from {{ ref('stg_ssm__clinical_encounters') }}
+    from {{ ref('int_encounters__unioned') }}
+
 )
 
 select *
-from ssm_clinical_encounters
+from all_client_encounters
