@@ -113,17 +113,27 @@ models:
 
   - name: encounter
     description: An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_encounter
+            - client_id
     columns:
       - name: identifier_encounter
         description: Identifier(s) by which this encounter is known.
         tests:
           - not_null
-          - unique
 
       - name: identifier_external_encounter
         description: Surrogate key made from various external source IDs
         tests:
           - not_null
+
+      - name: hospitalization_admit_source
+        description: From where patient was admitted (physician referral, transfer).
+
+      - name: hospitalization_discharge_disposition_code
+        description: Category or kind of location after discharge.
 
       - name: status
         description: planned, arrived, triaged, in-progress, onleave, finished, cancelled +.
@@ -131,7 +141,7 @@ models:
       - name: type
         description: Specific type of encounter——clinical or claim.
 
-      - name: service_type
+      - name: service_type_code
         description: Broad categorization of the service that is to be provided (e.g. cardiology).
 
       - name: subject

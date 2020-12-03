@@ -1,9 +1,3 @@
-{{
-    config(
-        materialized = 'ephemeral'
-    )
-}}
-
 with source as (
 
     select * from {{ source('ssm_claims','claim_detail') }}
@@ -23,6 +17,9 @@ source_renamed as (
     select {{ empty_string_to_null('claim_number') }} as identifier_claim_header,
            {{ empty_string_to_null('claim_line_number') }} as identifier_claim_line,
            {{ empty_string_to_null('claim_sequence_number') }} as claim_sequence_number,
+           {{ dbt_utils.surrogate_key(['patient_external_id',
+                                       'lob',
+                                       'insurance_name']) }} as patient,
            {{ empty_string_to_null('patient_external_id') }} as patient_external_id,
            {{ empty_string_to_null('subsciber_id') }} as subsciber_id,
            {{ empty_string_to_null('dependent_number') }} as dependent_number,
@@ -50,6 +47,8 @@ source_renamed as (
            payment_date_time,
            plan_payment_amount as net,
            member_payment_amount,
+           lob,
+           insurance_name,
            client_id,
            ingest_date
 

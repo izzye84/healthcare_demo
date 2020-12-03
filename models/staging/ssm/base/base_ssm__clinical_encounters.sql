@@ -24,6 +24,7 @@ source_renamed as (
 
     select {{ empty_string_to_null('clinical_encounter_facility_name') }} as clinical_encounter_facility_name,
            {{ empty_string_to_null('clinical_encounter_id') }} as identifier_external_encounter,
+           {{ empty_string_to_null('provider_npi') }} as participant_individual,
            {{ empty_string_to_null('patient_account_number') }} as patient_account_number,
            {{ empty_string_to_null('patient_id') }} as patient_id,
            clinical_encounter_date as period,
@@ -33,8 +34,7 @@ source_renamed as (
            {{ empty_string_to_null('place_of_service_description') }} as place_of_service_description,
            {{ empty_string_to_null('provider_id') }} as provider_id,
            {{ empty_string_to_null('clinical_encounter_reason') }} as reason_code_text,
-           {{ empty_string_to_null('provider_npi') }} as service_provider,
-           {{ empty_string_to_null('clinical_encounter_visit_type') }} as service_type,
+           {{ empty_string_to_null('clinical_encounter_visit_type') }} as service_type_code,
            {{ empty_string_to_null('clinical_encounter_status') }} as status,
            {{ empty_string_to_null('user_id') }} as user_id,
            created_timestamp,

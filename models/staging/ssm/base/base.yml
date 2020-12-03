@@ -723,6 +723,9 @@ models:
       - name: claim_sequence_number
         description: claim_sequence_number
 
+      - name: patient
+        description: patient
+
       - name: patient_external_id
         description: patient_external_id
 
@@ -961,6 +964,9 @@ models:
         tests:
           - not_null
 
+      - name: participant_individual
+        description: participant_individual
+
       - name: patient_account_number
         description: patient_account_number
         tests:
@@ -1001,11 +1007,8 @@ models:
       - name: reason_code_text
         description: reason_code_text
 
-      - name: service_provider
-        description: service_provider
-
-      - name: service_type
-        description: service_type
+      - name: service_type_code
+        description: service_type_code
 
       - name: status
         description: status
