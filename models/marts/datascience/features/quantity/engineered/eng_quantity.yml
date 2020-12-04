@@ -67,5 +67,29 @@ models:
       - name: feature_date
         description: Date the event occurred. The `serviced_period_end` in the `core.claim_item` resource
 
+  - name: eng_readmission_status_30day
+    description: Status flag indicating if patient readmits within 30 days of discharge (1 - yes, 0 - no)
+
+    columns:
+      - name: feature_link
+        description: Field used to link the 30 day readmission feature to `identifier_claim_header` in the `core.claim_item` resource
+        tests:
+          - not_null
+
+      - name: feature_code
+        description: Strive Data Science feature code. [Reference](https://strivehealth.atlassian.net/wiki/spaces/STRIVEHEAL/pages/844955749/Strive+Data+Science+Model+Features+Code+System)
+
+      - name: feature_display
+        description: Description of the Strive Data Science feature code
+
+      - name: feature_value
+        description: Readmission Status at 30 Days
+        tests:
+          - accepted_values:
+              values: ['0','1']
+
+      - name: feature_date
+        description: Date the event occurred. The `serviced_period_end` in the `core.claim_item` resource
+
       
       
