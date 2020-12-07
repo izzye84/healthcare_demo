@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: eng_admission_discharge_status
+    description: Coded value indicating patient status at hospital discharge
+
+    columns:
+      - name: feature_link
+        description: Field used to link the hospitalization encounter discharge status feature to `identifier_claim_header` in the `core.claim_item` resource
+        tests:
+          - not_null
+
+      - name: feature_code
+        description: Strive Data Science feature code. [Reference](https://strivehealth.atlassian.net/wiki/spaces/STRIVEHEAL/pages/844955749/Strive+Data+Science+Model+Features+Code+System)
+
+      - name: feature_display
+        description: Description of the Strive Data Science feature code
+
+      - name: feature_value
+        description: Hospital Admission Discharge Status
+
+      - name: feature_date
+        description: Date the event occurred. The `serviced_period_end` in the `core.claim_item` resource

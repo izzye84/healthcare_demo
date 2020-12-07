@@ -41,6 +41,12 @@ age_at_claim_date as (
 	where feature_code = '100000'
 ),
 
+discharge_disposition as (
+	select *
+	from {{ ref('string_features') }}
+	where feature_code = '100002'
+),
+
 readmit_30day as (
 	select *
 	from {{ ref('quantity_features') }}
@@ -56,11 +62,13 @@ add_features as (
 		,admit_rate.feature_value as admit_rate_12months
 		,admit_length.feature_value as admit_length
 		,age_at_claim_date.feature_value as age_at_claim_date
+		,discharge_disposition.feature_value as discharge_disposition
 		,readmit_30day.feature_value as readmit_status_30day
 	from joined left join admit_rate
 	on joined.identifier_claim_header = admit_rate.feature_link left join admit_length
 	on joined.identifier_claim_header = admit_length.feature_link left join age_at_claim_date
-	on joined.identifier_claim_header = age_at_claim_date.feature_link left join readmit_30day
+	on joined.identifier_claim_header = age_at_claim_date.feature_link left join discharge_disposition
+	on joined.identifier_claim_header = discharge_disposition.feature_link left join readmit_30day
 	on joined.identifier_claim_header = readmit_30day.feature_link
 )
 
@@ -69,4 +77,5 @@ from add_features
 where admit_rate_12months is not null
 or admit_length is not null
 or age_at_claim_date is not null
+or discharge_disposition is not null
 or readmit_status_30day is not null
