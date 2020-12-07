@@ -16,6 +16,7 @@ sources:
                 - payer
                 - sh_uid
                 - id
+                - table_id
                 - ingest_id
         columns:
           - name: sh_uid

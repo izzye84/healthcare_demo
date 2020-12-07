@@ -2,7 +2,7 @@ with
 
 eligibility_ssm_shuid as (
     
-    select row_number() over(partition by member_id,insurance_type,payer,sh_uid order by ingest_id desc) as row_num
+    select row_number() over(partition by member_id,insurance_type,payer order by ingest_id desc, table_id desc) as row_num
         ,trim(member_id) as member_id
         ,trim(insurance_type) as insurance_type
         ,trim(payer) as payer
@@ -14,7 +14,7 @@ eligibility_ssm_shuid as (
 ),
 
 eligibility_humana_shuid as (
-    select row_number() over(partition by member_id,sh_uid order by ingest_id desc) as row_num
+    select row_number() over(partition by member_id order by ingest_id desc, table_id desc) as row_num
         ,trim(member_id) as member_id
         ,sh_uid
         ,client_id
