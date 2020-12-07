@@ -15,6 +15,7 @@ sources:
                 - insurance_name
                 - eff_date
                 - ingest_date
+              severity: warn
         identifier: member_eligibility
         columns:
           - name: first_name
@@ -115,6 +116,7 @@ sources:
                 - lob
                 - insurance_name
                 - ingest_date
+              severity: warn
         columns:
           - name: insurance_name
             description: Member insurance name
@@ -135,7 +137,8 @@ sources:
           - name: enterprise_mrn
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `patient_account_number` in the SSM clinical `patient` source
             tests:
-              - not_blank
+              - not_blank:
+                  severity: warn
           
           - name: person_id
             description: Crosswalk person_id. This ID matches the `patient_id` in the `member_eligibility` source

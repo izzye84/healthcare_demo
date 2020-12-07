@@ -7,7 +7,7 @@
 with
 
 member_crosswalk_source as (
-    select * from {{ source('ssm_claims','member_crosswalk') }}
+    select * from {{ source('ssm_claims','member_crosswalk') }} where enterprise_mrn <> ''
 ),
 
 member_crosswalk_add_rownum as (
