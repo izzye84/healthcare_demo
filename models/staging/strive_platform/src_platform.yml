@@ -236,6 +236,7 @@ sources:
           - name: admissible
             description: Flag indicating whether the patient is admissible into the Strive program
             tests:
+              - not_null
               - accepted_values:
                   values: ['true', 'false']
 

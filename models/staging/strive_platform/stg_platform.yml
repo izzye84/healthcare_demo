@@ -31,7 +31,7 @@ models:
           - is_date:
               date_format: yyyy-mm-dd HH24:MI:SS
 
-  - name: stg_platform__admissibility
+  - name: stg_platform__current_admissibility
     description: Staging step to find the most recent admissibility value for each `sh_uid`
 
     columns:

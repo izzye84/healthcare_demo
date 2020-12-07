@@ -13,7 +13,7 @@ platform_shuid as (
 ),
 
 platform_admissibility as (
-    select * from {{ ref('stg_platform__admissibility') }}
+    select * from {{ ref('stg_platform__current_admissibility') }}
 )
 
 select 
