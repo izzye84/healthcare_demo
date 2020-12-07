@@ -205,3 +205,34 @@ models:
 
       - name: telecom_work_fax_number
         description: Practitioner work fax number associated with the practice
+
+  - name: episode_of_care
+    description: >
+      An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. 
+      The managing organization assumes a level of responsibility for the patient during this time.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_sh_uid
+            - period_start
+
+    columns:
+      - name: identifier_sh_uid
+        description: Strive Unique patient ID
+        tests:
+          - not_null
+
+      - name: period_start
+        description: Date when patient is determined to be admissible and responsibility is assumed
+
+      - name: period_end
+        description: Date when patient is determined to be not admissible and responsibility is no longer assumed
+
+      - name: status
+        description: Current status for the Episode of Care
+
+      - name: status_reason
+        description: Current status reason for the Episode of Care
+
+      - name: client_id
+        description: Strive client ID

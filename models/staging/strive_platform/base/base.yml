@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: base_platform__admissibility
+    description: Base Platform admissibility
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_sh_uid
+            - ingest_date
+    columns:
+      - name: identifier_sh_uid
+        description: Strive Unique Patient ID
+        tests:
+          - not_null
+
+      - name: active
+        description: Flag indicating whether the patient is admissible into the Strive program
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Platform ingest Date
+
+  - name: base_platform__enrollment_status
+    description: Base model for Patient Strive enrollment status
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_sh_uid
+            - ingest_date
+          
+    columns:
+      - name: identifier_sh_uid
+        description: Strive Unique Patient ID
+        tests:
+          - not_null
+
+      - name: status
+        description: Current enrollment status of a patient
+
+      - name: status_reason
+        description: Reasons associated with various statuses (e.g. ineligible reason, declined reason, etc.)
+
+      - name: disenrolled_date
+        description: Date the patient was disenrolled from the Strive program
+
+      - name: update_date
+        description: The update date of the enrollment status
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Date the enrollment status job was run
+
+  - name: base_platform__health_cloud_account
+    description: Base model for Health Cloud Account data
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_sh_uid
+            - ingest_date
+
+    columns:
+      - name: identifier_sh_uid
+        description: Strive Unique Patient ID
+        tests:
+          - not_null
+
+      - name: status
+        description: Current enrollment status of a patient
+
+      - name: inadmissible_reason
+        descritpion: Status reason for why a patient is in an inadmissible status
+
+      - name: disenrolled_reason
+        description: Status reason for why a patient is in an disenrolled status
+
+      - name: ingest_date
+        descrtiption: Date the Health Cloud data was ingested into the Platform
+
+      - name: client_id
+        description: Strive client ID
