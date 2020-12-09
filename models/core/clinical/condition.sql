@@ -7,7 +7,7 @@
 with
 
 clinical_diagnoses as (
-    select * from {{ ref('int_condition__unioned') }}
+    select * from {{ ref('int_conditions__unioned') }}
 )
 
 select * from clinical_diagnoses
