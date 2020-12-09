@@ -25,6 +25,7 @@ joined as (
 select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','code','encounter']) }} as identifier
     ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name']) }} as identifier_external_source
     ,encounter
+    ,'clinical' as category_code
     ,code
     ,code_system
     ,date(modified_timestamp) as performed_datetime
