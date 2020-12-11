@@ -7,7 +7,7 @@
 with
 
 clinical_procedure_source as (
-    select * from {{ source('ssm_clinical','procedure') }}
+    select * from {{ source('ssm_clinical','procedure') }} {{ limit_dev_data() }}
 ),
 
 clinical_procedure_add_rownum as (

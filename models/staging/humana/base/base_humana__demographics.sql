@@ -10,6 +10,7 @@ source_referral as (
     select row_number() over(partition by pers_gen_key order by ingest_date desc) as row_num
         ,* 
     from {{ source('humana_src','demographics') }}
+    {{ limit_dev_data() }}
 )
 
 select {{ dbt_utils.surrogate_key(['pers_gen_key']) }} as identifier_external_source

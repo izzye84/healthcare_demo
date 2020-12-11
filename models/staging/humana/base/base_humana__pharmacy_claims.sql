@@ -3,7 +3,7 @@
 with source as (
 
     select *
-    from {{ source('humana_src', 'pharmacy_claims') }}
+    from {{ source('humana_src', 'pharmacy_claims') }} {{ limit_dev_data() }}
 
 ),
 

@@ -7,7 +7,7 @@
 with
 
 lab_source as (
-    select * from {{ source('ssm_clinical','labs') }}
+    select * from {{ source('ssm_clinical','labs') }} {{ limit_dev_data() }}
 ),
 
 lab_add_rownum as (

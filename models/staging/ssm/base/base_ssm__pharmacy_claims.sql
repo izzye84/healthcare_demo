@@ -1,7 +1,8 @@
 with source as (
 
     select *
-    from {{ source('ssm_claims', 'pharmacy_claim') }}
+    from {{ source('ssm_claims', 'pharmacy_claim') }} 
+    {{ limit_dev_data() }}
 
 ),
 

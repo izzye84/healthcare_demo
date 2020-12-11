@@ -32,7 +32,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 on-run-end:
-    - "{{ grant_select_on_schemas(schemas, 'data_users') }}"
+    - "{{ grant_select_on_schemas(schemas, 'transformer') }}"
     
 models:
   strive_health:

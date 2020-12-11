@@ -55,3 +55,9 @@ macros:
         type: string
         description: >
           The group name to apply permissions to
+
+  - name: limit_dev_data
+    description: >
+      Used to limit the amount of data pulled from sources for the dev environment. The default pulls `ingest_date` >= 3 months ago.
+      This default can be overridden from the command line by using the `--vars` flag. For example: To pull `ingest_date` >= 5 months
+      ago, use the command `dbt run --vars 'month_interval: -5'

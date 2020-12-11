@@ -7,7 +7,7 @@
 with
 
 lab_source as (
-    select * from {{ source('humana_src','lab_claims') }}
+    select * from {{ source('humana_src','lab_claims') }} {{ limit_dev_data() }}
 ),
 
 lab_add_rownum as (

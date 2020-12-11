@@ -4,6 +4,7 @@ with source as (
 
     select *
     from {{ source('ssm_clinical', 'encounter') }}
+    {{ limit_dev_data() }}
 
 ),
 
