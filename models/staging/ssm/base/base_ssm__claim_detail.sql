@@ -1,6 +1,6 @@
 with source as (
 
-    select * from {{ source('ssm_claims','claim_detail') }}
+    select * from {{ source('ssm_claims','claim_detail') }} {{ limit_dev_data() }}
 
 ),
 

@@ -38,6 +38,7 @@ source_patient as (
         ,client_id
         ,ingest_date
     from {{ source('ssm_clinical','patient') }}
+    {{ limit_dev_data() }}
 ),
 
 source_member_crosswalk as (

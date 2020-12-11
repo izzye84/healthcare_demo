@@ -7,7 +7,7 @@
 with
 
 vital_source as (
-    select * from {{ source('ssm_clinical','vitals') }}
+    select * from {{ source('ssm_clinical','vitals') }} {{ limit_dev_data() }}
 ),
 
 vital_add_rownum as (

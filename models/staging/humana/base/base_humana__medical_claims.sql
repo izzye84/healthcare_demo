@@ -1,6 +1,6 @@
 with source as (
 
-    select * from {{ source('humana_src','medical_claims') }}
+    select * from {{ source('humana_src','medical_claims') }} {{ limit_dev_data() }}
 
 ),
 

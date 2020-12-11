@@ -33,6 +33,7 @@ source_member_eligibility as (
         ,client_id
         ,ingest_date                
     from {{ source('ssm_claims','member_eligibility') }}
+    {{ limit_dev_data() }}
 )
 
 select distinct

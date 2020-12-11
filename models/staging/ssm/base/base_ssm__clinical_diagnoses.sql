@@ -7,7 +7,7 @@
 with
 
 clinical_diagnoses_source as (
-    select * from {{ source('ssm_clinical','diagnosis') }}
+    select * from {{ source('ssm_clinical','diagnosis') }} {{ limit_dev_data() }}
 ),
 
 clinical_diagnoses_add_rownum as (

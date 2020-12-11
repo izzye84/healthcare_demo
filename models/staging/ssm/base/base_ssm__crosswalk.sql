@@ -7,13 +7,14 @@
 with
 
 member_crosswalk_source as (
-    select * from {{ source('ssm_claims','member_crosswalk') }} where enterprise_mrn <> ''
+    select * from {{ source('ssm_claims','member_crosswalk') }} {{ limit_dev_data() }}
 ),
 
 member_crosswalk_add_rownum as (
     select row_number() over(partition by person_id, lob, insurance_name order by ingest_date desc) as row_num
         ,*
     from member_crosswalk_source
+    where enterprise_mrn <> ''
 ),
 
 member_crosswalk_dedup as (
