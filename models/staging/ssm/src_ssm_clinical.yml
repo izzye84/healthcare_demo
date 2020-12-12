@@ -89,7 +89,8 @@ sources:
           - name: diagnosis_code
             description: Diagnosis code
             tests:
-              - not_blank
+              - not_blank:
+                  severity: warn
 
           - name: onset_date
             description: Onset date of the diagnosis
@@ -1026,7 +1027,8 @@ sources:
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_null:
+                  severity: warn
 
           - name: reason
             description: Reason for surgery
