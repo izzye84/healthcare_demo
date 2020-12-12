@@ -55,6 +55,7 @@ source_renamed as (
            ingest_date
 
     from add_row_num
+    where row_num = 1
 
 )
 
