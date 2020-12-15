@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_humana__claim_encounters
+    description: Staging step for Humana claim encounters
+    columns:
+      - name: identifier_encounter
+        description: Unique identifier for a patients encounter
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_encounter
+        description: identifier_external_encounter
+
+      - name: hospitalization_admit_source
+        description: hospitalization_admit_source
+
+      - name: hospitalization_discharge_disposition_code
+        description: hospitalization_discharge_disposition_code
+
+      - name: status
+        description: status
+
+      - name: type
+        description: type
+
+      - name: service_type_code
+        description: service_type_code
+
+      - name: subject
+        description: subject
+        tests:
+          - not_null
+
+      - name: period
+        description: period
+
+      - name: reason_code_text
+        description: reason_code_text
+
+      - name: participant_individual
+        description: participant_individual
+
+      - name: service_provider
+        description: service_provider
+
+      - name: client_id
+        description: client_id
+
+      - name: ingest_date
+        description: ingest_date

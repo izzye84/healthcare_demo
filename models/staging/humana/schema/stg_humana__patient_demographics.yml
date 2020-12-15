@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_humana__patient_demographics
+    description: Staging step for Humana patient demographics
+
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: deceased_date
+        description: Patient deceased date
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['humana']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

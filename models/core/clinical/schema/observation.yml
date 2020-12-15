@@ -1,0 +1,109 @@
+version: 2
+
+models:
+  - name: observation
+    description: Measurements and simple assertions made about a patient, device or other subject.
+    columns:
+      - name: identifier_observation
+        description: Unique identifier for the distinct observation for a patient
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_order
+        description: Unique identifier for the distinct order for an observation, references the order table
+
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+
+      - name: identifier_encounter
+        description: Related clinical encounter
+
+      - name: status_code
+        description: The status of the result value
+
+      - name: status_display
+        description: Display value
+
+      - name: status_system
+        description: Coding system
+
+      - name: category_code
+        description: A code that classifies the general type of observation being made
+
+      - name: category_display
+        description: Display value
+
+      - name: category_system
+        description: Coding system
+
+      - name: code_source
+        description: Source code that classifies the general type of observation being made
+
+      - name: code_source_display
+        description: Display value
+
+      - name: code_source_system
+        description: Coding system
+
+      - name: code_strive
+        description: Strive's coded concept that classifies the general type of observation being made
+
+      - name: code_strive_display
+        description: Display value
+
+      - name: code_strive_system
+        description: Coding system
+
+      - name: value_quantity
+        description: The information determined as a result of making the observation, if the information has a simple value
+
+      - name: value_quantity_unit
+        description: Unit of measure for the value_quantity
+
+      - name: value_string
+        description: The information determined as a result of making the observation, if the information is a string
+
+      - name: value_boolean
+        description: The information determined as a result of making the observation, if the information is a boolean
+
+      - name: interpretation_code
+        description: A categorical assessment of an observation value
+
+      - name: interpretation_display
+        description: Display value
+
+      - name: interpretation_system
+        description: Coding system
+
+      - name: reference_range_low
+        description: Guidance on how to interpret the value by comparison to a normal or recommended range, low range
+
+      - name: reference_range_high
+        description: Guidance on how to interpret the value by comparison to a normal or recommended range, high range
+
+      - name: reference_range_text
+        description: Guidance on how to interpret the value by comparison to a normal or recommended range
+
+      - name: effective_date
+        description: Clinically relevant time/time-period for observation
+
+      - name: issued_date
+        description: Date/Time this version was made available
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ssm','humana']

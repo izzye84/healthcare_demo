@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: order
+    description: A request to perform an action.
+    columns:
+      - name: identifier_order
+        description: Unique identifier for the distinct order for a patient
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+
+      - name: reason_code
+        description: Why the order was made
+
+      - name: reason_display
+        description: Display value
+
+      - name: reason_system
+        description: Coding system
+
+      - name: detail
+        description: What action is being ordered
+
+      - name: order_date
+        description: When the order was made
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: [ 'ssm' ]

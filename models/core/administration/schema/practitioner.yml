@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: practitioner
+    description: >
+      A person who is directly or indirectly involved in the provisioning of healthcare..
+      Refer to the official FHIR documentation for additional information: https://www.hl7.org/fhir/patient.html
+    columns:
+      - name: identifier_npi
+        description: National Provider Identifier (NPI)
+        tests:
+          - not_null
+          - unique
+
+      - name: name_given_first
+        description: First name associated with practitioner
+
+      - name: name_given_middle
+        description: Middle name associated with practitioner
+
+      - name: name_family
+        description: Last name associated with practitioner
+
+      - name: name_prefix
+        description: Name prefix associated with practitioner
+
+      - name: name_suffix
+        description: Name suffix associated with practitioner
+
+      - name: address_line1
+        description: Practitioner business address line 1
+
+      - name: address_line2
+        description: Practitioner business address line 2
+
+      - name: address_city
+        description: Practitioner business address city
+
+      - name: address_state
+        description: Practitioner business address state
+
+      - name: address_postal_code
+        description: Practitioner business addres postal code
+
+      - name: telecom_phone_number_work
+        description: Practitioner business phone number
+
+      - name: telecom_fax_number_work
+        description: Practitioner business fax number
+
+      - name: gender
+        description: Pracitioner gender
+        tests:
+          - accepted_values:
+              values: ['M','F','U',None]

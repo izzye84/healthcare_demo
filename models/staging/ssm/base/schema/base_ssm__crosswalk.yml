@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: base_ssm__crosswalk
+    description: Base SSM Member Crosswalk
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - enterprise_mrn
+            - person_id
+            - lob
+            - insurance_name
+            - ingest_date
+    columns:
+      - name: enterprise_mrn
+        description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `patient_account_number` in the SSM clinical `patient` source
+        tests:
+          - not_null
+
+      - name: person_id
+        description: Crosswalk person_id. This ID matches the `patient_id` in the `member_eligibility` source
+        tests:
+            - not_null
+      - name: lob
+        description: Line of Business for Member's insurance provider
+        tests:
+          - not_null
+
+      - name: insurance_name
+        description: Member insurance name
+        tests:
+          - not_null
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

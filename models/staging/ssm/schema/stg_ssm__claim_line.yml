@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: stg_ssm__claim_line
+    description: Add missing columns to SSM's claim line data
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - identifier_claim_line
+    columns:
+      - name: identifier_claim_header
+        description: A unique identifier assigned to this claim.
+
+      - name: identifier_claim_line
+        description: A number to uniquely identify item entries.
+
+      - name: revenue
+        description: The type of revenue or cost center providing the product and/or service.
+
+      - name: product_or_service
+        description: When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item.
+
+      - name: modifier_1
+        description: Item typification or modifiers codes to convey additional context for the product or service.
+
+      - name: modifier_2
+        description: Item typification or modifiers codes to convey additional context for the product or service.
+
+      - name: serviced_period_start
+        description: The date or dates when the service or product was supplied, performed or completed.
+
+      - name: serviced_period_end
+        description: The date or dates when the service or product was supplied, performed or completed.
+
+      - name: location
+        description: Where the product or service was provided.
+
+      - name: quantity
+        description: The number of repetitions of a service or product.
+
+      - name: unit_price
+        description: The amount charged to the patient by the provider for a single unit.
+
+      - name: net
+        description: The quantity times the unit price for an additional service or product or charge.
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: [ 'ssm' ]
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

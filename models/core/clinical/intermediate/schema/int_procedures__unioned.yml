@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: int_procedures__unioned
+    description: An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier
+            - client_id
+    columns:
+      - name: identifier
+        description: Unique identifier for the distinct diagnosis for a patient
+        tests:
+          - not_null
+
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+
+      - name: encounter
+        description: Clinical encounter ID
+
+      - name: category_code
+        description: A code that classifies the type of condition——e.g., claim or clinical
+
+      - name: code
+        description: Procedure code
+        tests:
+          - not_null
+
+      - name: code_system
+        description: Code system that defines the procedure code
+
+      - name: performed_datetime
+        description: When the procedure was performed
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['ssm', 'humana']
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp

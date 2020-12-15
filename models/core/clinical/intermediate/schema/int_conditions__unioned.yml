@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: int_conditions__unioned
+    description: Consolidate client condition data into a single dataset
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_condition
+            - client_id
+    columns:
+      - name: identifier_condition
+        description: Unique identifier for the distinct diagnosis for a patient
+        tests:
+          - not_null
+
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+
+      - name: encounter
+        description: Unique ID for a clinical encounter where diagnosis was made
+        tests:
+          - not_null
+
+      - name: recorded_date
+        description: Date the diagnosis was recorded
+
+      - name: category_code
+        description: A code that classifies the type of condition——e.g., claim or clinical
+        tests:
+          - accepted_values:
+              values: ['claim',
+                       'clinical']
+
+      - name: code
+        description: Diagnosis code
+        tests:
+          - not_null
+
+      - name: code_system
+        description: The coding system used to define the diagnosis code (e.g. ICD-10)
+
+      - name: onset_datetime
+        description: Estimated or actual date, date-time the diagnosis started
+
+      - name: abatement_datetime
+        description: Date when diagnosis was in resolution/remission
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Strive ingest date

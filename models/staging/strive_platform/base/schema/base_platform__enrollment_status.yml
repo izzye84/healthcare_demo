@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: base_platform__enrollment_status
+    description: Base model for Patient Strive enrollment status
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_sh_uid
+            - ingest_date
+
+    columns:
+      - name: identifier_sh_uid
+        description: Strive Unique Patient ID
+        tests:
+          - not_null
+
+      - name: status
+        description: Current enrollment status of a patient
+
+      - name: status_reason
+        description: Reasons associated with various statuses (e.g. ineligible reason, declined reason, etc.)
+
+      - name: disenrolled_date
+        description: Date the patient was disenrolled from the Strive program
+
+      - name: update_date
+        description: The update date of the enrollment status
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Date the enrollment status job was run

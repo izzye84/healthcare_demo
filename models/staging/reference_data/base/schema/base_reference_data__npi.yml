@@ -1,0 +1,180 @@
+version: 2
+
+models:
+  - name: base_reference_data__npi
+    description: Staging step for NPI reference table
+
+    columns:
+      - name: identifier_npi
+        description: National Provider Identifier (NPI)
+        tests:
+          - not_null
+          - unique
+
+      - name: entity_type_code
+        description: Entity type code
+
+      - name: replacement_npi
+        description: Replacement NPI
+
+      - name: provider_organization_name_business
+        description: Provider organization legal business name
+
+      - name: name_family
+        description: Provider last name
+
+      - name: name_given_first
+        description: Provider first name
+
+      - name: name_given_middle
+        description: Provider middle name
+
+      - name: name_prefix
+        descriptioN: Provider name prefix
+
+      - name: name_suffix
+        descriptioN: Providr name suffix
+
+      - name: provider_credential_text
+        description: Provider credential
+
+      - name: address_line1
+        description: Provider business address line 1
+
+      - name: address_line2
+        description: Provider business address line 2
+
+      - name: address_city
+        description: Provider business address city
+
+      - name: address_state
+        description: Provider business address state
+
+      - name: address_postal_code
+        description: Provider business address postal code
+
+      - name: telecom_phone_number_work
+        description: Provider work phone number
+
+      - name: telecom_fax_number_work
+        description: Provider fax number
+
+      - name: provider_practice_address_line1
+        description: Provider practice address line 1
+
+      - name: provider_practice_addres_line2
+        description: Provider practice address line 2
+
+      - name: provider_practice_address_city
+        description: Provider practice address city
+
+      - name: provider_practice_address_state
+        description: Provider practice address state
+
+      - name: provider_practice_postal_code
+        description: Provider practice postal code
+
+      - name: provider_practice_telephone_number
+        description: Provider practice telephone number
+
+      - name: provider_practice_fax_number
+        description: Procider practice fax number
+
+      - name: gender
+        description: Provider gender
+
+      - name: provider_taxonomy_code_1
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_1
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_2
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_2
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_3
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_3
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_4
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_4
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_5
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_5
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_6
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_6
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_7
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_7
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_8
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_8
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_9
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_9
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_10
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_10
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_11
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_11
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_12
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_12
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_13
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_13
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_14
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_14
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: provider_taxonomy_code_15
+        description: Provider taxonomy code (Provider specialty code)
+
+      - name: provider_taxonomy_switch_15
+        description: Provider taxonomy switch. Indicates if this taxonomy code is the primary code
+
+      - name: is_sole_proprietor
+        description: Provider is sole practitioner
+
+      - name: certification_date
+        description: Certification date

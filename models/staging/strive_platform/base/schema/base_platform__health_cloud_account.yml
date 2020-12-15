@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: base_platform__health_cloud_account
+    description: Base model for Health Cloud Account data
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_sh_uid
+            - ingest_date
+
+    columns:
+      - name: identifier_sh_uid
+        description: Strive Unique Patient ID
+        tests:
+          - not_null
+
+      - name: status
+        description: Current enrollment status of a patient
+
+      - name: inadmissible_reason
+        descritpion: Status reason for why a patient is in an inadmissible status
+
+      - name: disenrolled_reason
+        description: Status reason for why a patient is in an disenrolled status
+
+      - name: ingest_date
+        descrtiption: Date the Health Cloud data was ingested into the Platform
+
+      - name: client_id
+        description: Strive client ID

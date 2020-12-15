@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_reference_data__practitioner_role
+    description: Staging step for practitioner role reference data
+
+    columns:
+      - name: identifier_practitioner_role
+        description: Unique ID for the practitioner role
+        tests:
+          - not_null
+          - unique
+
+      - name: practitioner
+        description: Practitioner National Provider Identifier (NPI)
+        tests:
+          - not_null
+
+      - name: specialty_code
+        description: Code for specific specialty of the practitioner
+        tests:
+          - not_null
+
+      - name: specialty_code_display
+        description: Display name for specific specialty of the practitioner
+
+      - name: specialty_code_text
+        description: Detailed text for specific specialty of the practitioner
+
+      - name: telecom_work_phone_number
+        description: Practitioner work phone number associated with the pratice
+
+      - name: telecom_work_fax_number
+        description: Practitioner work fax number associated with the practice

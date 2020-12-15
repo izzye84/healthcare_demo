@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: stg_ssm__member
+    description: Staging step for SSM members
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: name_given_first
+        description: Member first name
+
+      - name: name_given_middle
+        description: Member middle name
+
+      - name: name_family
+        description: Member last name
+
+      - name: identifier_social_security_number
+        description: Member social security number
+
+      - name: birth_date
+        description: Member birth date
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: identifier_external_subscriber_id
+        description: Member SSM assigned patient ID
+
+      - name: gender
+        description: Member gender
+        tests:
+          - accepted_values:
+              values: ['M','F','U']
+
+      - name: race
+        description: Member race
+        tests:
+          - accepted_values:
+              values: ['Unknown','White','Black or African American','Other Race','Asian','Hispanic','American Indian or Alaska Native']
+
+      - name: ethnic_group
+        description: Member ethnic group
+
+      - name: telecom_phone_number_home
+        description: Member home phone number
+
+      - name: telecom_email_address
+        description: Member email address
+
+      - name: address_line1
+        description: Member address line 1
+
+      - name: address_line2
+        description: Member address line 2
+
+      - name: address_city
+        description: Member address city
+
+      - name: address_state
+        description: Member address state
+
+      - name: address_postal_code
+        description: Member address postal code
+
+      - name: general_practitioner
+        description: Member primary care physician
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ssm']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

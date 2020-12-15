@@ -1,0 +1,114 @@
+version: 2
+
+models:
+  - name: member_patient__joined
+    description: Combine the SSM member and patient demographics into one table
+
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_subscriber_id
+        description: Member SSM assigned patient ID
+
+      - name: identifier_sh_uid
+        description: Strive assigned `sh_uid`
+
+      - name: active
+        description: Whether this patient's record is in active use. Can be used to determine admissibility
+        tests:
+          - accepted_values:
+              values: ['true','false']
+
+      - name: name_given_first
+        description: Patient or member first name. SSM patient data takes precedence over member
+          - not_null
+
+      - name: name_given_middle
+        description: Member middle name. Middle name does not exist in SSM patient data
+
+      - name: name_family
+        description: Patient or member last name. SSM patient data takes precedence over member
+
+      - name: name_given_nickname
+        description: Patient preferred name. Preferred name does not exist in SSM member data
+
+      - name: name_prefix
+        description: Patient name prefix. Prefix does not exist in SSM member data
+
+      - name: identifier_social_security_number
+        description: Patient or member social security number. SSM patient data takes precedence over member
+
+      - name: birth_date
+        description: Patient or member birth date. SSM patient data takes precedence over member
+
+      - name: gender
+        description: Patient or member gender. SSM patient data takes precedence over member
+        tests:
+          - accepted_values:
+              values: ['M','F','U']
+
+      - name: race
+        description: Patient or member race. SSM patient data takes precedence over member
+        tests:
+          - accepted_values:
+              values: ['Unknown','White','Black or African American','Other Race','Asian','Hispanic','American Indian or Alaska Native']
+
+      - name: ethnic_group
+        description: Member ethnic group. Ethnic group does not exist in SSM patient
+
+      - name: language_preferred
+        description: Patient primary spoken language. Preferred language does not exist in SSM member data
+
+      - name: language_secondary
+        description: Patient secondary language spoken. Secondary language does not exist in SSM member data
+
+      - name: deceased_date
+        description: Patient deceased date. Deceased date does not exist in SSM member data
+
+      - name: birth_country
+        description: Patient country of birth. Birth country does not exist in SSM member data
+
+      - name: address_line1
+        description: Patient or member address line 1. SSM patient data takes precedence over member
+
+      - name: address_line2
+        description: Patient or member address line 2. SSM patient data takes precedence over member
+
+      - name: address_city
+        description: Patient or member address city. SSM patient data takes precedence over member
+
+      - name: address_state
+        description: Patient or member address state. SSM patient data takes precedence over member
+
+      - name: address_postal_code
+        description: Patient or member address postal code. SSM patient data takes precedence over member
+
+      - name: address_country
+        description: Patient address country. Country does not exist in SSM member data
+
+      - name: telecom_phone_number_home
+        description: Patient or member home phone number. SSM patient data takes precedence over member
+
+      - name: telecom_email_address
+        description: Patient or member email address. SSM patient data takes precedence over member
+
+      - name: general_practitioner
+        description: Patient or member primary care provider. SSM patient data takes precedence over member
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ssm']
+
+      - name: ingest_date
+        description: Most recent ingest date for either patient or member record. SSM patient data takes precedence over member
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
