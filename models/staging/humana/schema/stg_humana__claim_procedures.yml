@@ -27,21 +27,9 @@ models:
 
       - name: performed_datetime
         description: Date when the procedure was performed
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: client_id
         description: Strive client ID
-        tests:
-            - not_blank
-            - accepted_values:
-                values: ['humana']
 
       - name: ingest_date
         description: Strive ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS
-              date_type: timestamp

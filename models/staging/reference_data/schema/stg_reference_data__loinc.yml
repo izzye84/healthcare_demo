@@ -7,6 +7,9 @@ models:
     columns:
       - name: loinc_num
         description: loinc_num
+        tests:
+          - not_null
+          - unique
 
       - name: component
         description: component

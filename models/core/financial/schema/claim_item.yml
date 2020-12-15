@@ -36,17 +36,9 @@ models:
 
       - name: serviced_period_start
         description: The date or dates when the service or product was supplied, performed or completed.
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: serviced_period_end
         description: The date or dates when the service or product was supplied, performed or completed.
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: location
         description: Where the product or service was provided.
@@ -62,14 +54,6 @@ models:
 
       - name: client_id
         description: Strive client ID
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['ssm','humana']
 
       - name: ingest_date
         description: Most recent ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

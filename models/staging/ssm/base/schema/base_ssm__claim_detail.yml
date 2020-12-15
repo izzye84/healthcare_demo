@@ -45,9 +45,15 @@ models:
 
       - name: serviced_period_start
         description: serviced_period_start
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: serviced_period_end
         description: serviced_period_end
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: revenue
         description: revenue
@@ -108,14 +114,6 @@ models:
 
       - name: client_id
         description: Strive client ID
-        tests:
-            - not_blank
-            - accepted_values:
-                values: ['ssm']
 
       - name: ingest_date
         description: Most recent ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

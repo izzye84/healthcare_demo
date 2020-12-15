@@ -82,6 +82,9 @@ models:
 
       - name: gender
         description: Provider gender
+        tests:
+          - accepted_values:
+              values: ['M','F','U',None]
 
       - name: provider_taxonomy_code_1
         description: Provider taxonomy code (Provider specialty code)

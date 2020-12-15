@@ -24,17 +24,9 @@ models:
 
       - name: billable_period_start
         description: The period for which charges are being submitted.
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: billable_period_end
         description: The period for which charges are being submitted.
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: insurer
         description: The Insurer who is target of the request.
@@ -50,14 +42,6 @@ models:
 
       - name: client_id
         description: Strive client ID
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['ssm','humana']
 
       - name: ingest_date
         description: Most recent ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

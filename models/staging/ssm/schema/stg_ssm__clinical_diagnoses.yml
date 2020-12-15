@@ -36,26 +36,12 @@ models:
 
       - name: onset_datetime
         description: Estimated or actual date, date-time the diagnosis started
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: abatement_datetime
         description: Date when diagnosis was in resolution/remission
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: client_id
         description: Strive client ID
-        tests:
-            - not_blank
-            - accepted_values:
-                values: ['ssm']
 
       - name: ingest_date
         description: Strive ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

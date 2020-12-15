@@ -60,9 +60,6 @@ models:
         description: Timestamp of when the diagnosis record was created
         tests:
           - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS
-              date_type: timestamp
 
       - name: modified_timestamp
         description: Timestamp of when the diagnosis record was last modified
@@ -74,14 +71,6 @@ models:
 
       - name: client_id
         description: Strive client ID
-        tests:
-            - not_null
-            - accepted_values:
-                values: ['ssm']
 
       - name: ingest_date
         description: Strive ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

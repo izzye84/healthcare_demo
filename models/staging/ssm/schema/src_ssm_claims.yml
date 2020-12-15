@@ -94,17 +94,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: member_crosswalk
         description: SSM member crosswalk. Used to link patient ids to their enterprise mrn id
@@ -148,17 +140,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: claim_header
         description: SSM claim header
@@ -441,17 +425,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: claim_detail
         description: SSM claim detail
@@ -554,17 +530,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
       
       - name: pharmacy_claim
         description: SSM pharmacy claims
@@ -660,14 +628,6 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS

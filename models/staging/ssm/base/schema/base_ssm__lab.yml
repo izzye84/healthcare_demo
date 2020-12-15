@@ -91,10 +91,6 @@ models:
 
       - name: created_timestamp
         description: Timestamp created in source system
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS
-              date_type: timestamp
 
       - name: modified_timestamp
         description: Timestamp modified in source system
@@ -105,14 +101,6 @@ models:
 
       - name: client_id
         description: Strive client ID
-        tests:
-          - not_blank
-          - accepted_values:
-              values: [ 'ssm' ]
 
       - name: ingest_date
         description: Most recent ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS
