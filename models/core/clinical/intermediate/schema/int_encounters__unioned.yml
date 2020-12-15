@@ -30,6 +30,10 @@ models:
 
       - name: type
         description: Specific type of encounter——clinical or claim.
+        tests:
+          - accepted_values:
+              values: ['claim',
+                       'clinical']
 
       - name: service_type_code
         description: Broad categorization of the service that is to be provided (e.g. cardiology).

@@ -50,6 +50,3 @@ models:
 
       - name: gender
         description: Pracitioner gender
-        tests:
-          - accepted_values:
-              values: ['M','F','U',None]

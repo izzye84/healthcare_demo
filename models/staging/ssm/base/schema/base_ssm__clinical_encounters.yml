@@ -72,10 +72,6 @@ models:
 
       - name: created_timestamp
         description: created_timestamp
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS
-              date_type: timestamp
 
       - name: modified_timestamp
         description: date modified in source system
@@ -86,14 +82,6 @@ models:
 
       - name: client_id
         description: client_id
-        tests:
-          - not_blank
-          - accepted_values:
-              values: [ 'ssm' ]
 
       - name: ingest_date
         description: ingest_date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

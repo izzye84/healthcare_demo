@@ -92,26 +92,12 @@ models:
 
       - name: effective_date
         description: Clinically relevant time/time-period for observation
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: issued_date
         description: Date/Time this version was made available
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: ingest_date
         description: Most recent ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: client_id
         description: Strive client ID
-        tests:
-          - not_null
-          - accepted_values:
-              values: [ 'humana' ]

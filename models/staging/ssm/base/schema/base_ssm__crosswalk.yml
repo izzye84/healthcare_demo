@@ -33,7 +33,3 @@ models:
 
       - name: ingest_date
         description: Strive ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

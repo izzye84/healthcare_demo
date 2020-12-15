@@ -15,12 +15,14 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: allergy_verified
             description: Allergy verified
@@ -54,17 +56,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: diagnosis
         description: Patient diagnoses
@@ -76,12 +70,14 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: diagnosis_date
             description: Date of diagnosis
@@ -115,17 +111,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: encounter
         description: Patient clinical encounters
@@ -137,7 +125,8 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_date
             description: Clinical encounter date
@@ -148,7 +137,8 @@ sources:
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_reason
             description: Reason for the clinical encounter
@@ -188,17 +178,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: form
         description: SSM clinical form
@@ -210,12 +192,14 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: form_category_id
             description: Form category ID
@@ -226,7 +210,8 @@ sources:
           - name: form_id
             description: Form ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
           
           - name: form_name
             description: Form name
@@ -234,7 +219,8 @@ sources:
           - name: section_id
             description: Section ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: section_name
             description: Section name
@@ -242,7 +228,8 @@ sources:
           - name: question_id
             description: Question ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: answer
             description: Answer
@@ -255,17 +242,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: immunization
         description: Patient immunizations
@@ -277,12 +256,14 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: given_date
             description: Date the immunization was given
@@ -331,17 +312,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: labs
         description: Patient lab results
@@ -353,17 +326,20 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: lab_id
             description: Lab id
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: lab_code_set
             description: Code system used to define the lab code
@@ -427,17 +403,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: medication
         description: Patient medications
@@ -449,12 +417,14 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: medication_origin_id
             description: Medication origin ID
@@ -515,17 +485,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: patient
         description: Patient demographics
@@ -537,7 +499,8 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: social_security_number
             description: Patient's social security number
@@ -545,12 +508,14 @@ sources:
           - name: first_name
             description: Patient's first name
             tests:
-              - not_blank
+              - not_blank:
+                  severity: warn
 
           - name: last_name
             description: Patient's last name
             tests:
-              - not_blank
+              - not_blank:
+                  severity: warn
 
           - name: preferred_name
             description: Patient's preferred name
@@ -626,17 +591,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: payer
         description: Clinical payer
@@ -648,12 +605,14 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: payer_id
             description: Payer ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: payer_name
             description: Name of Payer
@@ -717,17 +676,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: procedure
         description: Patient procedures
@@ -739,17 +690,20 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: procedure_code
             description: Procedure code
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: procedure_description
             description: Description of the procedure
@@ -777,17 +731,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: provider
         description: SSM provider information
@@ -796,12 +742,14 @@ sources:
           - name: provider_id
             description: Provider ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: npi
             description: The National Provider Identifier (NPI) for the provider
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: first_name
             description: First name of the provider
@@ -916,17 +864,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: referral
         description: SSM Referrals
@@ -938,17 +878,20 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: referral_id
             description: Referral ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: referral_date
             description: Date of the referral
@@ -1000,17 +943,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: surgical_history
         description: Patient surgical history
@@ -1022,7 +957,8 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
@@ -1044,17 +980,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: vitals
         description: Patient vitals
@@ -1066,12 +994,14 @@ sources:
           - name: patient_account_number
             description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: clinical_encounter_id
             description: Clinical encounter ID
             tests:
-              - not_null
+              - not_blank:
+                  severity: warn
 
           - name: vitals_captured_by
             description: Vitals captured by
@@ -1093,14 +1023,6 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_blank
-                - accepted_values:
-                    values: ['ssm']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS

@@ -129,17 +129,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_null
-                - accepted_values:
-                    values: ['humana']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: disenrollment
         description: List of patients from the referral file that are no longer eligible
@@ -182,17 +174,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_null
-                - accepted_values:
-                    values: ['humana']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: lab_claims
         description: Humana lab results data
@@ -247,17 +231,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_null
-                - accepted_values:
-                    values: ['humana']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: medical_claims
         description: Humana medical_claims data
@@ -537,17 +513,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_null
-                - accepted_values:
-                    values: ['humana']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: pharmacy_claims
         description: Humana demographic data
@@ -689,17 +657,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_null
-                - accepted_values:
-                    values: ['humana']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: premium
         description: Humana premium data
@@ -731,17 +691,9 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_null
-                - accepted_values:
-                    values: ['humana']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS
 
       - name: referral
         description: Patient member and eligibility data
@@ -836,9 +788,6 @@ sources:
 
           - name: latest_month_neph_visit
             description: latest_month_neph_visit
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: neph_provider_name
             description: Nephrologist provider name
@@ -860,9 +809,6 @@ sources:
 
           - name: last_pcp_attributed_month
             description: last_pcp_attributed_month
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: pcp_provider_name
             description: Primary care provider name
@@ -884,9 +830,6 @@ sources:
 
           - name: latest_month_cardiologist_visit
             description: latest_month_cardiologist_visit
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: cardiologist_practice_name
             description: Cardiologist practice name
@@ -899,9 +842,6 @@ sources:
 
           - name: latest_mo_endocrinologist_visit
             description: latest_mo_endocrinologist_visit
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: endocrinologist_practice_name
             description: Endocrinologist practice name
@@ -929,14 +869,6 @@ sources:
 
           - name: client_id
             description: Strive client ID
-            tests:
-                - not_null
-                - accepted_values:
-                    values: ['humana']
 
           - name: ingest_date
             description: Strive ingest date
-            tests:
-              - not_null
-              - is_date:
-                  date_format: yyyy-mm-dd HH24:MI:SS

@@ -19,25 +19,14 @@ models:
 
       - name: status
         description: Status of the most recent insurance coverage of a Member (e.g. active, cancelled)
-        tests:
-          - accepted_values:
-              values: ['active','cancelled']
 
       - name: period_coverage_start
         description: The effective date for when the coverage is valid
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: period_coverage_end
         description: >
           The date when coverage is no longer valid. The current active
           coverage has a default year of `2999` or `9999`
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: subscriber_id
         description: ID assigned to the subscriber
@@ -55,14 +44,6 @@ models:
 
       - name: client_id
         description: Strive client ID
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['ssm','humana']
 
       - name: ingest_date
         description: Most recent ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS

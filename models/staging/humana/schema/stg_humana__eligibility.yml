@@ -25,17 +25,9 @@ models:
 
       - name: period_coverage_start
         description: Coverage start date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: period_coverage_end
         description: Coverage end date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: subscriber_id
         description: ID assigned to the subscriber. This can be linked to the `mbr_pers_gen_key` in `referral`
@@ -57,14 +49,6 @@ models:
 
       - name: client_id
         description: Strive client ID
-        tests:
-            - not_blank
-            - accepted_values:
-                values: ['humana']
 
       - name: ingest_date
         description: Strive ingest date
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS
