@@ -1,0 +1,112 @@
+version: 2
+
+models:
+  - name: stg_ssm__vital_observation
+    description: Staging step to map SSM vitals to observations
+    columns:
+      - name: identifier_observation
+        description: Surrogate key for the result made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_order
+        description: Placeholder, not applicable for vitals
+
+      - name: identifier_external_source
+        description: Surrogate key for the patient made from various external source IDs
+
+      - name: identifier_encounter
+        description: Related clinical encounter
+
+      - name: status_code
+        description: Placeholder, not applicable for vitals
+
+      - name: status_display
+        description: Placeholder, not applicable for vitals
+
+      - name: status_system
+        description: Placeholder, not applicable for vitals
+
+      - name: category_code
+        description: A code that classifies the general type of observation being made
+
+      - name: category_display
+        description: Display value
+
+      - name: category_system
+        description: Coding system
+
+      - name: code_source
+        description: Source code that classifies the general type of observation being made
+
+      - name: code_source_display
+        description: Placeholder, not applicable for vitals
+
+      - name: code_source_system
+        description: Placeholder, not applicable for vitals
+
+      - name: code_strive
+        description: Mapped LOINC code that classifies the general type of observation being made
+
+      - name: code_strive_display
+        description: Display value
+
+      - name: code_strive_system
+        description: Coding system
+
+      - name: value_quantity
+        description: The information determined as a result of making the observation, if the information has a simple value
+
+      - name: value_quantity_unit
+        description: Unit of measure for the value_quantity
+
+      - name: value_string
+        description: Placeholder, not applicable for vitals
+
+      - name: value_boolean
+        description: Placeholder, not applicable for vitals
+
+      - name: interpretation_code
+        description: Placeholder, not applicable for vitals
+
+      - name: interpretation_display
+        description: Placeholder, not applicable for vitals
+
+      - name: interpretation_system
+        description: Placeholder, not applicable for vitals
+
+      - name: reference_range_low
+        description: Placeholder, not applicable for vitals
+
+      - name: reference_range_high
+        description: Placeholder, not applicable for vitals
+
+      - name: reference_range_text
+        description: Placeholder, not applicable for vitals
+
+      - name: effective_date
+        description: Clinically relevant time/time-period for observation
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: issued_date
+        description: Date/Time this version was made available
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: [ 'ssm' ]

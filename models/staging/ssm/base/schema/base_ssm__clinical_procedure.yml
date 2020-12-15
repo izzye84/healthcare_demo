@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: base_ssm__clinical_procedure
+    description: Base SSM Clinical Procedure
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - patient_account_number
+            - encounter
+            - code
+            - ingest_date
+    columns:
+      - name: patient_id
+        description: Member ID assigned by SSM's Epic EHR. Matches to the `epic_pat_id` in the `member_crosswalk file
+
+      - name: patient_account_number
+        description: Member's Enterprise Medical Record Number (MRN) assigned by SSM. This ID matches to the `enterprise_mrn` in the SSM `member_crosswalk` source
+        tests:
+          - not_null
+
+      - name: encounter
+        description: Clinical encounter ID
+
+      - name: code
+        description: Procedure code
+        tests:
+          - not_null
+
+      - name: code_system
+        description: Code system that defines the procedure code
+
+      - name: created_timestamp
+        description: Timestamp of when the diagnosis record was created
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: modified_timestamp
+        description: Timestamp of when the diagnosis record was last modified
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['ssm']
+
+      - name: ingest_date
+        description: Strive ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS
+              date_type: timestamp

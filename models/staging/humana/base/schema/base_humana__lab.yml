@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: base_humana__lab
+    description: Base Humana lab claims
+    columns:
+      - name: identifier_observation
+        description: Unique identifier per lab result
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_source
+        description: Source values that identify a unique Patient
+        tests:
+          - not_null
+
+      - name: src_mbr_id
+        description: Source value that identifies a unique Member
+
+      - name: src_platform_cd
+        description: src_platform_cd
+
+      - name: code_source
+        description: LOINC Code
+
+      - name: vendor_loinc_cd
+        description: CPT code for procedure
+
+      - name: value_quantity
+        description: Text or numeric value depending on result type
+
+      - name: value_quantity_unit
+        description: Result unit description
+
+      - name: effective_date
+        description: Date of the lab result
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: cov_month
+        description: Month from cov_eff_date
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: [ 'humana' ]
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

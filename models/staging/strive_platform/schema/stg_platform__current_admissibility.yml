@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_platform__current_admissibility
+    description: Staging step to find the most recent admissibility value for each `sh_uid`
+
+    columns:
+      - name: identifier_sh_uid
+        description: Strive assigned `sh_uid`
+        tests:
+          - not_null
+          - unique
+
+      - name: active
+        description: Flag to indicate whether a patient is considered admissible or not
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true','false']

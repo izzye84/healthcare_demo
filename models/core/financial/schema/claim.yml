@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: claim
+    description: >
+      A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
+      Refer to the official FHIR documentation for additional information: https://www.hl7.org/fhir/claim.html
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - client_id
+    columns:
+      - name: identifier_claim_header
+        description: A unique identifier assigned to this claim.
+        tests:
+          - not_null
+
+      - name: type
+        description: The category of claim, e.g. oral, pharmacy, vision, institutional, professional.
+
+      - name: patient
+        description: The party to whom the professional services and/or products have been supplied or are being considered and for whom actual or forecast reimbursement is sought.
+
+      - name: billable_period_start
+        description: The period for which charges are being submitted.
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: billable_period_end
+        description: The period for which charges are being submitted.
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: insurer
+        description: The Insurer who is target of the request.
+
+      - name: provider
+        description: The provider which is responsible for the claim, predetermination or preauthorization.
+
+      - name: facility
+        description: Facility where the services were provided.
+
+      - name: total
+        description: The total value of the all the items in the claim.
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ssm','humana']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: stg_ssm__patient
+    description: Staging step for SSM Patients
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_social_security_number
+        description: Patient social security number
+
+      - name: name_given_first
+        description: Patient first name
+
+      - name: name_family
+        description: Patient last name
+
+      - name: name_given_nickname
+        description: Patient preferred name
+
+      - name: name_prefix
+        description: Patient name prefix
+
+      - name: birth_date
+        description: Patient birth date
+
+      - name: gender
+        description: Patient gender
+        tests:
+          - accepted_values:
+              values: ['M','F','U']
+
+      - name: race
+        description: Patient race
+        tests:
+          - accepted_values:
+              values: ['Unknown','White','Black or African American','Other Race','Asian','Hispanic','American Indian or Alaska Native']
+
+      - name: language_preferred
+        description: Patient primary spoken language
+
+      - name: language_secondary
+        description: Patient secondary language spoken
+
+      - name: deceased_date
+        description: Patient deceased date
+
+      - name: birth_country
+        description: Patient country of birth
+
+      - name: address_line1
+        description: Patient address line 1
+
+      - name: address_line2
+        description: Patient address line 2
+
+      - name: address_city
+        description: Patient address city
+
+      - name: address_state
+        description: Patient address state
+
+      - name: address_postal_code
+        description: Patient address postal code
+
+      - name: address_country
+        description: Patient address country
+
+      - name: telecom_phone_number_home
+        description: Patient phone number
+
+      - name: telecom_email_address
+        description: Patient email address
+
+      - name: general_practitioner
+        description: Patient primary care physician
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ssm']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

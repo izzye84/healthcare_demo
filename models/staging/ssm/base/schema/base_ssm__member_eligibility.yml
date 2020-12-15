@@ -1,0 +1,107 @@
+version: 2
+
+models:
+  - name: base_ssm__member_eligibility
+    description: Base SSM member/eligibility
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_external_source
+            - ingest_date
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+
+      - name: name_given_first
+        description: Member first name
+
+      - name: name_given_middle
+        description: Member middle name
+
+      - name: name_family
+        description: Member last name
+
+      - name: identifier_social_security_number
+        description: Member social security number
+
+      - name: birth_date
+        description: Member birth date
+
+      - name: identifier_external_subscriber_id
+        description: Member SSM assigned patient ID
+
+      - name: gender
+        description: Member gender
+
+      - name: race
+        description: Member race
+
+      - name: ethnic_group
+        description: Member ethnic group
+
+      - name: telecom_phone_number_home
+        description: Member home phone number
+
+      - name: telecom_email_address
+        description: Member email address
+
+      - name: address_line1
+        description: Member address line 1
+
+      - name: address_line2
+        description: Member address line 2
+
+      - name: address_city
+        description: Member address city
+
+      - name: address_state
+        description: Member address state
+
+      - name: address_postal_code
+        description: Member address postal code
+
+      - name: general_practitioner
+        description: Member primary care physician
+
+      - name: period_coverage_start
+        description: Coverage start date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: period_coverage_end
+        description: Coverage end date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: relationship
+        description: Member relationship to insurance policy holder
+
+      - name: network
+        description: Insurer network
+        tests:
+          - not_null
+
+      - name: payor
+        description: Insurer of the policy
+        tests:
+          - not_null
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['ssm']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

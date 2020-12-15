@@ -1,0 +1,316 @@
+version: 2
+
+models:
+  - name: base_ssm__claim_header
+    description: Base for SSM claim_header
+    columns:
+      - name: identifier_claim_header
+        description: identifier_claim_header
+        tests:
+          - not_null
+          - unique
+
+      - name: patient
+        description: patient
+        tests:
+          - not_null
+
+      - name: subscriber_id
+        description: subscriber_id
+
+      - name: dependent_number
+        description: dependent_number
+
+      - name: place_of_service
+        description: place_of_service
+
+      - name: sub_type
+        description: sub_type
+
+      - name: service_date_time
+        description: service_date_time
+
+      - name: billable_period_start
+        description: billable_period_start
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: billable_period_end
+        description: billable_period_end
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: admission_type
+        description: admission_type
+
+      - name: admission_source
+        description: admission_source
+
+      - name: discharge_status
+        description: discharge_status
+
+      - name: rev_code
+        description: rev_code
+
+      - name: drg
+        description: drg
+
+      - name: first_name
+        description: first_name
+
+      - name: last_name
+        description: last_name
+
+      - name: gender
+        description: gender
+
+      - name: date_of_birth
+        description: date_of_birth
+
+      - name: procedure_code1
+        description: procedure_code1
+
+      - name: procedure_code2
+        description: procedure_code2
+
+      - name: procedure_code3
+        description: procedure_code3
+
+      - name: procedure_code4
+        description: procedure_code4
+
+      - name: procedure_code5
+        description: procedure_code5
+
+      - name: procedure_code6
+        description: procedure_code6
+
+      - name: procedure_code7
+        description: procedure_code7
+
+      - name: procedure_code8
+        description: procedure_code8
+
+      - name: procedure_code9
+        description: procedure_code9
+
+      - name: procedure_code10
+        description: procedure_code10
+
+      - name: procedure_code11
+        description: procedure_code11
+
+      - name: procedure_code12
+        description: procedure_code12
+
+      - name: procedure_code13
+        description: procedure_code13
+
+      - name: procedure_code14
+        description: procedure_code14
+
+      - name: procedure_code15
+        description: procedure_code15
+
+      - name: procedure_code16
+        description: procedure_code16
+
+      - name: procedure_code17
+        description: procedure_code17
+
+      - name: procedure_code18
+        description: procedure_code18
+
+      - name: procedure_code19
+        description: procedure_code19
+
+      - name: procedure_code20
+        description: procedure_code20
+
+      - name: procedure_code1_modifier
+        description: procedure_code1_modifier
+
+      - name: procedure_code2_modifier
+        description: procedure_code2_modifier
+
+      - name: procedure_code3_modifier
+        description: procedure_code3_modifier
+
+      - name: procedure_code4_modifier
+        description: procedure_code4_modifier
+
+      - name: procedure_code5_modifier
+        description: procedure_code5_modifier
+
+      - name: procedure_code6_modifier
+        description: procedure_code6_modifier
+
+      - name: procedure_code7_modifier
+        description: procedure_code7_modifier
+
+      - name: procedure_code8_modifier
+        description: procedure_code8_modifier
+
+      - name: procedure_code9_modifier
+        description: procedure_code9_modifier
+
+      - name: procedure_code10_modifier
+        description: procedure_code10_modifier
+
+      - name: procedure_code11_modifier
+        description: procedure_code11_modifier
+
+      - name: procedure_code12_modifier
+        description: procedure_code12_modifier
+
+      - name: procedure_code13_modifier
+        description: procedure_code13_modifier
+
+      - name: procedure_code14_modifier
+        description: procedure_code14_modifier
+
+      - name: procedure_code15_modifier
+        description: procedure_code15_modifier
+
+      - name: procedure_code16_modifier
+        description: procedure_code16_modifier
+
+      - name: procedure_code17_modifier
+        description: procedure_code17_modifier
+
+      - name: procedure_code18_modifier
+        description: procedure_code18_modifier
+
+      - name: procedure_code19_modifier
+        description: procedure_code19_modifier
+
+      - name: procedure_code20_modifier
+        description: procedure_code20_modifier
+
+      - name: diagnosis_code1
+        description: diagnosis_code1
+
+      - name: diagnosis_code2
+        description: diagnosis_code2
+
+      - name: diagnosis_code3
+        description: diagnosis_code3
+
+      - name: diagnosis_code4
+        description: diagnosis_code4
+
+      - name: diagnosis_code5
+        description: diagnosis_code5
+
+      - name: diagnosis_code6
+        description: diagnosis_code6
+
+      - name: diagnosis_code7
+        description: diagnosis_code7
+
+      - name: diagnosis_code8
+        description: diagnosis_code8
+
+      - name: diagnosis_code9
+        description: diagnosis_code9
+
+      - name: diagnosis_code10
+        description: diagnosis_code10
+
+      - name: diagnosis_code11
+        description: diagnosis_code11
+
+      - name: diagnosis_code12
+        description: diagnosis_code12
+
+      - name: diagnosis_code13
+        description: diagnosis_code13
+
+      - name: diagnosis_code14
+        description: diagnosis_code14
+
+      - name: diagnosis_code15
+        description: diagnosis_code15
+
+      - name: diagnosis_code16
+        description: diagnosis_code16
+
+      - name: diagnosis_code17
+        description: diagnosis_code17
+
+      - name: diagnosis_code18
+        description: diagnosis_code18
+
+      - name: diagnosis_code19
+        description: diagnosis_code19
+
+      - name: diagnosis_code20
+        description: diagnosis_code20
+
+      - name: icd_version_indicator
+        description: icd_version_indicator
+
+      - name: allowed_amount
+        description: allowed_amount
+
+      - name: charge_amount
+        description: charge_amount
+
+      - name: payment_date_time
+        description: payment_date_time
+
+      - name: total
+        description: total
+
+      - name: member_payment_amount
+        description: member_payment_amount
+
+      - name: claim_adjustment_type_code
+        description: claim_adjustment_type_code
+
+      - name: claim_adjustment_sequence_number
+        description: claim_adjustment_sequence_number
+
+      - name: claim_adjustment_date_time
+        description: claim_adjustment_date_time
+
+      - name: provider
+        description: provider
+
+      - name: rendering_provider_npi
+        description: rendering_provider_npi
+
+      - name: referring_provider_npi
+        description: referring_provider_npi
+
+      - name: pcp_provider_npi
+        description: pcp_provider_npi
+
+      - name: facility
+        description: facility
+
+      - name: lob
+        description: lob
+        tests:
+          - not_null
+
+      - name: insurer
+        description: insurer
+        tests:
+          - not_null
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['ssm']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

@@ -1,0 +1,121 @@
+version: 2
+
+models:
+  - name: base_ssm__claim_detail
+    description: Base for SSM claim_detail
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - identifier_claim_line
+    columns:
+      - name: identifier_claim_header
+        description: identifier_claim_header
+        tests:
+          - not_null
+
+      - name: identifier_claim_line
+        description: identifier_claim_line
+        tests:
+          - not_null
+
+      - name: claim_sequence_number
+        description: claim_sequence_number
+
+      - name: patient
+        description: patient
+
+      - name: patient_external_id
+        description: patient_external_id
+
+      - name: subsciber_id
+        description: subsciber_id
+
+      - name: dependent_number
+        description: dependent_number
+
+      - name: location
+        description: location
+
+      - name: type_of_bill
+        description: type_of_bill
+
+      - name: service_date_time
+        description: service_date_time
+
+      - name: serviced_period_start
+        description: serviced_period_start
+
+      - name: serviced_period_end
+        description: serviced_period_end
+
+      - name: revenue
+        description: revenue
+
+      - name: drg
+        description: drg
+
+      - name: first_name
+        description: first_name
+
+      - name: last_name
+        description: last_name
+
+      - name: gender
+        description: gender
+
+      - name: date_of_birth
+        description: date_of_birth
+
+      - name: product_or_service
+        description: product_or_service
+
+      - name: loinc
+        description: loinc
+
+      - name: snomed
+        description: snomed
+
+      - name: quantity
+        description: quantity
+
+      - name: claim_adjustment_type_code
+        description: claim_adjustment_type_code
+
+      - name: claim_adjustment_sequence_number
+        description: claim_adjustment_sequence_number
+
+      - name: claim_adjustment_date_time
+        description: claim_adjustment_date_time
+
+      - name: performing_npi
+        description: performing_npi
+
+      - name: allowed_amount
+        description: allowed_amount
+
+      - name: charge_amount
+        description: charge_amount
+
+      - name: payment_date_time
+        description: payment_date_time
+
+      - name: net
+        description: net
+
+      - name: member_payment_amount
+        description: member_payment_amount
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+            - not_blank
+            - accepted_values:
+                values: ['ssm']
+
+      - name: ingest_date
+        description: Most recent ingest date
+        tests:
+          - not_null
+          - is_date:
+              date_format: yyyy-mm-dd HH24:MI:SS

@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: order__filtered
+    description: Filter order data to Strive lab concepts from observation stage
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_order
+            - client_id
+    columns:
+      - name: identifier_order
+        description: Unique identifier for the distinct order for a patient
+        tests:
+          - not_null
+
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+
+      - name: reason_code
+        description: Why the order was made
+
+      - name: reason_display
+        description: Display value
+
+      - name: reason_system
+        description: Coding system
+
+      - name: detail
+        description: What action is being ordered
+
+      - name: order_date
+        description: When the order was made
+
+      - name: ingest_date
+        description: Most recent ingest date
+
+      - name: client_id
+        description: Strive client ID
+        tests:
+          - not_null

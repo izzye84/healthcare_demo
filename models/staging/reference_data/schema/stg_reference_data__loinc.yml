@@ -1,0 +1,144 @@
+version: 2
+
+models:
+  - name: stg_reference_data__loinc
+    description: Staging step for LOINC reference data
+
+    columns:
+      - name: loinc_num
+        description: loinc_num
+
+      - name: component
+        description: component
+
+      - name: property
+        description: property
+
+      - name: time_aspct
+        description: time_aspct
+
+      - name: body_system
+        description: body_system
+
+      - name: scale_typ
+        description: scale_typ
+
+      - name: method_typ
+        description: method_typ
+
+      - name: class
+        description: class
+
+      - name: version_last_changed
+        description: version_last_changed
+
+      - name: chng_type
+        description: chng_type
+
+      - name: definition_description
+        description: definition_description
+
+      - name: status
+        description: status
+
+      - name: consumer_name
+        description: consumer_name
+
+      - name: class_type
+        description: class_type
+
+      - name: formula
+        description: formula
+
+      - name: species
+        description: species
+
+      - name: exmpl_answers
+        description: exmpl_answers
+
+      - name: survey_quest_text
+        description: survey_quest_text
+
+      - name: survey_quest_src
+        description: survey_quest_src
+
+      - name: units_required
+        description: units_required
+
+      - name: submitted_units
+        description: submitted_units
+
+      - name: related_names_2
+        description: related_names_2
+
+      - name: short_name
+        description: short_name
+
+      - name: order_obs
+        description: order_obs
+
+      - name: cdisc_common_tests
+        description: cdisc_common_tests
+
+      - name: hl7_field_subfield_id
+        description: hl7_field_subfield_id
+
+      - name: external_copyright_notice
+        description: external_copyright_notice
+
+      - name: example_units
+        description: example_units
+
+      - name: long_common_name
+        description: long_common_name
+
+      - name: units_and_range
+        description: units_and_range
+
+      - name: example_ucum_units
+        description: example_ucum_units
+
+      - name: example_si_ucum_units
+        description: example_si_ucum_units
+
+      - name: status_reason
+        description: status_reason
+
+      - name: status_text
+        description: status_text
+
+      - name: change_reason_public
+        description: change_reason_public
+
+      - name: common_test_rank
+        description: common_test_rank
+
+      - name: common_order_rank
+        description: common_order_rank
+
+      - name: common_si_test_rank
+        description: common_si_test_rank
+
+      - name: hl7_attachment_structure
+        description: hl7_attachment_structure
+
+      - name: external_copyright_link
+        description: external_copyright_link
+
+      - name: panel_type
+        description: panel_type
+
+      - name: ask_at_order_entry
+        description: ask_at_order_entry
+
+      - name: associated_observations
+        description: associated_observations
+
+      - name: version_first_released
+        description: version_first_released
+
+      - name: valid_hl7_attachment_request
+        description: valid_hl7_attachment_request
+
+      - name: display_name
+        description: display_name

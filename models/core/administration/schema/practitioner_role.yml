@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: practitioner_role
+    description: >
+      A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
+      Refer to the official FHIR documentation for additional information: https://www.hl7.org/fhir/practitionerrole.html
+
+    columns:
+      - name: identifier_practitioner_role
+        description: Unique ID for the practitioner role
+        tests:
+          - not_null
+          - unique
+
+      - name: practitioner
+        description: Practitioner National Provider Identifier (NPI)
+        tests:
+          - not_null
+
+      - name: specialty_code
+        description: Code for specific specialty of the practitioner
+        tests:
+          - not_null
+
+      - name: specialty_code_display
+        description: Display name for specific specialty of the practitioner
+
+      - name: specialty_code_text
+        description: Detailed text for specific specialty of the practitioner
+
+      - name: telecom_work_phone_number
+        description: Practitioner work phone number associated with the pratice
+
+      - name: telecom_work_fax_number
+        description: Practitioner work fax number associated with the practice

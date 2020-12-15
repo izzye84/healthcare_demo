@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: base_platform__admissibility
+    description: Base Platform admissibility
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_sh_uid
+            - ingest_date
+    columns:
+      - name: identifier_sh_uid
+        description: Strive Unique Patient ID
+        tests:
+          - not_null
+
+      - name: active
+        description: Flag indicating whether the patient is admissible into the Strive program
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Platform ingest Date
