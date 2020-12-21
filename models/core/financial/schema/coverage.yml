@@ -30,7 +30,7 @@ models:
 
       - name: subscriber_id
         description: ID assigned to the subscriber
-        test:
+        tests:
           - not_null
 
       - name: relationship

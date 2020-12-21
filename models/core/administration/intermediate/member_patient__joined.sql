@@ -46,7 +46,7 @@ select
     ,coalesce(patient.general_practitioner,member.general_practitioner) as general_practitioner
     ,member.client_id
     ,coalesce(patient.ingest_date,member.ingest_date) as ingest_date
-from member left join patient
-    on member.identifier_external_source = patient.identifier_external_source left join platform_shuid
-    on member.identifier_external_source = platform_shuid.identifier_external_source left join platform_admissibility
-    on platform_shuid.identifier_sh_uid = platform_admissibility.identifier_sh_uid
+from member
+  left join patient on member.identifier_external_source = patient.identifier_external_source
+  left join platform_shuid on member.identifier_external_source = platform_shuid.identifier_external_source
+  left join platform_admissibility on platform_shuid.identifier_sh_uid = platform_admissibility.identifier_sh_uid

@@ -65,7 +65,7 @@ sources:
             description: Provider other name prefix text
             
           - name: provider_other_name_suffix_text 
-            descriptioN: Provider other name suffix text
+            description: Provider other name suffix text
 
           - name: provider_other_credential_text 
             description: Provider other credential text
@@ -133,7 +133,7 @@ sources:
             description: NPI deactivation date
 
           - name: npi_reactivation_date 
-            descriptioN: NPI reactivation date
+            description: NPI reactivation date
 
           - name: provider_gender_code 
             description: Provider gender code
@@ -151,7 +151,7 @@ sources:
             description: Authorized official title or position
 
           - name: authorized_official_telephone_number 
-            descriptioN: Authorized official telephone number
+            description: Authorized official telephone number
 
           - name: healthcare_provider_taxonomy_code_1 
             description: Healthcare provider taxonomy code 1
@@ -999,7 +999,7 @@ sources:
             description: Healthcare provider taxonomy group 15
 
           - name: certification_date
-            descripiton: Certification date
+            description: Certification date
 
       - name: loinc
         description: Export of all LOINC codes from https://loinc.org/downloads/loinc-table

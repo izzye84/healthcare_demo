@@ -19,13 +19,13 @@ models:
         description: Current enrollment status of a patient
 
       - name: inadmissible_reason
-        descritpion: Status reason for why a patient is in an inadmissible status
+        description: Status reason for why a patient is in an inadmissible status
 
       - name: disenrolled_reason
         description: Status reason for why a patient is in an disenrolled status
 
       - name: ingest_date
-        descrtiption: Date the Health Cloud data was ingested into the Platform
+        description: Date the Health Cloud data was ingested into the Platform
 
       - name: client_id
         description: Strive client ID

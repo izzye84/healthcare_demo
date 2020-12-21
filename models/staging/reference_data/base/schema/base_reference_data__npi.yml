@@ -30,10 +30,10 @@ models:
         description: Provider middle name
 
       - name: name_prefix
-        descriptioN: Provider name prefix
+        description: Provider name prefix
 
       - name: name_suffix
-        descriptioN: Providr name suffix
+        description: Providr name suffix
 
       - name: provider_credential_text
         description: Provider credential
