@@ -113,12 +113,14 @@ sources:
           - name: insurance_name
             description: Member insurance name
             tests:
-              - not_blank
+              - not_blank:
+                  severity: warn
 
           - name: lob
             description: Line of Business for Member's insurance provider
             tests:
-              - not_blank
+              - not_blank:
+                  severity: warn
 
           - name: payer_contract
             description: Member contract
