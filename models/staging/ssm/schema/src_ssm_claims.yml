@@ -534,9 +534,9 @@ sources:
           - name: ingest_date
             description: Strive ingest date
       
-      - name: pharmacy_claim
+      - name: pharmacy_claims
         description: SSM pharmacy claims
-        identifier: pharmacy_claim
+        identifier: pharmacy_claims
         columns:
           - name: claim_number
             description: Claim number
