@@ -45,7 +45,19 @@ strive_health:
 
   - `dbt debug` tests database connection
   - `dbt run` will run the project and materialize the models
+  - Model selection syntax. Specifying models can save you a lot of time by only running/testing the models that you think are relevant:
+    - `dbt run --models modelname` - will only run modelname
+    - `dbt run --models +modelname` - will run modelname and all parents
+    - `dbt run --models modelname+` - will run modelname and all children
+    - `dbt run --models +modelname+` - will run modelname, and all parents and children
+    - `dbt run --models @modelname` - will run modelname, all parents, all children, AND all parents of all children
+    - `dbt run --exclude modelname` - will run all models except modelname
+    - Note that all of these work with folder selection syntax too:
+      - `dbt run --models folder` - will run all models in a folder
+      - `dbt run --models folder.subfolder` - will run all models in the subfolder
+      - `dbt run --models +folder.subfolder` - will run all models in the subfolder and all parents
   - `dbt test` will run the tests for the project
+    - TIP: `dbt test` takes the same `--models` and `--exclude` syntax referenced for `dbt run`
   - `dbt deps` installs packages (e.g., `dbt_utils`) found in the packages.yml needed to run the project and generate dbt docs
   - `dbt docs generate` will generate the documentation for the project
   - `dbt docs serve` will serve the documentation in the web browser at `http://localhost:8080`
