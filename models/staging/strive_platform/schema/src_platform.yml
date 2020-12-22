@@ -175,7 +175,7 @@ sources:
             description: Patient's enrollemnt packet was received
 
           - name: enrollment_packet_sent__c
-            decription: Shows if an enrollment packet was sent to the patient
+            description: Shows if an enrollment packet was sent to the patient
 
           - name: owner.firstname
             description: Owner first name
