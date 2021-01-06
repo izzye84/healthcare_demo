@@ -10,10 +10,27 @@ clinical_diagnoses_source as (
     select * from {{ source('ssm_clinical','diagnosis') }} {{ limit_dev_data() }}
 ),
 
-clinical_diagnoses_add_rownum as (
-    select row_number() over(partition by patient_account_number, clinical_encounter_id, diagnosis_code order by ingest_date desc, modified_timestamp desc) as row_num
-        ,*
+coalesce_timestamps as (
+    select
+        patient_id
+        ,patient_account_number
+        ,clinical_encounter_id
+        ,diagnosis_date
+        ,diagnosis_code
+        ,onset_date
+        ,resolved_date
+        ,code_set
+        ,service_date
+        ,coalesce(modified_timestamp,created_timestamp) as coalesced_timestamp
+        ,client_id
+        ,ingest_date
     from clinical_diagnoses_source
+),
+
+clinical_diagnoses_add_rownum as (
+    select row_number() over(partition by patient_account_number, clinical_encounter_id, diagnosis_code order by ingest_date desc, coalesced_timestamp desc) as row_num
+        ,*
+    from coalesce_timestamps
 ),
 
 renamed as (
@@ -27,8 +44,6 @@ renamed as (
         ,resolved_date as abatement_datetime
         ,{{ empty_string_to_null('code_set') }} as code_system
         ,service_date as service_date
-        ,created_timestamp as created_timestamp
-        ,modified_timestamp as modified_timestamp
         ,{{ empty_string_to_null('client_id') }} as client_id
         ,ingest_date as ingest_date
     from clinical_diagnoses_add_rownum

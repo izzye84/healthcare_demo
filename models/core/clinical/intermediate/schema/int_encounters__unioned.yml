@@ -8,6 +8,7 @@ models:
           combination_of_columns:
             - identifier_encounter
             - client_id
+          severity: warn
     columns:
       - name: identifier_encounter
         description: Identifier(s) by which this encounter is known.

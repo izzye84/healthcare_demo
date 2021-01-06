@@ -33,7 +33,8 @@ models:
       - name: code
         description: Diagnosis code
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
       - name: onset_datetime
         description: Onset date of the diagnosis
@@ -55,19 +56,6 @@ models:
         tests:
           - is_date:
               date_format: yyyy-mm-dd
-
-      - name: created_timestamp
-        description: Timestamp of when the diagnosis record was created
-        tests:
-          - not_null
-
-      - name: modified_timestamp
-        description: Timestamp of when the diagnosis record was last modified
-        tests:
-          - not_null
-          - is_date:
-              date_format: yyyy-mm-dd HH24:MI:SS
-              date_type: timestamp
 
       - name: client_id
         description: Strive client ID
