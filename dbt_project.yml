@@ -34,7 +34,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 on-run-end:
     - "{{ grant_select_on_schemas(schemas, 'transformer') }}"
     - "{{ grant_select_on_schemas(schemas, 'reporter') }}"
-    
+
 models:
   strive_health:
     staging:
@@ -64,3 +64,5 @@ models:
         +schema: analytics
         +materialized: table
 
+seeds:
+  schema: stage

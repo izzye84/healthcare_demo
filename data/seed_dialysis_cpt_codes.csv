@@ -1,0 +1,66 @@
+cpt_code,description,dialysis,strive_interpretaion,application
+90935,Inpatient ESRD & non-ESRD procedures or outpatient non-ESRD dialysis services,N,Inpatient nephrology visit,CPT code with pos '21' considered as inpatient nephrology visit. Used to identify crashes.
+90936,Dialysis,Y,Dialysis,Identify members on dialysis
+90937,Inpatient ESRD & non-ESRD procedures or outpatient non-ESRD dialysis services,N,Inpatient nephrology visit,CPT code with pos '21' considered as inpatient nephrology visit. Used to identify crashes.
+90938,Dialysis,Y,Dialysis,Identify members on dialysis
+90939,Dialysis,Y,Dialysis,Identify members on dialysis
+90940,Hemodialysis,Y,Dialysis,Identify members on dialysis
+90941,Dialysis,Y,Dialysis,Identify members on dialysis
+90942,Dialysis,Y,Dialysis,Identify members on dialysis
+90943,Dialysis,Y,Dialysis,Identify members on dialysis
+90944,Dialysis,Y,Dialysis,Identify members on dialysis
+90945,Dialysis procedure other than hemodialysis,N,Inpatient nephrology visit,CPT code with pos '21' considered as inpatient nephrology visit. Used to identify crashes.
+90946,Dialysis,Y,Dialysis,Identify members on dialysis
+90947,Dialysis procedure other than hemodialysis,N,Inpatient nephrology visit,CPT code with pos '21' considered as inpatient nephrology visit. Used to identify crashes.
+90948,Dialysis,Y,Dialysis,Identify members on dialysis
+90949,Dialysis,Y,Dialysis,Identify members on dialysis
+90950,Dialysis,Y,Dialysis,Identify members on dialysis
+90951,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90952,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90953,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90954,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90955,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90956,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90957,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90958,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90959,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90960,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90961,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90962,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90963,ESRD Dialysis Services,Y,Home Dialysis,Identify members on home dialysis
+90964,ESRD Dialysis Services,y,Home Dialysis,Identify members on home dialysis
+90965,ESRD Dialysis Services,y,Home Dialysis,Identify members on home dialysis
+90966,ESRD Dialysis Services,y,Home Dialysis,Identify members on home dialysis
+90967,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90968,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90969,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90970,ESRD Dialysis Services,Y,Dialysis,Identify members on dialysis
+90971,Dialysis,Y,Dialysis,Identify members on dialysis
+90972,Dialysis,Y,Dialysis,Identify members on dialysis
+90973,Dialysis,Y,Dialysis,Identify members on dialysis
+90974,Dialysis,Y,Dialysis,Identify members on dialysis
+90975,Dialysis,Y,Dialysis,Identify members on dialysis
+90976,Dialysis,Y,Dialysis,Identify members on dialysis
+90977,Dialysis,Y,Dialysis,Identify members on dialysis
+90978,Dialysis,Y,Dialysis,Identify members on dialysis
+90979,Dialysis,Y,Dialysis,Identify members on dialysis
+90980,Dialysis,Y,Dialysis,Identify members on dialysis
+90981,Dialysis,Y,Dialysis,Identify members on dialysis
+90982,Dialysis,Y,Dialysis,Identify members on dialysis
+90983,Dialysis,Y,Dialysis,Identify members on dialysis
+90984,Dialysis,Y,Dialysis,Identify members on dialysis
+90985,Dialysis,Y,Dialysis,Identify members on dialysis
+90986,Dialysis,Y,Dialysis,Identify members on dialysis
+90987,Dialysis,Y,Dialysis,Identify members on dialysis
+90988,Dialysis,Y,Dialysis,Identify members on dialysis
+90989,Dialysis training (Complete),N,Dialysis training,Identify members who had dialysis training
+90990,Dialysis,Y,Dialysis,Identify members on dialysis
+90991,Dialysis,Y,Dialysis,Identify members on dialysis
+90992,Dialysis,Y,Dialysis,Identify members on dialysis
+90993,Dialysis training (Incomplete),N,Dialysis training,Identify members who had incomplete dialysis training
+90994,Dialysis,Y,Dialysis,Identify members on dialysis
+90995,Dialysis,Y,Dialysis,Identify members on dialysis
+90996,Dialysis,Y,Dialysis,Identify members on dialysis
+90997,Dialysis,Y,Dialysis,Identify members on dialysis
+90998,Dialysis,Y,Dialysis,Identify members on dialysis
+90999,Dialysis,Y,Dialysis,Identify members on dialysis

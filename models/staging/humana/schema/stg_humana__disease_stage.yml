@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_humana__disease_stage
+    description: Staging step for Humana disease stage
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: disease_stage
+        description: Current CKD stage
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date
