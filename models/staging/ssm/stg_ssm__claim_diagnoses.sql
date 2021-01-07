@@ -14,7 +14,6 @@ with unpivot_medical_claims as (
               'place_of_service',
               'sub_type',
               'service_date_time',
-              'billable_period_start',
               'billable_period_end',
               'admission_type',
               'admission_source',

@@ -4,11 +4,11 @@
     )
 }}
 
-with 
+with
 
 source_referral as (
     select row_number() over(partition by mbr_pers_gen_key order by ingest_date desc) as row_num
-        ,* 
+        ,*
     from {{ source('humana_src','referral') }}
     {{ limit_dev_data() }}
 )
@@ -29,6 +29,8 @@ select {{ dbt_utils.surrogate_key(['mbr_pers_gen_key']) }} as identifier_externa
     ,{{ empty_string_to_null('zip_cd') }} as address_postal_code
     ,initcap({{ empty_string_to_null('county_of_residence') }}) as address_district
     ,{{ empty_string_to_null('pcp_npi') }} as general_practitioner
+    ,{{ empty_string_to_null('esrd_2clms_last4mo') }} as esrd_2clms_last4mo
+    ,{{ empty_string_to_null('ckd_stage') }} as ckd_stage
     ,{{ empty_string_to_null('client_id') }} as client_id
     ,ingest_date
 from source_referral

@@ -21,3 +21,31 @@ models:
 
       - name: feature_date
         description: Date the event occurred. The `serviced_period_end` in the `core.claim_item` resource
+
+  - name: eng_disease_stage
+    description: Coded value indicating patient's CKD status
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - feature_link
+            - client_id
+    columns:
+      - name: feature_link
+        description: identifier_external_source
+        tests:
+          - not_null
+
+      - name: feature_code
+        description: Strive Data Science feature code. [Reference](https://strivehealth.atlassian.net/wiki/spaces/STRIVEHEAL/pages/844955749/Strive+Data+Science+Model+Features+Code+System)
+
+      - name: feature_display
+        description: Description of the Strive Data Science feature code
+
+      - name: feature_value
+        description: Patient CKD disease stage value
+
+      - name: feature_date
+        description: Date the event occurred.
+
+      - name: client_id
+        description: Strive client ID

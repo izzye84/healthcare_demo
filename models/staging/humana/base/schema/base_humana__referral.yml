@@ -68,6 +68,12 @@ models:
       - name: general_practitioner
         description: Member primary care physician (PCP)
 
+      - name: esrd_2clms_last4mo
+        description: esrd_2clms_last4mo
+
+      - name: ckd_stage
+        description: ckd_stage
+
       - name: client_id
         description: Strive client ID
 
