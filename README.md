@@ -61,3 +61,31 @@ strive_health:
   - `dbt deps` installs packages (e.g., `dbt_utils`) found in the packages.yml needed to run the project and generate dbt docs
   - `dbt docs generate` will generate the documentation for the project
   - `dbt docs serve` will serve the documentation in the web browser at `http://localhost:8080`
+
+### Copying files and adding partitions to Redshift
+
+1. Log into Strive's VPN
+2. Connect to AWS with your SSO
+3. `python utils/s3_file_copying/copy_new_files.py`
+4. Confirm that the correct files were copied into the Analytics Warehouse S3 bucket
+5. `python utils/s3_file_copying/add_partitions.py`
+
+Logs are written to the `.file_copying_logs` directory.
+
+#### Adding a new Partner to the file copying script
+
+1. Add a `<partner>_ingested_files` like:
+```
+conviva_ingested_files = {
+    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_conviva', []) for f in fs
+}
+```
+2. Log the ingested files like: (NOTE: This logging should be generalized)
+```
+log_str = 'Conviva files that have already been ingested:\n'
+for f in conviva_ingested_files:
+    log_str += f'{f}\n'
+logging.debug(log_str)
+```
+3. Update `mapping`, using `humana` as an example
+4. Add the Partner to the *List and Filter Source Files* section, using Humana as an example

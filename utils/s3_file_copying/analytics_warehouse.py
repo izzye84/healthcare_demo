@@ -66,7 +66,8 @@ class AnalyticsWarehouse:
         table_name: str,
         prefix: str,
         client_id: str, 
-        ingest_date: str, 
+        ingest_date: str,
+        payer_lob: Optional[str] = None,
         lob: Optional[str]= None, 
         insurance_name: Optional[str] = None
     ) -> None:
@@ -75,12 +76,19 @@ class AnalyticsWarehouse:
             "partition(client_id='{}', lob='{}', insurance_name='{}', ingest_date='{}') "
             "location 's3://strive-analytics-warehouse-pro/{}';"
         )
+        query_with_payer_lob = (
+            "alter table {} add if not exists "
+            "partition(client_id='{}', payer_lob='{}', ingest_date='{}') "
+            "location 's3://strive-analytics-warehouse-pro/{}';"
+        )
         query_no_lob = (
             "alter table {} add if not exists "
             "partition(client_id='{}', ingest_date='{}') "
             "location 's3://strive-analytics-warehouse-pro/{}';"
         )
-        if lob:
+        if payer_lob:
+            query = query_with_payer_lob.format(table_name, client_id, payer_lob, ingest_date, prefix)
+        elif lob:
             query = query_with_lob.format(table_name, client_id, lob, insurance_name, ingest_date, prefix)
         else:
             query = query_no_lob.format(table_name, client_id, ingest_date, prefix)
