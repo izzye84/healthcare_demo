@@ -41,7 +41,7 @@ create external table raw_conviva.facility_claim_header (
     icd_primary_procedure_indicator varchar(255),
     servicing_provider_npi varchar(255)
 )
-partitioned by (client_id varchar(50), ingest_date timestamp)
+partitioned by (client_id varchar(50), payer_lob varchar(50), ingest_date timestamp)
 row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 with serdeproperties (
   'separatorChar' = '|',

@@ -16,7 +16,7 @@ create external table raw_conviva.eligibility (
     dual_status_indicator varchar(255),
     patient_account_number varchar(255)
 )
-partitioned by (client_id varchar(50), ingest_date timestamp)
+partitioned by (client_id varchar(50), payer_lob varchar(50), ingest_date timestamp)
 row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 with serdeproperties (
   'separatorChar' = '|',
