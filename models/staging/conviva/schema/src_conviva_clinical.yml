@@ -1,0 +1,436 @@
+version: 2
+
+sources:
+  - name: conviva_clinical
+    description: Source definition for Conviva clinical files
+    schema: raw_conviva
+    tables:
+      - name: clinical_encounter
+        description: Clinical encounters
+        identifier: clinical_encounter
+        columns:
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: patient_account_number
+            description: Patient account number
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: clinical_encounter_date
+            description: Clinical encounter date
+
+          - name: clinical_encounter_facility_name
+            description: Clinical encounter facility name
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: clinical_encounter_reason
+            description: Clinical encounter reason
+
+          - name: clinical_encounter_begin_datetime
+            description: Clinical encounter begin date
+
+          - name: clinical_encounter_status
+            description: Status of the clinical encounter
+
+          - name: clinical_encounter_visit_type
+            description: Clinical encounter visit type
+
+          - name: clinical_encounter_end_datetime
+            description: Clinical encounter end date
+
+          - name: provider_id
+            description: Provider ID
+
+          - name: provider_npi
+            description: The National Provider Identifier (NPI) for the provier that provided care
+
+          - name: user_id
+            description: User ID
+
+          - name: place_of_service_code
+            description: Place of service code for the clinical encounter
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: diagnosis
+        description: Patient diagnoses
+        identifier: diagnosis
+        columns:
+          - name: patient_id
+            description: Patient ID
+            tests:
+             - not_blank
+
+          - name: patient_account_number
+            description: Patient account number
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: diagnosis_date
+            description: Date of diagnosis
+
+          - name: diagnosis_code
+            description: Diagnosis code
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: onset_date
+            description: Onset date of the diagnosis
+          
+          - name: resolved_date
+            description: Date the diagnosis was resolved
+
+          - name: code_set
+            description: The code system that defines the diagnosis code
+
+          - name: diagnosis_name
+            description: Description of the diagnosis
+
+          - name: service_date
+            description: Service date
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: lab
+        description: Patient lab results
+        identifier: lab
+        columns:
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: patient_account_number
+            description: Patient account number
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: lab_id
+            description: Lab id
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: lab_code_set
+            description: Code system used to define the lab code
+
+          - name: lab_code
+            description: Lab code
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: lab_order_date
+            description: Date the lab was ordered
+
+          - name: lab_order_description
+            description: Description of the lab order
+
+          - name: service_code
+            description: Service code
+
+          - name: service_code_modifier
+            description: Service code modifier
+
+          - name: service_code_type
+            description: Service code type
+
+          - name: service_code_desc
+            description: Description of the service code
+
+          - name: result_description
+            description: Description of the lab result
+
+          - name: collection_date
+            description: Collection date
+
+          - name: result_date
+            description: Date results were received
+
+          - name: result_text
+            description: Text representation of the lab result
+
+          - name: result_numeric
+            description: Numeric representation of the lab result
+
+          - name: result_pos_neg
+            description: Indicates whether the result was positive or negative
+
+          - name: unit
+            description: Unit of measurement for the result
+
+          - name: reference_range
+            description: The normal range of the result
+
+          - name: abnormal_flag
+            description: Indicates whether the result is abnormal or not
+
+          - name: result_status
+            description: Status of the result (e.g. pending, final, etc.)
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: patient
+        description: Patient demographics
+        identifier: patient
+        columns:
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+              - unique
+
+          - name: patient_account_number
+            description: Patient account number
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: social_security_number
+            description: Patient's social security number
+
+          - name: first_name
+            description: Patient's first name
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: last_name
+            description: Patient's last name
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: preferred_name
+            description: Patient's preferred name
+
+          - name: salutation
+            description: Patient's salutation (e.g. Mr., Mrs., etc.)
+
+          - name: date_of_birth
+            description: Patient's date of birth
+
+          - name: gender
+            description: Patient's gender
+
+          - name: race
+            description: Patient's race
+
+          - name: language_spoken
+            description: Patient's primary spoken language
+
+          - name: secondary_language_spoken
+            description: Patient's secondary language spoken
+
+          - name: death_date
+            description: Patient's date of death
+
+          - name: country_of_birth
+            description: Patient's country of birth
+
+          - name: address_line_1
+            description: Patient's address line 1
+
+          - name: address_line_2
+            description: Patient's address line 2
+
+          - name: city
+            description: Patient's city
+
+          - name: state
+            description: Patient's state
+
+          - name: zip_code
+            description: Patient's zip code
+
+          - name: zip_code_last_4
+            description: Last 4 digits of patient's zip code
+
+          - name: mailing_country
+            description: Country of patient's mailing address
+
+          - name: address_type
+            description: Patient's address type (e.g. home, work, etc.)
+
+          - name: phone_number
+            description: Patient's phone number
+
+          - name: contact_type
+            description: Patient's phone type (e.g. home, work, mobile, etc.)
+
+          - name: email_address
+            description: Patient's email address
+
+          - name: pcp_provider_id
+            description: Provider of the patient's primary care provider (PCP)
+
+          - name: pcp_npi
+            description: The National Provider Identifier (NPI) for the patient's primary care provider (PCP)
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: procedure
+        description: Patient procedures
+        identifier: procedure
+        columns:
+          - name: patient_id
+            description: Patient ID
+            tests:  
+              - not_blank
+
+          - name: patient_account_number
+            description: Patient account number
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: procedure_code
+            description: Procedure code
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: procedure_description
+            description: Description of the procedure
+
+          - name: procedure_code_type
+            description: Code system that defines the procedure code
+
+          - name: modifier1
+            description: Procedure code modifier 1
+          
+          - name: modifier2
+            description: Procedure code modifier 2
+
+          - name: modifier3
+            description: Procedure code modifier 3
+
+          - name: modifier4
+            description: Procedure code modifier 4
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: vitals
+        description: Patient vitals
+        identifier: vitals
+        columns:
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: patient_account_number
+            description: Patient account number
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: clinical_encounter_id
+            description: Clinical encounter ID
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: vitals_captured_by
+            description: Vitals captured by
+
+          - name: vitals_name
+            description: Vitals name
+
+          - name: vitals_value
+            description: Vitals measurement
+
+          - name: vitals_unit
+            description: Unit of measurement of the vital result
+
+          - name: created_timestamp
+            description: Timestamp of when the diagnosis record was created
+
+          - name: modified_timestamp
+            description: Timestamp of when the diagnosis record was last modified
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date

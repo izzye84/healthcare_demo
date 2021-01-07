@@ -39,8 +39,7 @@ create external table raw_conviva.facility_claim_header (
     principal_diagnosis_icd_indicator varchar(255),
     icd_primary_procedure_code varchar(255),
     icd_primary_procedure_indicator varchar(255),
-    servicing_provider_npi varchar(255),
-    facility_header_claim_id_1 varchar(255)
+    servicing_provider_npi varchar(255)
 )
 partitioned by (client_id varchar(50), ingest_date timestamp)
 row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'

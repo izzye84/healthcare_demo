@@ -1,0 +1,365 @@
+version: 2
+
+sources:
+  - name: conviva_claims
+    description: Source definition for Conviva claims files
+    schema: raw_conviva
+    tables:
+      - name: eligibility
+        description: Conviva member eligility
+        identifier: eligibility
+        columns:
+          - name: member_id
+            description: Member ID
+            tests:
+              - not_blank
+
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: id
+            description: ID
+
+          - name: coverage_begin_date
+            description: Coverage begin date
+
+          - name: coverage_end_date
+            description: Coverage end date
+
+          - name: contract_number_type_indicator
+            description: Contract number type indicator
+
+          - name: contract_number
+            description: Medicare contract number
+
+          - name: group_id
+            description: Group ID
+
+          - name: hospice_begin_date
+            description: Hospice begin date
+
+          - name: hospice_end_date
+            description: Hospice end date
+
+          - name: insurance_type
+            description: Insurance type
+
+          - name: payer
+            description: Payer
+
+          - name: plan_code
+            description: Plan code
+
+          - name: original_entitlement_reason
+            description: Original entitlement reason
+
+          - name: dual_status_indicator
+            description: Dual status indicator
+
+          - name: patient_account_number
+            description: Patient account number
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            descrption: Strive ingest date
+
+      - name: facility_claim_diagnosis
+        description: Facility claim diagnosis
+        identifier: facility_claim_diagnosis
+        columns:
+          - name: facility_header_claim_id
+            description: Facility header claim ID
+            tests:
+              - not_blank
+
+          - name: member_id
+            description: Member ID
+            tests:
+              - not_blank
+
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: icd_diagnosis_code
+            description: ICD10 diagnosis code
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: icd_indicator
+            description: ICD indicator
+
+          - name: icd_diagnosis_code_rank
+            description: Diagnosis code rank
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: facility_claim_header
+        description: Facility claim header
+        identifier: facility_claim_header
+        columns:
+          - name: facility_header_claim_id
+            description: Facility header claim ID
+            tests:
+              - not_blank
+            
+          - name: member_id
+            description: Member ID
+            tests:
+              - not_blank
+
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: place_of_service_code
+            description: Place of service code
+
+          - name: place_of_service_code_description
+            description: Place of service code description
+
+          - name: claim_processed_date
+            description: Claim processed date
+
+          - name: transaction_type
+            description: Transaction type
+
+          - name: insurance_product_type_desc
+            description: Insurance product type description
+
+          - name: line_of_business_desc
+            description: Line of business description
+
+          - name: service_date_from
+            description: Service date from
+
+          - name: service_date_to
+            description: Service date to
+
+          - name: admit_diagnosis_code
+            description: Admit diagnosis code
+
+          - name: admit_datetime
+            description: Admit date
+
+          - name: source_of_admission
+            description: Source of admission
+
+          - name: discharge_datetime
+            description: Discharge date
+
+          - name: discharge_status
+            description: Discharge status
+
+          - name: accident_date
+            description: Accident date
+
+          - name: drg_code
+            description: Drug code
+
+          - name: network_status
+            description: Network status
+
+          - name: paid_amount
+            description: Paid amount
+
+          - name: allowed_amount
+            description: Allowed amount
+
+          - name: plan_payment
+            description: Plan payment
+
+          - name: member_liability
+            description: Member liability
+
+          - name: total_charges
+            desscription: Total charges
+
+          - name: total_standard_cost
+            description: Total standard cost
+
+          - name: admitting_provider_npi
+            description: Admitting provider NPI
+
+          - name: bill_type
+            description: Bill type
+
+          - name: billing_provider_npi
+            description: Billing provider NPI
+
+          - name: referring_provider_npi
+            description: Referring provider NPI
+
+          - name: facility_npi
+            description: Facility NPI
+
+          - name: provider_tin
+            description: Provider TIN
+
+          - name: apc
+            description: APC
+
+          - name: apc_version
+            description: APC version
+
+          - name: capitated_services_indicator
+            description: Capitated services indicator
+
+          - name: professional_claim_id
+            description: Professional claim ID
+
+          - name: principal_diagnosis_code
+            description: Principal diagnosis code
+
+          - name: principal_diagnosis_icd_indicator
+            description: Principal diagnosis ICD indicator
+
+          - name: icd_primary_procedure_code
+            description: ICD primary procedure code
+
+          - name: icd_primary_procedure_indicator
+            description: ICD primary procedure indicator
+
+          - name: servicing_provider_npi
+            description: Servicing provider NPI
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: facility_claim_line
+        description: Facility claim line
+        identifier: facility_claim_line
+        columns:
+          - name: facility_header_claim_id
+            description: Facility header claim id
+            tests:
+              - not_blank
+
+          - name: line_number
+            description: Claim line number
+            tests:
+              - not_blank
+
+          - name: member_id
+            description: Member ID
+            tests:
+              - not_blank
+
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: billing_provider_npi
+            description: Billing provider NPI
+
+          - name: servicing_provider_npi
+            description: Servicing provider NPI
+
+          - name: revenue_code
+            description: Revenue code
+
+          - name: procedure_code
+            description: Procedure code
+
+          - name: procedure_modifier_1
+            description: Procedure modifier 1
+
+          - name: procedure_modifier_2
+            description: Procedure modifier 2
+
+          - name: procedure_modifier_3
+            description: Procedure modifier 3
+
+          - name: procedure_modifier_4
+            description: Procedure modifier 4
+
+          - name: ndc_code
+            description: NDC code
+
+          - name: service_date_from
+            description: Service date from
+
+          - name: service_date_to
+            description: service_date_to
+
+          - name: service_units
+            description: Service units
+
+          - name: charge_amount
+            description: Charge amount
+
+          - name: total_paid
+            description: Total paid
+
+          - name: allowed_amount
+            description: Allowed amount
+
+          - name: plan_payment
+            description: Plan payment
+
+          - name: member_liability
+            description: Member liability
+
+          - name: standard_cost
+            description: standard_cost
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: facility_claim_procedure
+        description: Facility claim procedure
+        identifier: facility_claim_procedure
+        columns:
+          - name: facility_header_claim_id
+            description: Facility header claim ID
+            tests:
+              - not_blank
+
+          - name: member_id
+            description: Member ID
+            tests:
+              - not_blank
+
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: procedure_code
+            description: Procedure code
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: procedure_modifier
+            description: Procedure modifier
+
+          - name: coding_system
+            description: Coding system
+
+          - name: procedure_code_rank
+            description: Procedure code rank
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
