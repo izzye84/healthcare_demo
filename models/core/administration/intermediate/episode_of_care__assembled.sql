@@ -1,22 +1,23 @@
 with 
 
 source_admissibility as (
-    select * from {{ ref('base_platform__admissibility') }} where client_id in ('ssm','humana')
+    select * from {{ ref('base_platform__admissibility') }} where client_id in ('ssm','humana','conviva')
 ),
 
 source_enrollment_status as (
-    select * from {{ ref('base_platform__enrollment_status') }} where client_id in ('ssm','humana')
+    select * from {{ ref('base_platform__enrollment_status') }} where client_id in ('ssm','humana','conviva')
 ),
 
 source_health_cloud as (
-    select * from {{ ref('base_platform__health_cloud_account') }} where client_id in ('ssm','humana')
+    select * from {{ ref('base_platform__health_cloud_account') }} where client_id in ('ssm','humana','conviva')
 ),
 
 lag_admissible as (
 	select 
 		identifier_sh_uid
 		,active
-		,ingest_date 
+		,ingest_date
+		,client_id
 		,lag(active,1) over(partition by identifier_sh_uid order by ingest_date) as previous_admissible
 	from source_admissibility 
 ),
@@ -36,6 +37,7 @@ episode_period as (
 			then ingest_date
 		end as period_end
 
+		,client_id
 	from lag_admissible 
 ),
 
@@ -93,7 +95,7 @@ joined as (
 		,filter_episodes.period_end
 		,current_status.status
 		,current_status.status_reason
-        ,current_status.client_id
+        ,filter_episodes.client_id
 	from filter_episodes left join current_status
 	on filter_episodes.identifier_sh_uid = current_status.identifier_sh_uid
 )
