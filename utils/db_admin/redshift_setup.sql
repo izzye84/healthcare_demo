@@ -62,6 +62,12 @@ database 'reference_data'
 region 'us-east-1'
 iam_role 'arn:aws:iam::557805935884:role/redshift-glue';
 
+create external schema raw_conviva
+from data catalog
+database 'analytics_raw_conviva'
+region 'us-east-1'
+iam_role 'arn:aws:iam::557805935884:role/redshift-glue';
+
 create external schema raw_humana
 from data catalog
 database 'analytics_raw_humana'
@@ -113,6 +119,9 @@ grant select on all tables in schema platform_data_pro to group transformer;
 grant usage on schema platform_reference_data to group transformer;
 grant select on all tables in schema platform_reference_data to group transformer;
 
+grant usage on schema raw_conviva to group transformer;
+grant select on all tables in schema raw_conviva to group transformer;
+
 grant usage on schema raw_humana to group transformer;
 grant select on all tables in schema raw_humana to group transformer;
 
@@ -137,6 +146,9 @@ grant select on all tables in schema platform_data_pro to group loader;
 grant usage on schema platform_reference_data to group loader;
 grant select on all tables in schema platform_reference_data to group loader;
 
+grant usage on schema raw_conviva to group loader;
+grant select on all tables in schema raw_conviva to group loader;
+
 grant usage on schema raw_humana to group loader;
 grant select on all tables in schema raw_humana to group loader;
 
@@ -157,6 +169,9 @@ grant select on all tables in schema platform_data_pro to group reporter;
 
 grant usage on schema platform_reference_data to group reporter;
 grant select on all tables in schema platform_reference_data to group reporter;
+
+grant usage on schema raw_conviva to group reporter;
+grant select on all tables in schema raw_conviva to group reporter;
 
 grant usage on schema raw_humana to group reporter;
 grant select on all tables in schema raw_humana to group reporter;
