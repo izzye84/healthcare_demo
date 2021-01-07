@@ -4,5 +4,5 @@ target/
 dbt_modules/
 logs/
 Local Dev.session.sql
-utils/s3_file_copying/.file_copying_logs
+.file_copying_logs
 __pycache__

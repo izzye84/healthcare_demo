@@ -57,10 +57,13 @@ for k in tables.keys():
         ingested_files[k].append(aw.list_ingested_files(f'{k}.{t}'))
 
 ssm_ingested_files = {
-    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files['raw_ssm'] for f in fs
+    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_ssm', []) for f in fs
 }
 humana_ingested_files = {
-    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files['raw_humana'] for f in fs
+    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_humana', []) for f in fs
+}
+conviva_ingested_files = {
+    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_conviva', []) for f in fs
 }
 print('Finished querying ingested files')
 
@@ -71,6 +74,10 @@ for f in ssm_ingested_files:
 logging.debug(log_str)
 log_str = 'Humana files that have already been ingested:\n'
 for f in humana_ingested_files:
+    log_str += f'{f}\n'
+logging.debug(log_str)
+log_str = 'Conviva files that have already been ingested:\n'
+for f in conviva_ingested_files:
     log_str += f'{f}\n'
 logging.debug(log_str)
 
@@ -403,8 +410,149 @@ mapping = {
                 '{src_filename}'
             )
         }
+    },
+    'conviva': {
+        'clinical_encounter': {
+            'src': re.compile(r'^clinical_encounter/schema_id=\d+/ingest_id=D(\d+)\.T\d+/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'clinical_encounter/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'diagnosis': {
+            'src': re.compile(r'^diagnosis/schema_id=\d+/ingest_id=D(\d+)\.T\d+/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'diagnosis/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'eligibility': {
+            'src': re.compile(r'^eligibility/schema_id=\d+/ingest_id=D(\d+)\.T\d+/payer_lob=(\w+)/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'eligibility/'
+                'payer_lob={payer_lob}/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'facility_claim_diagnosis': {
+            'src': re.compile(r'^facility_claim_diagnosis/schema_id=\d+/ingest_id=D(\d+)\.T\d+/payer_lob=(\w+)/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'facility_claim_diagnosis/'
+                'payer_lob={payer_lob}/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'facility_claim_header': {
+            'src': re.compile(r'^facility_claim_header/schema_id=\d+/ingest_id=D(\d+)\.T\d+/payer_lob=(\w+)/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'facility_claim_header/'
+                'payer_lob={payer_lob}/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'facility_claim_line': {
+            'src': re.compile(r'^facility_claim_line/schema_id=\d+/ingest_id=D(\d+)\.T\d+/payer_lob=(\w+)/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'facility_claim_line/'
+                'payer_lob={payer_lob}/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'facility_claim_procedure': {
+            'src': re.compile(r'^facility_claim_procedure/schema_id=\d+/ingest_id=D(\d+)\.T\d+/payer_lob=(\w+)/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'facility_claim_procedure/'
+                'payer_lob={payer_lob}/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'lab': {
+            'src': re.compile(r'^lab/schema_id=\d+/ingest_id=D(\d+)\.T\d+/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'lab/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'member': {
+            'src': re.compile(r'^member/schema_id=\d+/ingest_id=D(\d+)\.T\d+/payer_lob=(\w+)/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'member/'
+                'payer_lob={payer_lob}/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'patient': {
+            'src': re.compile(r'^patient/schema_id=\d+/ingest_id=D(\d+)\.T\d+/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'patient/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'procedure': {
+            'src': re.compile(r'^procedure/schema_id=\d+/ingest_id=D(\d+)\.T\d+/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'procedure/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        },
+        'vitals': {
+            'src': re.compile(r'^vitals/schema_id=\d+/ingest_id=D(\d+)\.T\d+/([\w.]+)'),
+            'dst': (
+                'clients/'
+                'client_id=conviva/'
+                'data_frequency=batch/'
+                'vitals/'
+                'ingest_date={ingest_date}/'
+                '{src_filename}'
+            )
+        }
     }
 }
+
 
 #####################################################
 #          List and Filter Source Files             #
@@ -412,7 +560,9 @@ mapping = {
 
 print('Getting a list of files from client service data buckets in S3...')
 
+#
 # SSM
+#
 
 s3 = boto3.resource('s3')
 
@@ -480,7 +630,9 @@ for snf in ssm_new_files:
     log_str += f'{snf}\n'
 logging.debug(log_str)
 
+#
 # HUMANA
+#
 
 humana_bucket = s3.Bucket('strive-humana-service-data-pro')
 humana_objs = humana_bucket.objects.all()
@@ -531,6 +683,69 @@ for hnf in humana_new_files:
     log_str += f'{hnf}\n'
 logging.debug(log_str)
 
+#
+# CONVIVA
+#
+
+conviva_bucket = s3.Bucket('strive-conviva-service-data-pro')
+conviva_objs = conviva_bucket.objects.all()
+conviva_sources = [
+    {
+        'Bucket': 'strive-conviva-service-data-pro',
+        'Key': obj.key
+    }
+    for obj in conviva_objs 
+    if obj.key[-1] != '/'
+]
+
+# Log results
+log_str = 'Conviva source files:\n'
+for cs in conviva_sources:
+    log_str += f'{cs}\n'
+logging.debug(log_str)
+
+conviva_src_dst = []
+
+for source in conviva_sources:
+    for k, v in mapping['conviva'].items():
+        m = re.search(v['src'], source['Key'])
+        if m:
+            if 'payer_lob' in v['dst']:
+                try:
+                    params = dict()
+                    params['ingest_date'] = ingest_date_transform(m.group(1))
+                    params['payer_lob'] = m.group(2)
+                    params['src_filename'] = m.group(3)
+                    dst = v['dst'].format(**params)
+                    conviva_src_dst.append({'src': source, 'dst': dst})
+                except KeyError as ke:
+                    print('EXCEPTION raised while parsing a source key')
+                    print(f'KeyError: {ke}')
+            else:
+                try:
+                    params = dict()
+                    params['ingest_date'] = ingest_date_transform(m.group(1))
+                    params['src_filename'] = m.group(2)
+                    dst = v['dst'].format(**params)
+                    conviva_src_dst.append({'src': source, 'dst': dst})
+                except Exception as e:
+                    print('EXCEPTION raised while parsing a source key')
+                    print(e)
+                    print(m.group(0))
+            break
+
+conviva_new_files = []
+for src_dst in conviva_src_dst:
+    dst = src_dst['dst']
+    if dst not in conviva_ingested_files:
+        conviva_new_files.append(src_dst)
+
+# Log results
+log_str = 'Conviva files to copy:\n'
+for cnf in conviva_new_files:
+    log_str += f'{cnf}\n'
+logging.debug(log_str)
+
 print('Finished getting the list of files')
 
 #####################################################
@@ -541,7 +756,7 @@ aw_bucket_name = 'strive-analytics-warehouse-pro'
 print(f'Copying new files to {aw_bucket_name}...')
 aw_bucket = s3.Bucket(aw_bucket_name)
 
-new_files = ssm_new_files + humana_new_files
+new_files = ssm_new_files + humana_new_files + conviva_new_files
 
 for nf in new_files:
     src = nf['src']
