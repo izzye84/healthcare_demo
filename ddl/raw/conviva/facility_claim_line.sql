@@ -22,7 +22,7 @@ create external table raw_conviva.facility_claim_line (
     member_liability varchar(255),
     standard_cost varchar(255)
 )
-partitioned by (client_id varchar(50), ingest_date timestamp)
+partitioned by (client_id varchar(50), payer_lob varchar(50), ingest_date timestamp)
 row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 with serdeproperties (
   'separatorChar' = '|',
