@@ -1,0 +1,103 @@
+version: 2
+
+models:
+  - name: int_patient__unioned
+    description: >
+      Demographics and other administrative information about an individual receiving care or other health-related services.
+      Refer to the official FHIR documentation for additional information: https://www.hl7.org/fhir/patient.html
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_subscriber_id
+        description: Member SSM assigned patient ID
+
+      - name: identifier_sh_uid
+        description: Strive assigned `sh_uid`
+
+      - name: active
+        description: Whether this patient's record is in active use. Can be used to determine admissibility
+
+      - name: name_given_first
+        description: First name associated with the patient
+
+      - name: name_given_middle
+        description: Middle name associated with the patient
+
+      - name: name_family
+        description: Last name associated with the patient
+
+      - name: name_given_nickname
+        description: Nickname associated with the patient
+
+      - name: name_prefix
+        description: Name prefix associated with the patient
+
+      - name: identifier_social_security_number
+        description: Social security number associated with the patient
+
+      - name: birth_date
+        description: The date of birth for the individual
+
+      - name: gender
+        description: Gender of the patient
+
+      - name: race
+        description: Race of the patient
+
+      - name: ethnic_group
+        description: Ethnic group of the patient
+
+      - name: language_preferred
+        description: Primary language spoken by the patient
+
+      - name: language_secondary
+        description: Secondary language spoken by the patient
+
+      - name: deceased_date
+        description: The date the patient was deceased
+
+      - name: birth_country
+        description: Country of birth associated with the patient
+
+      - name: address_line1
+        description: Address line 1 associated with the patient
+
+      - name: address_line2
+        description: Address line 2 associated with the patient
+
+      - name: address_city
+        description: Address city associated with the patient
+
+      - name: address_state
+        description: Address state associated with the patient
+
+      - name: address_postal_code
+        description: Address postal code associated with the patient
+
+      - name: address_district
+        description: Address county associated with the patient
+
+      - name: address_country
+        description: Address country associated with the patient
+
+      - name: telecom_phone_number_home
+        description: Home phone number associated with the patient
+
+      - name: telecom_phone_number_work
+        description: Work phone number associated with the patient
+
+      - name: telecom_email_address
+        description: Email address associated with the patient
+
+      - name: general_practitioner
+        description: Patient's nominated primary care provider (PCP)
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Ingest date of when the record was ingested into the warehouse

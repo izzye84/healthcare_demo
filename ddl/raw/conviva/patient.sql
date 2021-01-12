@@ -9,7 +9,7 @@ create external table raw_conviva.patient (
 	date_of_birth varchar(255),
 	gender varchar(255),
 	race varchar(255),
-	langauge_spoken varchar(255),
+	language_spoken varchar(255),
 	secondary_language_spoken varchar(255),
 	death_date varchar(255),
 	country_of_birth varchar(255),
