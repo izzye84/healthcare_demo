@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: base_conviva__patient
+    description: Base Conviva patients
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from the Conviva `patient_id` field
+        tests:
+          - not_null
+          - unique
+
+      - name: patient_account_number
+        description: Patient account number
+
+      - name: identifier_social_security_number
+        description: Patient social security number
+
+      - name: name_given_first
+        description: Patient first name
+      
+      - name: name_family
+        description: Patient last name
+
+      - name: name_given_nickname
+        description: Patient preferred name
+
+      - name: name_prefix
+        description: Patient name prefix
+
+      - name: birth_date
+        description: Patient birth date
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: gender
+        description: Patient gender
+
+      - name: race
+        description: Patient race
+
+      - name: language_preferred
+        description: Patient primary language spoken
+
+      - name: language_secondary
+        description: Patient secondary language spoken
+
+      - name: deceased_date
+        description: Patient deceased date
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: birth_country
+        description: Patient country of birth
+
+      - name: address_line1
+        description: Patient address line 1
+
+      - name: address_line2
+        description: Patient address line 2
+
+      - name: address_city
+        description: Patient address city
+
+      - name: address_state
+        description: Patient address state
+
+      - name: address_postal_code
+        description: Patient address postal code
+
+      - name: address_postal_code_4
+        description: Patient address postal code last 4
+
+      - name: address_country
+        description: Patient address country
+
+      - name: address_type
+        description: Patient address_type (e.g. home, work, etc.)
+
+      - name: telecom_phone_number
+        description: Patient phone number
+
+      - name: telecom_phone_use
+        description: Patient phone type (e.g. home, work, mobile, etc.)
+
+      - name: telecom_email_address
+        description: Patient email address
+
+      - name: practitioner_identifier
+        description: Practitioner ID
+
+      - name: general_practitioner
+        description: Patient primary care physician
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date

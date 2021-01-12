@@ -1,0 +1,78 @@
+version: 2
+
+models:
+  - name: base_conviva__member
+    description: Base Conviva member
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from the Conviva `patient_id` field
+        tests:
+          - not_null
+          - unique
+    
+      - name: identifier_external_subscriber_id
+        description: Member Conviva assigned patient ID
+
+      - name: identifier_social_security_number
+        description: Member social security number
+
+      - name: name_given_first
+        description: Member first name
+
+      - name: name_family
+        description: Member last name
+
+      - name: birth_date
+        description: Member birth date
+
+      - name: gender
+        description: Member gender
+
+      - name: race
+        description: Member race
+
+      - name: relationship
+        description: Member relationship
+
+      - name: address_line1
+        description: Member address line 1
+
+      - name: address_line2
+        description: Member address line 2
+
+      - name: address_city
+        description: Member address city
+
+      - name: address_state
+        description: Address state
+
+      - name: address_postal_code
+        description: Member address postal code
+
+      - name: address_postal_code_4
+        description: Member address postal code last 4
+
+      - name: address_country
+        description: Member address country
+
+      - name: telecom_phone_number_home
+        description: Member home phone number
+
+      - name: telecom_email_address
+        description: Member email address
+
+      - name: general_practitioner
+        description: Member primary care physician
+
+      - name: market
+        description: Member geographic market
+
+      - name: primary_care_location
+        description: Member primary care location
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Strive ingest date
+      

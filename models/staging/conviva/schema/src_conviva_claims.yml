@@ -65,7 +65,7 @@ sources:
             description: Strive client ID
 
           - name: ingest_date
-            descrption: Strive ingest date
+            description: Strive ingest date
 
       - name: facility_claim_diagnosis
         description: Facility claim diagnosis
@@ -184,7 +184,7 @@ sources:
             description: Member liability
 
           - name: total_charges
-            desscription: Total charges
+            description: Total charges
 
           - name: total_standard_cost
             description: Total standard cost
@@ -360,6 +360,95 @@ sources:
 
           - name: client_id
             description: Strive client ID
+
+          - name: ingest_date
+            description: Strive ingest date
+
+      - name: member
+        description: Conviva member
+        identifier: member
+        columns:
+          - name: member_id
+            description: Member ID
+            tests:
+              - not_blank
+
+          - name: patient_id
+            description: Patient ID
+            tests:
+              - not_blank
+
+          - name: eligibility_id
+            description: Eligibility ID
+
+          - name: social_security_number
+            description: Social security number
+
+          - name: first_name
+            description: First name
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: last_name
+            description: Last name
+            tests:
+              - not_blank:
+                  severity: warn
+
+          - name: date_of_birth
+            description: Date of birth
+
+          - name: gender
+            description: Gender
+
+          - name: race
+            description: Race
+
+          - name: relationship
+            description: Relationship
+
+          - name: address_line_1
+            description: Address line 1
+
+          - name: address_line_2
+            description: Address line 2
+
+          - name: city
+            description: City
+
+          - name: state
+            description: State
+
+          - name: zip_code
+            description: Zip code
+
+          - name: zip_code_last_4
+            description: Zip code last 4
+          
+          - name: mailing_country
+            description: Mailing country
+
+          - name: phone_number
+            description: Phone number
+
+          - name: email_address
+            description: Email address
+
+          - name: primary_care_provider_npi
+            description: Primary care provider NPI
+
+          - name: market
+            description: Market
+
+          - name: primary_care_location
+            description: Primary care location
+
+          - name: client_id
+            description: Strive client ID
+
+          - name: payer_lob
+            description: Payer line of business
 
           - name: ingest_date
             description: Strive ingest date

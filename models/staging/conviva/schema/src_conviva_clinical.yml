@@ -232,7 +232,6 @@ sources:
             description: Patient ID
             tests:
               - not_blank
-              - unique
 
           - name: patient_account_number
             description: Patient account number

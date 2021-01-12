@@ -1,0 +1,93 @@
+version: 2
+
+models:
+  - name: stg_conviva__patient
+    description: Combines the Conviva `member` and `patient` data into one table with patient information
+
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from the Conviva `patient_id` field
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_subscriber_id
+        description: Member Conviva assigned patient ID
+
+      - name: identifier_sh_uid
+        description: Strive assigned `sh_uid`
+
+      - name: active
+        description: Whether this patient's record is in active use. Can be used to determine admissibility
+
+      - name: identifier_social_security_number
+        description: Patient social security number
+
+      - name: name_given_first
+        description: Patient first naem
+
+      - name: name_family
+        description: Patient last name
+
+      - name: name_given_nickname
+        description: Patient preferred name
+      
+      - name: name_prefix
+        description: Patient name prefix
+
+      - name: birth_date
+        description: Patient birth date
+
+      - name: gender
+        description: Patient gender
+        tests:
+          - accepted_values:
+              values: ['M','F','U']
+
+      - name: race
+        description: Patient race
+
+      - name: language_preferred
+        description: Patient primary spoken language
+
+      - name: language_secondary
+        description: Patient secondary spoken language
+
+      - name: deceased_date
+        description: Patient deceased date
+
+      - name: birth_country
+        description: Patient birth country
+
+      - name: address_line1
+        description: Patient address line 1
+
+      - name: address_line2
+        description: Patient address line 2
+
+      - name: address_city
+        description: Address city
+
+      - name: address_state
+        description: Address state
+
+      - name: address_postal_code
+        description: Address postal code
+
+      - name: address_country
+        description: Address country
+      
+      - name: telecom_phone_number_home
+        description: Patient home phone number
+
+      - name: telecom_email_address
+        description: Patient email address
+
+      - name: general_practitioner
+        description: Patient primary care physician
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Strive ingest date
