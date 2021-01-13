@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: stg_conviva__clinical_encounter
+    description: Staging step for Conviva clinical encounters
+    columns:
+      - name: identifier_encounter
+        description: Unique identifier for a patients encounter
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_encounter
+        description: identifier_external_encounter
+
+      - name: status
+        description: Encounter status
+
+      - name: type
+        description: Encounter type
+
+      - name: service_type_code
+        description: Encounter service type code
+
+      - name: subject
+        description: Encounter subject. This links to `identifier_external_source`
+        tests:
+          - not_null
+
+      - name: period
+        description: period
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: reason_code_text
+        description: Reason code text
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date

@@ -13,6 +13,7 @@ create external table raw_conviva.clinical_encounter (
     provider_npi varchar(255),
     user_id varchar(255),
     place_of_service_code varchar(255),
+    place_of_service_description varchar(255),
     created_timestamp varchar(255),
     modified_timestamp varchar(255)
 )
