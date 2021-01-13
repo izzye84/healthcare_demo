@@ -1,0 +1,140 @@
+version: 2
+
+models:
+  - name: base_conviva__facility_claim_header
+    description: Base for Conviva claim_header
+    columns:
+      - name: identifier_claim_header
+        description: identifier_claim_header
+        tests:
+          - unique
+          - not_blank:
+              severity: warn
+
+      - name: accident_date
+        description: accident_date
+
+      - name: admit_datetime
+        description: admit_datetime
+
+      - name: admit_diagnosis_code
+        description: admit_diagnosis_code
+
+      - name: admit_type
+        description: admit_type
+
+      - name: admitting_provider_npi
+        description: admitting_provider_npi
+
+      - name: allowed_amount
+        description: allowed_amount
+
+      - name: apc
+        description: apc
+
+      - name: apc_version
+        description: apc_version
+
+      - name: sub_type
+        description: sub_type
+
+      - name: provider
+        description: provider
+
+      - name: capitated_services_indicator
+        description: capitated_services_indicator
+
+      - name: claim_processed_date
+        description: claim_processed_date
+
+      - name: discharge_datetime
+        description: discharge_datetime
+
+      - name: discharge_status
+        description: discharge_status
+
+      - name: drg_code
+        description: drg_code
+
+      - name: facility_npias facility
+        description: facility_npias facility
+
+      - name: icd_primary_procedure_code
+        description: icd_primary_procedure_code
+
+      - name: icd_primary_procedure_indicator
+        description: icd_primary_procedure_indicator
+
+      - name: insurer
+        description: insurer
+
+      - name: line_of_business_desc
+        description: line_of_business_desc
+
+      - name: member_id
+        description: member_id
+
+      - name: member_liability
+        description: member_liability
+
+      - name: network_status
+        description: network_status
+
+      - name: total
+        description: total
+
+      - name: patient
+        description: patient
+
+      - name: patient_id
+        description: patient_id
+        tests:
+          - not_null
+
+      - name: place_of_service_code
+        description: place_of_service_code
+
+      - name: place_of_service_description
+        description: place_of_service_description
+
+      - name: plan_payment
+        description: plan_payment
+
+      - name: principal_diagnosis_code
+        description: principal_diagnosis_code
+
+      - name: principal_diagnosis_icd_indicator
+        description: principal_diagnosis_icd_indicator
+
+      - name: professional_claim_id
+        description: professional_claim_id
+
+      - name: provider_tin
+        description: provider_tin
+
+      - name: referring_provider_npi
+        description: referring_provider_npi
+
+      - name: billable_period_start
+        description: billable_period_start
+
+      - name: billable_period_end
+        description: billable_period_end
+
+      - name: source_of_admission
+        description: source_of_admission
+
+      - name: total_charges
+        description: total_charges
+
+      - name: total_standard_cost
+        description: total_standard_cost
+
+      - name: transaction_type
+        description: transaction_type
+
+      - name: client_id
+        description: client_id
+
+      - name: ingest_date
+        description: ingest_date
