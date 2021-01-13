@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_conviva__eligibility
+    description: Staging step for Conviva eligibility
+    columns:
+      - name: identifier
+        description: >
+          Unique identifier for the most recent insurance coverage of a member.
+          Surrogate key made from Conviva eligibility `patient_id`, `coverage_begin_date`
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_source
+        description: Surrogate key made from Conviva `patient_id`
+        tests:
+          - not_null
+          - unique
+
+      - name: status
+        description: Status of the most recent insurance coverage of a Member (e.g. active, cancelled)
+        tests:
+          - accepted_values:
+              values: ['active','cancelled']
+
+      - name: period_coverage_start
+        description: Coverage start date
+
+      - name: period_coverage_end
+        description: Coverage end date
+
+      - name: subscriber_id
+        description: ID assigned to the subscriber. This can be linked to the `person_id` in `member_crosswalk`
+        tests:
+          - not_null
+
+      - name: network
+        description: Insurer network
+        tests:
+          - not_null
+
+      - name: payor
+        description: Insurer of the policy
+        tests:
+          - not_null
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Strive ingest date
