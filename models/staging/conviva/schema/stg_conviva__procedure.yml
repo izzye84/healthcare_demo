@@ -1,26 +1,26 @@
 version: 2
 
 models:
-  - name: int_procedures__unioned
-    description: An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - identifier
-            - client_id
+  - name: stg_conviva__procedure
+    description: Base Conviva clinical procedures
     columns:
       - name: identifier
-        description: Unique identifier for the distinct diagnosis for a patient
+        description: >
+          Unique identifier for the distinct procedure for a patient. 
+          A surrogate key make from `patient_id`, `procedure_code`, and `clinical_encounter_id`
         tests:
           - not_null
+          - unique
 
       - name: identifier_external_source
-        description: Surrogate key made from various external source IDs
+        description: Surrogate key made from Conviva `patient_id`
         tests:
           - not_null
 
-      - name: encounter
-        description: Clinical encounter ID
+      - name: encounter 
+        description: Encounter ID for a clinical encounter where procedure was done
+        tests:
+          - not_null
 
       - name: category_code
         description: A code that classifies the type of condition——e.g., claim or clinical
@@ -28,21 +28,24 @@ models:
           - accepted_values:
               values: ['claim',
                        'clinical']
-
+      
       - name: code
         description: Procedure code
         tests:
           - not_null:
               severity: warn
-
+          
       - name: code_system
-        description: Code system that defines the procedure code
+        description: The codeing system used to define the procedure code (e.g. CPT)
 
       - name: code_display
         description: A description of the code definition
 
       - name: performed_datetime
         description: When the procedure was performed
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: client_id
         description: Strive client ID

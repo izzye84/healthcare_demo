@@ -1,38 +1,29 @@
 version: 2
 
 models:
-  - name: int_conditions__unioned
-    description: Consolidate client condition data into a single dataset
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - identifier_condition
-            - client_id
+  - name: stg_conviva__diagnoses
+    description: Base Conviva clinical diagnoses
     columns:
       - name: identifier_condition
-        description: Unique identifier for the distinct diagnosis for a patient
+        description: >
+          Unique identifier for the distinct diagnosis for a patient. 
+          A surrogate key make from `patient_id`, `diagnosis_code`, and `clinical_encounter_id`
         tests:
           - not_null
+          - unique
 
       - name: identifier_external_source
-        description: Surrogate key made from various external source IDs
+        description: Surrogate key made from Conviva `patient_id`
         tests:
           - not_null
-
+      
       - name: encounter
-        description: Unique ID for a clinical encounter where diagnosis was made
+        description: Encounter ID for a clinical encounter where diagnosis was made
         tests:
           - not_null
-
-      - name: recorded_date
-        description: Date the diagnosis was recorded
 
       - name: category_code
         description: A code that classifies the type of condition——e.g., claim or clinical
-        tests:
-          - accepted_values:
-              values: ['claim',
-                       'clinical']
 
       - name: code
         description: Diagnosis code
@@ -45,11 +36,23 @@ models:
       - name: code_display
         description: A description of the code definition
 
+      - name: recorded_date
+        description: Date the diagnosis was recorded
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
       - name: onset_datetime
         description: Estimated or actual date, date-time the diagnosis started
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: abatement_datetime
         description: Date when diagnosis was in resolution/remission
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: client_id
         description: Strive client ID

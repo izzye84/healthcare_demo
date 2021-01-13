@@ -1,0 +1,9 @@
+{{
+    dbt_utils.union_relations(
+        relations=[
+            ref('stg_ssm__eligibility'),
+            ref('stg_humana__eligibility'),
+            ref('stg_conviva__eligibility')
+        ]
+    )
+}}

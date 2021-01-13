@@ -1,19 +1,10 @@
-with conditions_unioned as (
-
-    select *
-    from {{ ref('stg_ssm__clinical_diagnoses') }}
-
-    union all
-
-    select *
-    from {{ ref('stg_ssm__claim_diagnoses') }}
-
-    union all
-
-    select *
-    from {{ ref('stg_humana__claim_diagnoses') }}
-
-)
-
-select *
-from conditions_unioned
+{{
+    dbt_utils.union_relations(
+        relations=[
+            ref('stg_ssm__clinical_diagnoses'),
+            ref('stg_ssm__claim_diagnoses'),
+            ref('stg_humana__claim_diagnoses'),
+            ref('stg_conviva__diagnoses')
+        ]
+    )
+}}

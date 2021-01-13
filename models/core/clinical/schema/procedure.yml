@@ -28,10 +28,14 @@ models:
       - name: code
         description: Procedure code
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
       - name: code_system
         description: Code system that defines the procedure code
+
+      - name: code_display
+        description: A description of the code definition
 
       - name: performed_datetime
         description: When the procedure was performed

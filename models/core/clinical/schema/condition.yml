@@ -37,6 +37,9 @@ models:
 
       - name: code_system
         description: The coding system used to define the condition code (e.g. ICD-10)
+      
+      - name: code_display
+        description: A description of the code definition
 
       - name: onset_datetime
         description: Estimated or actual date, date-time the condition started

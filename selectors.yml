@@ -4,19 +4,20 @@ selectors:
       union:
         - method: path
           value: models/staging/ssm
-        - method: path
-          value: models/core
 
   - name: ingest_humana
     definition:
       union:
         - method: path
           value: models/staging/humana
+
+  - name: ingest_conviva
+    definition:
+      union:
         - method: path
-          value: models/core
+          value: models/staging/conviva
 
   - name: build_core
     definition:
       method: path
       value: models/core
-      parents: true
