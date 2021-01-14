@@ -6,3 +6,4 @@ logs/
 Local Dev.session.sql
 .file_copying_logs
 __pycache__
+.vscode
