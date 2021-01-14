@@ -1,0 +1,87 @@
+version: 2
+
+models:
+  - name: base_conviva__facility_claim_line
+    description: Base transform step for Conviva FCL
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - identifier_claim_line
+    columns:
+      - name: identifier_claim_header
+        description: identifier_claim_header
+        tests:
+          - not_null
+
+      - name: identifier_claim_line
+        description: identifier_claim_line
+        tests:
+          - not_null
+
+      - name: allowed_amount
+        description: allowed_amount
+
+      - name: billing_provider_npi
+        description: billing_provider_npi
+
+      - name: net
+        description: The quantity times the unit price for an additional service or product or charge.
+
+      - name: member_id
+        description: member_id
+
+      - name: member_liability
+        description: member_liability
+
+      - name: ndc_code
+        description: ndc_code
+
+      - name: patient_id
+        description: patient_id
+
+      - name: plan_payment
+        description: plan_payment
+
+      - name: product_or_serive
+        description: If this is an actual service or product line, i.e. not a Group, then use code to indicate the Professional Service or Product supplied (e.g. CTP, HCPCS, USCLS, ICD10, NCPDP, DIN, RxNorm, ACHI, CCI). If a grouping item then use a group code to indicate the type of thing being grouped e.g. 'glasses' or 'compound'.
+
+      - name: modifier_1
+        description: modifier_1
+
+      - name: modifier_2
+        description: modifier_2
+
+      - name: modifier_3
+        description: modifier_3
+
+      - name: modifier_4
+        description: modifier_4
+
+      - name: revenue
+        description: revenue
+
+      - name: serviced_period_start
+        description: serviced_period_start
+
+      - name: serviced_period_end
+        description: serviced_period_end
+
+      - name: quantity
+        description: quantity
+
+      - name: location
+        description: Where the product or service was provided—service_provider_npi in this case.
+
+      - name: standard_cost
+        description: standard_cost
+
+      - name: total_paid
+        description: total_paid
+
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date

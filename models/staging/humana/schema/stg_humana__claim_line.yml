@@ -16,6 +16,9 @@ models:
       - name: identifier_claim_line
         description: A number to uniquely identify item entries.
 
+      - name: identifier_external_source
+        description: Surrogate key made from various external source IDs.
+
       - name: revenue
         description: The type of revenue or cost center providing the product and/or service.
 
