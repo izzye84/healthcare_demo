@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: stg_ssm__claim_line
-    description: Add missing columns to SSM's claim line data
+  - name: stg_conviva__facility_claim_line
+    description: Staging transformation step for Conviva's FCL to FHIR claim_item.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -15,8 +15,8 @@ models:
       - name: identifier_claim_line
         description: A number to uniquely identify item entries.
 
-      - name: identifier_external_source
-        description: Surrogate key made from various external source IDs
+      - name: identifer_external_source
+        description: Surrogate key made from patient_id.
 
       - name: revenue
         description: The type of revenue or cost center providing the product and/or service.

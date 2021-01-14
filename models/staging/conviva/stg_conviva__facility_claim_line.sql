@@ -1,14 +1,15 @@
-{{
-    config(
-        dist = 'identifier_claim_header'
-    )
-}}
-
 with claim_line as (
+
+    select *
+    from {{ ref('base_conviva__facility_claim_line') }}
+
+),
+
+final as (
 
     select identifier_claim_header,
            identifier_claim_line,
-           identifer_external_source,
+           {{ dbt_utils.surrogate_key(['patient_id']) }} as identifer_external_source,
            revenue,
            product_or_service,
            modifier_1,
@@ -17,14 +18,17 @@ with claim_line as (
            serviced_period_end,
            location,
            quantity,
-           unit_price,
+           case when quantity <> 0
+                then net / quantity
+                else 0
+           end as unit_price,
            net,
            client_id,
            ingest_date
 
-    from {{ ref('int_claim_line__union') }}
+    from claim_line
 
 )
 
 select *
-from claim_line
+from final

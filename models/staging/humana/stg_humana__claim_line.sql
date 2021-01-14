@@ -9,6 +9,7 @@ final as (
 
     select identifier_claim_header,
            identifier_claim_line,
+           identifier_external_source,
            revenue,
            product_or_service,
            modifier_1,
