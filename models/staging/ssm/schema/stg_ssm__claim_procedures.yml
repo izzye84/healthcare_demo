@@ -4,7 +4,7 @@ models:
   - name: stg_ssm__claim_procedures
     description: Staging step for SSM claim procedures
     columns:
-      - name: identifier
+      - name: identifier_procedure
         description: Unique identifier for the distinct diagnosis for a patient
         tests:
           - not_null

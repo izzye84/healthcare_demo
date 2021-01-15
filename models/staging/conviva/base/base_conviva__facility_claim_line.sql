@@ -41,10 +41,10 @@ source_renamed as (
            client_id,
            ingest_date
 
-        from add_row_num
-        where row_num = 1
+    from add_row_num
+    where row_num = 1
 
-    )
+)
 
-    select *
-    from source_renamed
+select *
+from source_renamed

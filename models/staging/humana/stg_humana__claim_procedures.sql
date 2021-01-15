@@ -113,7 +113,7 @@ removing_invalid_codes as (
 
 distinct_claim_procedures as (
 
-    select distinct {{ dbt_utils.surrogate_key(['code', 'medclm_key', 'identifier_external_source']) }} as identifier,
+    select distinct {{ dbt_utils.surrogate_key(['code', 'medclm_key', 'identifier_external_source']) }} as identifier_procedure,
                     identifier_external_source,
                     encounter,
                     category_code,

@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: base_conviva__facility_claim_procedure
+    description: Base transform step for Conviva FCP
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - code
+    columns:
+      - name: identifier_claim_header
+        description: Claim ID from source system.
+        tests:
+          - not_null
+
+      - name: member_id
+        description: Source value that identifies a unique Member and links to Member file
+
+      - name: patient_id
+        description: Source value that links the Member to the clinical Patient file
+        tests:
+          - not_null
+
+      - name: code
+        description: Standardized ICD procedure code. (Imaging, Nuclear Medicine, Radiation Therapy, ...)
+        tests:
+          - not_null
+
+      - name: procedure_modifier
+        description: Standardized ICD/CPT/HCPCS procedure modifier code. (Pricing modifier, unusual circumstance, ...)
+
+      - name: code_system
+        description: Coding system (ICD-9-CM, ICD-10-PCS, CPT, HCPCS ...)
+
+      - name: procedure_code_rank
+        description: Relative position of procedure code as submitted on the claim. 1=Primary Proc.
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date
