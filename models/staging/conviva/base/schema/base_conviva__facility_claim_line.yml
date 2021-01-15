@@ -79,7 +79,6 @@ models:
       - name: total_paid
         description: total_paid
 
-
       - name: client_id
         description: Strive client ID
 

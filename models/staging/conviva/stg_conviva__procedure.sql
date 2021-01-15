@@ -26,7 +26,7 @@ coalesce_timestamps_add_rownum as (
 
 renamed as (
         select
-            {{ dbt_utils.surrogate_key(['patient_id','procedure_code','clinical_encounter_id']) }} as identifier
+            {{ dbt_utils.surrogate_key(['patient_id','procedure_code','clinical_encounter_id']) }} as identifier_procedure
             ,{{ dbt_utils.surrogate_key(['patient_id']) }} as identifier_external_source
             ,{{ empty_string_to_null('clinical_encounter_id') }} as encounter
             ,'clinical' as category_code

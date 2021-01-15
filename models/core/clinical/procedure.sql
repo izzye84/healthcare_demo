@@ -6,12 +6,12 @@
 
 with
 
-ssm_clinical_procedures as (
+procedures as (
     select * from {{ ref('int_procedures__unioned') }}
 )
 
-select 
-    identifier
+select
+    identifier_procedure
     ,identifier_external_source
     ,encounter
     ,category_code
@@ -21,4 +21,5 @@ select
     ,performed_datetime
     ,client_id
     ,ingest_date
-from ssm_clinical_procedures
+    
+from procedures

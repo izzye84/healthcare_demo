@@ -22,7 +22,7 @@ joined as (
         on clinical_procedure_base.patient_account_number = crosswalk_base.enterprise_mrn
 )
 
-select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','code','encounter']) }} as identifier
+select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','code','encounter']) }} as identifier_procedure
     ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name']) }} as identifier_external_source
     ,encounter
     ,'clinical' as category_code

@@ -69,7 +69,7 @@ hcpcs_codes as (
     select distinct {{ dbt_utils.surrogate_key(['product_or_service',
                                                 'identifier_claim_header',
                                                 'identifier_claim_line',
-                                                'patient']) }} as identifier,
+                                                'patient']) }} as identifier_procedure,
                     patient as identifier_external_source,
                     identifier_claim_header as encounter,
                     'claim' as category_code,
@@ -88,7 +88,7 @@ icd_codes as (
 
     select distinct {{ dbt_utils.surrogate_key(['code',
                                                 'identifier_claim_header',
-                                                'patient']) }} as identifier,
+                                                'patient']) }} as identifier_procedure,
                     patient as identifier_external_source,
                     identifier_claim_header as encounter,
                     'claim' as category_code,
@@ -105,7 +105,7 @@ icd_codes as (
 
 icd_and_hcpcs_combined as (
 
-    select identifier,
+    select identifier_procedure,
            identifier_external_source,
            encounter,
            category_code,
@@ -119,7 +119,7 @@ icd_and_hcpcs_combined as (
 
     union all
 
-    select identifier,
+    select identifier_procedure,
            identifier_external_source,
            encounter,
            category_code,

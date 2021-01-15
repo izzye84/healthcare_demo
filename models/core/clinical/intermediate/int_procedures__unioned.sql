@@ -6,7 +6,8 @@
             ref('stg_ssm__clinical_procedure'),
             ref('stg_ssm__claim_procedures'),
             ref('stg_humana__claim_procedures'),
-            ref('stg_conviva__procedure')
+            ref('stg_conviva__procedure'),
+            ref('stg_conviva__facility_claim_procedure')
         ]
     )
 }}
