@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: base_conviva__facility_claim_diagnosis
+    description: Base for Conviva facilty claimdiagnosis
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_claim_header
+            - patient_id
+            - code
+    columns:   
+      - name: identifier_claim_header
+        description: identifier_claim_header
+        tests:
+          - not_null
+
+      - name: member_id
+        description: member_id
+
+      - name: patient_id
+        description: patient_id
+        tests:
+          - not_null
+
+      - name: code
+        description: icd diagnosis code
+
+      - name: code_system
+        description: code_system
+
+
+      - name: client_id
+        description: client_id
+
+      - name: payer_lob
+        description: payer_lob
+      
+      - name: ingest_date
+        description: ingest_date
