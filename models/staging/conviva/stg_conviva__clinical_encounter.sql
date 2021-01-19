@@ -34,6 +34,7 @@ add_row_num as (
         by converting csv to parquet */
     /* Once the conversion is done, this where clause can be removed */
     where regexp_count(patient_account_number, '^\\-?[0-9]\\d*(\\.\\d+)?$') > 0
+    and patient_id <> ''
 ),
 
 renamed as (

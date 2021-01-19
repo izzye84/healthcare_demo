@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: stg_conviva__vital_observation
+    description: Base for Conviva vitals
+    columns:
+      - name: identifier_observation
+        description: Surrogate key for the result made from various external source IDs
+        tests:
+          - not_null
+          - unique
+
+      - name: identifier_external_source
+        description: Surrogate key made from the Conviva `patient_id` field
+        tests:
+          - not_null
+
+      - name: identifier_encounter
+        description: Clinical encounter ID
+        tests:
+          - not_null
+
+      - name: category_code
+        description: A code that classifies the general type of observation being made
+
+      - name: category_display
+        description: Display value
+
+      - name: category_system
+        description: Coding system
+
+      - name: code_source
+        description: Source code that classifies the general type of observation being made
+
+      - name: code_strive
+        description: Mapped LOINC code that classifies the general type of observation being made
+
+      - name: code_strive_display
+        description: Display value
+
+      - name: code_strive_system
+        description: Coding system
+
+      - name: value_quantity
+        description: The information determined as a result of making the observation, if the information has a simple value
+
+      - name: value_quantity_unit
+        description: Unit of measure for the value_quantity
+
+      - name: effective_date
+        description: Clinically relevant time/time-period for observation
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: issued_date
+        description: Date/Time this version was made available
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date

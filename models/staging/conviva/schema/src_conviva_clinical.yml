@@ -12,7 +12,8 @@ sources:
           - name: patient_id
             description: Patient ID
             tests:
-              - not_blank
+              - not_blank:
+                  severity: warn
 
           - name: patient_account_number
             description: Patient account number

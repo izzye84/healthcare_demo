@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: observation__unioned
+  - name: int_observation__unioned
     description: Consolidate client observation data into a single dataset
     tests:
       - dbt_utils.unique_combination_of_columns:

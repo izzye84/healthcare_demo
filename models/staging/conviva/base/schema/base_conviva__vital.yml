@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: base_conviva__vital
+    description: Base for Conviva vitals
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - identifier_external_source
+            - identifier_encounter
+            - code_source
+            - value_quantity
+            - ingest_date
+    columns:
+      - name: identifier_external_source
+        description: Surrogate key made from the Conviva `patient_id` field
+        tests:
+          - not_null
+
+      - name: patient_account_number
+        description: Member's Enterprise Medical Record Number (MRN) assigned by Conviva.
+        tests:
+          - not_null
+
+      - name: identifier_encounter
+        description: Clinical encounter ID
+        tests:
+          - not_null
+
+      - name: vitals_captured_by
+        description: Vitals captured by
+
+      - name: code_source
+        description: Vitals name
+        tests:
+          - not_null
+
+      - name: value_quantity
+        description: Vitals measurement
+
+      - name: value_quantity_unit
+        description: Unit of measurement of the vital result
+
+      - name: created_date
+        description: Date reord was created in source system
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date

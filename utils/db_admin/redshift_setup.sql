@@ -24,6 +24,7 @@ create user smancuso password disable in group transformer;
 create user lebronsthegoat password disable in group transformer;
 create user jcolclough password disable in group transformer;
 create user dreiger password disable in group transformer;
+create user jwang password disable in group transformer;
 
 /*** Two service account users need to be added with passwords ***/
 /*** Passwords are stored in AWS Secrets Manager ***/
