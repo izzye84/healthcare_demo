@@ -4,7 +4,8 @@
             ref('stg_ssm__clinical_diagnoses'),
             ref('stg_ssm__claim_diagnoses'),
             ref('stg_humana__claim_diagnoses'),
-            ref('stg_conviva__diagnoses')
+            ref('stg_conviva__diagnoses'),
+            ref('stg_conviva__facility_claim_diagnoses')
         ]
     )
 }}
