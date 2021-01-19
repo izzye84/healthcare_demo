@@ -28,7 +28,8 @@ models:
       - name: code
         description: Diagnosis code
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
       - name: code_system
         description: The coding system used to define the diagnosis code (e.g. ICD-10)
