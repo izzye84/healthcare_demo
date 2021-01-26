@@ -10,38 +10,61 @@
 - [DBT Viewpoint](https://docs.getdbt.com/docs/about/viewpoint/)
 - [DBT Commands](https://docs.getdbt.com/reference/dbt-commands/)
 
-### Sample profiles.yml file to get the project to work locally:
+### Local Setup
+- Create an isolated python environment (e.g. [pyenv](https://strivehealth.atlassian.net/wiki/spaces/STRIVEHEAL/pages/68649119/Python))
 
-Local profiles.yml file should be stored at ~/.dbt/profiles.yml
+- Install dependencies (MacOS):
+```
+pip install dbt
+```
+Check your installation with `dbt --version`.
+
+- Connect to our warehouse (currently Redshift):
+
+1. Create a profiles.yml file and save it to  `~/.dbt/profiles.yml` (create this directory if it does not already exist)
 For more information on configuring the profiles.yml file, please see:
 https://docs.getdbt.com/docs/profile
+
+2. Copy, paste, and save the following into your profiles.yml file (remember to replace username with your Redshift username):
 
 ```
 strive_health:
   outputs:
     dev:
       type: redshift
-      threads: 4
-      host: strive-health-redshift-cluster-1.ckveagnyu9df.us-east-1.redshift.amazonaws.com
+      threads: 8
+      method: iam
+      cluster_id: analytics-warehouse-pro-analyticswarehouseredshif-19u6slt5vi6r6
+      host: analytics-warehouse-pro-analyticswarehouseredshif-19u6slt5vi6r6.ckveagnyu9df.us-east-1.redshift.amazonaws.com
       port: 5439
       user: <username>
-      pass: <password>
-      dbname: strive-dev
-      schema: stage
+      iam_profile: prod
+      database: strive-dev
+      schema: public
     prod:
       type: redshift
       threads: 4
-      host: strive-health-redshift-cluster-1.ckveagnyu9df.us-east-1.redshift.amazonaws.com
+      host: analytics-warehouse-pro-analyticswarehouseredshif-19u6slt5vi6r6.ckveagnyu9df.us-east-1.redshift.amazonaws.com
       port: 5439
-      user: <username>
-      pass: <password>
+      user: data_load_service
+      password:
       dbname: strive-prod
       schema: stage
   target: dev
 
   ```
 
-  ### Commands to Run the project:
+  3. Connect to Strive's VPN——access to the VPN can be requested at `IT@strivehealth.com`.
+
+  4. Connect to AWS with your SSO.
+
+  5. run `dbt debug` from the CLI to test the Redshift connection.
+
+  6. run `dbt deps` to install packages (e.g., `dbt_utils`) found in the packages.yml needed to run the project and generate dbt docs.
+
+  7. run `dbt seed` to load csv files located in the data-paths directory of your dbt project into your data warehouse.
+
+  ### Common commands to Run the project:
 
   - `dbt debug` tests database connection
   - `dbt run` will run the project and materialize the models
@@ -58,7 +81,6 @@ strive_health:
       - `dbt run --models +folder.subfolder` - will run all models in the subfolder and all parents
   - `dbt test` will run the tests for the project
     - TIP: `dbt test` takes the same `--models` and `--exclude` syntax referenced for `dbt run`
-  - `dbt deps` installs packages (e.g., `dbt_utils`) found in the packages.yml needed to run the project and generate dbt docs
   - `dbt docs generate` will generate the documentation for the project
   - `dbt docs serve` will serve the documentation in the web browser at `http://localhost:8080`
 
