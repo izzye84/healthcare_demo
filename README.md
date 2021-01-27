@@ -54,7 +54,7 @@ strive_health:
 
   ```
 
-  3. Connect to Strive's VPN——access to the VPN can be requested at `IT@strivehealth.com`.
+  3. Connect to Strive's VPN—access to the VPN can be requested at `IT@strivehealth.com`.
 
   4. Connect to AWS with your SSO.
 
