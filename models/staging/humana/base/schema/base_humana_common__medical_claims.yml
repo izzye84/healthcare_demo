@@ -1,0 +1,249 @@
+version: 2
+
+models:
+  - name: base_humana_common__medical_claims
+    description: Renaming column names and casting column data types to the correct data type.
+    columns:
+      - name: admit_diagnosis_code
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: source_of_admission
+        description: Standardized source of admission. (Physical referral, transfer, law enforcement, ...)
+
+      - name: allow_icob_admit_cnt
+
+      - name: allowed_amount
+        description: Total allowed amount as determined by the members insurer.
+
+      - name: allow_icob_days_cnt
+
+      - name: allow_icob_visits_cnt
+
+      - name: bill_type
+        description: Standardized billing type code (113, 117, ...)
+
+      - name: total_charges
+        description: Total charges for this claim line.
+
+      - name: chrg_days_cnt
+
+      - name: clm_aso_ind
+
+      - name: cob_paid_amt
+
+      - name: copay_amt
+
+      - name: cov_month
+
+      - name: procedure_modifier_1
+        description: Standardized ICD/CPT/HCPCS procedure code. (Anesthesia, Surgery, Radiology, ...) Do not include decimal point.
+
+      - name: procedure_modifier_2
+        description: Standardized ICD/CPT/HCPCS procedure modifier code. (Pricing modifier, unusual circumstance, ...)
+
+      - name: ctrct_cat_cd
+
+      - name: deduct_amt
+
+      - name: icd_diagnosis_code_2
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_3
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_4
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_5
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_6
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_7
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_8
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_9
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_10
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_11
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_12
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_13
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_14
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_15
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_16
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_17
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_18
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_19
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_20
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_21
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_22
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_23
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_24
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: icd_diagnosis_code_25
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: discharge_status
+        description: Standardized discharge status. (To home/self-care, transfer, expired, to outpatient, ...)
+
+      - name: drg_code
+        description: Standardized Diagnosis Related Group Code. (Ventricular shunt, Carotid artery stent, ...)
+
+      - name: fin_prod_cd
+
+      - name: procedure_code
+        description: The CPT-4 is a uniform coding system consisting of descriptive terms and identifying codes that are used primarily to identify medical services and procedures furnished by physicians and other health care professionals—a numeric coding system maintained by the American Medical Association (AMA).
+
+      - name: icd_primary_procedure_code
+        description: Standardized ICD procedure code. (Imaging, Nuclear Medicine, Radiation Therapy, ...) Do not include decimal point.
+
+      - name: icd_proc_02_cd
+        description: Standardized ICD procedure code. (Imaging, Nuclear Medicine, Radiation Therapy, ...) Do not include decimal point.
+
+      - name: icd_proc_03_cd
+        description: Standardized ICD procedure code. (Imaging, Nuclear Medicine, Radiation Therapy, ...) Do not include decimal point.
+
+      - name: icd_proc_04_cd
+        description: Standardized ICD procedure code. (Imaging, Nuclear Medicine, Radiation Therapy, ...) Do not include decimal point.
+
+      - name: icd_proc_05_cd
+        description: Standardized ICD procedure code. (Imaging, Nuclear Medicine, Radiation Therapy, ...) Do not include decimal point.
+
+      - name: network_status
+        description: Standardized In/Out of Network status indicator. (H, K, ...)
+
+      - name: member_id
+        description: Source value that identifies a unique Member and links to Member file
+
+      - name: member_liability
+        description: Amount of member liability as determined by the insurer.
+
+      - name: mco_contract_nbr
+
+      - name: line_number
+        description: Claim line number.
+        tests:
+          - unique
+          - not_null
+
+      - name: facility_header_claim_id
+        description: Claim header ID from source system.
+
+      - name: service_date_to
+        description: Ending date of services this claim applies to.
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: service_date_from
+        description: Beginning date of services this claim applies to.
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: ndc_code
+        description: Standardized NDC (National Drug Code) value. (XXXX-XXXX-XX)
+
+      - name: plan_payment
+        description: Total amount paid by the insurer. Does not include member liability.
+
+      - name: net_paid_days_cnt
+
+      - name: billing_provider_npi
+        description: Billing Provider NPI (National Provider Identifier) from source data.
+
+      - name: claim_processed_date
+        description: Date claim was paid/processed
+
+      - name: pbp_segment_id
+
+      - name: plan_benefit_package_id
+
+      - name: place_of_service_code
+        description: Standardized place of service code (01, 03, 21, ...)
+
+      - name: principal_diagnosis_code
+        description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
+
+      - name: provider_tin
+        description: Provider Tax ID Number.
+
+      - name: transaction_type
+        description: Standardized transaction type. (Original claim, reversal, rebill, interim, ...)
+
+      - name: raw_clm_billg_prov_key
+
+      - name: raw_clm_refr1_prov_key
+
+      - name: raw_clm_rendr_prov_key
+
+      - name: revenue_code
+        description: Standardized UB revenue code. (General, Medical/Surgical/GYN, OB, ...)
+
+      - name: serv_to_date
+        description: The date or dates when the service or product was supplied, performed or completed.
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: serv_from_date
+        description: The date or dates when the service or product was supplied, performed or completed.
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+
+      - name: service_units
+        description: Units on claim line.
+
+      - name: admit_datetime
+        description: Date and time of admission.
+
+      - name: discharge_datetime
+        description: Date and time of discharge.
+
+      - name: src_mbr_id
+        description: Source value that identifies a unique Member and links to Member file
+
+      - name: src_platform_cd
+
+      - name: src_prov_specialty_cd
+
+      - name: client_id
+        description: Strive client ID
+
+      - name: ingest_date
+        description: Most recent ingest date
