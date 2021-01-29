@@ -188,6 +188,9 @@ models:
 
       - name: claim_processed_date
         description: Date claim was paid/processed
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: pbp_segment_id
 
@@ -231,9 +234,15 @@ models:
 
       - name: admit_datetime
         description: Date and time of admission.
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: discharge_datetime
         description: Date and time of discharge.
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
 
       - name: src_mbr_id
         description: Source value that identifies a unique Member and links to Member file
