@@ -196,16 +196,44 @@ grant select on table svv_external_tables to group reporter;
 grant select on table svv_external_schemas to group reporter;
 
 /*****************************************************************/
-/*** Grants for strive-prod DB ONLY   			   			   ***/
+/*** Grants and schema setup for strive-prod DB ONLY   		   ***/
 /*****************************************************************/
+create schema stage authorization data_load_service;
+create schema core authorization data_load_service;
+create schema analytics authorization data_load_service;
+
+grant usage on schema stage to group loader;
+grant select on all tables in schema stage to group loader;
+
 grant usage on schema stage to group transformer;
-grant usage on schema stage to group reporter;
+grant select on all tables in schema stage to group transformer;
+
+grant usage on schema core to group loader;
+grant select on all tables in schema core to group loader;
 
 grant usage on schema core to group transformer;
+grant select on all tables in schema core to group transformer;
+
 grant usage on schema core to group reporter;
+grant select on all tables in schema core to group reporter;
+
+grant usage on schema analytics to group loader;
+grant select on all tables in schema analytics to group loader;
 
 grant usage on schema analytics to group transformer;
+grant select on all tables in schema analytics to group transformer;
+
 grant usage on schema analytics to group reporter;
+grant select on all tables in schema analytics to group reporter;
+
+alter default privileges in schema stage
+	grant select on tables to group loader;
+
+alter default privileges in schema core
+	grant select on tables to group loader;
+
+alter default privileges in schema analytics
+	grant select on tables to group loader;
 
 alter default privileges in schema stage
 	grant select on tables to group transformer;
