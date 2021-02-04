@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: base_humana_common__referral
+    description: Base Humana referral in common format
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - member_id
+    columns:
+      - name: member_id
+        description: Humana member ID. Also referred to as `mbr_pers_gen_key` or `pers_gen_key`
+        tests:
+          - not_null
+
+      - name: first_name
+        description: Member first name
+        tests:
+          - not_null
+        
+      - name: last_name
+        description: Member last name
+        tests:
+          - not_null
+        
+      - name: date_of_birth
+        description: Member date of birth
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd
+        
+      - name: gender
+        description: Member gender
+
+      - name: address_line_1
+        description: Member address line 1
+
+      - name: address_line_2
+        description: Member address line 2
+      
+      - name: city
+        description: Member address city
+
+      - name: state
+        description: Member address state
+
+      - name: zip_code
+        description: Address zip code
+      
+      - name: zip_code_last_4
+        description: zip plus code
+      
+      - name: phone_number
+        description: member phone number
+
+      - name: email_address
+        description: Member email address
+      
+      - name: primary_care_provider_npi
+        description: Member primary care NPI
+
+      - name: insurance_type
+        description: insurance type, or insurance Line Of Business
+
+      - name: ingest_timestamp_utc
+        description: Most recent ingest timestamp in UTC
