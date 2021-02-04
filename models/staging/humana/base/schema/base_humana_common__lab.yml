@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: base_humana_common__lab
+    description: Base Humana lab claims in common format
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - patient_id
+            - lab_id
+    columns:
+      - name: patient_id
+        description: patient ID
+        tests:
+          - not_null
+
+      - name: lab_id
+        description: Lab ID
+        tests:
+          - not_null
+          
+      - name: lab_code
+        description: Lab code or LOINC code
+
+      - name: service_code
+        description: Service code or vendor loinc cd 
+      
+      - name: result_date
+        description: result date or service date
+        tests:
+          - is_date:
+              date_format: yyyy-mm-dd   
+
+      - name: value_quantity
+        description: lab results value, either text or numeric
+
+      - name: unit
+        description: unit 
+  
+      - name: ingest_timestamp_utc
+        description: Most recent ingest date

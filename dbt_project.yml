@@ -60,6 +60,10 @@ models:
         intermediate:
           +schema: stage
 
+    common:
+      +schema: common
+      +materialized: table
+
     marts:
         +schema: analytics
         +materialized: table
