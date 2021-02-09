@@ -33,7 +33,9 @@ claim_line as (
            member_liability,
            null as standard_cost,
            'Facility' as claim_type,
-           transaction_type
+           transaction_type,
+           client_id,
+           ingest_timestamp_utc
 
     from medical_claims
 
