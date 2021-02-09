@@ -10,14 +10,14 @@ models:
       - name: source_of_admission
         description: Standardized source of admission. (Physical referral, transfer, law enforcement, ...)
 
-      #- name: allow_icob_admit_cnt
+      - name: allow_icob_admit_cnt
 
       - name: allowed_amount
         description: Total allowed amount as determined by the members insurer.
 
-      #- name: allow_icob_days_cnt
+      - name: allow_icob_days_cnt
 
-      #- name: allow_icob_visits_cnt
+      - name: allow_icob_visits_cnt
 
       - name: bill_type
         description: Standardized billing type code (113, 117, ...)
@@ -25,15 +25,15 @@ models:
       - name: total_charges
         description: Total charges for this claim line.
 
-      #- name: chrg_days_cnt
+      - name: chrg_days_cnt
 
-      #- name: clm_aso_ind
+      - name: clm_aso_ind
 
-      #- name: cob_paid_amt
+      - name: cob_paid_amt
 
-      #- name: copay_amt
+      - name: copay_amt
 
-      #- name: cov_month
+      - name: cov_month
 
       - name: procedure_modifier_1
         description: Standardized ICD/CPT/HCPCS procedure code. (Anesthesia, Surgery, Radiology, ...) Do not include decimal point.
@@ -41,9 +41,9 @@ models:
       - name: procedure_modifier_2
         description: Standardized ICD/CPT/HCPCS procedure modifier code. (Pricing modifier, unusual circumstance, ...)
 
-      #- name: ctrct_cat_cd
+      - name: ctrct_cat_cd
 
-      #- name: deduct_amt
+      - name: deduct_amt
 
       - name: icd_diagnosis_code_2
         description: Standardized ICD (International Classification of Diseases) diagnostic code. Do not include decimal point.
@@ -123,7 +123,7 @@ models:
       - name: drg_code
         description: Standardized Diagnosis Related Group Code. (Ventricular shunt, Carotid artery stent, ...)
 
-      #- name: fin_prod_cd
+      - name: fin_prod_cd
 
       - name: procedure_code
         description: The CPT-4 is a uniform coding system consisting of descriptive terms and identifying codes that are used primarily to identify medical services and procedures furnished by physicians and other health care professionals—a numeric coding system maintained by the American Medical Association (AMA).
@@ -152,7 +152,7 @@ models:
       - name: member_liability
         description: Amount of member liability as determined by the insurer.
 
-      #- name: mco_contract_nbr
+      - name: mco_contract_nbr
 
       - name: line_number
         description: Claim line number.
@@ -160,7 +160,7 @@ models:
           - unique
           - not_null
 
-      - name: facility_header_claim_id
+      - name: claim_id
         description: Claim header ID from source system.
 
       - name: service_date_to
@@ -181,7 +181,7 @@ models:
       - name: plan_payment
         description: Total amount paid by the insurer. Does not include member liability.
 
-      #- name: net_paid_days_cnt
+      - name: net_paid_days_cnt
 
       - name: billing_provider_npi
         description: Billing Provider NPI (National Provider Identifier) from source data.
@@ -192,9 +192,9 @@ models:
           - is_date:
               date_format: yyyy-mm-dd
 
-      #- name: pbp_segment_id
+      - name: pbp_segment_id
 
-      #- name: plan_benefit_package_id
+      - name: plan_benefit_package_id
 
       - name: place_of_service_code
         description: Standardized place of service code (01, 03, 21, ...)
@@ -208,11 +208,11 @@ models:
       - name: transaction_type
         description: Standardized transaction type. (Original claim, reversal, rebill, interim, ...)
 
-      #- name: raw_clm_billg_prov_key
+      - name: raw_clm_billg_prov_key
 
-      #- name: raw_clm_refr1_prov_key
+      - name: raw_clm_refr1_prov_key
 
-      #- name: raw_clm_rendr_prov_key
+      - name: raw_clm_rendr_prov_key
 
       - name: revenue_code
         description: Standardized UB revenue code. (General, Medical/Surgical/GYN, OB, ...)
@@ -247,9 +247,9 @@ models:
       - name: src_mbr_id
         description: Source value that identifies a unique Member and links to Member file
 
-      #- name: src_platform_cd
+      - name: src_platform_cd
 
-      #- name: src_prov_specialty_cd
+      - name: src_prov_specialty_cd
 
       - name: client_id
         description: Strive client ID
