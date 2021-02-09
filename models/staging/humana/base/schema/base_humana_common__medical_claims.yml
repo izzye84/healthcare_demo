@@ -254,5 +254,5 @@ models:
       - name: client_id
         description: Strive client ID
 
-      - name: ingest_date
-        description: Most recent ingest date
+      - name: ingest_timestamp_utc
+        description: Most recent ingest timestamp in UTC

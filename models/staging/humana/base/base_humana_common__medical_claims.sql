@@ -98,7 +98,7 @@ source_renamed as (
            --{{ empty_string_to_null('src_platform_cd') }} as src_platform_cd,
            --{{ empty_string_to_null('src_prov_specialty_cd') }} as src_prov_specialty_cd,
            client_id,
-           ingest_date
+           ingest_date as ingest_timestamp_utc
 
     from add_row_num
     where row_num = 1
