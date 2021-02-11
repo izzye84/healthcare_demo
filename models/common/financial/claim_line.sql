@@ -31,7 +31,7 @@ claim_line as (
          service_date_from,
          service_date_to,
          service_units,
-         charge_amount,
+         total_charges,
          total_paid,
          allowed_amount,
          plan_payment,
