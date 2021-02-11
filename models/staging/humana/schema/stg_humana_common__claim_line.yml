@@ -61,7 +61,7 @@ models:
       - name: service_units
         description: Units on claim line.
 
-      - name: charge_amount
+      - name: total_charges
         description: Total charges for this claim line.
 
       - name: total_paid

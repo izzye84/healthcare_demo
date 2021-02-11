@@ -26,7 +26,7 @@ claim_line as (
            serv_from_date as service_date_from,
            serv_to_date as service_date_to,
            service_units,
-           total_charges as charge_amount,
+           total_charges,
            member_liability + plan_payment as total_paid,
            allowed_amount,
            plan_payment,
