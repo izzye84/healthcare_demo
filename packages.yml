@@ -1,6 +1,6 @@
 packages:
   - package: fishtown-analytics/dbt_utils
-    version: 0.1.20
+    version: 0.6.2
 
 #  - package: fishtown-analytics/redshift
 #    version: 0.4.1
