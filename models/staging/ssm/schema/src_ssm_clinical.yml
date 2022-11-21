@@ -55,10 +55,10 @@ sources:
             description: Timestamp of when the allergy record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: diagnosis
         description: Patient diagnoses
@@ -110,10 +110,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: encounter
         description: Patient clinical encounters
@@ -177,10 +177,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: form
         description: SSM clinical form
@@ -241,10 +241,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: immunization
         description: Patient immunizations
@@ -311,10 +311,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: labs
         description: Patient lab results
@@ -402,10 +402,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: medication
         description: Patient medications
@@ -484,10 +484,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: patient
         description: Patient demographics
@@ -590,10 +590,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: payer
         description: Clinical payer
@@ -675,10 +675,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: procedure
         description: Patient procedures
@@ -730,10 +730,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: provider
         description: SSM provider information
@@ -863,10 +863,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: referral
         description: SSM Referrals
@@ -942,10 +942,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: surgical_history
         description: Patient surgical history
@@ -979,10 +979,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: vitals
         description: Patient vitals
@@ -1022,7 +1022,7 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date

@@ -18,7 +18,7 @@ FORMAT = '[%(asctime)-15s](%(name)s) %(message)s'
 LOGGING_FILENAME = f'.file_copying_logs/add_partitions_{int(time.time())}.log'
 logging.basicConfig(filename=LOGGING_FILENAME, level=logging.DEBUG, format=FORMAT)
 
-aw = AnalyticsWarehouse(dbname='strive-prod', secret_name='AnalyticsWarehouseDataLoadService')
+aw = AnalyticsWarehouse(dbname='some_company-prod', secret_name='AnalyticsWarehouseDataLoadService')
 
 print('Adding partitions to Redshift Spectrum external tables...')
 
@@ -28,7 +28,7 @@ key_with_lob_pattern = re.compile(r'(clients/client_id=(\w+)/data_frequency=\w+/
 key_with_payer_lob_pattern = re.compile(r'(clients/client_id=(\w+)/data_frequency=\w+/(\w+)/payer_lob=(\w+)/ingest_date=(\d+-\d+-\d+)/)')
 key_no_lob_pattern = re.compile(r'(clients/client_id=(\w+)/data_frequency=\w+/(\w+)/ingest_date=(\d+-\d+-\d+)/)')
 
-aw_bucket_name = 'strive-analytics-warehouse-pro'
+aw_bucket_name = 'some_company-analytics-warehouse-pro'
 s3 = boto3.resource('s3')
 aw_bucket = s3.Bucket(aw_bucket_name)
 

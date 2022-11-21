@@ -11,7 +11,7 @@
 - [DBT Commands](https://docs.getdbt.com/reference/dbt-commands/)
 
 ### Local Setup
-- Create an isolated python environment (e.g. [pyenv](https://strivehealth.atlassian.net/wiki/spaces/STRIVEHEAL/pages/68649119/Python))
+- Create an isolated python environment (e.g. [pyenv](https://some_companyhealth.atlassian.net/wiki/spaces/some_companyHEAL/pages/68649119/Python))
 
 - Install dependencies (MacOS):
 ```
@@ -28,7 +28,7 @@ https://docs.getdbt.com/docs/profile
 2. Copy, paste, and save the following into your profiles.yml file (remember to replace username with your Redshift username):
 
 ```
-strive_health:
+some_company_health:
   outputs:
     dev:
       type: redshift
@@ -39,7 +39,7 @@ strive_health:
       port: 5439
       user: <username>
       iam_profile: prod
-      database: strive-dev
+      database: some_company-dev
       schema: public
     prod:
       type: redshift
@@ -48,13 +48,13 @@ strive_health:
       port: 5439
       user: data_load_service
       password:
-      dbname: strive-prod
+      dbname: some_company-prod
       schema: stage
   target: dev
 
   ```
 
-  3. Connect to Strive's VPN—access to the VPN can be requested at `IT@strivehealth.com`.
+  3. Connect to some_company's VPN—access to the VPN can be requested at `IT@some_companyhealth.com`.
 
   4. Connect to AWS with your SSO.
 
@@ -86,7 +86,7 @@ strive_health:
 
 ### Copying files and adding partitions to Redshift
 
-1. Log into Strive's VPN
+1. Log into some_company's VPN
 2. Connect to AWS with your SSO
 3. `python utils/s3_file_copying/copy_new_files.py`
 4. Confirm that the correct files were copied into the Analytics Warehouse S3 bucket
@@ -99,7 +99,7 @@ Logs are written to the `.file_copying_logs` directory.
 1. Add a `<partner>_ingested_files` like:
 ```
 conviva_ingested_files = {
-    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_conviva', []) for f in fs
+    re.search(r's3://some_company-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_conviva', []) for f in fs
 }
 ```
 2. Log the ingested files like: (NOTE: This logging should be generalized)

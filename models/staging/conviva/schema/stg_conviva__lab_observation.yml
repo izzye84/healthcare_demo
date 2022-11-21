@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_conviva__lab_observation
-    description: Staging step to map Conviva lab results to observations for labs that have been coded to the Strive Lab Code System
+    description: Staging step to map Conviva lab results to observations for labs that have been coded to the some_company Lab Code System
     columns:
       - name: identifier_observation
         description: Surrogate key for the result made from various external source IDs
@@ -43,13 +43,13 @@ models:
       - name: code_source_system
         description: Coding system
 
-      - name: code_strive
-        description: Strive's coded concept that classifies the general type of observation being made
+      - name: code_some_company
+        description: some_company's coded concept that classifies the general type of observation being made
 
-      - name: code_strive_display
+      - name: code_some_company_display
         description: Display value
 
-      - name: code_strive_system
+      - name: code_some_company_system
         description: Coding system
 
       - name: value_quantity
@@ -89,7 +89,7 @@ models:
         description: Date/Time this version was made available
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
         
       - name: ingest_date
         description: Most recent ingest date

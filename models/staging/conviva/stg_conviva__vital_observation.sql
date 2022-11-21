@@ -89,9 +89,9 @@ vital_bp_sys as (
             ,category_display
             ,category_system
             ,code_source
-            ,loinc_vital.loinc_num as code_strive
-            ,loinc_vital.long_common_name as code_strive_display
-            ,'http://loinc.org' as code_strive_system
+            ,loinc_vital.loinc_num as code_some_company
+            ,loinc_vital.long_common_name as code_some_company_display
+            ,'http://loinc.org' as code_some_company_system
             ,split_part(value_quantity,'/',1) as value_quantity
             ,value_quantity_unit
             ,effective_date
@@ -116,9 +116,9 @@ vital_bp_dia as (
             ,category_display
             ,category_system
             ,code_source
-            ,loinc_vital.loinc_num as code_strive
-            ,loinc_vital.long_common_name as code_strive_display
-            ,'http://loinc.org' as code_strive_system
+            ,loinc_vital.loinc_num as code_some_company
+            ,loinc_vital.long_common_name as code_some_company_display
+            ,'http://loinc.org' as code_some_company_system
             ,split_part(value_quantity,'/',2) as value_quantity
             ,value_quantity_unit
             ,effective_date
@@ -139,9 +139,9 @@ vital_other as (
             ,category_display
             ,category_system
             ,code_source
-            ,loinc_vital.loinc_num as code_strive
-            ,loinc_vital.long_common_name as code_strive_display
-            ,'http://loinc.org' as code_strive_system
+            ,loinc_vital.loinc_num as code_some_company
+            ,loinc_vital.long_common_name as code_some_company_display
+            ,'http://loinc.org' as code_some_company_system
             ,value_quantity
             ,value_quantity_unit
             ,effective_date
@@ -171,16 +171,16 @@ unioned as (
 )
 
 select distinct
-    {{ dbt_utils.surrogate_key(['identifier_external_source','identifier_encounter','code_strive','code_source','value_quantity','effective_date']) }} as identifier_observation
+    {{ dbt_utils.surrogate_key(['identifier_external_source','identifier_encounter','code_some_company','code_source','value_quantity','effective_date']) }} as identifier_observation
     ,identifier_external_source
     ,identifier_encounter
     ,category_code
     ,category_display
     ,category_system
     ,code_source
-    ,code_strive
-    ,code_strive_display
-    ,code_strive_system
+    ,code_some_company
+    ,code_some_company_display
+    ,code_some_company_system
     ,value_quantity
     ,value_quantity_unit
     ,effective_date

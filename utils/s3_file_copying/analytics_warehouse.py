@@ -9,7 +9,7 @@ import psycopg2
 
 
 class AnalyticsWarehouse:
-    """ Connect to the Strive Redshift Analytics Warehouse and run queries """
+    """ Connect to the some_company Redshift Analytics Warehouse and run queries """
     def __init__(self, dbname: str, secret_name: str):
         self.secret_name = secret_name
         creds = self.get_secret()
@@ -74,17 +74,17 @@ class AnalyticsWarehouse:
         query_with_lob = (
             "alter table {} add if not exists "
             "partition(client_id='{}', lob='{}', insurance_name='{}', ingest_date='{}') "
-            "location 's3://strive-analytics-warehouse-pro/{}';"
+            "location 's3://some_company-analytics-warehouse-pro/{}';"
         )
         query_with_payer_lob = (
             "alter table {} add if not exists "
             "partition(client_id='{}', payer_lob='{}', ingest_date='{}') "
-            "location 's3://strive-analytics-warehouse-pro/{}';"
+            "location 's3://some_company-analytics-warehouse-pro/{}';"
         )
         query_no_lob = (
             "alter table {} add if not exists "
             "partition(client_id='{}', ingest_date='{}') "
-            "location 's3://strive-analytics-warehouse-pro/{}';"
+            "location 's3://some_company-analytics-warehouse-pro/{}';"
         )
         if payer_lob:
             query = query_with_payer_lob.format(table_name, client_id, payer_lob, ingest_date, prefix)

@@ -62,10 +62,10 @@ sources:
             description: Patient account number
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: facility_claim_diagnosis
         description: Facility claim diagnosis
@@ -99,10 +99,10 @@ sources:
             description: Diagnosis code rank
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: facility_claim_header
         description: Facility claim header
@@ -235,10 +235,10 @@ sources:
             description: Servicing provider NPI
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: facility_claim_line
         description: Facility claim line
@@ -319,10 +319,10 @@ sources:
             description: standard_cost
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: facility_claim_procedure
         description: Facility claim procedure
@@ -359,10 +359,10 @@ sources:
             description: Procedure code rank
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: member
         description: Conviva member
@@ -445,10 +445,10 @@ sources:
             description: Primary care location
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: payer_lob
             description: Payer line of business
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date

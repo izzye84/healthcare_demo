@@ -41,7 +41,7 @@ models:
         description: Date when diagnosis was in resolution/remission
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
-        description: Strive ingest date
+        description: some_company ingest date

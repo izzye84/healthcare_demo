@@ -128,10 +128,10 @@ sources:
                   severity: warn
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: disenrollment
         description: List of patients from the referral file that are no longer eligible
@@ -173,10 +173,10 @@ sources:
             description: Identifies the line of business
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: lab_claims
         description: Humana lab results data
@@ -230,10 +230,10 @@ sources:
             description: Result unit description
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: medical_claims
         description: Humana medical_claims data
@@ -512,10 +512,10 @@ sources:
             description: src_prov_specialty_cd
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: pharmacy_claims
         description: Humana demographic data
@@ -656,10 +656,10 @@ sources:
             description: withhold_amt
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: premium
         description: Humana premium data
@@ -690,10 +690,10 @@ sources:
             description: src_platform_cd
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: referral
         description: Patient member and eligibility data
@@ -868,7 +868,7 @@ sources:
             description: notes
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date

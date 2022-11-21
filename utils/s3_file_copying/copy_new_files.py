@@ -23,7 +23,7 @@ logging.basicConfig(filename=LOGGING_FILENAME, level=logging.DEBUG, format=FORMA
 #####################################################
 
 print('Connecting to the Analytics Warehouse...')
-aw = AnalyticsWarehouse(dbname='strive-prod', secret_name='analytics_warehouse_inference_service_user')
+aw = AnalyticsWarehouse(dbname='some_company-prod', secret_name='analytics_warehouse_inference_service_user')
 print('Connected\n')
 
 raw_schemas = aw.list_raw_schemas()
@@ -57,13 +57,13 @@ for k in tables.keys():
         ingested_files[k].append(aw.list_ingested_files(f'{k}.{t}'))
 
 ssm_ingested_files = {
-    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_ssm', []) for f in fs
+    re.search(r's3://some_company-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_ssm', []) for f in fs
 }
 humana_ingested_files = {
-    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_humana', []) for f in fs
+    re.search(r's3://some_company-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_humana', []) for f in fs
 }
 conviva_ingested_files = {
-    re.search(r's3://strive-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_conviva', []) for f in fs
+    re.search(r's3://some_company-analytics-warehouse-pro/(.+)', f[0]).group(1) for fs in ingested_files.get('raw_conviva', []) for f in fs
 }
 print('Finished querying ingested files')
 
@@ -566,11 +566,11 @@ print('Getting a list of files from client service data buckets in S3...')
 
 s3 = boto3.resource('s3')
 
-ssm_bucket = s3.Bucket('strive-ssm-service-data-pro')
+ssm_bucket = s3.Bucket('some_company-ssm-service-data-pro')
 ssm_objs = ssm_bucket.objects.all()
 ssm_sources = [
     {
-        'Bucket': 'strive-ssm-service-data-pro',
+        'Bucket': 'some_company-ssm-service-data-pro',
         'Key': obj.key
     }
     for obj in ssm_objs 
@@ -634,11 +634,11 @@ logging.debug(log_str)
 # HUMANA
 #
 
-humana_bucket = s3.Bucket('strive-humana-service-data-pro')
+humana_bucket = s3.Bucket('some_company-humana-service-data-pro')
 humana_objs = humana_bucket.objects.all()
 humana_sources = [
     {
-        'Bucket': 'strive-humana-service-data-pro',
+        'Bucket': 'some_company-humana-service-data-pro',
         'Key': obj.key
     }
     for obj in humana_objs 
@@ -687,11 +687,11 @@ logging.debug(log_str)
 # CONVIVA
 #
 
-conviva_bucket = s3.Bucket('strive-conviva-service-data-pro')
+conviva_bucket = s3.Bucket('some_company-conviva-service-data-pro')
 conviva_objs = conviva_bucket.objects.all()
 conviva_sources = [
     {
-        'Bucket': 'strive-conviva-service-data-pro',
+        'Bucket': 'some_company-conviva-service-data-pro',
         'Key': obj.key
     }
     for obj in conviva_objs 
@@ -752,7 +752,7 @@ print('Finished getting the list of files')
 #          Copy New Files to AW Bucket              #
 #####################################################
 
-aw_bucket_name = 'strive-analytics-warehouse-pro'
+aw_bucket_name = 'some_company-analytics-warehouse-pro'
 print(f'Copying new files to {aw_bucket_name}...')
 aw_bucket = s3.Bucket(aw_bucket_name)
 

@@ -114,9 +114,9 @@ vital_bp_sys as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,loinc_vital.loinc_num as code_strive
-        ,loinc_vital.long_common_name as code_strive_display
-        ,'http://loinc.org' as code_strive_system
+        ,loinc_vital.loinc_num as code_some_company
+        ,loinc_vital.long_common_name as code_some_company_display
+        ,'http://loinc.org' as code_some_company_system
         ,split_part(value_quantity,'/',1) as value_quantity
         ,value_quantity_unit
         ,value_string
@@ -157,9 +157,9 @@ vital_bp_dia as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,loinc_vital.loinc_num as code_strive
-        ,loinc_vital.long_common_name as code_strive_display
-        ,'http://loinc.org' as code_strive_system
+        ,loinc_vital.loinc_num as code_some_company
+        ,loinc_vital.long_common_name as code_some_company_display
+        ,'http://loinc.org' as code_some_company_system
         ,split_part(value_quantity,'/',2) as value_quantity
         ,value_quantity_unit
         ,value_string
@@ -199,9 +199,9 @@ vital_other as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,loinc_vital.loinc_num as code_strive
-        ,loinc_vital.long_common_name as code_strive_display
-        ,'http://loinc.org' as code_strive_system
+        ,loinc_vital.loinc_num as code_some_company
+        ,loinc_vital.long_common_name as code_some_company_display
+        ,'http://loinc.org' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -226,7 +226,7 @@ vital_other as (
  Unions mapped vitals
  Creates surrogate keys
 ************************************************************/
-select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','identifier_encounter','code_strive','value_quantity']) }} as identifier_observation
+select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','identifier_encounter','code_some_company','value_quantity']) }} as identifier_observation
         ,identifier_order
         ,{{ dbt_utils.surrogate_key(['person_id','lob','insurance_name'])}} as identifier_external_source
         ,identifier_encounter
@@ -239,9 +239,9 @@ select {{ dbt_utils.surrogate_key(['person_id','lob','insurance_name','identifie
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,code_strive
-        ,code_strive_display
-        ,code_strive_system
+        ,code_some_company
+        ,code_some_company_display
+        ,code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string

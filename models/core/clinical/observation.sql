@@ -19,9 +19,9 @@ select
     ,category_code
     ,category_display
     ,category_system
-    ,code_strive
-    ,code_strive_display
-    ,code_strive_system
+    ,code_some_company
+    ,code_some_company_display
+    ,code_some_company_system
     ,value_quantity
     ,value_quantity_unit
     ,value_string

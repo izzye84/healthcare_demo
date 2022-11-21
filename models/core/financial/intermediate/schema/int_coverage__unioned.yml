@@ -13,7 +13,7 @@ models:
           - unique
 
       - name: identifier_external_source
-        description: Strive unique ID for the person
+        description: some_company unique ID for the person
         tests:
           - not_null
 
@@ -43,7 +43,7 @@ models:
         description: Issuer of the policy
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
         description: Most recent ingest date

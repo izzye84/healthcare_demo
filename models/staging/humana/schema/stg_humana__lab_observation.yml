@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_humana__lab_observation
-    description: Staging step for Humana lab results to observations for labs that have been coded to the Strive Lab Code System
+    description: Staging step for Humana lab results to observations for labs that have been coded to the some_company Lab Code System
 
     columns:
       - name: identifier_observation
@@ -49,13 +49,13 @@ models:
       - name: code_source_system
         description: Placeholder, not applicable for Humana
 
-      - name: code_strive
-        description: Strive's coded concept that classifies the general type of observation being made
+      - name: code_some_company
+        description: some_company's coded concept that classifies the general type of observation being made
 
-      - name: code_strive_display
+      - name: code_some_company_display
         description: Display value
 
-      - name: code_strive_system
+      - name: code_some_company_system
         description: Coding system
 
       - name: value_quantity
@@ -100,4 +100,4 @@ models:
         description: Most recent ingest date
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID

@@ -71,8 +71,8 @@ models:
         description: Member primary care location
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
-        description: Strive ingest date
+        description: some_company ingest date
       

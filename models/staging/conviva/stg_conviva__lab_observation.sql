@@ -129,7 +129,7 @@ lab_concepts as (
       when (code_source_display in ('LDL-CHOLESTEROL', 'LDL Chol Calc (NIH)', 'LDL Chol. (Direct)', 'LDL-C', 'LDL CHOLESTEROL', 'LDL Cholesterol Calc')) then '10007-00'
       when (code_source_display in ('Triglycerides', 'TRIGLYCERIDES')) then '10008-00'
       when (code_source_display in ('Fructosamine', 'FRUCTOSAMINE')) then '10013-00'
-    end as code_strive
+    end as code_some_company
 
     ,case
       when (code_source_display like 'Creatinine%U%') then 'Creatinine Urine'
@@ -147,9 +147,9 @@ lab_concepts as (
       when (code_source_display in ('LDL-CHOLESTEROL', 'LDL Chol Calc (NIH)', 'LDL Chol. (Direct)', 'LDL-C', 'LDL CHOLESTEROL', 'LDL Cholesterol Calc')) then 'LDL Cholesterol'
       when (code_source_display in ('Triglycerides', 'TRIGLYCERIDES')) then 'Triglyceride'
       when (code_source_display in ('Fructosamine', 'FRUCTOSAMINE')) then 'Fructosamine'
-    end as code_strive_display
+    end as code_some_company_display
 
-    ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+    ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
     ,value_quantity
     ,value_quantity_unit
     ,value_string

@@ -11,7 +11,7 @@ models:
 
     columns:
       - name: identifier_sh_uid
-        description: Strive Unique patient ID
+        description: some_company Unique patient ID
         tests:
           - not_null
 

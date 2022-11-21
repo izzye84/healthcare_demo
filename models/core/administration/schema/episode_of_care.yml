@@ -13,7 +13,7 @@ models:
 
     columns:
       - name: identifier_sh_uid
-        description: Strive Unique patient ID
+        description: some_company Unique patient ID
         tests:
           - not_null
 
@@ -30,4 +30,4 @@ models:
         description: Current status reason for the Episode of Care
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID

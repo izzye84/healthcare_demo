@@ -6,7 +6,7 @@ models:
 
     columns:
       - name: identifier_sh_uid
-        description: Strive assigned `sh_uid`
+        description: some_company assigned `sh_uid`
         tests:
           - not_null
           - unique

@@ -11,10 +11,10 @@ models:
           - not_null
 
       - name: feature_code
-        description: Strive Data Science feature code. [Reference](https://strivehealth.atlassian.net/wiki/spaces/STRIVEHEAL/pages/844955749/Strive+Data+Science+Model+Features+Code+System)
+        description: some_company Data Science feature code. [Reference](https://some_companyhealth.atlassian.net/wiki/spaces/some_companyHEAL/pages/844955749/some_company+Data+Science+Model+Features+Code+System)
 
       - name: feature_display
-        description: Description of the Strive Data Science feature code
+        description: Description of the some_company Data Science feature code
 
       - name: feature_value
         description: The string value to be used for the feature

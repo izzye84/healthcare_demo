@@ -149,9 +149,9 @@ lab_concept_10000 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10000-00' as code_strive
-        ,'eGFR' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10000-00' as code_some_company
+        ,'eGFR' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -190,9 +190,9 @@ lab_concept_10001 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10001-00' as code_strive
-        ,'ACR' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10001-00' as code_some_company
+        ,'ACR' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -230,9 +230,9 @@ lab_concept_10002 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10002-00' as code_strive
-        ,'Albumin' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10002-00' as code_some_company
+        ,'Albumin' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -270,9 +270,9 @@ lab_concept_10003 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10003-00' as code_strive
-        ,'Phosphorus' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10003-00' as code_some_company
+        ,'Phosphorus' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -310,9 +310,9 @@ lab_concept_10004 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10004-00' as code_strive
-        ,'Calcium' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10004-00' as code_some_company
+        ,'Calcium' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -350,9 +350,9 @@ lab_concept_10005 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10005-00' as code_strive
-        ,'A1C' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10005-00' as code_some_company
+        ,'A1C' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -390,9 +390,9 @@ lab_concept_10006 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10006-00' as code_strive
-        ,'BiCarbonate' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10006-00' as code_some_company
+        ,'BiCarbonate' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -430,9 +430,9 @@ lab_concept_10007 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10007-00' as code_strive
-        ,'LDL Cholesterol' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10007-00' as code_some_company
+        ,'LDL Cholesterol' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string
@@ -470,9 +470,9 @@ lab_concept_10008 as (
         ,code_source
         ,code_source_display
         ,code_source_system
-        ,'10008-00' as code_strive
-        ,'Triglyceride' as code_strive_display
-        ,'https://strivehealth.atlassian.net/l/c/08n1scXH' as code_strive_system
+        ,'10008-00' as code_some_company
+        ,'Triglyceride' as code_some_company_display
+        ,'https://some_companyhealth.atlassian.net/l/c/08n1scXH' as code_some_company_system
         ,value_quantity
         ,value_quantity_unit
         ,value_string

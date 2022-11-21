@@ -32,4 +32,4 @@ models:
         description: Most recent ingest date
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID

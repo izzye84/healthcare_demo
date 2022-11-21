@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: order__filtered
-    description: Filter order data to Strive lab concepts from observation stage
+    description: Filter order data to some_company lab concepts from observation stage
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -36,6 +36,6 @@ models:
         description: Most recent ingest date
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
         tests:
           - not_null

@@ -75,7 +75,7 @@ models:
         description: ckd_stage
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
         description: Most recent ingest date

@@ -50,13 +50,13 @@ models:
       - name: code_source_system
         description: Coding system
 
-      - name: code_strive
-        description: Strive's coded concept that classifies the general type of observation being made
+      - name: code_some_company
+        description: some_company's coded concept that classifies the general type of observation being made
 
-      - name: code_strive_display
+      - name: code_some_company_display
         description: Display value
 
-      - name: code_strive_system
+      - name: code_some_company_system
         description: Coding system
 
       - name: value_quantity
@@ -99,6 +99,6 @@ models:
         description: Most recent ingest date
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
         tests:
           - not_null

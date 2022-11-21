@@ -37,7 +37,7 @@ models:
         description: Relative position of procedure code as submitted on the claim. 1=Primary Proc.
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
         description: Most recent ingest date

@@ -32,5 +32,5 @@ with serdeproperties (
   'escapeChar' = '\\'
 )
 stored as textfile
-location 's3://strive-analytics-warehouse-pro/clients/client_id=conviva/data_frequency=batch/lab/'
+location 's3://some_company-analytics-warehouse-pro/clients/client_id=conviva/data_frequency=batch/lab/'
 table properties ('skip.header.line.count' = '1');

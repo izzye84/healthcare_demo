@@ -93,10 +93,10 @@ sources:
             description: Member's primary care provider id
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: member_crosswalk
         description: SSM member crosswalk. Used to link patient ids to their enterprise mrn id
@@ -141,10 +141,10 @@ sources:
                     severity: warn
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: claim_header
         description: SSM claim header
@@ -426,10 +426,10 @@ sources:
             description: The National Provider Identifier (NPI) for the facility providing treatment
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: claim_detail
         description: SSM claim detail
@@ -531,10 +531,10 @@ sources:
             description: Amount paid by the member for the claim
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
       
       - name: pharmacy_claims
         description: SSM pharmacy claims
@@ -629,7 +629,7 @@ sources:
             description: Retail
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date

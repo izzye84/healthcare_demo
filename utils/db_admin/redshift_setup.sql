@@ -40,8 +40,8 @@ create user data_load_service password '<get from Secrets Manager>' in group loa
 /*****************************************************************/
 /*** Create Databases   								       ***/
 /*****************************************************************/
-create database "strive-dev";
-create database "strive-prod";
+create database "some_company-dev";
+create database "some_company-prod";
 
 /*****************************************************************/
 /*** Create external schemas for Redshift Spectrum queries     ***/
@@ -102,13 +102,13 @@ region 'us-east-1'
 iam_role 'arn:aws:iam::557805935884:role/redshift-glue';
 
 /****************************************************************************/
-/*** Grant Permissions on Raw Schemas. Run in strive-dev and strive-prod  ***/
+/*** Grant Permissions on Raw Schemas. Run in some_company-dev and some_company-prod  ***/
 /****************************************************************************/
-grant create on database "strive-dev" to group loader;
-grant create on database "strive-dev" to group transformer;
+grant create on database "some_company-dev" to group loader;
+grant create on database "some_company-dev" to group transformer;
 
-grant create on database "strive-prod" to group loader;
-grant create on database "strive-prod" to group transformer;
+grant create on database "some_company-prod" to group loader;
+grant create on database "some_company-prod" to group transformer;
 
 grant select on all tables in schema information_schema to group transformer;
 grant select on all tables in schema pg_catalog to group transformer;
@@ -198,7 +198,7 @@ grant select on table svv_external_tables to group reporter;
 grant select on table svv_external_schemas to group reporter;
 
 /*****************************************************************/
-/*** Grants and schema setup for strive-prod DB ONLY   		   ***/
+/*** Grants and schema setup for some_company-prod DB ONLY   		   ***/
 /*****************************************************************/
 create schema stage authorization data_load_service;
 create schema core authorization data_load_service;

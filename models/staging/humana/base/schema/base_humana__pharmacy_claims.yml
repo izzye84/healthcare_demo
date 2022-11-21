@@ -137,7 +137,7 @@ models:
         description: withhold_amt
 
       - name: client_id
-        description: Strive Client ID
+        description: some_company Client ID
 
       - name: ingest_date
         description: Most recent ingest date

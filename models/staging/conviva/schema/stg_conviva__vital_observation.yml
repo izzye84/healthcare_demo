@@ -32,13 +32,13 @@ models:
       - name: code_source
         description: Source code that classifies the general type of observation being made
 
-      - name: code_strive
+      - name: code_some_company
         description: Mapped LOINC code that classifies the general type of observation being made
 
-      - name: code_strive_display
+      - name: code_some_company_display
         description: Display value
 
-      - name: code_strive_system
+      - name: code_some_company_system
         description: Coding system
 
       - name: value_quantity
@@ -60,7 +60,7 @@ models:
               date_format: yyyy-mm-dd
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
         description: Most recent ingest date

@@ -67,10 +67,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: diagnosis
         description: Patient diagnoses
@@ -124,10 +124,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: lab
         description: Patient lab results
@@ -220,10 +220,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: patient
         description: Patient demographics
@@ -328,10 +328,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: procedure
         description: Patient procedures
@@ -385,10 +385,10 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: vitals
         description: Patient vitals
@@ -430,7 +430,7 @@ sources:
             description: Timestamp of when the diagnosis record was last modified
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: ingest_date
-            description: Strive ingest date
+            description: some_company ingest date

@@ -52,7 +52,7 @@ models:
         description: Persons involved in the encounter other than the patient.
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
-        description: Strive ingest date
+        description: some_company ingest date

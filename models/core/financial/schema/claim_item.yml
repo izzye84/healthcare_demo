@@ -53,7 +53,7 @@ models:
         description: The quantity times the unit price for an additional service or product or charge.
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
         description: Most recent ingest date

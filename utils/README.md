@@ -2,12 +2,12 @@
 
 ## s3_file_copying
 
-All customer files are copied from Platform client service buckets (ex. strive-ssm-service-data-pro) to the Analytics Warehouse's (AW) bucket. Partitions are then added to the raw AW tables.
+All customer files are copied from Platform client service buckets (ex. some_company-ssm-service-data-pro) to the Analytics Warehouse's (AW) bucket. Partitions are then added to the raw AW tables.
 
 An example partition query:
 
 ```
-alter table raw_ssm.vitals add if not exists partition(client_id='ssm', ingest_date='2020-10-09') location 's3://strive-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/vitals/ingest_date=2020-10-09/';
+alter table raw_ssm.vitals add if not exists partition(client_id='ssm', ingest_date='2020-10-09') location 's3://some_company-analytics-warehouse-pro/clients/client_id=ssm/data_frequency=batch/vitals/ingest_date=2020-10-09/';
 ```
 
 ### Usage

@@ -15,7 +15,7 @@ models:
         description: Member SSM assigned patient ID
 
       - name: identifier_sh_uid
-        description: Strive assigned `sh_uid`
+        description: some_company assigned `sh_uid`
 
       - name: active
         description: Whether this patient's record is in active use. Can be used to determine admissibility
@@ -91,7 +91,7 @@ models:
         description: Patient or member primary care provider. SSM patient data takes precedence over member
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
         description: Most recent ingest date for either patient or member record. SSM patient data takes precedence over member

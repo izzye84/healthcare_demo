@@ -20,7 +20,7 @@ sources:
                 - ingest_id
         columns:
           - name: sh_uid
-            description: Strive assigned `sh_uid`
+            description: some_company assigned `sh_uid`
             tests:
               - not_blank
 
@@ -40,7 +40,7 @@ sources:
               - not_blank
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
             tests:
               - not_blank
 
@@ -137,39 +137,39 @@ sources:
             description: Patient preferred contact method
 
           - name: recordtypeid
-            description: Health Cloud record type. This should be used to determine Strive client id
+            description: Health Cloud record type. This should be used to determine some_company client id
 
           - name: salutation
             description: Patient salutation
 
           - name: sh_uid
-            description: Strive unique id
+            description: some_company unique id
             tests:
               - not_blank
 
           - name: sh_ingest_utc
-            description: Strive ingest date time
+            description: some_company ingest date time
 
           - name: sh_source
-            description: Strive S3 location of Health Cloud data
+            description: some_company S3 location of Health Cloud data
 
           - name: health_system_or_plan_text__c
             description: Health system or plan text
 
           - name: disenrolled_reason__c
-            description: Reason Patient was disenrolled from Strive's program
+            description: Reason Patient was disenrolled from some_company's program
 
           - name: enrollment_delayed__c
             description: Enrollement requested to be delayed
 
           - name: inadmissible_reason__c
-            description: Reason Patient was inadmissible to Strive's program
+            description: Reason Patient was inadmissible to some_company's program
 
           - name: risk_rating__c
             description: Risk rating of the patient (Low, Medium, High, Complex)
 
           - name: disenrolled_date__c
-            description: Date Patient was disenrolled from Strive's program
+            description: Date Patient was disenrolled from some_company's program
 
           - name: enrollment_packet_received__c
             description: Patient's enrollemnt packet was received
@@ -184,7 +184,7 @@ sources:
             description: Owner last name
 
           - name: verbal_agreement_received__c
-            description: Indicates if verbal agreement to be enrolled in Strive's program was received
+            description: Indicates if verbal agreement to be enrolled in some_company's program was received
 
           - name: firstname
             description: Patient first name
@@ -217,32 +217,32 @@ sources:
             description: Reason why a patient is in shadow care management
 
           - name: client_id
-            description: Strive client id
+            description: some_company client id
 
           - name: table_id
-            description: Strive ingest table id
+            description: some_company ingest table id
 
           - name: ingest_id
-            description: Strive ingest date
+            description: some_company ingest date
 
       - name: patient_admissibility
-        description: Patient admissibility calculated by the Strive Platform
+        description: Patient admissibility calculated by the some_company Platform
               
         columns:
           - name: sh_uid
-            description: Strive Unique Patient ID
+            description: some_company Unique Patient ID
             tests:
               - not_null
 
           - name: admissible
-            description: Flag indicating whether the patient is admissible into the Strive program
+            description: Flag indicating whether the patient is admissible into the some_company program
             tests:
               - not_null
               - accepted_values:
                   values: ['true', 'false']
 
           - name: sh_ingest_utc
-            description: Strive ingest date/time in UTC format
+            description: some_company ingest date/time in UTC format
 
           - name: sh_source
             description: The S3 path to the admissibility file
@@ -260,16 +260,16 @@ sources:
             description: The patient ID that can be lined to the Platform `patient` table
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: table_id
-            description: Strive table ID
+            description: some_company table ID
 
           - name: ingest_id
             description: Platform ingest ID
 
       - name: patient_disease_stage
-        description: Patient disease stage calculated by the Strive Platform
+        description: Patient disease stage calculated by the some_company Platform
         tests:
           - dbt_utils.unique_combination_of_columns:
               combination_of_columns:
@@ -278,18 +278,18 @@ sources:
               
         columns:
           - name: sh_uid
-            description: Strive Unique Patient ID
+            description: some_company Unique Patient ID
             tests:
               - not_null
 
           - name: disease_stage
-            description: Strive identified CKD stage used to detemine admissibility
+            description: some_company identified CKD stage used to detemine admissibility
             tests:
               - accepted_values:
                   values: ['CKD 1','CKD 2','CKD 3','CKD 4','CKD 5','CKD UNSPECIFIED','ESRD',null]
 
           - name: sh_ingest_utc
-            description: Strive ingest date/time in UTC format
+            description: some_company ingest date/time in UTC format
 
           - name: sh_source
             description: The S3 path to the admissibility file
@@ -298,16 +298,16 @@ sources:
             description: The member ID that can be linked to the the Platform `member` table
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: table_id
-            description: Strive table ID
+            description: some_company table ID
 
           - name: ingest_id
             description: Platform ingest ID
 
       - name: enrollment_status
-        description: Patient Strive enrollment status
+        description: Patient some_company enrollment status
         tests:
           - dbt_utils.unique_combination_of_columns:
               combination_of_columns:
@@ -316,7 +316,7 @@ sources:
               
         columns:
           - name: sh_uid
-            description: Strive Unique Patient ID
+            description: some_company Unique Patient ID
             tests:
               - not_null
 
@@ -327,16 +327,16 @@ sources:
             description: Reasons associated with various statuses (e.g. ineligible reason, declined reason, etc.)
 
           - name: disenrolled_date
-            description: Date the patient was disenrolled from the Strive program
+            description: Date the patient was disenrolled from the some_company program
 
           - name: update_date
             description: The update date of the enrollment status
 
           - name: schema_id
-            description: Strive Platform schema ID
+            description: some_company Platform schema ID
 
           - name: client_id
-            description: Strive client ID
+            description: some_company client ID
 
           - name: run_id
             description: Date the enrollment status job was run

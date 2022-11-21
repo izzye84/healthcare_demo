@@ -1,4 +1,4 @@
-cpt_code,description,dialysis,strive_interpretaion,application
+cpt_code,description,dialysis,some_company_interpretaion,application
 90935,Inpatient ESRD & non-ESRD procedures or outpatient non-ESRD dialysis services,N,Inpatient nephrology visit,CPT code with pos '21' considered as inpatient nephrology visit. Used to identify crashes.
 90936,Dialysis,Y,Dialysis,Identify members on dialysis
 90937,Inpatient ESRD & non-ESRD procedures or outpatient non-ESRD dialysis services,N,Inpatient nephrology visit,CPT code with pos '21' considered as inpatient nephrology visit. Used to identify crashes.

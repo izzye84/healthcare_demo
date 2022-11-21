@@ -10,19 +10,19 @@ models:
             - ingest_date
     columns:
       - name: identifier_sh_uid
-        description: Strive Unique Patient ID
+        description: some_company Unique Patient ID
         tests:
           - not_null
 
       - name: active
-        description: Flag indicating whether the patient is admissible into the Strive program
+        description: Flag indicating whether the patient is admissible into the some_company program
         tests:
           - not_null
           - accepted_values:
               values: ['true', 'false']
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
         description: Platform ingest Date

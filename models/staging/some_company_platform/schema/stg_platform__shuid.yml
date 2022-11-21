@@ -12,12 +12,12 @@ models:
           - unique
 
       - name: identifier_sh_uid
-        description: Strive assigned `sh_uid`
+        description: some_company assigned `sh_uid`
         tests:
           - not_null
 
       - name: client_id
-        description: Strive client ID
+        description: some_company client ID
 
       - name: ingest_date
         description: Most recent ingest date

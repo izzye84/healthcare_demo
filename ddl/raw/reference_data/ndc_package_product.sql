@@ -4,14 +4,14 @@ The following DDL will create a new directory in S3
 that contains parquet files with NDC reference data
  
 To refresh the NDC data:
-    1. Replace files in s3://strive-analytics-warehouse-pro/reference_data/codes/code_system=ndc/package
+    1. Replace files in s3://some_company-analytics-warehouse-pro/reference_data/codes/code_system=ndc/package
         with the latest version from https://www.nber.org/research/data/national-drug-code
 
-    2. Replace files in 3://strive-analytics-warehouse-pro/reference_data/codes/code_system=ndc/product
+    2. Replace files in 3://some_company-analytics-warehouse-pro/reference_data/codes/code_system=ndc/product
         with the lates version from https://www.nber.org/research/data/national-drug-code
 
     3. *** NOTE: DO NOT DELETE THE ENTIRE BUCKET, JUST THE ONE FOLDER WITH PARQUET FILES ***
-        Delete the folder `package_product` at s3://strive-analytics-warehouse-pro/reference_data/codes/code_system=ndc/
+        Delete the folder `package_product` at s3://some_company-analytics-warehouse-pro/reference_data/codes/code_system=ndc/
 
     4. Delete the table analytics_reference_data.ndc_package_product in the AWS Glue Catalog
 
@@ -24,7 +24,7 @@ create table ndc_package_product
 with (
   format = 'PARQUET',
   parquet_compression = 'SNAPPY',
-  external_location = 's3://strive-analytics-warehouse-pro/reference_data/codes/code_system=ndc/package_product'
+  external_location = 's3://some_company-analytics-warehouse-pro/reference_data/codes/code_system=ndc/package_product'
  ) as
 
 with 
