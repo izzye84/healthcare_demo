@@ -34,8 +34,8 @@ some_company_health:
       type: redshift
       threads: 8
       method: iam
-      cluster_id: analytics-warehouse-pro-analyticswarehouseredshif-19u6slt5vi6r6
-      host: analytics-warehouse-pro-analyticswarehouseredshif-19u6slt5vi6r6.ckveagnyu9df.us-east-1.redshift.amazonaws.com
+      cluster_id: some_cluster_id
+      host: some_host_url
       port: 5439
       user: <username>
       iam_profile: prod
@@ -44,7 +44,7 @@ some_company_health:
     prod:
       type: redshift
       threads: 4
-      host: analytics-warehouse-pro-analyticswarehouseredshif-19u6slt5vi6r6.ckveagnyu9df.us-east-1.redshift.amazonaws.com
+      host: some_other_host_url
       port: 5439
       user: data_load_service
       password:
