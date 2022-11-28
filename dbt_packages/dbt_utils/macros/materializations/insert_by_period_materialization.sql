@@ -1,14 +1,18 @@
 {% macro get_period_boundaries(target_schema, target_table, timestamp_field, start_date, stop_date, period) -%}
+    {{ return(adapter.dispatch('get_period_boundaries', 'dbt_utils')(target_schema, target_table, timestamp_field, start_date, stop_date, period)) }}
+{% endmacro %}
+
+{% macro default__get_period_boundaries(target_schema, target_table, timestamp_field, start_date, stop_date, period) -%}
 
   {% call statement('period_boundaries', fetch_result=True) -%}
     with data as (
       select
           coalesce(max("{{timestamp_field}}"), '{{start_date}}')::timestamp as start_timestamp,
           coalesce(
-            {{dbt_utils.dateadd('millisecond',
+            {{ dateadd('millisecond',
                                 -1,
-                                "nullif('" ~ stop_date ~ "','')::timestamp")}},
-            {{dbt_utils.current_timestamp()}}
+                                "nullif('" ~ stop_date ~ "','')::timestamp") }},
+            {{ dbt_utils.current_timestamp() }}
           ) as stop_timestamp
       from "{{target_schema}}"."{{target_table}}"
     )
@@ -16,15 +20,19 @@
     select
       start_timestamp,
       stop_timestamp,
-      {{dbt_utils.datediff('start_timestamp',
+      {{ datediff('start_timestamp',
                            'stop_timestamp',
-                           period)}}  + 1 as num_periods
+                           period) }}  + 1 as num_periods
     from data
   {%- endcall %}
 
 {%- endmacro %}
 
 {% macro get_period_sql(target_cols_csv, sql, timestamp_field, period, start_timestamp, stop_timestamp, offset) -%}
+    {{ return(adapter.dispatch('get_period_sql', 'dbt_utils')(target_cols_csv, sql, timestamp_field, period, start_timestamp, stop_timestamp, offset)) }}
+{% endmacro %}
+
+{% macro default__get_period_sql(target_cols_csv, sql, timestamp_field, period, start_timestamp, stop_timestamp, offset) -%}
 
   {%- set period_filter -%}
     ("{{timestamp_field}}" >  '{{start_timestamp}}'::timestamp + interval '{{offset}} {{period}}' and
@@ -45,8 +53,11 @@
 {% materialization insert_by_period, default -%}
   {%- set timestamp_field = config.require('timestamp_field') -%}
   {%- set start_date = config.require('start_date') -%}
-  {%- set stop_date = config.get('stop_date') or '' -%}}
+  {%- set stop_date = config.get('stop_date') or '' -%}
   {%- set period = config.get('period') or 'week' -%}
+
+  {%- set deprecation_warning = "Warning: the `insert_by_period` materialization will be removed from dbt_utils in version 1.0.0. Install from dbt-labs/dbt-labs-experimental-features instead (see https://github.com/dbt-labs/dbt-utils/discussions/487). The " ~ package ~ "." ~ model ~ " model triggered this warning." -%}
+  {%- do exceptions.warn(deprecation_warning) -%}
 
   {%- if sql.find('__PERIOD_FILTER__') == -1 -%}
     {%- set error_message -%}
@@ -94,7 +105,7 @@
     {# Create an empty target table -#}
     {% call statement('main') -%}
       {%- set empty_sql = sql | replace("__PERIOD_FILTER__", 'false') -%}
-      {{create_table_as(False, target_relation, empty_sql)}};
+      {{create_table_as(False, target_relation, empty_sql)}}
     {%- endcall %}
   {%- endif %}
 
@@ -142,7 +153,13 @@
           from {{tmp_relation.include(schema=False)}}
       );
     {%- endcall %}
-    {%- set rows_inserted = (load_result('main-' ~ i)['status'].split(" "))[2] | int -%}
+    {% set result = load_result('main-' ~ i) %}
+    {% if 'response' in result.keys() %} {# added in v0.19.0 #}
+        {% set rows_inserted = result['response']['rows_affected'] %}
+    {% else %} {# older versions #}
+        {% set rows_inserted = result['status'].split(" ")[2] | int %}
+    {% endif %}
+
     {%- set sum_rows_inserted = loop_vars['sum_rows_inserted'] + rows_inserted -%}
     {%- if loop_vars.update({'sum_rows_inserted': sum_rows_inserted}) %} {% endif -%}
 
@@ -165,11 +182,11 @@
 
   {%- set status_string = "INSERT " ~ loop_vars['sum_rows_inserted'] -%}
 
-  {% call noop_statement(name='main', status=status_string) -%}
+  {% call noop_statement('main', status_string) -%}
     -- no-op
   {%- endcall %}
 
   -- Return the relations created in this materialization
-  {{ return({'relations': [target_relation]}) }}  
+  {{ return({'relations': [target_relation]}) }}
 
 {%- endmaterialization %}
