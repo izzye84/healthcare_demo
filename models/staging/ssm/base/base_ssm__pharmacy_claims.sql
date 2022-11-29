@@ -18,9 +18,9 @@ add_row_num as (
 
 source_renamed as (
 
-    select claim_number AS identifier_claim_header,
+    select claim_number as identifier_claim_header,
            allowed_amount,
-           date(fill_date_time) as billable_period,
+           fill_date_time as billable_period,
            charge_amount,
            {{ empty_string_to_null('claim_adjustment_type_code') }} as claim_adjustment_type_code,
            {{ empty_string_to_null('claim_adjustment_sequence_number') }} as claim_adjustment_sequence_number,
@@ -41,9 +41,9 @@ source_renamed as (
            {{ empty_string_to_null('metric_qty') }} as metric_qty,
            {{ dbt_utils.surrogate_key(['patient_external_id','lob','insurance_name']) }} as patient,
            patient_external_id,
-           date(payment_date_time) AS payment_date_time,
-           plan_payment_amount AS total,
-           {{ empty_string_to_null('pharmacy_npi') }} AS provider,
+           payment_date_time as payment_date_time,
+           plan_payment_amount as total,
+           {{ empty_string_to_null('pharmacy_npi') }} as provider,
            {{ empty_string_to_null('retail') }} as retail,
            {{ empty_string_to_null('rx_number') }} as rx_number,
            {{ empty_string_to_null('qty_units') }} as qty_units,
