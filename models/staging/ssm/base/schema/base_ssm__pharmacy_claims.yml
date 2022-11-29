@@ -44,9 +44,6 @@ models:
 
       - name: billable_period
         description: billable_period
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: first_name
         description: first_name
@@ -79,9 +76,6 @@ models:
 
       - name: payment_date_time
         description: payment_date_time
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: plan_payment_amount
         description: plan_payment_amount

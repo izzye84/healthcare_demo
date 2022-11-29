@@ -10,7 +10,7 @@ with claim_header as (
          provider,
          facility,
          total,
-         client_id,
+         --client_id,
          ingest_date
          
     from {{ ref('int_claim_header__union') }}

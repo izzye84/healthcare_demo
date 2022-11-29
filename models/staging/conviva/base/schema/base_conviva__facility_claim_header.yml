@@ -8,7 +8,7 @@ models:
         description: identifier_claim_header
         tests:
           - unique
-          - not_blank:
+          - not_null:
               severity: warn
 
       - name: accident_date
