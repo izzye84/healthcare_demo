@@ -1,9 +1,3 @@
-{{
-    config(
-        dist = 'identifier_external_source'
-    )
-}}
-
 with
 
 source as (

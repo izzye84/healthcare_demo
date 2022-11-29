@@ -3,6 +3,7 @@ version: 2
 sources:
   - name: conviva_claims
     description: Source definition for Conviva claims files
+    database: izzy_raw
     schema: raw_conviva
     tables:
       - name: eligibility

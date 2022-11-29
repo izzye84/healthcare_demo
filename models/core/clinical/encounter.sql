@@ -1,5 +1,3 @@
-{{ config(dist = 'subject') }}
-
 with all_client_encounters as (
 
     select *

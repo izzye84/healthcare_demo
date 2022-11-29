@@ -3,6 +3,7 @@ version: 2
 sources:
   - name: humana_src
     description: Source definitions for Humana claims files
+    database: izzy_raw
     schema: raw_humana
     tables:
       - name: demographics

@@ -3,6 +3,7 @@ version: 2
 sources:
   - name: ssm_claims
     description: Source definition for SSM claims files
+    database: raw_izzy
     schema: raw_ssm
     tables:
       - name: member_eligibility

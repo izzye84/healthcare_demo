@@ -1,9 +1,3 @@
-{{
-    config(
-        dist = 'identifier_external_source'
-    )
-}}
-
 with observation as (
     select * from {{ ref('int_observation__unioned') }}
 )
