@@ -31,8 +31,8 @@ models:
       - name: insurer
         description: The Insurer who is target of the request.
 
-      - name: provider
-        description: The provider which is responsible for the claim, predetermination or preauthorization.
+      #- name: provider
+        #description: The provider which is responsible for the claim, predetermination or preauthorization.
 
       - name: facility
         description: Facility where the services were provided.
