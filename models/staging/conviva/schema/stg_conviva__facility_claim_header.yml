@@ -8,7 +8,6 @@ models:
         description: A unique identifier assigned to this claim.
         tests:
           - unique
-          - not_null
 
       - name: type
         description: The category of claim, e.g. oral, pharmacy, vision, institutional, professional.

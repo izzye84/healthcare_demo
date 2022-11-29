@@ -22,8 +22,7 @@ sources:
           - name: first_name
             description: Member first name
             tests:
-              - not_blank:
-                  severity: warn
+              - not_null
 
           - name: middle_name
             description: Member middle name
@@ -31,8 +30,7 @@ sources:
           - name: last_name
             description: Member last name
             tests:
-              - not_blank:
-                  severity: warn
+              - not_null
 
           - name: social_security
             description: Member SSN
@@ -154,7 +152,7 @@ sources:
           - name: claim_number
             description: Claim number
             tests:
-              - not_blank
+              - not_null
 
           - name: claim_sequnce_number
             description: Claim sequence number
@@ -162,8 +160,7 @@ sources:
           - name: patient_external_id
             description: Patient external ID. Maps to `patient_id` in the SSM `member_eligibility` file. Also referred to as a Member ID
             tests:
-              - not_blank:
-                  severity: warn
+              - not_null
 
           - name: subscriber_id
             description: Subscriber ID
@@ -552,7 +549,7 @@ sources:
           - name: patient_external_id
             description: Patient external ID. Maps to `patient_id` in the SSM `member_eligibility` file. Also referred to as a Member ID
             tests:
-              - not_blank
+              - not_null
 
           - name: subscriber_id
             description: Subscriber ID

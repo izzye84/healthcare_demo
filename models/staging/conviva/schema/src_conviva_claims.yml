@@ -112,17 +112,17 @@ sources:
           - name: facility_header_claim_id
             description: Facility header claim ID
             tests:
-              - not_blank
+              - not_null
             
           - name: member_id
             description: Member ID
             tests:
-              - not_blank
+              - not_null
 
           - name: patient_id
             description: Patient ID
             tests:
-              - not_blank
+              - not_null
 
           - name: place_of_service_code
             description: Place of service code

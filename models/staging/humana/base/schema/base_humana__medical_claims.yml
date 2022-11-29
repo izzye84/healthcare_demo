@@ -236,15 +236,9 @@ models:
 
       - name: serviced_period_end
         description: The date or dates when the service or product was supplied, performed or completed.
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: serviced_period_start
         description: The date or dates when the service or product was supplied, performed or completed.
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: quantity
         description: The number of repetitions of a service or product.

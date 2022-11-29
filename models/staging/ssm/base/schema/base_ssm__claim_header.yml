@@ -32,15 +32,9 @@ models:
 
       - name: billable_period_start
         description: billable_period_start
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: billable_period_end
         description: billable_period_end
-        tests:
-          - is_date:
-              date_format: yyyy-mm-dd
 
       - name: admission_type
         description: admission_type

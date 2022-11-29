@@ -26,15 +26,11 @@ sources:
             tests:
               - not_null:
                   severity: warn
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: cov_month
             description: Month date_part from cov_eff_date
             tests:
               - not_null
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: ctrct_cat_cd
             description: ctrct_cat_cd
@@ -400,9 +396,6 @@ sources:
 
           - name: cov_month
             description: Month of coverage date
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: mbr_cost_shr_amt
             description: Amount of member liability as determined by the insurer
@@ -418,18 +411,12 @@ sources:
 
           - name: medclm_lclm_from_date
             description: Beginning date of services this claim applies to
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: medclm_lclm_key
             description: Claim ID from source system
 
           - name: medclm_lclm_to_date
             description: Ending date of services this claim applies to
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: ndc_id
             description: Standardized NDC (National Drug Code) value. (XXXX-XXXX-XX)
@@ -445,9 +432,6 @@ sources:
 
           - name: paid_date
             description: Date claim was paid/processed
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: pbp_segment_id
             description: pbp_segment_id
@@ -478,30 +462,18 @@ sources:
 
           - name: serv_from_date
             description: Service from date that this line applies to
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: serv_to_date
             description: Service to date that this line applies to
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: serv_unit_cnt
             description: Units on claim line.
 
           - name: src_admit_date
             description: Date and time of admission
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: src_dischrg_date
             description: Date and time of discharge
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: src_mbr_id
             description: Source value that identifies a unique Member
@@ -568,9 +540,6 @@ sources:
 
           - name: cov_month
             description: Month of coverage date
-            tests:
-              - is_date:
-                  date_format: mm/dd/yyyy
 
           - name: mail_order_ind
             description: mail_order_ind
