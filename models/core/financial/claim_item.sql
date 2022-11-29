@@ -1,9 +1,3 @@
-{{
-    config(
-        dist = 'identifier_claim_header'
-    )
-}}
-
 with claim_line as (
 
     select identifier_claim_header,

@@ -13,6 +13,10 @@ Arguments:
 #}
 
 {% macro unpivot(relation=none, cast_to='varchar', exclude=none, remove=none, field_name='field_name', value_name='value', table=none) -%}
+    {{ return(adapter.dispatch('unpivot', 'dbt_utils')(relation, cast_to, exclude, remove, field_name, value_name, table)) }}
+{% endmacro %}
+
+{% macro default__unpivot(relation=none, cast_to='varchar', exclude=none, remove=none, field_name='field_name', value_name='value', table=none) -%}
 
     {% if table %}
         {%- set error_message = '
@@ -57,8 +61,13 @@ Arguments:
         {{ exclude_col }},
       {%- endfor %}
 
-      cast('{{ col.column }}' as {{ dbt_utils.type_string() }}) as {{ field_name }},
-      cast({{ col.column }} as {{ cast_to }}) as {{ value_name }}
+      cast('{{ col.column }}' as {{ type_string() }}) as {{ field_name }},
+      cast(  {% if col.data_type == 'boolean' %}
+           {{ cast_bool_to_text(col.column) }}
+             {% else %}
+           {{ col.column }}
+             {% endif %}
+           as {{ cast_to }}) as {{ value_name }}
 
     from {{ relation }}
 

@@ -1,4 +1,11 @@
 {%- macro surrogate_key(field_list) -%}
+    {# needed for safe_add to allow for non-keyword arguments see SO post #}
+    {# https://stackoverflow.com/questions/13944751/args-kwargs-in-jinja2-macros #}
+    {% set frustrating_jinja_feature = varargs %}
+    {{ return(adapter.dispatch('surrogate_key', 'dbt_utils')(field_list, *varargs)) }}
+{% endmacro %}
+
+{%- macro default__surrogate_key(field_list) -%}
 
 {%- if varargs|length >= 1 or field_list is string %}
 
@@ -30,7 +37,7 @@ deprecated in a future release of dbt-utils. The {}.{} model triggered this warn
 {%- for field in field_list_xf -%}
 
     {%- set _ = fields.append(
-        "coalesce(cast(" ~ field ~ " as " ~ dbt_utils.type_string() ~ "), '')"
+        "coalesce(cast(" ~ field ~ " as " ~ type_string() ~ "), '')"
     ) -%}
 
     {%- if not loop.last %}
@@ -39,6 +46,6 @@ deprecated in a future release of dbt-utils. The {}.{} model triggered this warn
 
 {%- endfor -%}
 
-{{dbt_utils.hash(dbt_utils.concat(fields))}}
+{{ hash(concat(fields)) }}
 
 {%- endmacro -%}
