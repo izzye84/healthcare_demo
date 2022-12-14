@@ -7,7 +7,7 @@ with claim_header as (
          billable_period_start,
          billable_period_end,
          insurer,
-         provider,
+         --provider,
          facility,
          total,
          client_id,
